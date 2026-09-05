@@ -1,0 +1,260 @@
+"""millie_pages.jsonl → books_kr.parquet · id_map.csv · millie_raw_coverage.json (US-004).
+
+적재 계획 §3(스키마)·§4(결측 규칙). book_id 는 catalog_urls.txt 사전순 surrogate 이며
+id_map.csv 를 통해 append-only 로만 늘어난다 — 기존 행은 절대 바뀌지 않는다.
+"""
+
+import argparse
+import json
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path
+
+import pandas as pd
+
+from millie_rec.contracts import DIR_PROCESSED, DIR_RAW, FILE_ID_MAP
+
+COLUMNS = tuple(
+    "book_id millie_id title subtitle authors publisher pub_date original_publication_year "
+    "categories subcategories book_format formats image_url average_rating rating_observed "
+    "ratings_count review_count shelf_count pop_rank tags description curator_note "
+    "completion_prob category_avg_prob expected_min category_avg_min millie_label "
+    "difficulty_source seg_dist top_segment isbn13 pages_diag collected_at source".split()
+)
+INT_COLS = tuple(
+    "original_publication_year ratings_count review_count shelf_count pop_rank "
+    "completion_prob category_avg_prob expected_min category_avg_min".split()
+)
+
+# 오디오북 > 챗북 > 전자책 (계획 §3)
+FORMAT_PRIORITY = ("오디오북", "챗북", "전자책")
+DESC_MAX, NOTE_MAX = 400, 100
+MIN_BOOKS_PER_CATEGORY = 20
+
+# 커버리지 게이트(계획 §7) 필드명 → 원본 JSONL 키. categories 만 단일값 category 에서 만든다
+COVERAGE_FIELDS = {"categories": "category"} | {
+    f: f
+    for f in (
+        "title subtitle authors publisher image_url pub_date average_rating shelf_count "
+        "review_count formats seg_dist top_segment completion_prob category_avg_prob "
+        "expected_min category_avg_min millie_label curator_note description best_category"
+    ).split()
+}
+
+
+def _present(value: object) -> bool:
+    """None·빈 문자열·빈 리스트는 결측. 숫자 0 은 값이다."""
+    if value is None:
+        return False
+    if isinstance(value, str | list | tuple | dict):
+        return len(value) > 0
+    return True
+
+
+def _clip(text: object, limit: int) -> str | None:
+    return text[:limit] if isinstance(text, str) and text else None
+
+
+def _as_text(value: object) -> str | None:
+    if isinstance(value, list | tuple):
+        return ", ".join(str(v) for v in value) or None
+    return str(value) if value else None
+
+
+def _year(pub_date: object) -> int | None:
+    try:
+        return int(str(pub_date)[:4])
+    except (TypeError, ValueError):
+        return None
+
+
+def _tags(category: object, label: object, formats: list[str]) -> str:
+    return " ".join(str(t) for t in [category, label, *formats] if t)
+
+
+def _is_collected(rec: dict) -> bool:
+    """수집 성공 판정. collector 는 status 에 HTTP 코드(200) 또는 'ok' 를 넣는다 — 둘 다 받는다."""
+    status = rec.get("status")
+    if status is None or str(status).lower() == "ok":
+        return True
+    try:
+        return 200 <= int(status) < 300
+    except (TypeError, ValueError):
+        return False
+
+
+def read_records(jsonl: Path) -> tuple[list[dict], dict]:
+    """수집 성공 레코드만, millie_id 기준 마지막 줄(최신 수집)을 남긴다.
+
+    title 이 비어도 성공 페이지는 남긴다 — 그래야 커버리지 게이트가 파서 결함을 잡는다.
+    """
+    lines = [json.loads(ln) for ln in jsonl.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    kept: dict[str, dict] = {}
+    skipped = 0
+    for rec in lines:
+        if not _is_collected(rec):
+            skipped += 1
+            continue
+        kept[rec["millie_id"]] = rec
+    return list(kept.values()), {"n_lines": len(lines), "n_skipped_status": skipped}
+
+
+def _read_id_list(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        tok = line.strip().split("\t")[0].strip()
+        if not tok or tok.startswith("#"):
+            continue
+        out.append(tok.rstrip("/").split("/")[-1] if "/" in tok else tok)
+    return out
+
+
+def assign_ids(path: Path, raw_dir: Path, jsonl_ids: list[str]) -> dict[str, int]:
+    """id_map.csv 를 읽어 기존 배정을 보존하고 신규만 N+1 부터 붙인다."""
+    rows: list[dict] = []
+    known: dict[str, int] = {}
+    if path.exists():
+        prev = pd.read_csv(path, dtype={"millie_id": "str"})
+        for r in prev.to_dict("records"):
+            known[str(r["millie_id"])] = int(r["book_id"])
+            rows.append(
+                {
+                    "millie_id": str(r["millie_id"]),
+                    "book_id": int(r["book_id"]),
+                    "first_seen_at": r["first_seen_at"],
+                }
+            )
+    order = (
+        sorted(_read_id_list(raw_dir / "catalog_urls.txt"))
+        + _read_id_list(raw_dir / "discovered_urls.txt")
+        + sorted(jsonl_ids)
+    )
+    now = datetime.now(UTC).isoformat(timespec="seconds")
+    nxt = max(known.values(), default=0) + 1
+    for mid in dict.fromkeys(order):
+        if mid in known:
+            continue
+        known[mid] = nxt
+        rows.append({"millie_id": mid, "book_id": nxt, "first_seen_at": now})
+        nxt += 1
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(rows, columns=["millie_id", "book_id", "first_seen_at"]).sort_values(
+        "book_id"
+    ).to_csv(path, index=False)
+    return known
+
+
+def _row(rec: dict, book_id: int) -> dict:
+    category = rec.get("category")
+    formats = list(rec.get("formats") or [])
+    prob, avg_prob = rec.get("completion_prob"), rec.get("category_avg_prob")
+    filled = prob is None  # 계획 §4: 결측이면 분야 평균으로 대체 + 출처 표시
+    seg = rec.get("seg_dist")
+    return {
+        "book_id": book_id,
+        "millie_id": rec["millie_id"],
+        "title": rec.get("title"),
+        "subtitle": rec.get("subtitle"),
+        "authors": _as_text(rec.get("authors")),
+        "publisher": rec.get("publisher"),
+        "pub_date": rec.get("pub_date"),
+        "original_publication_year": _year(rec.get("pub_date")),
+        "categories": [category] if category else [],
+        "subcategories": [],
+        "book_format": next((f for f in FORMAT_PRIORITY if f in formats), "전자책"),
+        "formats": formats,
+        "image_url": rec.get("image_url"),
+        "average_rating": rec.get("average_rating"),
+        "rating_observed": rec.get("average_rating") is not None,
+        "ratings_count": rec.get("review_count") or 0,  # 계약 호환 전용
+        "review_count": rec.get("review_count"),
+        "shelf_count": rec.get("shelf_count"),
+        "pop_rank": None,
+        "tags": _tags(category, rec.get("millie_label"), formats),  # 계약 호환 전용
+        "description": _clip(rec.get("description"), DESC_MAX),
+        "curator_note": _clip(rec.get("curator_note"), NOTE_MAX),
+        "completion_prob": avg_prob if filled else prob,
+        "category_avg_prob": avg_prob,
+        "expected_min": rec.get("expected_min"),
+        "category_avg_min": rec.get("category_avg_min"),
+        "millie_label": rec.get("millie_label"),
+        "difficulty_source": "category_prior" if filled else "millie_index",
+        "seg_dist": json.dumps(seg, ensure_ascii=False) if seg else None,
+        "top_segment": rec.get("top_segment"),
+        "isbn13": None,
+        "pages_diag": None,
+        "collected_at": rec.get("collected_at"),
+        "source": rec.get("source"),
+    }
+
+
+def build_frame(records: list[dict], ids: dict[str, int]) -> pd.DataFrame:
+    rows = [_row(r, ids[r["millie_id"]]) for r in records if r["millie_id"] in ids]
+
+    def _pop_key(row: dict) -> tuple[float, int]:
+        shelf = row["shelf_count"]
+        return (-(shelf if shelf is not None else -1), row["book_id"])
+
+    for rank, row in enumerate(sorted(rows, key=_pop_key), start=1):
+        row["pop_rank"] = rank  # shelf_count 내림차순, 결측은 마지막
+    df = pd.DataFrame(rows, columns=list(COLUMNS)).sort_values("book_id").reset_index(drop=True)
+    for col in INT_COLS:
+        df[col] = pd.to_numeric(df[col], errors="coerce").astype("Int64")
+    df["book_id"] = df["book_id"].astype("int64")
+    df["average_rating"] = pd.to_numeric(df["average_rating"], errors="coerce").astype("Float64")
+    df["rating_observed"] = df["rating_observed"].astype("bool")
+    return df
+
+
+def coverage(records: list[dict], meta: dict) -> dict:
+    n = len(records)
+    cats = Counter(r["category"] for r in records if _present(r.get("category")))
+    return {
+        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "n_records": n,
+        "n_lines": meta["n_lines"],
+        "n_skipped_status": meta["n_skipped_status"],
+        "fields": {
+            name: (sum(_present(r.get(key)) for r in records) / n if n else 0.0)
+            for name, key in COVERAGE_FIELDS.items()
+        },
+        "categories": dict(cats.most_common()),
+        "category_distinct": len(cats),
+        "categories_ge_min": sum(1 for c in cats.values() if c >= MIN_BOOKS_PER_CATEGORY),
+        "min_books_per_category": MIN_BOOKS_PER_CATEGORY,
+    }
+
+
+def build(
+    jsonl: Path, out_dir: Path, raw_dir: Path | None = None, id_map: Path | None = None
+) -> pd.DataFrame:
+    records, meta = read_records(jsonl)
+    ids = assign_ids(
+        id_map or out_dir / "id_map.csv",
+        raw_dir or jsonl.parent,
+        [r["millie_id"] for r in records],
+    )
+    df = build_frame(records, ids)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(out_dir / "books_kr.parquet", index=False)
+    (out_dir / "millie_raw_coverage.json").write_text(
+        json.dumps(coverage(records, meta), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return df
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="밀리 원본 JSONL → books_kr.parquet")
+    ap.add_argument("--jsonl", type=Path, default=DIR_RAW / "millie_pages.jsonl")
+    ap.add_argument("--out", type=Path, default=DIR_PROCESSED)
+    ap.add_argument("--raw-dir", type=Path, default=None, help="기본값: --jsonl 의 상위 디렉터리")
+    ap.add_argument("--id-map", type=Path, default=FILE_ID_MAP, help="append-only, 커밋 대상")
+    args = ap.parse_args()
+    df = build(args.jsonl, args.out, args.raw_dir, args.id_map)
+    print(f"books={len(df)} → {args.out / 'books_kr.parquet'} · id_map → {args.id_map}")
+
+
+if __name__ == "__main__":
+    main()

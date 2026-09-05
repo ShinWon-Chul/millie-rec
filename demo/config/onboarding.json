@@ -1,0 +1,75 @@
+{
+ "steps": [
+  {
+   "id": "S1",
+   "progress": 0.2,
+   "title": "주로 언제 책을 읽으시나요?",
+   "layout": "list",
+   "min": 1,
+   "max": 1,
+   "field": "readingTime",
+   "cta": "동의하고 다음",
+   "consentNotice": true,
+   "options": [
+    "아침, 하루를 시작할 때",
+    "점심시간이나 짧은 휴식 시간",
+    "저녁, 하루를 마치며",
+    "잠들기 전",
+    "주말이나 휴일, 여유로울 때 몰아서"
+   ]
+  },
+  {
+   "id": "S2",
+   "progress": 0.4,
+   "title": "관심있는 카테고리 최대 3개\n선택해주세요.",
+   "layout": "grid2",
+   "min": 1,
+   "max": 3,
+   "field": "categories",
+   "counter": "{n}개 선택 (최대 3개)",
+   "cta": "다음",
+   "optionsFrom": "meta.categories"
+  },
+  {
+   "id": "S3",
+   "progress": 0.6,
+   "title": "어떤 기준으로 책을 고르시나요?",
+   "layout": "list",
+   "min": 1,
+   "max": 1,
+   "field": "criterion",
+   "cta": "다음",
+   "options": [
+    "좋아하는 작가",
+    "좋아하는 출판사",
+    "베스트셀러",
+    "화제작 (SNS,셀럽 추천, 수상도서)",
+    "리뷰, 별점 등 대중의 평가"
+   ]
+  },
+  {
+   "id": "S4",
+   "progress": 0.6,
+   "title": "더 나은 맞춤 추천을 위해,\n세부 카테고리를 선택해 주세요",
+   "layout": "chips-grouped",
+   "min": 0,
+   "max": 9,
+   "field": "subcategories",
+   "counter": "{n}개 선택 (최대 9개)",
+   "cta": "다음",
+   "optionsFrom": "meta.subcategories[selected S2]"
+  },
+  {
+   "id": "S5",
+   "progress": 0.8,
+   "title": "마음에 드는 책을 5권 이상 골라주세요\n많이 고를수록 추천이 더 정확해져요",
+   "layout": "book-grid3",
+   "min": 5,
+   "max": 30,
+   "field": "seedBooks",
+   "counter": "{n}권 선택",
+   "cta": "내서재에 담고 내 취향 확인하기",
+   "optionsFrom": "GET /candidates/onboarding"
+  }
+ ]
+}

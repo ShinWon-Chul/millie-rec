@@ -1,0 +1,15 @@
+.venv
+.git
+.pytest_cache
+.ruff_cache
+.omc
+__pycache__
+data/raw
+data/processed
+data/local
+artifacts/*
+!artifacts/serving
+notebooks
+report
+results
+tests

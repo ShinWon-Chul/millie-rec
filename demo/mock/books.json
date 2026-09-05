@@ -1,0 +1,7168 @@
+{
+ "_note": "mock — 카테고리는 데모용 임의 배정",
+ "seed": 42,
+ "books": [
+  {
+   "book_id": 1,
+   "title": "The Hunger Games (The Hunger Games, #1)",
+   "authors": "Suzanne Collins",
+   "image_url": "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 4780653,
+   "year": 2008,
+   "pop_rank": 1,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 2,
+   "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg",
+   "average_rating": 4.44,
+   "ratings_count": 4602479,
+   "year": 1997,
+   "pop_rank": 2,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 3,
+   "title": "Twilight (Twilight, #1)",
+   "authors": "Stephenie Meyer",
+   "image_url": "https://images.gr-assets.com/books/1361039443m/41865.jpg",
+   "average_rating": 3.57,
+   "ratings_count": 3866839,
+   "year": 2005,
+   "pop_rank": 3,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 4,
+   "title": "To Kill a Mockingbird",
+   "authors": "Harper Lee",
+   "image_url": "https://images.gr-assets.com/books/1361975680m/2657.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 3198671,
+   "year": 1960,
+   "pop_rank": 4,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "리더십",
+    "경제 일반"
+   ]
+  },
+  {
+   "book_id": 5,
+   "title": "The Great Gatsby",
+   "authors": "F. Scott Fitzgerald",
+   "image_url": "https://images.gr-assets.com/books/1490528560m/4671.jpg",
+   "average_rating": 3.89,
+   "ratings_count": 2683664,
+   "year": 1925,
+   "pop_rank": 5,
+   "format": null,
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "시간 관리"
+   ]
+  },
+  {
+   "book_id": 6,
+   "title": "The Fault in Our Stars",
+   "authors": "John Green",
+   "image_url": "https://images.gr-assets.com/books/1360206420m/11870085.jpg",
+   "average_rating": 4.26,
+   "ratings_count": 2346404,
+   "year": 2012,
+   "pop_rank": 6,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 7,
+   "title": "The Hobbit",
+   "authors": "J.R.R. Tolkien",
+   "image_url": "https://images.gr-assets.com/books/1372847500m/5907.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 2071616,
+   "year": 1937,
+   "pop_rank": 7,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "철학"
+   ],
+   "subcategories": [
+    "판타지",
+    "추리/스릴러",
+    "서양",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 8,
+   "title": "The Catcher in the Rye",
+   "authors": "J.D. Salinger",
+   "image_url": "https://images.gr-assets.com/books/1398034300m/5107.jpg",
+   "average_rating": 3.79,
+   "ratings_count": 2044241,
+   "year": 1951,
+   "pop_rank": 8,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "청소년"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "판타지",
+    "청소년 소설",
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 10,
+   "title": "Pride and Prejudice",
+   "authors": "Jane Austen",
+   "image_url": "https://images.gr-assets.com/books/1320399351m/1885.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 2035490,
+   "year": 1813,
+   "pop_rank": 9,
+   "format": null,
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "시간 관리"
+   ]
+  },
+  {
+   "book_id": 9,
+   "title": "Angels & Demons  (Robert Langdon, #1)",
+   "authors": "Dan Brown",
+   "image_url": "https://images.gr-assets.com/books/1303390735m/960.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 2001311,
+   "year": 2000,
+   "pop_rank": 10,
+   "format": "PDF",
+   "categories": [
+    "청소년",
+    "과학"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "수학"
+   ]
+  },
+  {
+   "book_id": 15,
+   "title": "The Diary of a Young Girl",
+   "authors": "Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",
+   "image_url": "https://images.gr-assets.com/books/1358276407m/48855.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 1972666,
+   "year": 1947,
+   "pop_rank": 11,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 13,
+   "title": "1984",
+   "authors": "George Orwell, Erich Fromm, Celâl Üster",
+   "image_url": "https://images.gr-assets.com/books/1348990566m/5470.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 1956832,
+   "year": 1949,
+   "pop_rank": 12,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 12,
+   "title": "Divergent (Divergent, #1)",
+   "authors": "Veronica Roth",
+   "image_url": "https://images.gr-assets.com/books/1328559506m/13335037.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 1903563,
+   "year": 2011,
+   "pop_rank": 13,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 14,
+   "title": "Animal Farm",
+   "authors": "George Orwell",
+   "image_url": "https://images.gr-assets.com/books/1424037542m/7613.jpg",
+   "average_rating": 3.87,
+   "ratings_count": 1881700,
+   "year": 1945,
+   "pop_rank": 14,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 18,
+   "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+   "authors": "J.K. Rowling, Mary GrandPré, Rufus Beck",
+   "image_url": "https://images.gr-assets.com/books/1499277281m/5.jpg",
+   "average_rating": 4.53,
+   "ratings_count": 1832823,
+   "year": 1999,
+   "pop_rank": 15,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 17,
+   "title": "Catching Fire (The Hunger Games, #2)",
+   "authors": "Suzanne Collins",
+   "image_url": "https://images.gr-assets.com/books/1358273780m/6148028.jpg",
+   "average_rating": 4.3,
+   "ratings_count": 1831039,
+   "year": 2009,
+   "pop_rank": 16,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 11,
+   "title": "The Kite Runner",
+   "authors": "Khaled Hosseini",
+   "image_url": "https://images.gr-assets.com/books/1484565687m/77203.jpg",
+   "average_rating": 4.26,
+   "ratings_count": 1813044,
+   "year": 2003,
+   "pop_rank": 17,
+   "format": null,
+   "categories": [
+    "종교",
+    "어린이"
+   ],
+   "subcategories": [
+    "기독교",
+    "어린이 교양",
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 16,
+   "title": "The Girl with the Dragon Tattoo (Millennium, #1)",
+   "authors": "Stieg Larsson, Reg Keeland",
+   "image_url": "https://images.gr-assets.com/books/1327868566m/2429135.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 1808403,
+   "year": 2005,
+   "pop_rank": 18,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 23,
+   "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1474169725m/15881.jpg",
+   "average_rating": 4.37,
+   "ratings_count": 1779331,
+   "year": 1998,
+   "pop_rank": 19,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양",
+    "학습 만화"
+   ]
+  },
+  {
+   "book_id": 19,
+   "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+   "authors": "J.R.R. Tolkien",
+   "image_url": "https://images.gr-assets.com/books/1298411339m/34.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 1766803,
+   "year": 1954,
+   "pop_rank": 20,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 24,
+   "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1361482611m/6.jpg",
+   "average_rating": 4.53,
+   "ratings_count": 1753043,
+   "year": 2000,
+   "pop_rank": 21,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 25,
+   "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1474171184m/136251.jpg",
+   "average_rating": 4.61,
+   "ratings_count": 1746574,
+   "year": 2007,
+   "pop_rank": 22,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "오피스 활용"
+   ]
+  },
+  {
+   "book_id": 21,
+   "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1387141547m/2.jpg",
+   "average_rating": 4.46,
+   "ratings_count": 1735368,
+   "year": 2003,
+   "pop_rank": 23,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "정치/경제",
+    "동양"
+   ]
+  },
+  {
+   "book_id": 20,
+   "title": "Mockingjay (The Hunger Games, #3)",
+   "authors": "Suzanne Collins",
+   "image_url": "https://images.gr-assets.com/books/1358275419m/7260188.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 1719760,
+   "year": 2010,
+   "pop_rank": 24,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "국내 에세이",
+    "시"
+   ]
+  },
+  {
+   "book_id": 27,
+   "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+   "authors": "J.K. Rowling, Mary GrandPré",
+   "image_url": "https://images.gr-assets.com/books/1361039191m/1.jpg",
+   "average_rating": 4.54,
+   "ratings_count": 1678823,
+   "year": 2005,
+   "pop_rank": 25,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 29,
+   "title": "Romeo and Juliet",
+   "authors": "William Shakespeare, Robert           Jackson",
+   "image_url": "https://images.gr-assets.com/books/1327872146m/18135.jpg",
+   "average_rating": 3.73,
+   "ratings_count": 1628519,
+   "year": 1595,
+   "pop_rank": 26,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 22,
+   "title": "The Lovely Bones",
+   "authors": "Alice Sebold",
+   "image_url": "https://images.gr-assets.com/books/1457810586m/12232938.jpg",
+   "average_rating": 3.77,
+   "ratings_count": 1605173,
+   "year": 2002,
+   "pop_rank": 27,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "그래픽/멀티미디어",
+    "컴퓨터 수험서"
+   ]
+  },
+  {
+   "book_id": 28,
+   "title": "Lord of the Flies",
+   "authors": "William Golding",
+   "image_url": "https://images.gr-assets.com/books/1327869409m/7624.jpg",
+   "average_rating": 3.64,
+   "ratings_count": 1605019,
+   "year": 1954,
+   "pop_rank": 28,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 37,
+   "title": "The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)",
+   "authors": "C.S. Lewis",
+   "image_url": "https://images.gr-assets.com/books/1353029077m/100915.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 1531800,
+   "year": 1950,
+   "pop_rank": 29,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 31,
+   "title": "The Help",
+   "authors": "Kathryn Stockett",
+   "image_url": "https://images.gr-assets.com/books/1346100365m/4667024.jpg",
+   "average_rating": 4.45,
+   "ratings_count": 1531753,
+   "year": 2009,
+   "pop_rank": 30,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 32,
+   "title": "Of Mice and Men",
+   "authors": "John Steinbeck",
+   "image_url": "https://images.gr-assets.com/books/1437235233m/890.jpg",
+   "average_rating": 3.84,
+   "ratings_count": 1467496,
+   "year": 1937,
+   "pop_rank": 31,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 26,
+   "title": "The Da Vinci Code (Robert Langdon, #2)",
+   "authors": "Dan Brown",
+   "image_url": "https://images.gr-assets.com/books/1303252999m/968.jpg",
+   "average_rating": 3.79,
+   "ratings_count": 1447148,
+   "year": 2003,
+   "pop_rank": 32,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 41,
+   "title": "The Lightning Thief (Percy Jackson and the Olympians, #1)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1400602609m/28187.jpg",
+   "average_rating": 4.23,
+   "ratings_count": 1366265,
+   "year": 2005,
+   "pop_rank": 33,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 34,
+   "title": "Fifty Shades of Grey (Fifty Shades, #1)",
+   "authors": "E.L. James",
+   "image_url": "https://images.gr-assets.com/books/1385207843m/10818853.jpg",
+   "average_rating": 3.67,
+   "ratings_count": 1338493,
+   "year": 2011,
+   "pop_rank": 34,
+   "format": null,
+   "categories": [
+    "소설",
+    "인문"
+   ],
+   "subcategories": [
+    "SF",
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 39,
+   "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+   "authors": "George R.R. Martin",
+   "image_url": "https://images.gr-assets.com/books/1436732693m/13496.jpg",
+   "average_rating": 4.45,
+   "ratings_count": 1319204,
+   "year": 1996,
+   "pop_rank": 35,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 33,
+   "title": "Memoirs of a Geisha",
+   "authors": "Arthur Golden",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.08,
+   "ratings_count": 1300209,
+   "year": 1997,
+   "pop_rank": 36,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 35,
+   "title": "The Alchemist",
+   "authors": "Paulo Coelho, Alan R. Clarke",
+   "image_url": "https://images.gr-assets.com/books/1483412266m/865.jpg",
+   "average_rating": 3.82,
+   "ratings_count": 1299566,
+   "year": 1988,
+   "pop_rank": 37,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 36,
+   "title": "The Giver (The Giver, #1)",
+   "authors": "Lois Lowry",
+   "image_url": "https://images.gr-assets.com/books/1342493368m/3636.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 1296825,
+   "year": 1993,
+   "pop_rank": 38,
+   "format": null,
+   "categories": [
+    "소설",
+    "만화"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "그래픽 노블",
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 42,
+   "title": "Little Women (Little Women, #1)",
+   "authors": "Louisa May Alcott",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.04,
+   "ratings_count": 1257121,
+   "year": 1868,
+   "pop_rank": 39,
+   "format": null,
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "국내 여행"
+   ]
+  },
+  {
+   "book_id": 43,
+   "title": "Jane Eyre",
+   "authors": "Charlotte Brontë, Michael Mason",
+   "image_url": "https://images.gr-assets.com/books/1327867269m/10210.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 1198557,
+   "year": 1847,
+   "pop_rank": 40,
+   "format": null,
+   "categories": [
+    "소설",
+    "어린이"
+   ],
+   "subcategories": [
+    "SF",
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 40,
+   "title": "Eat, Pray, Love",
+   "authors": "Elizabeth Gilbert",
+   "image_url": "https://images.gr-assets.com/books/1503066414m/19501.jpg",
+   "average_rating": 3.51,
+   "ratings_count": 1181647,
+   "year": 2006,
+   "pop_rank": 41,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "코믹스"
+   ]
+  },
+  {
+   "book_id": 47,
+   "title": "The Book Thief",
+   "authors": "Markus Zusak",
+   "image_url": "https://images.gr-assets.com/books/1390053681m/19063.jpg",
+   "average_rating": 4.36,
+   "ratings_count": 1159741,
+   "year": 2005,
+   "pop_rank": 42,
+   "format": null,
+   "categories": [
+    "소설",
+    "청소년"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "청소년 교양",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 51,
+   "title": "City of Bones (The Mortal Instruments, #1)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1432730315m/256683.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 1154031,
+   "year": 2007,
+   "pop_rank": 43,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 49,
+   "title": "New Moon (Twilight, #2)",
+   "authors": "Stephenie Meyer",
+   "image_url": "https://images.gr-assets.com/books/1361039440m/49041.jpg",
+   "average_rating": 3.52,
+   "ratings_count": 1149630,
+   "year": 2006,
+   "pop_rank": 44,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 52,
+   "title": "Eclipse (Twilight, #3)",
+   "authors": "Stephenie Meyer",
+   "image_url": "https://images.gr-assets.com/books/1361038355m/428263.jpg",
+   "average_rating": 3.69,
+   "ratings_count": 1134511,
+   "year": 2007,
+   "pop_rank": 45,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 53,
+   "title": "Eragon (The Inheritance Cycle, #1)",
+   "authors": "Christopher Paolini",
+   "image_url": "https://images.gr-assets.com/books/1366212852m/113436.jpg",
+   "average_rating": 3.86,
+   "ratings_count": 1104021,
+   "year": 2002,
+   "pop_rank": 46,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 56,
+   "title": "Breaking Dawn (Twilight, #4)",
+   "authors": "Stephenie Meyer",
+   "image_url": "https://images.gr-assets.com/books/1361039438m/1162543.jpg",
+   "average_rating": 3.7,
+   "ratings_count": 1070245,
+   "year": 2008,
+   "pop_rank": 47,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 46,
+   "title": "Water for Elephants",
+   "authors": "Sara Gruen",
+   "image_url": "https://images.gr-assets.com/books/1494428973m/43641.jpg",
+   "average_rating": 4.07,
+   "ratings_count": 1068146,
+   "year": 2006,
+   "pop_rank": 48,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 59,
+   "title": "Charlotte's Web",
+   "authors": "E.B. White, Garth Williams, Rosemary Wells",
+   "image_url": "https://images.gr-assets.com/books/1439632243m/24178.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 1064521,
+   "year": 1952,
+   "pop_rank": 49,
+   "format": "PDF",
+   "categories": [
+    "청소년",
+    "경제경영"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "경제 일반"
+   ]
+  },
+  {
+   "book_id": 44,
+   "title": "The Notebook (The Notebook, #1)",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1385738917m/15931.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 1053403,
+   "year": 1996,
+   "pop_rank": 50,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 55,
+   "title": "Brave New World",
+   "authors": "Aldous Huxley",
+   "image_url": "https://images.gr-assets.com/books/1487389574m/5129.jpg",
+   "average_rating": 3.97,
+   "ratings_count": 1022601,
+   "year": 1932,
+   "pop_rank": 51,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 50,
+   "title": "Where the Sidewalk Ends",
+   "authors": "Shel Silverstein",
+   "image_url": "https://images.gr-assets.com/books/1168052448m/30119.jpg",
+   "average_rating": 4.29,
+   "ratings_count": 1016888,
+   "year": 1974,
+   "pop_rank": 52,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "물리/천문",
+    "수학"
+   ]
+  },
+  {
+   "book_id": 61,
+   "title": "The Girl on the Train",
+   "authors": "Paula Hawkins",
+   "image_url": "https://images.gr-assets.com/books/1490903702m/22557272.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 1008778,
+   "year": 2015,
+   "pop_rank": 53,
+   "format": "PDF",
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "그래픽 노블"
+   ]
+  },
+  {
+   "book_id": 45,
+   "title": "Life of Pi",
+   "authors": "Yann Martel",
+   "image_url": "https://images.gr-assets.com/books/1320562005m/4214.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 1003228,
+   "year": 2001,
+   "pop_rank": 54,
+   "format": "PDF",
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 62,
+   "title": "The Golden Compass (His Dark Materials, #1)",
+   "authors": "Philip Pullman",
+   "image_url": "https://images.gr-assets.com/books/1451271747m/119322.jpg",
+   "average_rating": 3.94,
+   "ratings_count": 953970,
+   "year": 1995,
+   "pop_rank": 55,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 58,
+   "title": "The Adventures of Huckleberry Finn",
+   "authors": "Mark Twain, John Seelye, Guy Cardwell",
+   "image_url": "https://images.gr-assets.com/books/1405973850m/2956.jpg",
+   "average_rating": 3.8,
+   "ratings_count": 953758,
+   "year": 1884,
+   "pop_rank": 56,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "기독교"
+   ]
+  },
+  {
+   "book_id": 54,
+   "title": "The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+   "authors": "Douglas Adams",
+   "image_url": "https://images.gr-assets.com/books/1327656754m/11.jpg",
+   "average_rating": 4.2,
+   "ratings_count": 936782,
+   "year": 1979,
+   "pop_rank": 57,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 57,
+   "title": "The Secret Life of Bees",
+   "authors": "Sue Monk Kidd",
+   "image_url": "https://images.gr-assets.com/books/1473454532m/37435.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 916189,
+   "year": 2001,
+   "pop_rank": 58,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 63,
+   "title": "Wuthering Heights",
+   "authors": "Emily Brontë, Richard J. Dunn",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.82,
+   "ratings_count": 899195,
+   "year": 1847,
+   "pop_rank": 59,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 68,
+   "title": "The Perks of Being a Wallflower",
+   "authors": "Stephen Chbosky",
+   "image_url": "https://images.gr-assets.com/books/1167352178m/22628.jpg",
+   "average_rating": 4.21,
+   "ratings_count": 888806,
+   "year": 1999,
+   "pop_rank": 60,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 66,
+   "title": "Gone with the Wind",
+   "authors": "Margaret Mitchell",
+   "image_url": "https://images.gr-assets.com/books/1328025229m/18405.jpg",
+   "average_rating": 4.28,
+   "ratings_count": 873981,
+   "year": 1936,
+   "pop_rank": 61,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 60,
+   "title": "The Curious Incident of the Dog in the Night-Time",
+   "authors": "Mark Haddon",
+   "image_url": "https://images.gr-assets.com/books/1479863624m/1618.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 867553,
+   "year": 2003,
+   "pop_rank": 62,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 64,
+   "title": "My Sister's Keeper",
+   "authors": "Jodi Picoult",
+   "image_url": "https://images.gr-assets.com/books/1369504683m/10917.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 863879,
+   "year": 2004,
+   "pop_rank": 63,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "그래픽 노블"
+   ]
+  },
+  {
+   "book_id": 65,
+   "title": "Slaughterhouse-Five",
+   "authors": "Kurt Vonnegut Jr.",
+   "image_url": "https://images.gr-assets.com/books/1440319389m/4981.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 846488,
+   "year": 1969,
+   "pop_rank": 64,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "기독교"
+   ]
+  },
+  {
+   "book_id": 69,
+   "title": "Insurgent (Divergent, #2)",
+   "authors": "Veronica Roth",
+   "image_url": "https://images.gr-assets.com/books/1325667729m/11735983.jpg",
+   "average_rating": 4.07,
+   "ratings_count": 836362,
+   "year": 2012,
+   "pop_rank": 65,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "시간 관리"
+   ]
+  },
+  {
+   "book_id": 67,
+   "title": "A Thousand Splendid Suns",
+   "authors": "Khaled Hosseini",
+   "image_url": "https://images.gr-assets.com/books/1345958969m/128029.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 818742,
+   "year": 2007,
+   "pop_rank": 66,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 70,
+   "title": "Ender's Game (Ender's Saga, #1)",
+   "authors": "Orson Scott Card",
+   "image_url": "https://images.gr-assets.com/books/1408303130m/375802.jpg",
+   "average_rating": 4.3,
+   "ratings_count": 813439,
+   "year": 1985,
+   "pop_rank": 67,
+   "format": null,
+   "categories": [
+    "청소년",
+    "철학"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "정치/경제"
+   ]
+  },
+  {
+   "book_id": 71,
+   "title": "Frankenstein",
+   "authors": "Mary Wollstonecraft Shelley, Percy Bysshe Shelley, Maurice Hindle",
+   "image_url": "https://images.gr-assets.com/books/1381512375m/18490.jpg",
+   "average_rating": 3.75,
+   "ratings_count": 808589,
+   "year": 1818,
+   "pop_rank": 68,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 72,
+   "title": "The Shining (The Shining #1)",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1353277730m/11588.jpg",
+   "average_rating": 4.17,
+   "ratings_count": 791850,
+   "year": 1977,
+   "pop_rank": 69,
+   "format": "PDF",
+   "categories": [
+    "역사",
+    "철학"
+   ],
+   "subcategories": [
+    "세계사",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 74,
+   "title": "Looking for Alaska",
+   "authors": "John Green",
+   "image_url": "https://images.gr-assets.com/books/1394798630m/99561.jpg",
+   "average_rating": 4.09,
+   "ratings_count": 783470,
+   "year": 2005,
+   "pop_rank": 70,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 73,
+   "title": "The Host (The Host, #1)",
+   "authors": "Stephenie Meyer",
+   "image_url": "https://images.gr-assets.com/books/1318009171m/1656001.jpg",
+   "average_rating": 3.84,
+   "ratings_count": 749780,
+   "year": 2008,
+   "pop_rank": 71,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책",
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 77,
+   "title": "Holes (Holes, #1)",
+   "authors": "Louis Sachar, Louis Sachar",
+   "image_url": "https://images.gr-assets.com/books/1327781893m/38709.jpg",
+   "average_rating": 3.93,
+   "ratings_count": 747445,
+   "year": 1998,
+   "pop_rank": 72,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 38,
+   "title": "The Time Traveler's Wife",
+   "authors": "Audrey Niffenegger",
+   "image_url": "https://images.gr-assets.com/books/1437728815m/14050.jpg",
+   "average_rating": 3.95,
+   "ratings_count": 746287,
+   "year": 2003,
+   "pop_rank": 73,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 76,
+   "title": "Sense and Sensibility",
+   "authors": "Jane Austen, Tony Tanner, Ros Ballaster",
+   "image_url": "https://images.gr-assets.com/books/1397245675m/14935.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 738894,
+   "year": 1811,
+   "pop_rank": 74,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 80,
+   "title": "The Little Prince",
+   "authors": "Antoine de Saint-Exupéry, Richard Howard, Dom Marcos Barbosa, Melina Karakosta",
+   "image_url": "https://images.gr-assets.com/books/1367545443m/157993.jpg",
+   "average_rating": 4.28,
+   "ratings_count": 738757,
+   "year": 1946,
+   "pop_rank": 75,
+   "format": null,
+   "categories": [
+    "청소년",
+    "역사"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "청소년 교양",
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 75,
+   "title": "Bridget Jones's Diary (Bridget Jones, #1)",
+   "authors": "Helen Fielding",
+   "image_url": "https://images.gr-assets.com/books/1292060045m/227443.jpg",
+   "average_rating": 3.75,
+   "ratings_count": 736498,
+   "year": 1996,
+   "pop_rank": 76,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양"
+   ]
+  },
+  {
+   "book_id": 91,
+   "title": "The Maze Runner (Maze Runner, #1)",
+   "authors": "James Dashner",
+   "image_url": "https://images.gr-assets.com/books/1375596592m/6186357.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 719925,
+   "year": 2009,
+   "pop_rank": 77,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 85,
+   "title": "The Giving Tree",
+   "authors": "Shel Silverstein",
+   "image_url": "https://images.gr-assets.com/books/1174210942m/370493.jpg",
+   "average_rating": 4.38,
+   "ratings_count": 702332,
+   "year": 1964,
+   "pop_rank": 78,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 87,
+   "title": "Night (The Night Trilogy #1)",
+   "authors": "Elie Wiesel, Marion Wiesel",
+   "image_url": "https://images.gr-assets.com/books/1473495285m/1617.jpg",
+   "average_rating": 4.3,
+   "ratings_count": 691231,
+   "year": 1958,
+   "pop_rank": 79,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 79,
+   "title": "The Odyssey",
+   "authors": "Homer, Robert Fagles, E.V. Rieu, Frédéric Mugler, Bernard Knox",
+   "image_url": "https://images.gr-assets.com/books/1390173285m/1381.jpg",
+   "average_rating": 3.73,
+   "ratings_count": 670326,
+   "year": -720,
+   "pop_rank": 80,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 78,
+   "title": "The Devil Wears Prada (The Devil Wears Prada, #1)",
+   "authors": "Lauren Weisberger",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.7,
+   "ratings_count": 665930,
+   "year": 2003,
+   "pop_rank": 81,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 90,
+   "title": "The Outsiders",
+   "authors": "S.E. Hinton",
+   "image_url": "https://images.gr-assets.com/books/1442129426m/231804.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 659248,
+   "year": 1967,
+   "pop_rank": 82,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "인물/평전",
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 82,
+   "title": "Into the Wild",
+   "authors": "Jon Krakauer",
+   "image_url": "https://images.gr-assets.com/books/1403173986m/1845.jpg",
+   "average_rating": 3.94,
+   "ratings_count": 647684,
+   "year": 1996,
+   "pop_rank": 83,
+   "format": "PDF",
+   "categories": [
+    "어린이",
+    "소설"
+   ],
+   "subcategories": [
+    "그림책",
+    "어린이 교양",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 93,
+   "title": "The Secret Garden",
+   "authors": "Frances Hodgson Burnett",
+   "image_url": "https://images.gr-assets.com/books/1327873635m/2998.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 639357,
+   "year": 1911,
+   "pop_rank": 84,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 83,
+   "title": "A Tale of Two Cities",
+   "authors": "Charles Dickens, Richard Maxwell, Hablot Knight Browne",
+   "image_url": "https://images.gr-assets.com/books/1344922523m/1953.jpg",
+   "average_rating": 3.81,
+   "ratings_count": 637412,
+   "year": 1859,
+   "pop_rank": 85,
+   "format": null,
+   "categories": [
+    "역사",
+    "IT"
+   ],
+   "subcategories": [
+    "고대 문명",
+    "한국사",
+    "컴퓨터 수험서",
+    "오피스 활용"
+   ]
+  },
+  {
+   "book_id": 89,
+   "title": "The Princess Bride ",
+   "authors": "William Goldman",
+   "image_url": "https://images.gr-assets.com/books/1327903636m/21787.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 628637,
+   "year": 1973,
+   "pop_rank": 86,
+   "format": null,
+   "categories": [
+    "종교",
+    "경제경영"
+   ],
+   "subcategories": [
+    "불교",
+    "재테크/투자"
+   ]
+  },
+  {
+   "book_id": 81,
+   "title": "The Glass Castle",
+   "authors": "Jeannette Walls",
+   "image_url": "https://images.gr-assets.com/books/1400930557m/7445.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 621099,
+   "year": 2005,
+   "pop_rank": 87,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "공부법",
+    "습관/루틴"
+   ]
+  },
+  {
+   "book_id": 102,
+   "title": "Where the Wild Things Are",
+   "authors": "Maurice Sendak",
+   "image_url": "https://images.gr-assets.com/books/1384434560m/19543.jpg",
+   "average_rating": 4.22,
+   "ratings_count": 620618,
+   "year": 1963,
+   "pop_rank": 88,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "청소년"
+   ],
+   "subcategories": [
+    "판타지",
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 97,
+   "title": "Dracula",
+   "authors": "Bram Stoker, Nina Auerbach, David J. Skal",
+   "image_url": "https://images.gr-assets.com/books/1387151694m/17245.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 618973,
+   "year": 1897,
+   "pop_rank": 89,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 117,
+   "title": "A Wrinkle in Time (A Wrinkle in Time Quintet, #1)",
+   "authors": "Madeleine L'Engle",
+   "image_url": "https://images.gr-assets.com/books/1329061522m/18131.jpg",
+   "average_rating": 4.04,
+   "ratings_count": 615907,
+   "year": 1962,
+   "pop_rank": 90,
+   "format": null,
+   "categories": [
+    "어린이",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림책",
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 139,
+   "title": "Miss Peregrine’s Home for Peculiar Children (Miss Peregrine’s Peculiar Children, #1)",
+   "authors": "Ransom Riggs",
+   "image_url": "https://images.gr-assets.com/books/1472782916m/9460487.jpg",
+   "average_rating": 3.89,
+   "ratings_count": 613674,
+   "year": 2011,
+   "pop_rank": 91,
+   "format": "PDF",
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "서양",
+    "정치/경제"
+   ]
+  },
+  {
+   "book_id": 119,
+   "title": "The Handmaid's Tale",
+   "authors": "Margaret Atwood",
+   "image_url": "https://images.gr-assets.com/books/1498057733m/38447.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 607889,
+   "year": 1985,
+   "pop_rank": 92,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 86,
+   "title": "A Time to Kill",
+   "authors": "John Grisham",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.03,
+   "ratings_count": 597775,
+   "year": 1989,
+   "pop_rank": 93,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "문화인류"
+   ]
+  },
+  {
+   "book_id": 134,
+   "title": "City of Glass (The Mortal Instruments, #3)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1369452339m/3777732.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 593173,
+   "year": 2009,
+   "pop_rank": 94,
+   "format": null,
+   "categories": [
+    "청소년",
+    "역사"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 95,
+   "title": "The Picture of Dorian Gray",
+   "authors": "Oscar Wilde, Jeffrey Eugenides",
+   "image_url": "https://images.gr-assets.com/books/1424596966m/5297.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 590014,
+   "year": 1891,
+   "pop_rank": 95,
+   "format": "PDF",
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "종교학",
+    "기독교"
+   ]
+  },
+  {
+   "book_id": 112,
+   "title": "Me Before You (Me Before You, #1)",
+   "authors": "Jojo Moyes",
+   "image_url": "https://images.gr-assets.com/books/1357108762m/15507958.jpg",
+   "average_rating": 4.27,
+   "ratings_count": 587647,
+   "year": 2012,
+   "pop_rank": 96,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "인문"
+   ],
+   "subcategories": [
+    "판타지",
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 48,
+   "title": "Fahrenheit 451",
+   "authors": "Ray Bradbury",
+   "image_url": "https://images.gr-assets.com/books/1351643740m/4381.jpg",
+   "average_rating": 3.97,
+   "ratings_count": 570498,
+   "year": 1953,
+   "pop_rank": 97,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 98,
+   "title": "The Girl Who Played with Fire (Millennium, #2)",
+   "authors": "Stieg Larsson, Reg Keeland",
+   "image_url": "https://images.gr-assets.com/books/1351778881m/5060378.jpg",
+   "average_rating": 4.22,
+   "ratings_count": 563994,
+   "year": 2006,
+   "pop_rank": 98,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 113,
+   "title": "Catch-22",
+   "authors": "Joseph Heller",
+   "image_url": "https://images.gr-assets.com/books/1463157317m/168668.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 563265,
+   "year": 1961,
+   "pop_rank": 99,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 128,
+   "title": "Steve Jobs",
+   "authors": "Walter Isaacson",
+   "image_url": "https://images.gr-assets.com/books/1327861368m/11084145.jpg",
+   "average_rating": 4.09,
+   "ratings_count": 560715,
+   "year": 2011,
+   "pop_rank": 100,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "재테크/투자"
+   ]
+  },
+  {
+   "book_id": 114,
+   "title": "Tuesdays with Morrie",
+   "authors": "Mitch Albom, Saulius Dagys",
+   "image_url": "https://images.gr-assets.com/books/1423763749m/6900.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 556518,
+   "year": 1997,
+   "pop_rank": 101,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 103,
+   "title": "The Count of Monte Cristo",
+   "authors": "Alexandre Dumas, Robin Buss",
+   "image_url": "https://images.gr-assets.com/books/1309203605m/7126.jpg",
+   "average_rating": 4.21,
+   "ratings_count": 555822,
+   "year": 1844,
+   "pop_rank": 102,
+   "format": "PDF",
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 116,
+   "title": "The Adventures of Tom Sawyer",
+   "authors": "Mark Twain, Guy Cardwell, John Seelye",
+   "image_url": "https://images.gr-assets.com/books/1404811979m/24583.jpg",
+   "average_rating": 3.89,
+   "ratings_count": 555359,
+   "year": 1876,
+   "pop_rank": 103,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "습관/루틴"
+   ]
+  },
+  {
+   "book_id": 99,
+   "title": "Fifty Shades Darker (Fifty Shades, #2)",
+   "authors": "E.L. James",
+   "image_url": "https://images.gr-assets.com/books/1358266080m/11857408.jpg",
+   "average_rating": 3.87,
+   "ratings_count": 552059,
+   "year": 2011,
+   "pop_rank": 104,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "카툰",
+    "코믹스"
+   ]
+  },
+  {
+   "book_id": 107,
+   "title": "A Walk to Remember",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1385738968m/3473.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 546948,
+   "year": 1999,
+   "pop_rank": 105,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 100,
+   "title": "The Poisonwood Bible",
+   "authors": "Barbara Kingsolver",
+   "image_url": "https://images.gr-assets.com/books/1412242487m/7244.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 546502,
+   "year": 1998,
+   "pop_rank": 106,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "동양",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 108,
+   "title": "Confessions of a Shopaholic (Shopaholic, #1)",
+   "authors": "Sophie Kinsella",
+   "image_url": "https://images.gr-assets.com/books/1327872404m/9416.jpg",
+   "average_rating": 3.61,
+   "ratings_count": 543658,
+   "year": 2000,
+   "pop_rank": 107,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "시",
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 153,
+   "title": "City of Ashes (The Mortal Instruments, #2)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1432730356m/1582996.jpg",
+   "average_rating": 4.21,
+   "ratings_count": 541117,
+   "year": 2008,
+   "pop_rank": 108,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 120,
+   "title": "The Sisterhood of the Traveling Pants (Sisterhood, #1)",
+   "authors": "Ann Brashares",
+   "image_url": "https://images.gr-assets.com/books/1461611233m/452306.jpg",
+   "average_rating": 3.75,
+   "ratings_count": 525706,
+   "year": 2001,
+   "pop_rank": 109,
+   "format": "PDF",
+   "categories": [
+    "여행",
+    "과학"
+   ],
+   "subcategories": [
+    "테마 여행",
+    "과학 교양"
+   ]
+  },
+  {
+   "book_id": 92,
+   "title": "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything (Freakonomics, #1)",
+   "authors": "Steven D. Levitt, Stephen J. Dubner",
+   "image_url": "https://images.gr-assets.com/books/1327909092m/1202.jpg",
+   "average_rating": 3.93,
+   "ratings_count": 524191,
+   "year": 2005,
+   "pop_rank": 110,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양",
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 110,
+   "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+   "authors": "George R.R. Martin",
+   "image_url": "https://images.gr-assets.com/books/1358254974m/10572.jpg",
+   "average_rating": 4.4,
+   "ratings_count": 523303,
+   "year": 1998,
+   "pop_rank": 111,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 130,
+   "title": "The Old Man and the Sea",
+   "authors": "Ernest Hemingway",
+   "image_url": "https://images.gr-assets.com/books/1329189714m/2165.jpg",
+   "average_rating": 3.73,
+   "ratings_count": 520630,
+   "year": 1952,
+   "pop_rank": 112,
+   "format": null,
+   "categories": [
+    "소설",
+    "인문"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "영미 소설",
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 125,
+   "title": "Hamlet",
+   "authors": "William Shakespeare, Richard Andrews, Rex Gibson",
+   "image_url": "https://images.gr-assets.com/books/1351051208m/1420.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 515820,
+   "year": 1600,
+   "pop_rank": 113,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 137,
+   "title": "Outlander (Outlander, #1)",
+   "authors": "Diana Gabaldon",
+   "image_url": "https://images.gr-assets.com/books/1402600310m/10964.jpg",
+   "average_rating": 4.2,
+   "ratings_count": 515547,
+   "year": 1991,
+   "pop_rank": 114,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 118,
+   "title": "The Joy Luck Club",
+   "authors": "Amy Tan",
+   "image_url": "https://images.gr-assets.com/books/1304978653m/7763.jpg",
+   "average_rating": 3.9,
+   "ratings_count": 515090,
+   "year": 1989,
+   "pop_rank": 115,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 151,
+   "title": "The Sea of Monsters (Percy Jackson and the Olympians, #2)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1400602661m/28186.jpg",
+   "average_rating": 4.23,
+   "ratings_count": 514932,
+   "year": 2006,
+   "pop_rank": 116,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사",
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 164,
+   "title": "Eleanor & Park",
+   "authors": "Rainbow Rowell",
+   "image_url": "https://images.gr-assets.com/books/1341952742m/15745753.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 514312,
+   "year": 2013,
+   "pop_rank": 117,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 109,
+   "title": "Les Misérables",
+   "authors": "Victor Hugo, Lee Fahnestock, Norman MacAfee",
+   "image_url": "https://images.gr-assets.com/books/1411852091m/24280.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 513407,
+   "year": 1862,
+   "pop_rank": 118,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 30,
+   "title": "Gone Girl",
+   "authors": "Gillian Flynn",
+   "image_url": "https://images.gr-assets.com/books/1339602131m/8442457.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 512475,
+   "year": 2012,
+   "pop_rank": 119,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 166,
+   "title": "Matched (Matched, #1)",
+   "authors": "Ally Condie",
+   "image_url": "https://images.gr-assets.com/books/1367706191m/7735333.jpg",
+   "average_rating": 3.68,
+   "ratings_count": 511815,
+   "year": 2010,
+   "pop_rank": 120,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 124,
+   "title": "Room",
+   "authors": "Emma Donoghue",
+   "image_url": "https://images.gr-assets.com/books/1344265419m/7937843.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 511360,
+   "year": 2010,
+   "pop_rank": 121,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 138,
+   "title": "The Scarlet Letter",
+   "authors": "Nathaniel Hawthorne, Thomas E. Connolly, Nina Baym",
+   "image_url": "https://images.gr-assets.com/books/1404810944m/12296.jpg",
+   "average_rating": 3.37,
+   "ratings_count": 509883,
+   "year": 1850,
+   "pop_rank": 122,
+   "format": "PDF",
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "IT 교양"
+   ]
+  },
+  {
+   "book_id": 159,
+   "title": "The Battle of the Labyrinth (Percy Jackson and the Olympians, #4)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1443142158m/2120932.jpg",
+   "average_rating": 4.39,
+   "ratings_count": 508214,
+   "year": 2008,
+   "pop_rank": 123,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 122,
+   "title": "Wicked: The Life and Times of the Wicked Witch of the West (The Wicked Years, #1)",
+   "authors": "Gregory Maguire, Douglas Smith",
+   "image_url": "https://images.gr-assets.com/books/1437733293m/37442.jpg",
+   "average_rating": 3.52,
+   "ratings_count": 506900,
+   "year": 1995,
+   "pop_rank": 124,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 에세이",
+    "시"
+   ]
+  },
+  {
+   "book_id": 106,
+   "title": "Bossypants",
+   "authors": "Tina Fey",
+   "image_url": "https://images.gr-assets.com/books/1481509554m/9418327.jpg",
+   "average_rating": 3.94,
+   "ratings_count": 506250,
+   "year": 2011,
+   "pop_rank": 125,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 206,
+   "title": "The Selection (The Selection, #1)",
+   "authors": "Kiera Cass",
+   "image_url": "https://images.gr-assets.com/books/1322103400m/10507293.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 505340,
+   "year": 2012,
+   "pop_rank": 126,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 104,
+   "title": "The Road",
+   "authors": "Cormac McCarthy",
+   "image_url": "https://images.gr-assets.com/books/1439197219m/6288.jpg",
+   "average_rating": 3.95,
+   "ratings_count": 504793,
+   "year": 2006,
+   "pop_rank": 127,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 149,
+   "title": "If I Stay (If I Stay, #1)",
+   "authors": "Gayle Forman",
+   "image_url": "https://images.gr-assets.com/books/1347462970m/4374400.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 503527,
+   "year": 2009,
+   "pop_rank": 128,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 133,
+   "title": "Anne of Green Gables (Anne of Green Gables, #1)",
+   "authors": "L.M. Montgomery",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.23,
+   "ratings_count": 502247,
+   "year": 1908,
+   "pop_rank": 129,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 111,
+   "title": "The Memory Keeper's Daughter",
+   "authors": "Kim Edwards",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.64,
+   "ratings_count": 501430,
+   "year": 2005,
+   "pop_rank": 130,
+   "format": null,
+   "categories": [
+    "인문",
+    "어린이"
+   ],
+   "subcategories": [
+    "문화인류",
+    "인물/평전",
+    "그림책",
+    "학습 만화"
+   ]
+  },
+  {
+   "book_id": 154,
+   "title": "Macbeth",
+   "authors": "William Shakespeare",
+   "image_url": "https://images.gr-assets.com/books/1459795224m/8852.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 496018,
+   "year": 1606,
+   "pop_rank": 131,
+   "format": "PDF",
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "테마 여행"
+   ]
+  },
+  {
+   "book_id": 101,
+   "title": "Me Talk Pretty One Day",
+   "authors": "David Sedaris",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.97,
+   "ratings_count": 495736,
+   "year": 2000,
+   "pop_rank": 132,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 129,
+   "title": "One Flew Over the Cuckoo's Nest",
+   "authors": "Ken Kesey",
+   "image_url": "https://images.gr-assets.com/books/1485308778m/332613.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 491642,
+   "year": 1962,
+   "pop_rank": 133,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양",
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 183,
+   "title": "Clockwork Angel (The Infernal Devices, #1)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1454962884m/7171637.jpg",
+   "average_rating": 4.33,
+   "ratings_count": 490890,
+   "year": 2010,
+   "pop_rank": 134,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사",
+    "세계사"
+   ]
+  },
+  {
+   "book_id": 94,
+   "title": "One Hundred Years of Solitude",
+   "authors": "Gabriel García Márquez, Gregory Rabassa",
+   "image_url": "https://images.gr-assets.com/books/1327881361m/320.jpg",
+   "average_rating": 4.04,
+   "ratings_count": 490565,
+   "year": 1967,
+   "pop_rank": 135,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "시간 관리",
+    "공부법"
+   ]
+  },
+  {
+   "book_id": 127,
+   "title": "The Tipping Point: How Little Things Can Make a Big Difference",
+   "authors": "Malcolm Gladwell",
+   "image_url": "https://images.gr-assets.com/books/1473396980m/2612.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 490504,
+   "year": 2000,
+   "pop_rank": 136,
+   "format": "PDF",
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 123,
+   "title": "The Firm (Penguin Readers, Level 5)",
+   "authors": "John Grisham",
+   "image_url": "https://images.gr-assets.com/books/1418465200m/5358.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 488269,
+   "year": 1991,
+   "pop_rank": 137,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "습관/루틴",
+    "시간 관리"
+   ]
+  },
+  {
+   "book_id": 115,
+   "title": "Middlesex",
+   "authors": "Jeffrey Eugenides",
+   "image_url": "https://images.gr-assets.com/books/1437029776m/2187.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 488243,
+   "year": 2002,
+   "pop_rank": 138,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 144,
+   "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+   "authors": "Laura Hillenbrand",
+   "image_url": "https://images.gr-assets.com/books/1327861115m/8664353.jpg",
+   "average_rating": 4.4,
+   "ratings_count": 487775,
+   "year": 2010,
+   "pop_rank": 139,
+   "format": "PDF",
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "불교",
+    "종교학"
+   ]
+  },
+  {
+   "book_id": 126,
+   "title": "Dune (Dune Chronicles #1)",
+   "authors": "Frank Herbert",
+   "image_url": "https://images.gr-assets.com/books/1434908555m/234225.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 485032,
+   "year": 1965,
+   "pop_rank": 140,
+   "format": null,
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "테마 여행",
+    "국내 여행"
+   ]
+  },
+  {
+   "book_id": 155,
+   "title": "The Two Towers (The Lord of the Rings, #2)",
+   "authors": "J.R.R. Tolkien",
+   "image_url": "https://images.gr-assets.com/books/1298415523m/15241.jpg",
+   "average_rating": 4.42,
+   "ratings_count": 480446,
+   "year": 1954,
+   "pop_rank": 141,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 143,
+   "title": "All the Light We Cannot See",
+   "authors": "Anthony Doerr",
+   "image_url": "https://images.gr-assets.com/books/1451445646m/18143977.jpg",
+   "average_rating": 4.31,
+   "ratings_count": 470001,
+   "year": 2014,
+   "pop_rank": 142,
+   "format": null,
+   "categories": [
+    "만화",
+    "소설"
+   ],
+   "subcategories": [
+    "코믹스",
+    "카툰",
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 121,
+   "title": "Lolita",
+   "authors": "Vladimir Nabokov, Craig Raine",
+   "image_url": "https://images.gr-assets.com/books/1377756377m/7604.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 469836,
+   "year": 1955,
+   "pop_rank": 143,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 135,
+   "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+   "authors": "George R.R. Martin",
+   "image_url": "https://images.gr-assets.com/books/1497931121m/62291.jpg",
+   "average_rating": 4.54,
+   "ratings_count": 469022,
+   "year": 2000,
+   "pop_rank": 144,
+   "format": "PDF",
+   "categories": [
+    "청소년",
+    "여행"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "진로/공부",
+    "해외 여행"
+   ]
+  },
+  {
+   "book_id": 148,
+   "title": "Girl with a Pearl Earring",
+   "authors": "Tracy Chevalier",
+   "image_url": "https://images.gr-assets.com/books/1327197580m/2865.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 467577,
+   "year": 1999,
+   "pop_rank": 145,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "오피스 활용"
+   ]
+  },
+  {
+   "book_id": 136,
+   "title": "Divine Secrets of the Ya-Ya Sisterhood",
+   "authors": "Rebecca Wells",
+   "image_url": "https://images.gr-assets.com/books/1408313524m/137791.jpg",
+   "average_rating": 3.79,
+   "ratings_count": 465676,
+   "year": 1996,
+   "pop_rank": 146,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사",
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 161,
+   "title": "The Return of the King (The Lord of the Rings, #3)",
+   "authors": "J.R.R. Tolkien",
+   "image_url": "https://images.gr-assets.com/books/1389977161m/18512.jpg",
+   "average_rating": 4.51,
+   "ratings_count": 463959,
+   "year": 1955,
+   "pop_rank": 147,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양"
+   ]
+  },
+  {
+   "book_id": 147,
+   "title": "Thirteen Reasons Why",
+   "authors": "Jay Asher",
+   "image_url": "https://images.gr-assets.com/books/1333822506m/1217100.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 463783,
+   "year": 2007,
+   "pop_rank": 148,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 105,
+   "title": "Allegiant (Divergent, #3)",
+   "authors": "Veronica Roth",
+   "image_url": "https://images.gr-assets.com/books/1395582745m/18710190.jpg",
+   "average_rating": 3.63,
+   "ratings_count": 463257,
+   "year": 2013,
+   "pop_rank": 149,
+   "format": null,
+   "categories": [
+    "소설",
+    "IT"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "SF",
+    "그래픽/멀티미디어",
+    "IT 교양"
+   ]
+  },
+  {
+   "book_id": 142,
+   "title": "The Pillars of the Earth (The Kingsbridge Series, #1)",
+   "authors": "Ken Follett",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.29,
+   "ratings_count": 462517,
+   "year": 1989,
+   "pop_rank": 150,
+   "format": null,
+   "categories": [
+    "소설",
+    "IT"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "컴퓨터 수험서"
+   ]
+  },
+  {
+   "book_id": 88,
+   "title": "Paper Towns",
+   "authors": "John Green",
+   "image_url": "https://images.gr-assets.com/books/1349013610m/6442769.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 461311,
+   "year": 2008,
+   "pop_rank": 151,
+   "format": "PDF",
+   "categories": [
+    "만화",
+    "청소년"
+   ],
+   "subcategories": [
+    "코믹스",
+    "카툰",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 171,
+   "title": "Emma",
+   "authors": "Jane Austen, Fiona Stafford",
+   "image_url": "https://images.gr-assets.com/books/1373627931m/6969.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 459826,
+   "year": 1815,
+   "pop_rank": 152,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "창작 동화",
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 160,
+   "title": "Great Expectations",
+   "authors": "Charles Dickens",
+   "image_url": "https://images.gr-assets.com/books/1327920219m/2623.jpg",
+   "average_rating": 3.75,
+   "ratings_count": 459247,
+   "year": 1860,
+   "pop_rank": 153,
+   "format": null,
+   "categories": [
+    "청소년",
+    "자기계발"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "습관/루틴"
+   ]
+  },
+  {
+   "book_id": 157,
+   "title": "Green Eggs and Ham",
+   "authors": "Dr. Seuss, לאה נאור",
+   "image_url": "https://images.gr-assets.com/books/1468680100m/23772.jpg",
+   "average_rating": 4.29,
+   "ratings_count": 457475,
+   "year": 1960,
+   "pop_rank": 154,
+   "format": null,
+   "categories": [
+    "철학",
+    "어린이"
+   ],
+   "subcategories": [
+    "예술/문화",
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 145,
+   "title": "Deception Point",
+   "authors": "Dan Brown",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.67,
+   "ratings_count": 455610,
+   "year": 2001,
+   "pop_rank": 155,
+   "format": "PDF",
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "기독교",
+    "불교"
+   ]
+  },
+  {
+   "book_id": 158,
+   "title": "Charlie and the Chocolate Factory (Charlie Bucket, #1)",
+   "authors": "Roald Dahl, Quentin Blake",
+   "image_url": "https://images.gr-assets.com/books/1309211401m/6310.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 453959,
+   "year": 1964,
+   "pop_rank": 156,
+   "format": null,
+   "categories": [
+    "소설",
+    "경제경영"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "영미 소설",
+    "재테크/투자"
+   ]
+  },
+  {
+   "book_id": 132,
+   "title": "The Five People You Meet in Heaven",
+   "authors": "Mitch Albom",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.9,
+   "ratings_count": 449501,
+   "year": 2003,
+   "pop_rank": 157,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 187,
+   "title": "Uglies (Uglies, #1)",
+   "authors": "Scott Westerfeld",
+   "image_url": "https://images.gr-assets.com/books/1443904172m/24770.jpg",
+   "average_rating": 3.86,
+   "ratings_count": 449073,
+   "year": 2005,
+   "pop_rank": 158,
+   "format": null,
+   "categories": [
+    "소설",
+    "만화"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "코믹스"
+   ]
+  },
+  {
+   "book_id": 202,
+   "title": "Hush, Hush (Hush, Hush, #1)",
+   "authors": "Becca Fitzpatrick",
+   "image_url": "https://images.gr-assets.com/books/1358261334m/6339664.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 448166,
+   "year": 2009,
+   "pop_rank": 159,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 84,
+   "title": "Jurassic Park (Jurassic Park, #1)",
+   "authors": "Michael Crichton",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.96,
+   "ratings_count": 447833,
+   "year": 1990,
+   "pop_rank": 160,
+   "format": "PDF",
+   "categories": [
+    "과학",
+    "철학"
+   ],
+   "subcategories": [
+    "과학 교양",
+    "생명과학",
+    "서양",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 214,
+   "title": "The Titan's Curse (Percy Jackson and the Olympians, #3)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1361038385m/561456.jpg",
+   "average_rating": 4.33,
+   "ratings_count": 446668,
+   "year": 2007,
+   "pop_rank": 161,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 140,
+   "title": "The Girl Who Kicked the Hornet's Nest (Millennium, #3)",
+   "authors": "Stieg Larsson, Reg Keeland",
+   "image_url": "https://images.gr-assets.com/books/1327708260m/6892870.jpg",
+   "average_rating": 4.2,
+   "ratings_count": 443951,
+   "year": 2007,
+   "pop_rank": 162,
+   "format": null,
+   "categories": [
+    "IT",
+    "경제경영"
+   ],
+   "subcategories": [
+    "개발/프로그래밍",
+    "e비즈니스",
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 152,
+   "title": "Dear John",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1397749854m/5526.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 441062,
+   "year": 2006,
+   "pop_rank": 163,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 184,
+   "title": "Matilda",
+   "authors": "Roald Dahl, Quentin Blake",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.29,
+   "ratings_count": 440743,
+   "year": 1988,
+   "pop_rank": 164,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "SF",
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 168,
+   "title": "The Stand",
+   "authors": "Stephen King, Bernie Wrightson",
+   "image_url": "https://images.gr-assets.com/books/1213131305m/149267.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 438832,
+   "year": 1978,
+   "pop_rank": 165,
+   "format": "PDF",
+   "categories": [
+    "과학",
+    "소설"
+   ],
+   "subcategories": [
+    "생명과학",
+    "물리/천문",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 182,
+   "title": "Beautiful Creatures (Caster Chronicles, #1)",
+   "authors": "Kami Garcia, Margaret Stohl",
+   "image_url": "https://images.gr-assets.com/books/1327873282m/6304335.jpg",
+   "average_rating": 3.76,
+   "ratings_count": 436093,
+   "year": 2009,
+   "pop_rank": 166,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 173,
+   "title": "A Clockwork Orange",
+   "authors": "Anthony Burgess",
+   "image_url": "https://images.gr-assets.com/books/1348339306m/227463.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 431195,
+   "year": 1962,
+   "pop_rank": 167,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 185,
+   "title": "The Night Circus",
+   "authors": "Erin Morgenstern",
+   "image_url": "https://images.gr-assets.com/books/1387124618m/9361589.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 429543,
+   "year": 2011,
+   "pop_rank": 168,
+   "format": "PDF",
+   "categories": [
+    "역사",
+    "인문"
+   ],
+   "subcategories": [
+    "한국사",
+    "문화인류"
+   ]
+  },
+  {
+   "book_id": 165,
+   "title": "A Feast for Crows (A Song of Ice and Fire, #4)",
+   "authors": "George R.R. Martin",
+   "image_url": "https://images.gr-assets.com/books/1429538615m/13497.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 428186,
+   "year": 2005,
+   "pop_rank": 169,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "시",
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 252,
+   "title": "Cinder (The Lunar Chronicles, #1)",
+   "authors": "Marissa Meyer",
+   "image_url": "https://images.gr-assets.com/books/1470056948m/11235712.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 427663,
+   "year": 2012,
+   "pop_rank": 170,
+   "format": null,
+   "categories": [
+    "청소년",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "청소년 소설",
+    "그림 에세이",
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 150,
+   "title": "The Red Tent",
+   "authors": "Anita Diamant",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.16,
+   "ratings_count": 424981,
+   "year": 1997,
+   "pop_rank": 171,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 169,
+   "title": "The Last Song",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1286549186m/6400090.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 424637,
+   "year": 2008,
+   "pop_rank": 172,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 141,
+   "title": "The Martian",
+   "authors": "Andy Weir",
+   "image_url": "https://images.gr-assets.com/books/1413706054m/18007564.jpg",
+   "average_rating": 4.39,
+   "ratings_count": 423344,
+   "year": 2012,
+   "pop_rank": 173,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 170,
+   "title": "Digital Fortress",
+   "authors": "Dan Brown",
+   "image_url": "https://images.gr-assets.com/books/1360095966m/11125.jpg",
+   "average_rating": 3.6,
+   "ratings_count": 423019,
+   "year": 1998,
+   "pop_rank": 174,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 197,
+   "title": "Dead Until Dark (Sookie Stackhouse, #1)",
+   "authors": "Charlaine Harris",
+   "image_url": "https://images.gr-assets.com/books/1468560853m/301082.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 420764,
+   "year": 2001,
+   "pop_rank": 175,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 162,
+   "title": "The Stranger",
+   "authors": "Albert Camus, Matthew    Ward",
+   "image_url": "https://images.gr-assets.com/books/1349927872m/49552.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 420600,
+   "year": 1942,
+   "pop_rank": 176,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "서양"
+   ]
+  },
+  {
+   "book_id": 174,
+   "title": "The Shack",
+   "authors": "William Paul Young",
+   "image_url": "https://images.gr-assets.com/books/1344270232m/1812457.jpg",
+   "average_rating": 3.74,
+   "ratings_count": 419539,
+   "year": 2007,
+   "pop_rank": 177,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "경제 일반"
+   ]
+  },
+  {
+   "book_id": 203,
+   "title": "Beautiful Disaster (Beautiful, #1)",
+   "authors": "Jamie McGuire",
+   "image_url": "https://images.gr-assets.com/books/1358259032m/11505797.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 418309,
+   "year": 2011,
+   "pop_rank": 178,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 200,
+   "title": "And Then There Were None",
+   "authors": "Agatha Christie",
+   "image_url": "https://images.gr-assets.com/books/1391120695m/16299.jpg",
+   "average_rating": 4.23,
+   "ratings_count": 408983,
+   "year": 1939,
+   "pop_rank": 179,
+   "format": "PDF",
+   "categories": [
+    "여행",
+    "자기계발"
+   ],
+   "subcategories": [
+    "국내 여행",
+    "성공/처세"
+   ]
+  },
+  {
+   "book_id": 156,
+   "title": "Something Borrowed (Darcy & Rachel, #1)",
+   "authors": "Emily Giffin",
+   "image_url": "https://images.gr-assets.com/books/1305063535m/42156.jpg",
+   "average_rating": 3.83,
+   "ratings_count": 403601,
+   "year": 2004,
+   "pop_rank": 180,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "문화인류"
+   ]
+  },
+  {
+   "book_id": 178,
+   "title": "The Bell Jar",
+   "authors": "Sylvia Plath",
+   "image_url": "https://images.gr-assets.com/books/1473890514m/6514.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 401605,
+   "year": 1963,
+   "pop_rank": 181,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 192,
+   "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+   "authors": "Patrick Rothfuss",
+   "image_url": "https://images.gr-assets.com/books/1472068073m/186074.jpg",
+   "average_rating": 4.55,
+   "ratings_count": 400101,
+   "year": 2007,
+   "pop_rank": 182,
+   "format": "PDF",
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 191,
+   "title": "Watchmen",
+   "authors": "Alan Moore, Dave Gibbons, John Higgins",
+   "image_url": "https://images.gr-assets.com/books/1442239711m/472331.jpg",
+   "average_rating": 4.35,
+   "ratings_count": 398018,
+   "year": 1987,
+   "pop_rank": 183,
+   "format": null,
+   "categories": [
+    "만화",
+    "청소년"
+   ],
+   "subcategories": [
+    "그래픽 노블",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 175,
+   "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1327924597m/4502507.jpg",
+   "average_rating": 4.5,
+   "ratings_count": 397500,
+   "year": 2009,
+   "pop_rank": 184,
+   "format": "PDF",
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "개발/프로그래밍"
+   ]
+  },
+  {
+   "book_id": 146,
+   "title": "The Goldfinch",
+   "authors": "Donna Tartt",
+   "image_url": "https://images.gr-assets.com/books/1451554970m/17333223.jpg",
+   "average_rating": 3.87,
+   "ratings_count": 396756,
+   "year": 2013,
+   "pop_rank": 185,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 224,
+   "title": "Fallen (Fallen, #1)",
+   "authors": "Lauren Kate",
+   "image_url": "https://images.gr-assets.com/books/1440619649m/6487308.jpg",
+   "average_rating": 3.74,
+   "ratings_count": 395296,
+   "year": 2009,
+   "pop_rank": 186,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "기독교",
+    "불교"
+   ]
+  },
+  {
+   "book_id": 204,
+   "title": "A Christmas Carol",
+   "authors": "Charles Dickens",
+   "image_url": "https://images.gr-assets.com/books/1406512317m/5326.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 394540,
+   "year": 1843,
+   "pop_rank": 187,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 195,
+   "title": "The Guernsey Literary and Potato Peel Pie Society",
+   "authors": "Mary Ann Shaffer, Annie Barrows",
+   "image_url": "https://images.gr-assets.com/books/1351979318m/2728527.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 393626,
+   "year": 2008,
+   "pop_rank": 188,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 179,
+   "title": "Angela's Ashes (Frank McCourt, #1)",
+   "authors": "Frank McCourt",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.07,
+   "ratings_count": 392103,
+   "year": 1996,
+   "pop_rank": 189,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 207,
+   "title": "One for the Money (Stephanie Plum, #1)",
+   "authors": "Janet Evanovich",
+   "image_url": "https://images.gr-assets.com/books/1316730230m/6853.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 391007,
+   "year": 1994,
+   "pop_rank": 190,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 189,
+   "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+   "authors": "J.R.R. Tolkien",
+   "image_url": "https://images.gr-assets.com/books/1411114164m/33.jpg",
+   "average_rating": 4.47,
+   "ratings_count": 389054,
+   "year": 1955,
+   "pop_rank": 191,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 96,
+   "title": "Fifty Shades Freed (Fifty Shades, #3)",
+   "authors": "E.L. James",
+   "image_url": "https://images.gr-assets.com/books/1336418837m/13536860.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 387290,
+   "year": 2012,
+   "pop_rank": 192,
+   "format": "PDF",
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "정치/경제",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 223,
+   "title": "Artemis Fowl (Artemis Fowl, #1)",
+   "authors": "Eoin Colfer",
+   "image_url": "https://images.gr-assets.com/books/1327945104m/249747.jpg",
+   "average_rating": 3.82,
+   "ratings_count": 386923,
+   "year": 2001,
+   "pop_rank": 193,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 181,
+   "title": "In Cold Blood",
+   "authors": "Truman Capote",
+   "image_url": "https://images.gr-assets.com/books/1424931136m/168642.jpg",
+   "average_rating": 4.05,
+   "ratings_count": 381652,
+   "year": 1965,
+   "pop_rank": 194,
+   "format": "PDF",
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "IT 교양",
+    "그래픽/멀티미디어"
+   ]
+  },
+  {
+   "book_id": 186,
+   "title": "The Other Boleyn Girl (The Plantagenet and Tudor Novels, #9)",
+   "authors": "Philippa Gregory",
+   "image_url": "https://images.gr-assets.com/books/1355932638m/37470.jpg",
+   "average_rating": 4.04,
+   "ratings_count": 381080,
+   "year": 2001,
+   "pop_rank": 195,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 177,
+   "title": "Crime and Punishment",
+   "authors": "Fyodor Dostoyevsky, David McDuff",
+   "image_url": "https://images.gr-assets.com/books/1382846449m/7144.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 380903,
+   "year": 1866,
+   "pop_rank": 196,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 190,
+   "title": "Wild: From Lost to Found on the Pacific Crest Trail",
+   "authors": "Cheryl Strayed",
+   "image_url": "https://images.gr-assets.com/books/1453189881m/12262741.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 379872,
+   "year": 2012,
+   "pop_rank": 197,
+   "format": null,
+   "categories": [
+    "인문",
+    "경제경영"
+   ],
+   "subcategories": [
+    "문화인류",
+    "경제 일반"
+   ]
+  },
+  {
+   "book_id": 167,
+   "title": "American Gods (American Gods, #1)",
+   "authors": "Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1258417001m/4407.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 378019,
+   "year": 2001,
+   "pop_rank": 198,
+   "format": null,
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "테마 여행"
+   ]
+  },
+  {
+   "book_id": 208,
+   "title": "The Immortal Life of Henrietta Lacks",
+   "authors": "Rebecca Skloot",
+   "image_url": "https://images.gr-assets.com/books/1327878144m/6493208.jpg",
+   "average_rating": 4.04,
+   "ratings_count": 377249,
+   "year": 2010,
+   "pop_rank": 199,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 198,
+   "title": "The Color Purple",
+   "authors": "Alice Walker",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.17,
+   "ratings_count": 376766,
+   "year": 1982,
+   "pop_rank": 200,
+   "format": null,
+   "categories": [
+    "어린이",
+    "소설"
+   ],
+   "subcategories": [
+    "어린이 교양",
+    "그림책",
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 219,
+   "title": "The Chronicles of Narnia (Chronicles of Narnia, #1-7)",
+   "authors": "C.S. Lewis, Pauline Baynes",
+   "image_url": "https://images.gr-assets.com/books/1449868701m/11127.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 376385,
+   "year": 1956,
+   "pop_rank": 201,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 205,
+   "title": "Interview with the Vampire (The Vampire Chronicles, #1)",
+   "authors": "Anne Rice",
+   "image_url": "https://images.gr-assets.com/books/1380631642m/43763.jpg",
+   "average_rating": 3.97,
+   "ratings_count": 372566,
+   "year": 1976,
+   "pop_rank": 202,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "학습 만화",
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 180,
+   "title": "Siddhartha",
+   "authors": "Hermann Hesse, Hilda Rosner",
+   "image_url": "https://images.gr-assets.com/books/1428715580m/52036.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 372099,
+   "year": 1922,
+   "pop_rank": 203,
+   "format": null,
+   "categories": [
+    "소설",
+    "역사"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "한국 소설",
+    "한국사",
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 201,
+   "title": "The Lost Symbol (Robert Langdon, #3)",
+   "authors": "Dan Brown",
+   "image_url": "https://images.gr-assets.com/books/1358274396m/6411961.jpg",
+   "average_rating": 3.66,
+   "ratings_count": 369428,
+   "year": 2009,
+   "pop_rank": 204,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 199,
+   "title": "Marley and Me: Life and Love With the World's Worst Dog",
+   "authors": "John Grogan",
+   "image_url": "https://images.gr-assets.com/books/1308858322m/12691.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 367304,
+   "year": 2005,
+   "pop_rank": 205,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 188,
+   "title": "A Dance with Dragons (A Song of Ice and Fire, #5)",
+   "authors": "George R.R. Martin",
+   "image_url": "https://images.gr-assets.com/books/1327885335m/10664113.jpg",
+   "average_rating": 4.31,
+   "ratings_count": 365954,
+   "year": 2011,
+   "pop_rank": 206,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사"
+   ]
+  },
+  {
+   "book_id": 230,
+   "title": "Persuasion",
+   "authors": "Jane Austen, James Kinsley, Deidre Shauna Lynch",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.13,
+   "ratings_count": 365425,
+   "year": 1817,
+   "pop_rank": 207,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 196,
+   "title": "Fight Club",
+   "authors": "Chuck Palahniuk",
+   "image_url": "https://images.gr-assets.com/books/1357128997m/5759.jpg",
+   "average_rating": 4.2,
+   "ratings_count": 365349,
+   "year": 1996,
+   "pop_rank": 208,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "시",
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 213,
+   "title": "The Metamorphosis",
+   "authors": "Franz Kafka, Stanley Corngold",
+   "image_url": "https://images.gr-assets.com/books/1359061917m/485894.jpg",
+   "average_rating": 3.78,
+   "ratings_count": 364933,
+   "year": 1915,
+   "pop_rank": 209,
+   "format": "PDF",
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "종교학"
+   ]
+  },
+  {
+   "book_id": 234,
+   "title": "Speak",
+   "authors": "Laurie Halse Anderson",
+   "image_url": "https://images.gr-assets.com/books/1310121762m/439288.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 360156,
+   "year": 1999,
+   "pop_rank": 210,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 246,
+   "title": "Marked (House of Night, #1)",
+   "authors": "P.C. Cast, Kristin Cast",
+   "image_url": "https://images.gr-assets.com/books/1317067002m/30183.jpg",
+   "average_rating": 3.79,
+   "ratings_count": 360044,
+   "year": 2007,
+   "pop_rank": 211,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 194,
+   "title": "Moby-Dick or, The Whale",
+   "authors": "Herman Melville, Andrew Delbanco, Tom Quirk",
+   "image_url": "https://images.gr-assets.com/books/1327940656m/153747.jpg",
+   "average_rating": 3.46,
+   "ratings_count": 358050,
+   "year": 1851,
+   "pop_rank": 212,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "동양"
+   ]
+  },
+  {
+   "book_id": 237,
+   "title": "Carrie",
+   "authors": "Stephen King",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.93,
+   "ratings_count": 356814,
+   "year": 1974,
+   "pop_rank": 213,
+   "format": null,
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "성공/처세",
+    "습관/루틴"
+   ]
+  },
+  {
+   "book_id": 254,
+   "title": "Shiver (The Wolves of Mercy Falls, #1)",
+   "authors": "Maggie Stiefvater",
+   "image_url": "https://images.gr-assets.com/books/1409283154m/6068551.jpg",
+   "average_rating": 3.78,
+   "ratings_count": 356625,
+   "year": 2009,
+   "pop_rank": 214,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 193,
+   "title": "Outliers: The Story of Success",
+   "authors": "Malcolm Gladwell",
+   "image_url": "https://images.gr-assets.com/books/1344266315m/3228917.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 353011,
+   "year": 2008,
+   "pop_rank": 215,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 209,
+   "title": "The Silence of the Lambs  (Hannibal Lecter, #2)",
+   "authors": "Thomas Harris",
+   "image_url": "https://images.gr-assets.com/books/1390426249m/23807.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 351107,
+   "year": 1988,
+   "pop_rank": 216,
+   "format": null,
+   "categories": [
+    "소설",
+    "경제경영"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "재테크/투자",
+    "리더십"
+   ]
+  },
+  {
+   "book_id": 215,
+   "title": "Ready Player One",
+   "authors": "Ernest Cline",
+   "image_url": "https://images.gr-assets.com/books/1500930947m/9969571.jpg",
+   "average_rating": 4.31,
+   "ratings_count": 349423,
+   "year": 2011,
+   "pop_rank": 217,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 211,
+   "title": "Blink: The Power of Thinking Without Thinking",
+   "authors": "Malcolm Gladwell",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.89,
+   "ratings_count": 348196,
+   "year": 2005,
+   "pop_rank": 218,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "기독교"
+   ]
+  },
+  {
+   "book_id": 212,
+   "title": "Atonement",
+   "authors": "Ian McEwan",
+   "image_url": "https://images.gr-assets.com/books/1320449708m/6867.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 347006,
+   "year": 2001,
+   "pop_rank": 219,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 257,
+   "title": "Alice in Wonderland",
+   "authors": "Jane Carruth, Lewis Carroll, Rene Cloke",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.03,
+   "ratings_count": 343252,
+   "year": 1865,
+   "pop_rank": 220,
+   "format": "PDF",
+   "categories": [
+    "과학",
+    "어린이"
+   ],
+   "subcategories": [
+    "물리/천문",
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 309,
+   "title": "City of Fallen Angels (The Mortal Instruments, #4)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1369452302m/6752378.jpg",
+   "average_rating": 4.16,
+   "ratings_count": 341826,
+   "year": 2011,
+   "pop_rank": 221,
+   "format": "PDF",
+   "categories": [
+    "인문",
+    "청소년"
+   ],
+   "subcategories": [
+    "문화인류",
+    "청소년 소설",
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 229,
+   "title": "Alice's Adventures in Wonderland & Through the Looking-Glass",
+   "authors": "Lewis Carroll, John Tenniel, Martin Gardner",
+   "image_url": "https://images.gr-assets.com/books/1327872220m/24213.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 340920,
+   "year": 1865,
+   "pop_rank": 222,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "습관/루틴"
+   ]
+  },
+  {
+   "book_id": 324,
+   "title": "Fangirl",
+   "authors": "Rainbow Rowell",
+   "image_url": "https://images.gr-assets.com/books/1499565420m/16068905.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 340379,
+   "year": 2013,
+   "pop_rank": 223,
+   "format": "PDF",
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 263,
+   "title": "Ella Enchanted",
+   "authors": "Gail Carson Levine",
+   "image_url": "https://images.gr-assets.com/books/1410727190m/24337.jpg",
+   "average_rating": 3.97,
+   "ratings_count": 339117,
+   "year": 1997,
+   "pop_rank": 224,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 245,
+   "title": "Bridge to Terabithia",
+   "authors": "Katherine Paterson",
+   "image_url": "https://images.gr-assets.com/books/1327880087m/2839.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 337644,
+   "year": 1977,
+   "pop_rank": 225,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 243,
+   "title": "Misery",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1270545451m/10614.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 334647,
+   "year": 1987,
+   "pop_rank": 226,
+   "format": "PDF",
+   "categories": [
+    "에세이/시",
+    "역사"
+   ],
+   "subcategories": [
+    "시",
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 248,
+   "title": "A Midsummer Night's Dream",
+   "authors": "William Shakespeare, Barbara A. Mowat, Paul Werstine, Catherine Belsey",
+   "image_url": "https://images.gr-assets.com/books/1327874534m/1622.jpg",
+   "average_rating": 3.94,
+   "ratings_count": 334241,
+   "year": 1595,
+   "pop_rank": 227,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 241,
+   "title": "Number the Stars",
+   "authors": "Lois Lowry",
+   "image_url": "https://images.gr-assets.com/books/1370917812m/47281.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 333638,
+   "year": 1989,
+   "pop_rank": 228,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 226,
+   "title": "Dark Places",
+   "authors": "Gillian Flynn",
+   "image_url": "https://images.gr-assets.com/books/1354988288m/5886881.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 333452,
+   "year": 2009,
+   "pop_rank": 229,
+   "format": null,
+   "categories": [
+    "인문",
+    "어린이"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "학습 만화"
+   ]
+  },
+  {
+   "book_id": 232,
+   "title": "The Gunslinger (The Dark Tower, #1)",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1375776480m/43615.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 332494,
+   "year": 1982,
+   "pop_rank": 230,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 216,
+   "title": "The Art of Racing in the Rain",
+   "authors": "Garth Stein",
+   "image_url": "https://images.gr-assets.com/books/1377206302m/3153910.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 327409,
+   "year": 2006,
+   "pop_rank": 231,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 222,
+   "title": "The Bourne Identity (Jason Bourne, #1)",
+   "authors": "Robert Ludlum",
+   "image_url": "https://images.gr-assets.com/books/1335860740m/7869.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 327122,
+   "year": 1980,
+   "pop_rank": 232,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 228,
+   "title": "The Nanny Diaries (Nanny, #1)",
+   "authors": "Emma McLaughlin, Nicola Kraus",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.4,
+   "ratings_count": 323762,
+   "year": 2002,
+   "pop_rank": 233,
+   "format": "PDF",
+   "categories": [
+    "인문",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "문화인류",
+    "언어/기호",
+    "시",
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 131,
+   "title": "The Grapes of Wrath",
+   "authors": "John Steinbeck",
+   "image_url": "https://images.gr-assets.com/books/1352912927m/4395.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 322321,
+   "year": 1939,
+   "pop_rank": 234,
+   "format": null,
+   "categories": [
+    "소설",
+    "어린이"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 225,
+   "title": "East of Eden",
+   "authors": "John Steinbeck",
+   "image_url": "https://images.gr-assets.com/books/1441547516m/4406.jpg",
+   "average_rating": 4.35,
+   "ratings_count": 320919,
+   "year": 1952,
+   "pop_rank": 235,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 227,
+   "title": "The Client",
+   "authors": "John Grisham",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.97,
+   "ratings_count": 320083,
+   "year": 1993,
+   "pop_rank": 236,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 282,
+   "title": "Coraline",
+   "authors": "Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1493497435m/17061.jpg",
+   "average_rating": 4.03,
+   "ratings_count": 316379,
+   "year": 2002,
+   "pop_rank": 237,
+   "format": null,
+   "categories": [
+    "인문",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "심리학",
+    "인물/평전",
+    "해외 에세이",
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 247,
+   "title": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change",
+   "authors": "Stephen R. Covey",
+   "image_url": "https://images.gr-assets.com/books/1421842784m/36072.jpg",
+   "average_rating": 4.05,
+   "ratings_count": 314700,
+   "year": 1989,
+   "pop_rank": 238,
+   "format": null,
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "국내 여행"
+   ]
+  },
+  {
+   "book_id": 251,
+   "title": "The Cat in the Hat",
+   "authors": "Dr. Seuss",
+   "image_url": "https://images.gr-assets.com/books/1468890477m/233093.jpg",
+   "average_rating": 4.15,
+   "ratings_count": 314016,
+   "year": 1957,
+   "pop_rank": 239,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "오피스 활용"
+   ]
+  },
+  {
+   "book_id": 271,
+   "title": "Flowers for Algernon",
+   "authors": "Daniel Keyes",
+   "image_url": "https://images.gr-assets.com/books/1367141311m/18373.jpg",
+   "average_rating": 4.07,
+   "ratings_count": 313044,
+   "year": 1966,
+   "pop_rank": 240,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 239,
+   "title": "World War Z: An Oral History of the Zombie War",
+   "authors": "Max Brooks",
+   "image_url": "https://images.gr-assets.com/books/1386328204m/8908.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 312969,
+   "year": 2006,
+   "pop_rank": 241,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 275,
+   "title": "An Abundance of Katherines",
+   "authors": "John Green",
+   "image_url": "https://images.gr-assets.com/books/1360206426m/49750.jpg",
+   "average_rating": 3.63,
+   "ratings_count": 312754,
+   "year": 2006,
+   "pop_rank": 242,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 231,
+   "title": "Sarah's Key",
+   "authors": "Tatiana de Rosnay",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.14,
+   "ratings_count": 312444,
+   "year": 2007,
+   "pop_rank": 243,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "시"
+   ]
+  },
+  {
+   "book_id": 221,
+   "title": "A Child Called \"It\" (Dave Pelzer #1)",
+   "authors": "Dave Pelzer",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.08,
+   "ratings_count": 311543,
+   "year": 1995,
+   "pop_rank": 244,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 242,
+   "title": "Along Came a Spider (Alex Cross, #1)",
+   "authors": "James Patterson",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.08,
+   "ratings_count": 311499,
+   "year": 1993,
+   "pop_rank": 245,
+   "format": "PDF",
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "테마 여행",
+    "해외 여행"
+   ]
+  },
+  {
+   "book_id": 217,
+   "title": "The Devil in the White City: Murder, Magic, and Madness at the Fair That Changed America",
+   "authors": "Erik Larson, Tony Goldwyn",
+   "image_url": "https://images.gr-assets.com/books/1312066724m/21996.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 309385,
+   "year": 2003,
+   "pop_rank": 246,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 351,
+   "title": "Clockwork Prince (The Infernal Devices, #2)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1460477747m/10025305.jpg",
+   "average_rating": 4.46,
+   "ratings_count": 307994,
+   "year": 2011,
+   "pop_rank": 247,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 292,
+   "title": "The Voyage of the Dawn Treader (Chronicles of Narnia, #3)",
+   "authors": "C.S. Lewis, Pauline Baynes",
+   "image_url": "https://images.gr-assets.com/books/1343185059m/140225.jpg",
+   "average_rating": 4.08,
+   "ratings_count": 306492,
+   "year": 1951,
+   "pop_rank": 248,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 262,
+   "title": "Big Little Lies",
+   "authors": "Liane Moriarty",
+   "image_url": "https://images.gr-assets.com/books/1492239430m/19486412.jpg",
+   "average_rating": 4.2,
+   "ratings_count": 306186,
+   "year": 2014,
+   "pop_rank": 249,
+   "format": "PDF",
+   "categories": [
+    "여행"
+   ],
+   "subcategories": [
+    "국내 여행"
+   ]
+  },
+  {
+   "book_id": 259,
+   "title": "The Scorch Trials (Maze Runner, #2)",
+   "authors": "James Dashner",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.93,
+   "ratings_count": 305643,
+   "year": 2010,
+   "pop_rank": 250,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 312,
+   "title": "The Graveyard Book",
+   "authors": "Neil Gaiman, Dave McKean",
+   "image_url": "https://images.gr-assets.com/books/1303859949m/2213661.jpg",
+   "average_rating": 4.12,
+   "ratings_count": 302303,
+   "year": 2008,
+   "pop_rank": 251,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 319,
+   "title": "City of Lost Souls (The Mortal Instruments, #5)",
+   "authors": "Cassandra Clare",
+   "image_url": "https://images.gr-assets.com/books/1460477703m/8755776.jpg",
+   "average_rating": 4.3,
+   "ratings_count": 300553,
+   "year": 2012,
+   "pop_rank": 252,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 327,
+   "title": "Legend (Legend, #1)",
+   "authors": "Marie Lu",
+   "image_url": "https://images.gr-assets.com/books/1501368160m/9275658.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 299998,
+   "year": 2011,
+   "pop_rank": 253,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "리더십"
+   ]
+  },
+  {
+   "book_id": 294,
+   "title": "The Son of Neptune (The Heroes of Olympus, #2)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1464201114m/9520360.jpg",
+   "average_rating": 4.44,
+   "ratings_count": 299980,
+   "year": 2011,
+   "pop_rank": 254,
+   "format": "PDF",
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "IT 교양",
+    "e비즈니스"
+   ]
+  },
+  {
+   "book_id": 283,
+   "title": "Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",
+   "authors": "Terry Pratchett, Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1392528568m/12067.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 298304,
+   "year": 1990,
+   "pop_rank": 255,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 278,
+   "title": "A Light in the Attic",
+   "authors": "Shel Silverstein",
+   "image_url": "https://images.gr-assets.com/books/1427169918m/30118.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 297861,
+   "year": 1981,
+   "pop_rank": 256,
+   "format": null,
+   "categories": [
+    "인문",
+    "청소년"
+   ],
+   "subcategories": [
+    "문화인류",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 253,
+   "title": "The Cuckoo's Calling (Cormoran Strike, #1)",
+   "authors": "Robert Galbraith, J.K. Rowling",
+   "image_url": "https://images.gr-assets.com/books/1358716559m/16160797.jpg",
+   "average_rating": 3.83,
+   "ratings_count": 297712,
+   "year": 2013,
+   "pop_rank": 257,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "종교학"
+   ]
+  },
+  {
+   "book_id": 172,
+   "title": "Anna Karenina",
+   "authors": "Leo Tolstoy, Louise Maude, Leo Tolstoj, Aylmer Maude",
+   "image_url": "https://images.gr-assets.com/books/1352422904m/15823480.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 297472,
+   "year": 1877,
+   "pop_rank": 258,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 296,
+   "title": "The Very Hungry Caterpillar Board Book",
+   "authors": "Eric Carle",
+   "image_url": "https://images.gr-assets.com/books/1327878225m/4948.jpg",
+   "average_rating": 4.29,
+   "ratings_count": 296952,
+   "year": 1969,
+   "pop_rank": 259,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 249,
+   "title": "Extremely Loud and Incredibly Close",
+   "authors": "Jonathan Safran Foer",
+   "image_url": "https://images.gr-assets.com/books/1327879967m/4588.jpg",
+   "average_rating": 3.97,
+   "ratings_count": 294726,
+   "year": 2005,
+   "pop_rank": 260,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "동양"
+   ]
+  },
+  {
+   "book_id": 268,
+   "title": "Never Let Me Go",
+   "authors": "Kazuo Ishiguro",
+   "image_url": "https://images.gr-assets.com/books/1353048590m/6334.jpg",
+   "average_rating": 3.8,
+   "ratings_count": 294123,
+   "year": 2005,
+   "pop_rank": 261,
+   "format": "PDF",
+   "categories": [
+    "인문",
+    "소설"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 238,
+   "title": "Running with Scissors",
+   "authors": "Augusten Burroughs",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.7,
+   "ratings_count": 293878,
+   "year": 2002,
+   "pop_rank": 262,
+   "format": "PDF",
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "예술/문화",
+    "동양"
+   ]
+  },
+  {
+   "book_id": 277,
+   "title": "The Ocean at the End of the Lane",
+   "authors": "Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1497098563m/15783514.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 293844,
+   "year": 2013,
+   "pop_rank": 263,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 176,
+   "title": "It",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1309376909m/18342.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 292592,
+   "year": 1986,
+   "pop_rank": 264,
+   "format": null,
+   "categories": [
+    "어린이",
+    "소설"
+   ],
+   "subcategories": [
+    "그림책",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 289,
+   "title": "Watership Down (Watership Down, #1)",
+   "authors": "Richard Adams",
+   "image_url": "https://images.gr-assets.com/books/1405136931m/76620.jpg",
+   "average_rating": 4.05,
+   "ratings_count": 292426,
+   "year": 1972,
+   "pop_rank": 265,
+   "format": null,
+   "categories": [
+    "소설",
+    "청소년"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 265,
+   "title": "A Tree Grows in Brooklyn",
+   "authors": "Betty  Smith",
+   "image_url": "https://images.gr-assets.com/books/1327883484m/14891.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 291909,
+   "year": 1943,
+   "pop_rank": 266,
+   "format": null,
+   "categories": [
+    "소설",
+    "철학"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "동양",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 220,
+   "title": "Twilight: The Complete Illustrated Movie Companion",
+   "authors": "Mark Cotta Vaz",
+   "image_url": "https://images.gr-assets.com/books/1352539022m/3609760.jpg",
+   "average_rating": 4.23,
+   "ratings_count": 291411,
+   "year": null,
+   "pop_rank": 267,
+   "format": "PDF",
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "리더십"
+   ]
+  },
+  {
+   "book_id": 236,
+   "title": "Into Thin Air: A Personal Account of the Mount Everest Disaster",
+   "authors": "Jon Krakauer",
+   "image_url": "https://images.gr-assets.com/books/1463384482m/1898.jpg",
+   "average_rating": 4.11,
+   "ratings_count": 291258,
+   "year": 1997,
+   "pop_rank": 268,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF"
+   ]
+  },
+  {
+   "book_id": 290,
+   "title": "Is Everyone Hanging Out Without Me? (And Other Concerns)",
+   "authors": "Mindy Kaling",
+   "image_url": "https://images.gr-assets.com/books/1443264638m/10335308.jpg",
+   "average_rating": 3.84,
+   "ratings_count": 290674,
+   "year": 2011,
+   "pop_rank": 269,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 281,
+   "title": "The Pelican Brief",
+   "authors": "John Grisham",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.95,
+   "ratings_count": 288376,
+   "year": 1992,
+   "pop_rank": 270,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 240,
+   "title": "Inferno (Robert Langdon, #4)",
+   "authors": "Dan Brown",
+   "image_url": "https://images.gr-assets.com/books/1397093185m/17212231.jpg",
+   "average_rating": 3.8,
+   "ratings_count": 287533,
+   "year": 2013,
+   "pop_rank": 271,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 300,
+   "title": "The Boy in the Striped Pajamas",
+   "authors": "John Boyne",
+   "image_url": "https://images.gr-assets.com/books/1366228171m/39999.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 285692,
+   "year": 2006,
+   "pop_rank": 272,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 314,
+   "title": "Inkheart (Inkworld, #1)",
+   "authors": "Cornelia Funke, Anthea Bell",
+   "image_url": "https://images.gr-assets.com/books/1328866790m/28194.jpg",
+   "average_rating": 3.86,
+   "ratings_count": 285011,
+   "year": 2003,
+   "pop_rank": 273,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 264,
+   "title": "The Sun Also Rises",
+   "authors": "Ernest Hemingway",
+   "image_url": "https://images.gr-assets.com/books/1331828228m/3876.jpg",
+   "average_rating": 3.83,
+   "ratings_count": 284988,
+   "year": 1926,
+   "pop_rank": 274,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "서양",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 399,
+   "title": "The Tales of Beedle the Bard",
+   "authors": "J.K. Rowling",
+   "image_url": "https://images.gr-assets.com/books/1373467575m/3950967.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 284833,
+   "year": 2007,
+   "pop_rank": 275,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "공부법"
+   ]
+  },
+  {
+   "book_id": 233,
+   "title": "Love in the Time of Cholera",
+   "authors": "Gabriel García Márquez, Edith Grossman",
+   "image_url": "https://images.gr-assets.com/books/1327124987m/9712.jpg",
+   "average_rating": 3.89,
+   "ratings_count": 283806,
+   "year": 1985,
+   "pop_rank": 276,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 256,
+   "title": "Three Cups of Tea: One Man's Mission to Promote Peace ... One School at a Time",
+   "authors": "Greg Mortenson, David Oliver Relin",
+   "image_url": "https://images.gr-assets.com/books/1395407074m/49436.jpg",
+   "average_rating": 3.64,
+   "ratings_count": 283516,
+   "year": 2006,
+   "pop_rank": 277,
+   "format": "PDF",
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "문화인류",
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 255,
+   "title": "Atlas Shrugged",
+   "authors": "Ayn Rand, Leonard Peikoff",
+   "image_url": "https://images.gr-assets.com/books/1405868167m/662.jpg",
+   "average_rating": 3.68,
+   "ratings_count": 283295,
+   "year": 1957,
+   "pop_rank": 278,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 260,
+   "title": "How to Win Friends and Influence People",
+   "authors": "Dale Carnegie",
+   "image_url": "https://images.gr-assets.com/books/1442726934m/4865.jpg",
+   "average_rating": 4.13,
+   "ratings_count": 282623,
+   "year": 1936,
+   "pop_rank": 279,
+   "format": null,
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "공부법"
+   ]
+  },
+  {
+   "book_id": 355,
+   "title": "Graceling (Graceling Realm, #1)",
+   "authors": "Kristin Cashore",
+   "image_url": "https://images.gr-assets.com/books/1331548394m/3236307.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 281185,
+   "year": 2008,
+   "pop_rank": 280,
+   "format": null,
+   "categories": [
+    "청소년",
+    "소설"
+   ],
+   "subcategories": [
+    "진로/공부",
+    "청소년 교양",
+    "판타지",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 273,
+   "title": "Snow Flower and the Secret Fan",
+   "authors": "Lisa See",
+   "image_url": "https://images.gr-assets.com/books/1327880508m/1103.jpg",
+   "average_rating": 4.05,
+   "ratings_count": 280475,
+   "year": 2005,
+   "pop_rank": 281,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "학습 만화"
+   ]
+  },
+  {
+   "book_id": 276,
+   "title": "Foundation (Foundation #1)",
+   "authors": "Isaac Asimov",
+   "image_url": "https://images.gr-assets.com/books/1417900846m/29579.jpg",
+   "average_rating": 4.13,
+   "ratings_count": 279688,
+   "year": 1951,
+   "pop_rank": 282,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 261,
+   "title": "Under the Tuscan Sun",
+   "authors": "Frances Mayes",
+   "image_url": "https://images.gr-assets.com/books/1320524083m/480479.jpg",
+   "average_rating": 3.72,
+   "ratings_count": 279264,
+   "year": 1996,
+   "pop_rank": 283,
+   "format": null,
+   "categories": [
+    "소설",
+    "어린이"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "학습 만화",
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 308,
+   "title": "Can You Keep a Secret?",
+   "authors": "Sophie Kinsella",
+   "image_url": "https://images.gr-assets.com/books/1330464293m/33724.jpg",
+   "average_rating": 3.83,
+   "ratings_count": 278747,
+   "year": 2003,
+   "pop_rank": 284,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 428,
+   "title": "The Mark of Athena (The Heroes of Olympus, #3)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1464201354m/12127750.jpg",
+   "average_rating": 4.47,
+   "ratings_count": 277491,
+   "year": 2012,
+   "pop_rank": 285,
+   "format": "PDF",
+   "categories": [
+    "청소년",
+    "자기계발"
+   ],
+   "subcategories": [
+    "청소년 소설",
+    "청소년 교양",
+    "공부법"
+   ]
+  },
+  {
+   "book_id": 298,
+   "title": "The Time Machine",
+   "authors": "H.G. Wells, Greg Bear, Carlo Pagetti",
+   "image_url": "https://images.gr-assets.com/books/1327942880m/2493.jpg",
+   "average_rating": 3.87,
+   "ratings_count": 276076,
+   "year": 1895,
+   "pop_rank": 286,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 356,
+   "title": "The Bad Beginning (A Series of Unfortunate Events, #1)",
+   "authors": "Lemony Snicket, Brett Helquist",
+   "image_url": "https://images.gr-assets.com/books/1490085391m/78411.jpg",
+   "average_rating": 3.89,
+   "ratings_count": 275670,
+   "year": 1999,
+   "pop_rank": 287,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양",
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 393,
+   "title": "Throne of Glass (Throne of Glass, #1)",
+   "authors": "Sarah J. Maas",
+   "image_url": "https://images.gr-assets.com/books/1495278054m/7896527.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 274987,
+   "year": 2012,
+   "pop_rank": 288,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "시",
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 266,
+   "title": "Kiss the Girls (Alex Cross, #2)",
+   "authors": "James Patterson",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.93,
+   "ratings_count": 274639,
+   "year": 1995,
+   "pop_rank": 289,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 348,
+   "title": "We Were Liars",
+   "authors": "E. Lockhart",
+   "image_url": "https://images.gr-assets.com/books/1402749479m/16143347.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 273442,
+   "year": 2014,
+   "pop_rank": 290,
+   "format": null,
+   "categories": [
+    "인문",
+    "만화"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 163,
+   "title": "The Lost Hero (The Heroes of Olympus, #1)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1464201003m/7736182.jpg",
+   "average_rating": 4.35,
+   "ratings_count": 271576,
+   "year": 2010,
+   "pop_rank": 291,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 317,
+   "title": "I Know Why the Caged Bird Sings",
+   "authors": "Maya Angelou",
+   "image_url": "https://images.gr-assets.com/books/1327957927m/13214.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 270859,
+   "year": 1969,
+   "pop_rank": 292,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "문화인류",
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 279,
+   "title": "Harry Potter and the Cursed Child - Parts One and Two (Harry Potter, #8)",
+   "authors": "John Tiffany, Jack Thorne, J.K. Rowling",
+   "image_url": "https://images.gr-assets.com/books/1470082995m/29056083.jpg",
+   "average_rating": 3.75,
+   "ratings_count": 270603,
+   "year": 2016,
+   "pop_rank": 293,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 335,
+   "title": "James and the Giant Peach",
+   "authors": "Roald Dahl, Quentin Blake",
+   "image_url": "https://images.gr-assets.com/books/1320412586m/6689.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 270402,
+   "year": 1961,
+   "pop_rank": 294,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "정치/경제",
+    "서양"
+   ]
+  },
+  {
+   "book_id": 288,
+   "title": "The Hunt for Red October (Jack Ryan Universe, #4)",
+   "authors": "Tom Clancy",
+   "image_url": "https://images.gr-assets.com/books/1281995542m/19691.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 270318,
+   "year": 1984,
+   "pop_rank": 295,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "그래픽/멀티미디어"
+   ]
+  },
+  {
+   "book_id": 321,
+   "title": "Where the Red Fern Grows",
+   "authors": "Wilson Rawls",
+   "image_url": "https://images.gr-assets.com/books/1166154337m/10365.jpg",
+   "average_rating": 4.04,
+   "ratings_count": 268548,
+   "year": 1961,
+   "pop_rank": 296,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부",
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 332,
+   "title": "The Magician's Nephew (Chronicles of Narnia, #6)",
+   "authors": "C.S. Lewis",
+   "image_url": "https://images.gr-assets.com/books/1308814770m/65605.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 268355,
+   "year": 1953,
+   "pop_rank": 297,
+   "format": "PDF",
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 322,
+   "title": "Neverwhere",
+   "authors": "Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1348747943m/14497.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 268318,
+   "year": 1996,
+   "pop_rank": 298,
+   "format": null,
+   "categories": [
+    "인문",
+    "자기계발"
+   ],
+   "subcategories": [
+    "심리학",
+    "문화인류",
+    "성공/처세"
+   ]
+  },
+  {
+   "book_id": 293,
+   "title": "Treasure Island",
+   "authors": "Robert Louis Stevenson",
+   "image_url": "https://images.gr-assets.com/books/1485248909m/295.jpg",
+   "average_rating": 3.82,
+   "ratings_count": 268012,
+   "year": 1882,
+   "pop_rank": 299,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 286,
+   "title": "The Lucky One",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1420816338m/3063499.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 267166,
+   "year": 2008,
+   "pop_rank": 300,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 394,
+   "title": "Shadow Kiss (Vampire Academy, #3)",
+   "authors": "Richelle Mead",
+   "image_url": "https://images.gr-assets.com/books/1361099049m/2802316.jpg",
+   "average_rating": 4.37,
+   "ratings_count": 266742,
+   "year": 2008,
+   "pop_rank": 301,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 258,
+   "title": "The Shadow of the Wind (The Cemetery of Forgotten Books,  #1)",
+   "authors": "Carlos Ruiz Zafón, Lucia Graves",
+   "image_url": "https://images.gr-assets.com/books/1344545047m/1232.jpg",
+   "average_rating": 4.24,
+   "ratings_count": 263685,
+   "year": 2001,
+   "pop_rank": 302,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "정치/경제"
+   ]
+  },
+  {
+   "book_id": 272,
+   "title": "Like Water for Chocolate",
+   "authors": "Laura Esquivel, Thomas  Christensen, Carol Christensen",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.94,
+   "ratings_count": 263199,
+   "year": 1989,
+   "pop_rank": 303,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 269,
+   "title": "P.S. I Love You",
+   "authors": "Cecelia Ahern",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.01,
+   "ratings_count": 262921,
+   "year": 2003,
+   "pop_rank": 304,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 에세이",
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 330,
+   "title": "The Eye of the World (Wheel of Time, #1)",
+   "authors": "Robert Jordan",
+   "image_url": "https://images.gr-assets.com/books/1337818095m/228665.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 260184,
+   "year": 1990,
+   "pop_rank": 305,
+   "format": "PDF",
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "동양",
+    "서양"
+   ]
+  },
+  {
+   "book_id": 452,
+   "title": "The 5th Wave (The 5th Wave, #1)",
+   "authors": "Rick Yancey",
+   "image_url": "https://images.gr-assets.com/books/1359853842m/16101128.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 260048,
+   "year": 2013,
+   "pop_rank": 306,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양",
+    "수학"
+   ]
+  },
+  {
+   "book_id": 306,
+   "title": "She's Come Undone",
+   "authors": "Wally Lamb",
+   "image_url": "https://images.gr-assets.com/books/1408313457m/5203.jpg",
+   "average_rating": 3.84,
+   "ratings_count": 259576,
+   "year": 1992,
+   "pop_rank": 307,
+   "format": "PDF",
+   "categories": [
+    "종교",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "불교",
+    "종교학",
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 363,
+   "title": "Anna and the French Kiss (Anna and the French Kiss, #1)",
+   "authors": "Stephanie Perkins",
+   "image_url": "https://images.gr-assets.com/books/1358271931m/6936382.jpg",
+   "average_rating": 4.08,
+   "ratings_count": 259479,
+   "year": 2010,
+   "pop_rank": 308,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "전쟁사"
+   ]
+  },
+  {
+   "book_id": 295,
+   "title": "11/22/63",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1327876792m/10644930.jpg",
+   "average_rating": 4.29,
+   "ratings_count": 258464,
+   "year": 2011,
+   "pop_rank": 309,
+   "format": null,
+   "categories": [
+    "소설",
+    "과학"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "수학",
+    "과학 교양"
+   ]
+  },
+  {
+   "book_id": 291,
+   "title": "Cutting for Stone",
+   "authors": "Abraham Verghese",
+   "image_url": "https://images.gr-assets.com/books/1327931601m/3591262.jpg",
+   "average_rating": 4.28,
+   "ratings_count": 258319,
+   "year": 2009,
+   "pop_rank": 310,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "IT 교양"
+   ]
+  },
+  {
+   "book_id": 358,
+   "title": "Oh, The Places You'll Go!",
+   "authors": "Dr. Seuss",
+   "image_url": "https://images.gr-assets.com/books/1421708635m/191139.jpg",
+   "average_rating": 4.34,
+   "ratings_count": 257260,
+   "year": 1990,
+   "pop_rank": 311,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 280,
+   "title": "Delirium (Delirium, #1)",
+   "authors": "Lauren Oliver",
+   "image_url": "https://images.gr-assets.com/books/1327890411m/11614718.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 256975,
+   "year": 2011,
+   "pop_rank": 312,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 384,
+   "title": "Frostbite (Vampire Academy, #2)",
+   "authors": "Richelle Mead",
+   "image_url": "https://images.gr-assets.com/books/1361098960m/2282133.jpg",
+   "average_rating": 4.3,
+   "ratings_count": 256745,
+   "year": 2008,
+   "pop_rank": 313,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "철학"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "예술/문화"
+   ]
+  },
+  {
+   "book_id": 274,
+   "title": "The Godfather",
+   "authors": "Mario Puzo, Robert Thompson, Peter Bart",
+   "image_url": "https://images.gr-assets.com/books/1394988109m/22034.jpg",
+   "average_rating": 4.36,
+   "ratings_count": 256480,
+   "year": 1969,
+   "pop_rank": 314,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "문화인류",
+    "인물/평전"
+   ]
+  },
+  {
+   "book_id": 305,
+   "title": "Pet Sematary",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1308894674m/10583.jpg",
+   "average_rating": 3.91,
+   "ratings_count": 256383,
+   "year": 1983,
+   "pop_rank": 315,
+   "format": null,
+   "categories": [
+    "소설",
+    "여행"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "SF",
+    "테마 여행"
+   ]
+  },
+  {
+   "book_id": 311,
+   "title": "The Thorn Birds",
+   "authors": "Colleen McCullough",
+   "image_url": "https://images.gr-assets.com/books/1391416796m/3412.jpg",
+   "average_rating": 4.22,
+   "ratings_count": 255651,
+   "year": 1977,
+   "pop_rank": 316,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 301,
+   "title": "Heart of Darkness",
+   "authors": "Joseph Conrad",
+   "image_url": "https://images.gr-assets.com/books/1392799983m/4900.jpg",
+   "average_rating": 3.42,
+   "ratings_count": 255576,
+   "year": 1899,
+   "pop_rank": 317,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "정치/경제"
+   ]
+  },
+  {
+   "book_id": 302,
+   "title": "Safe Haven",
+   "authors": "Nicholas Sparks",
+   "image_url": "https://images.gr-assets.com/books/1344268800m/7812659.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 255531,
+   "year": 2010,
+   "pop_rank": 318,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "경제 일반"
+   ]
+  },
+  {
+   "book_id": 392,
+   "title": "Diary of a Wimpy Kid (Diary of a Wimpy Kid, #1)",
+   "authors": "Jeff Kinney",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.96,
+   "ratings_count": 254852,
+   "year": 2004,
+   "pop_rank": 319,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 267,
+   "title": "The Nightingale",
+   "authors": "Kristin Hannah",
+   "image_url": "https://images.gr-assets.com/books/1451446316m/21853621.jpg",
+   "average_rating": 4.54,
+   "ratings_count": 253606,
+   "year": 2015,
+   "pop_rank": 320,
+   "format": null,
+   "categories": [
+    "경제경영",
+    "청소년"
+   ],
+   "subcategories": [
+    "경제 일반",
+    "리더십",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 340,
+   "title": "I Am Number Four (Lorien Legacies, #1)",
+   "authors": "Pittacus Lore",
+   "image_url": "https://images.gr-assets.com/books/1305807140m/7747374.jpg",
+   "average_rating": 3.94,
+   "ratings_count": 253437,
+   "year": 2010,
+   "pop_rank": 321,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 334,
+   "title": "Reflected in You (Crossfire, #2)",
+   "authors": "Sylvia Day",
+   "image_url": "https://images.gr-assets.com/books/1477802540m/13596809.jpg",
+   "average_rating": 4.33,
+   "ratings_count": 252564,
+   "year": 2012,
+   "pop_rank": 322,
+   "format": null,
+   "categories": [
+    "인문",
+    "소설"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 285,
+   "title": "The Rosie Project (Don Tillman, #1)",
+   "authors": "Graeme Simsion",
+   "image_url": "https://images.gr-assets.com/books/1371651741m/16181775.jpg",
+   "average_rating": 4.01,
+   "ratings_count": 251703,
+   "year": 2013,
+   "pop_rank": 323,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "진로/공부",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 352,
+   "title": "Yes Please",
+   "authors": "Amy Poehler",
+   "image_url": "https://images.gr-assets.com/books/1402815435m/20910157.jpg",
+   "average_rating": 3.81,
+   "ratings_count": 251082,
+   "year": 2014,
+   "pop_rank": 324,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "과학 교양",
+    "수학"
+   ]
+  },
+  {
+   "book_id": 364,
+   "title": "How the Grinch Stole Christmas!",
+   "authors": "Dr. Seuss",
+   "image_url": "https://images.gr-assets.com/books/1327958149m/113946.jpg",
+   "average_rating": 4.36,
+   "ratings_count": 250602,
+   "year": 1957,
+   "pop_rank": 325,
+   "format": null,
+   "categories": [
+    "자기계발",
+    "어린이"
+   ],
+   "subcategories": [
+    "성공/처세",
+    "시간 관리",
+    "학습 만화",
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 347,
+   "title": "Prince Caspian (Chronicles of Narnia, #2)",
+   "authors": "C.S. Lewis",
+   "image_url": "https://images.gr-assets.com/books/1308814880m/121749.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 250221,
+   "year": 1951,
+   "pop_rank": 326,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 316,
+   "title": "A Walk in the Woods",
+   "authors": "Bill Bryson",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.05,
+   "ratings_count": 250192,
+   "year": 1997,
+   "pop_rank": 327,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "과학"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "영미 소설",
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 345,
+   "title": "Eldest (The Inheritance Cycle, #2)",
+   "authors": "Christopher Paolini",
+   "image_url": "https://images.gr-assets.com/books/1387119654m/45978.jpg",
+   "average_rating": 3.96,
+   "ratings_count": 250000,
+   "year": 2005,
+   "pop_rank": 328,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 357,
+   "title": "All Quiet on the Western Front",
+   "authors": "Erich Maria Remarque, A.W. Wheen",
+   "image_url": "https://images.gr-assets.com/books/1441227765m/355697.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 249113,
+   "year": 1929,
+   "pop_rank": 329,
+   "format": "PDF",
+   "categories": [
+    "역사",
+    "어린이"
+   ],
+   "subcategories": [
+    "전쟁사",
+    "고대 문명",
+    "그림책",
+    "학습 만화"
+   ]
+  },
+  {
+   "book_id": 310,
+   "title": "Good in Bed (Cannie Shapiro, #1)",
+   "authors": "Jennifer Weiner",
+   "image_url": "https://images.gr-assets.com/books/1327936464m/14748.jpg",
+   "average_rating": 3.7,
+   "ratings_count": 248804,
+   "year": 2001,
+   "pop_rank": 330,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림 에세이",
+    "시"
+   ]
+  },
+  {
+   "book_id": 210,
+   "title": "Vampire Academy (Vampire Academy, #1)",
+   "authors": "Richelle Mead",
+   "image_url": "https://images.gr-assets.com/books/1361098973m/345627.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 248283,
+   "year": 2007,
+   "pop_rank": 331,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "문화인류"
+   ]
+  },
+  {
+   "book_id": 346,
+   "title": "The Wonderful Wizard of Oz (Oz, #1)",
+   "authors": "L. Frank Baum, W.W. Denslow",
+   "image_url": "https://images.gr-assets.com/books/1398003737m/236093.jpg",
+   "average_rating": 3.98,
+   "ratings_count": 247521,
+   "year": 1900,
+   "pop_rank": 332,
+   "format": "PDF",
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "생명과학"
+   ]
+  },
+  {
+   "book_id": 304,
+   "title": "I Know This Much Is True",
+   "authors": "Wally Lamb",
+   "image_url": "https://images.gr-assets.com/books/1373532198m/227711.jpg",
+   "average_rating": 4.17,
+   "ratings_count": 246917,
+   "year": 1998,
+   "pop_rank": 333,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 284,
+   "title": "On the Road",
+   "authors": "Jack Kerouac",
+   "image_url": "https://images.gr-assets.com/books/1413588576m/70401.jpg",
+   "average_rating": 3.64,
+   "ratings_count": 246602,
+   "year": 1955,
+   "pop_rank": 334,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 373,
+   "title": "The BFG",
+   "authors": "Roald Dahl, Quentin Blake",
+   "image_url": "https://images.gr-assets.com/books/1327872673m/6319.jpg",
+   "average_rating": 4.22,
+   "ratings_count": 245855,
+   "year": 1982,
+   "pop_rank": 335,
+   "format": null,
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 307,
+   "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+   "authors": "Patrick Rothfuss",
+   "image_url": "https://images.gr-assets.com/books/1452624392m/1215032.jpg",
+   "average_rating": 4.57,
+   "ratings_count": 245686,
+   "year": 2011,
+   "pop_rank": 336,
+   "format": null,
+   "categories": [
+    "철학",
+    "여행"
+   ],
+   "subcategories": [
+    "예술/문화",
+    "해외 여행"
+   ]
+  },
+  {
+   "book_id": 326,
+   "title": "White Oleander",
+   "authors": "Janet Fitch",
+   "image_url": "https://images.gr-assets.com/books/1501159524m/32234.jpg",
+   "average_rating": 3.93,
+   "ratings_count": 245674,
+   "year": 1999,
+   "pop_rank": 337,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양"
+   ]
+  },
+  {
+   "book_id": 339,
+   "title": "Goodnight Moon",
+   "authors": "Margaret Wise Brown, Clement Hurd",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.27,
+   "ratings_count": 244842,
+   "year": 1947,
+   "pop_rank": 338,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "철학"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "예술/문화",
+    "동양"
+   ]
+  },
+  {
+   "book_id": 287,
+   "title": "The Fountainhead",
+   "authors": "Ayn Rand, Leonard Peikoff",
+   "image_url": "https://images.gr-assets.com/books/1491163636m/2122.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 244545,
+   "year": 1943,
+   "pop_rank": 339,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 313,
+   "title": "The Light Between Oceans",
+   "authors": "M.L. Stedman",
+   "image_url": "https://images.gr-assets.com/books/1336683021m/13158800.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 243526,
+   "year": 2012,
+   "pop_rank": 340,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 387,
+   "title": "The Crucible",
+   "authors": "Arthur Miller, Christopher Bigsby",
+   "image_url": "https://images.gr-assets.com/books/1447764813m/17250.jpg",
+   "average_rating": 3.55,
+   "ratings_count": 242980,
+   "year": 1953,
+   "pop_rank": 341,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "SF",
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 368,
+   "title": "The Subtle Knife (His Dark Materials, #2)",
+   "authors": "Philip Pullman",
+   "image_url": "https://images.gr-assets.com/books/1451271814m/119324.jpg",
+   "average_rating": 4.1,
+   "ratings_count": 242503,
+   "year": 1997,
+   "pop_rank": 342,
+   "format": "PDF",
+   "categories": [
+    "인문",
+    "소설"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 329,
+   "title": "The Last Lecture",
+   "authors": "Randy Pausch, Jeffrey Zaslow",
+   "image_url": "https://images.gr-assets.com/books/1388075896m/2318271.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 241869,
+   "year": 2008,
+   "pop_rank": 343,
+   "format": null,
+   "categories": [
+    "과학"
+   ],
+   "subcategories": [
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 303,
+   "title": "The Secret (The Secret, #1)",
+   "authors": "Rhonda Byrne",
+   "image_url": "https://images.gr-assets.com/books/1482865039m/52529.jpg",
+   "average_rating": 3.62,
+   "ratings_count": 241537,
+   "year": 2006,
+   "pop_rank": 344,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "그림책"
+   ]
+  },
+  {
+   "book_id": 341,
+   "title": "The Iliad",
+   "authors": "Homer, Robert Fagles, Frédéric Mugler, Bernard Knox",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.83,
+   "ratings_count": 241088,
+   "year": -750,
+   "pop_rank": 345,
+   "format": null,
+   "categories": [
+    "자기계발",
+    "소설"
+   ],
+   "subcategories": [
+    "습관/루틴",
+    "성공/처세",
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 297,
+   "title": "Cat's Cradle",
+   "authors": "Kurt Vonnegut Jr.",
+   "image_url": "https://images.gr-assets.com/books/1327867150m/135479.jpg",
+   "average_rating": 4.18,
+   "ratings_count": 238940,
+   "year": 1963,
+   "pop_rank": 346,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "코믹스"
+   ]
+  },
+  {
+   "book_id": 353,
+   "title": "Othello",
+   "authors": "William Shakespeare",
+   "image_url": "https://images.gr-assets.com/books/1459795105m/12996.jpg",
+   "average_rating": 3.88,
+   "ratings_count": 238875,
+   "year": 1603,
+   "pop_rank": 347,
+   "format": "PDF",
+   "categories": [
+    "종교",
+    "소설"
+   ],
+   "subcategories": [
+    "불교",
+    "종교학",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 377,
+   "title": "Stardust",
+   "authors": "Neil Gaiman",
+   "image_url": "https://images.gr-assets.com/books/1459127484m/16793.jpg",
+   "average_rating": 4.07,
+   "ratings_count": 237602,
+   "year": 1999,
+   "pop_rank": 348,
+   "format": "PDF",
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "마케팅/브랜드",
+    "리더십"
+   ]
+  },
+  {
+   "book_id": 369,
+   "title": "Stargirl (Stargirl, #1)",
+   "authors": "Jerry Spinelli",
+   "image_url": "https://images.gr-assets.com/books/1335947642m/22232.jpg",
+   "average_rating": 3.74,
+   "ratings_count": 237560,
+   "year": 2000,
+   "pop_rank": 349,
+   "format": null,
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "시간 관리",
+    "성공/처세"
+   ]
+  },
+  {
+   "book_id": 315,
+   "title": "Who Moved My Cheese?",
+   "authors": "Spencer Johnson, Kenneth H. Blanchard",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.74,
+   "ratings_count": 237272,
+   "year": 1998,
+   "pop_rank": 350,
+   "format": null,
+   "categories": [
+    "철학",
+    "인문"
+   ],
+   "subcategories": [
+    "서양",
+    "심리학",
+    "문화인류"
+   ]
+  },
+  {
+   "book_id": 382,
+   "title": "Will Grayson, Will Grayson",
+   "authors": "John Green, David Levithan",
+   "image_url": "https://images.gr-assets.com/books/1368393890m/6567017.jpg",
+   "average_rating": 3.84,
+   "ratings_count": 236431,
+   "year": 2010,
+   "pop_rank": 351,
+   "format": null,
+   "categories": [
+    "청소년",
+    "소설"
+   ],
+   "subcategories": [
+    "진로/공부",
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 386,
+   "title": "Island of the Blue Dolphins (Island of the Blue Dolphins, #1)",
+   "authors": "Scott O'Dell",
+   "image_url": "https://images.gr-assets.com/books/1475166260m/233818.jpg",
+   "average_rating": 3.8,
+   "ratings_count": 236015,
+   "year": 1960,
+   "pop_rank": 352,
+   "format": "PDF",
+   "categories": [
+    "청소년"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "청소년 소설"
+   ]
+  },
+  {
+   "book_id": 328,
+   "title": "Nineteen Minutes",
+   "authors": "Jodi Picoult",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.1,
+   "ratings_count": 235978,
+   "year": 2007,
+   "pop_rank": 353,
+   "format": null,
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사"
+   ]
+  },
+  {
+   "book_id": 423,
+   "title": "The Elite (The Selection, #2)",
+   "authors": "Kiera Cass",
+   "image_url": "https://images.gr-assets.com/books/1391454595m/16248068.jpg",
+   "average_rating": 4.02,
+   "ratings_count": 234247,
+   "year": 2013,
+   "pop_rank": 354,
+   "format": "PDF",
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "학습 만화",
+    "어린이 교양"
+   ]
+  },
+  {
+   "book_id": 336,
+   "title": "1st to Die (Women's Murder Club, #1)",
+   "authors": "James Patterson",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.05,
+   "ratings_count": 233984,
+   "year": 2001,
+   "pop_rank": 355,
+   "format": null,
+   "categories": [
+    "어린이"
+   ],
+   "subcategories": [
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 354,
+   "title": "Beloved",
+   "authors": "Toni Morrison",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.77,
+   "ratings_count": 233825,
+   "year": 1987,
+   "pop_rank": 356,
+   "format": null,
+   "categories": [
+    "소설",
+    "경제경영"
+   ],
+   "subcategories": [
+    "판타지",
+    "영미 소설",
+    "리더십",
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 370,
+   "title": "The Red Pyramid (Kane Chronicles, #1)",
+   "authors": "Rick Riordan",
+   "image_url": "https://images.gr-assets.com/books/1366227978m/7090447.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 232791,
+   "year": 2010,
+   "pop_rank": 357,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "경제 일반",
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 350,
+   "title": "Fear and Loathing in Las Vegas",
+   "authors": "Hunter S. Thompson, Ralph Steadman",
+   "image_url": "https://images.gr-assets.com/books/1394204569m/7745.jpg",
+   "average_rating": 4.08,
+   "ratings_count": 232489,
+   "year": 1971,
+   "pop_rank": 358,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러",
+    "유럽 소설"
+   ]
+  },
+  {
+   "book_id": 235,
+   "title": "The Husband's Secret",
+   "authors": "Liane Moriarty",
+   "image_url": "https://images.gr-assets.com/books/1460577225m/17802724.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 232106,
+   "year": 2013,
+   "pop_rank": 359,
+   "format": "PDF",
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 에세이"
+   ]
+  },
+  {
+   "book_id": 419,
+   "title": "Blood Promise (Vampire Academy, #4)",
+   "authors": "Richelle Mead",
+   "image_url": "https://images.gr-assets.com/books/1442530605m/5996153.jpg",
+   "average_rating": 4.35,
+   "ratings_count": 231853,
+   "year": 2009,
+   "pop_rank": 360,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 342,
+   "title": "The Casual Vacancy",
+   "authors": "J.K. Rowling",
+   "image_url": "https://images.gr-assets.com/books/1358266832m/13497818.jpg",
+   "average_rating": 3.28,
+   "ratings_count": 231835,
+   "year": 2012,
+   "pop_rank": 361,
+   "format": null,
+   "categories": [
+    "자기계발",
+    "인문"
+   ],
+   "subcategories": [
+    "공부법",
+    "시간 관리",
+    "심리학",
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 361,
+   "title": "Oliver Twist",
+   "authors": "Charles Dickens, George Cruikshank, Philip Horne",
+   "image_url": "https://images.gr-assets.com/books/1327868529m/18254.jpg",
+   "average_rating": 3.85,
+   "ratings_count": 230181,
+   "year": 1838,
+   "pop_rank": 362,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 415,
+   "title": "Evermore (The Immortals, #1)",
+   "authors": "Alyson Noel",
+   "image_url": "https://images.gr-assets.com/books/1362336360m/3975774.jpg",
+   "average_rating": 3.59,
+   "ratings_count": 230031,
+   "year": 2009,
+   "pop_rank": 363,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "그림 에세이"
+   ]
+  },
+  {
+   "book_id": 349,
+   "title": "'Salem's Lot",
+   "authors": "Stephen King",
+   "image_url": "https://images.gr-assets.com/books/1327891565m/11590.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 228680,
+   "year": 1975,
+   "pop_rank": 364,
+   "format": null,
+   "categories": [
+    "에세이/시"
+   ],
+   "subcategories": [
+    "국내 에세이"
+   ]
+  },
+  {
+   "book_id": 250,
+   "title": "Wonder",
+   "authors": "R.J. Palacio",
+   "image_url": "https://images.gr-assets.com/books/1309285027m/11387515.jpg",
+   "average_rating": 4.43,
+   "ratings_count": 228538,
+   "year": 2012,
+   "pop_rank": 365,
+   "format": null,
+   "categories": [
+    "소설",
+    "어린이"
+   ],
+   "subcategories": [
+    "유럽 소설",
+    "어린이 교양",
+    "창작 동화"
+   ]
+  },
+  {
+   "book_id": 299,
+   "title": "Heaven is for Real: A Little Boy's Astounding Story of His Trip to Heaven and Back",
+   "authors": "Todd Burpo, Lynn Vincent",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.01,
+   "ratings_count": 228371,
+   "year": 2010,
+   "pop_rank": 366,
+   "format": null,
+   "categories": [
+    "어린이",
+    "만화"
+   ],
+   "subcategories": [
+    "어린이 교양",
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 433,
+   "title": "Dark Lover (Black Dagger Brotherhood, #1)",
+   "authors": "J.R. Ward",
+   "image_url": "https://images.gr-assets.com/books/1429676285m/42899.jpg",
+   "average_rating": 4.21,
+   "ratings_count": 227021,
+   "year": 2005,
+   "pop_rank": 367,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "세계사"
+   ]
+  },
+  {
+   "book_id": 325,
+   "title": "A Prayer for Owen Meany",
+   "authors": "John Irving",
+   "image_url": "https://images.gr-assets.com/books/1260470010m/4473.jpg",
+   "average_rating": 4.22,
+   "ratings_count": 226964,
+   "year": 1989,
+   "pop_rank": 368,
+   "format": null,
+   "categories": [
+    "인문",
+    "경제경영"
+   ],
+   "subcategories": [
+    "심리학",
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 379,
+   "title": "A Discovery of Witches (All Souls Trilogy, #1)",
+   "authors": "Deborah Harkness",
+   "image_url": "https://images.gr-assets.com/books/1322168805m/8667848.jpg",
+   "average_rating": 3.99,
+   "ratings_count": 226622,
+   "year": 2011,
+   "pop_rank": 369,
+   "format": "PDF",
+   "categories": [
+    "에세이/시",
+    "철학"
+   ],
+   "subcategories": [
+    "그림 에세이",
+    "정치/경제"
+   ]
+  },
+  {
+   "book_id": 391,
+   "title": "The Lorax",
+   "authors": "Dr. Seuss",
+   "image_url": "https://images.gr-assets.com/books/1327879938m/7784.jpg",
+   "average_rating": 4.35,
+   "ratings_count": 226564,
+   "year": 1971,
+   "pop_rank": 370,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "영미 소설",
+    "한국 소설"
+   ]
+  },
+  {
+   "book_id": 434,
+   "title": "Crescendo (Hush, Hush, #2)",
+   "authors": "Becca Fitzpatrick",
+   "image_url": "https://images.gr-assets.com/books/1362408146m/7791997.jpg",
+   "average_rating": 4.07,
+   "ratings_count": 226237,
+   "year": 2010,
+   "pop_rank": 371,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "추리/스릴러"
+   ]
+  },
+  {
+   "book_id": 318,
+   "title": "Orphan Train",
+   "authors": "Christina Baker Kline",
+   "image_url": "https://images.gr-assets.com/books/1362409483m/15818107.jpg",
+   "average_rating": 4.14,
+   "ratings_count": 226091,
+   "year": 2013,
+   "pop_rank": 372,
+   "format": null,
+   "categories": [
+    "과학",
+    "역사"
+   ],
+   "subcategories": [
+    "생명과학",
+    "세계사",
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 418,
+   "title": "Spirit Bound (Vampire Academy, #5)",
+   "authors": "Richelle Mead",
+   "image_url": "https://images.gr-assets.com/books/1291168967m/6479259.jpg",
+   "average_rating": 4.37,
+   "ratings_count": 224247,
+   "year": 2010,
+   "pop_rank": 373,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "재테크/투자"
+   ]
+  },
+  {
+   "book_id": 375,
+   "title": "The Call of the Wild",
+   "authors": "Jack London",
+   "image_url": "https://images.gr-assets.com/books/1452291694m/1852.jpg",
+   "average_rating": 3.83,
+   "ratings_count": 223932,
+   "year": 1903,
+   "pop_rank": 374,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "판타지"
+   ]
+  },
+  {
+   "book_id": 360,
+   "title": "Do Androids Dream of Electric Sheep?",
+   "authors": "Philip K. Dick, Roger Zelazny",
+   "image_url": "https://images.gr-assets.com/books/1435458683m/7082.jpg",
+   "average_rating": 4.08,
+   "ratings_count": 223828,
+   "year": 1968,
+   "pop_rank": 375,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 376,
+   "title": "The Death Cure (Maze Runner, #3)",
+   "authors": "James Dashner",
+   "image_url": "https://images.gr-assets.com/books/1303997647m/7864437.jpg",
+   "average_rating": 3.77,
+   "ratings_count": 223674,
+   "year": 2011,
+   "pop_rank": 376,
+   "format": null,
+   "categories": [
+    "청소년",
+    "소설"
+   ],
+   "subcategories": [
+    "청소년 교양",
+    "청소년 소설",
+    "일본 소설",
+    "영미 소설"
+   ]
+  },
+  {
+   "book_id": 390,
+   "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+   "authors": "Robert Louis Stevenson, Vladimir Nabokov, Mervyn Peake, Dan Chaon",
+   "image_url": "https://images.gr-assets.com/books/1318116526m/51496.jpg",
+   "average_rating": 3.79,
+   "ratings_count": 223535,
+   "year": 1886,
+   "pop_rank": 377,
+   "format": null,
+   "categories": [
+    "IT"
+   ],
+   "subcategories": [
+    "컴퓨터 수험서",
+    "e비즈니스"
+   ]
+  },
+  {
+   "book_id": 333,
+   "title": "Still Alice",
+   "authors": "Lisa Genova",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.3,
+   "ratings_count": 223432,
+   "year": 2007,
+   "pop_rank": 378,
+   "format": "PDF",
+   "categories": [
+    "역사"
+   ],
+   "subcategories": [
+    "한국사"
+   ]
+  },
+  {
+   "book_id": 338,
+   "title": "One Day",
+   "authors": "David Nicholls",
+   "image_url": "https://images.gr-assets.com/books/1327873020m/6280118.jpg",
+   "average_rating": 3.77,
+   "ratings_count": 222926,
+   "year": 2009,
+   "pop_rank": 379,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "재테크/투자"
+   ]
+  },
+  {
+   "book_id": 337,
+   "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+   "authors": "Douglas Adams",
+   "image_url": "https://images.gr-assets.com/books/1404613595m/13.jpg",
+   "average_rating": 4.37,
+   "ratings_count": 222842,
+   "year": 1996,
+   "pop_rank": 380,
+   "format": null,
+   "categories": [
+    "철학"
+   ],
+   "subcategories": [
+    "서양"
+   ]
+  },
+  {
+   "book_id": 343,
+   "title": "The Runaway Jury",
+   "authors": "John Grisham",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.96,
+   "ratings_count": 222712,
+   "year": 1996,
+   "pop_rank": 381,
+   "format": "PDF",
+   "categories": [
+    "여행",
+    "에세이/시"
+   ],
+   "subcategories": [
+    "해외 여행",
+    "시"
+   ]
+  },
+  {
+   "book_id": 218,
+   "title": "Bared to You (Crossfire, #1)",
+   "authors": "Sylvia Day",
+   "image_url": "https://images.gr-assets.com/books/1477803272m/13572249.jpg",
+   "average_rating": 4.19,
+   "ratings_count": 222678,
+   "year": 2012,
+   "pop_rank": 382,
+   "format": null,
+   "categories": [
+    "만화"
+   ],
+   "subcategories": [
+    "그래픽 노블"
+   ]
+  },
+  {
+   "book_id": 388,
+   "title": "Hatchet (Brian's Saga, #1)",
+   "authors": "Gary Paulsen",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.68,
+   "ratings_count": 222553,
+   "year": 1986,
+   "pop_rank": 383,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 416,
+   "title": "The Witches",
+   "authors": "Roald Dahl, Quentin Blake",
+   "image_url": "https://images.gr-assets.com/books/1351707720m/6327.jpg",
+   "average_rating": 4.17,
+   "ratings_count": 221431,
+   "year": 1983,
+   "pop_rank": 384,
+   "format": null,
+   "categories": [
+    "종교"
+   ],
+   "subcategories": [
+    "종교학"
+   ]
+  },
+  {
+   "book_id": 331,
+   "title": "The Pact",
+   "authors": "Jodi Picoult",
+   "image_url": "https://images.gr-assets.com/books/1410754561m/10916.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 221225,
+   "year": 1998,
+   "pop_rank": 385,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "언어/기호"
+   ]
+  },
+  {
+   "book_id": 371,
+   "title": "Stranger in a Strange Land",
+   "authors": "Robert A. Heinlein",
+   "image_url": "https://images.gr-assets.com/books/1156897088m/350.jpg",
+   "average_rating": 3.91,
+   "ratings_count": 220301,
+   "year": 1961,
+   "pop_rank": 386,
+   "format": "PDF",
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 435,
+   "title": "Before I Fall",
+   "authors": "Lauren Oliver",
+   "image_url": "https://images.gr-assets.com/books/1361044695m/6482837.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 220160,
+   "year": 2010,
+   "pop_rank": 387,
+   "format": null,
+   "categories": [
+    "만화",
+    "역사"
+   ],
+   "subcategories": [
+    "그래픽 노블",
+    "코믹스",
+    "고대 문명"
+   ]
+  },
+  {
+   "book_id": 406,
+   "title": "The New Drawing on the Right Side of the Brain",
+   "authors": "Betty Edwards",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 3.84,
+   "ratings_count": 218264,
+   "year": 1979,
+   "pop_rank": 388,
+   "format": null,
+   "categories": [
+    "인문",
+    "과학"
+   ],
+   "subcategories": [
+    "언어/기호",
+    "과학 교양"
+   ]
+  },
+  {
+   "book_id": 366,
+   "title": "John Adams",
+   "authors": "David McCullough",
+   "image_url": "https://images.gr-assets.com/books/1478144278m/2203.jpg",
+   "average_rating": 4.05,
+   "ratings_count": 215780,
+   "year": 2001,
+   "pop_rank": 389,
+   "format": "PDF",
+   "categories": [
+    "경제경영",
+    "청소년"
+   ],
+   "subcategories": [
+    "마케팅/브랜드",
+    "진로/공부"
+   ]
+  },
+  {
+   "book_id": 320,
+   "title": "Where'd You Go, Bernadette",
+   "authors": "Maria Semple",
+   "image_url": "https://images.gr-assets.com/books/1338822317m/13526165.jpg",
+   "average_rating": 3.9,
+   "ratings_count": 215453,
+   "year": 2012,
+   "pop_rank": 390,
+   "format": null,
+   "categories": [
+    "경제경영"
+   ],
+   "subcategories": [
+    "마케팅/브랜드"
+   ]
+  },
+  {
+   "book_id": 470,
+   "title": "I Am Malala: The Story of the Girl Who Stood Up for Education and Was Shot by the Taliban",
+   "authors": "Malala Yousafzai, Christina Lamb",
+   "image_url": "https://images.gr-assets.com/books/1375414895m/17851885.jpg",
+   "average_rating": 4.06,
+   "ratings_count": 214412,
+   "year": 2012,
+   "pop_rank": 391,
+   "format": null,
+   "categories": [
+    "청소년",
+    "소설"
+   ],
+   "subcategories": [
+    "진로/공부",
+    "유럽 소설",
+    "SF"
+   ]
+  },
+  {
+   "book_id": 417,
+   "title": "The Thirteenth Tale",
+   "authors": "Diane Setterfield",
+   "image_url": "https://images.gr-assets.com/books/1346267826m/40440.jpg",
+   "average_rating": 3.95,
+   "ratings_count": 213200,
+   "year": 2006,
+   "pop_rank": 392,
+   "format": null,
+   "categories": [
+    "소설"
+   ],
+   "subcategories": [
+    "일본 소설"
+   ]
+  },
+  {
+   "book_id": 447,
+   "title": "Brisingr (The Inheritance Cycle, #3)",
+   "authors": "Christopher Paolini",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.03,
+   "ratings_count": 211645,
+   "year": 2008,
+   "pop_rank": 393,
+   "format": "PDF",
+   "categories": [
+    "인문",
+    "경제경영"
+   ],
+   "subcategories": [
+    "인물/평전",
+    "리더십"
+   ]
+  },
+  {
+   "book_id": 365,
+   "title": "V for Vendetta",
+   "authors": "Alan Moore, David   Lloyd",
+   "image_url": "https://images.gr-assets.com/books/1343668985m/5805.jpg",
+   "average_rating": 4.25,
+   "ratings_count": 210682,
+   "year": 1990,
+   "pop_rank": 394,
+   "format": null,
+   "categories": [
+    "인문"
+   ],
+   "subcategories": [
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 427,
+   "title": "The Importance of Being Earnest",
+   "authors": "Oscar Wilde",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.17,
+   "ratings_count": 210630,
+   "year": 1895,
+   "pop_rank": 395,
+   "format": "PDF",
+   "categories": [
+    "소설",
+    "과학"
+   ],
+   "subcategories": [
+    "일본 소설",
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 389,
+   "title": "The Final Empire (Mistborn, #1)",
+   "authors": "Brandon Sanderson",
+   "image_url": "https://images.gr-assets.com/books/1480717416m/68428.jpg",
+   "average_rating": 4.43,
+   "ratings_count": 208944,
+   "year": 2006,
+   "pop_rank": 396,
+   "format": "PDF",
+   "categories": [
+    "어린이",
+    "과학"
+   ],
+   "subcategories": [
+    "어린이 교양",
+    "학습 만화",
+    "물리/천문"
+   ]
+  },
+  {
+   "book_id": 381,
+   "title": "Where the Heart Is",
+   "authors": "Billie Letts",
+   "image_url": "https://images.gr-assets.com/books/1327959469m/5168.jpg",
+   "average_rating": 4.0,
+   "ratings_count": 208333,
+   "year": 1995,
+   "pop_rank": 397,
+   "format": null,
+   "categories": [
+    "소설",
+    "인문"
+   ],
+   "subcategories": [
+    "한국 소설",
+    "심리학"
+   ]
+  },
+  {
+   "book_id": 244,
+   "title": "Sharp Objects",
+   "authors": "Gillian Flynn",
+   "image_url": "https://images.gr-assets.com/books/1423241485m/66559.jpg",
+   "average_rating": 3.92,
+   "ratings_count": 207889,
+   "year": 2006,
+   "pop_rank": 398,
+   "format": "PDF",
+   "categories": [
+    "자기계발",
+    "만화"
+   ],
+   "subcategories": [
+    "성공/처세",
+    "그래픽 노블",
+    "카툰"
+   ]
+  },
+  {
+   "book_id": 444,
+   "title": "Winnie-the-Pooh (Winnie-the-Pooh, #1)",
+   "authors": "A.A. Milne, Ernest H. Shepard",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.34,
+   "ratings_count": 207550,
+   "year": 1926,
+   "pop_rank": 399,
+   "format": "PDF",
+   "categories": [
+    "자기계발"
+   ],
+   "subcategories": [
+    "공부법"
+   ]
+  },
+  {
+   "book_id": 409,
+   "title": "Fried Green Tomatoes at the Whistle Stop Cafe",
+   "authors": "Fannie Flagg",
+   "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+   "average_rating": 4.26,
+   "ratings_count": 207508,
+   "year": 1987,
+   "pop_rank": 400,
+   "format": null,
+   "categories": [
+    "인문",
+    "소설"
+   ],
+   "subcategories": [
+    "인물/평전",
+    "문화인류",
+    "유럽 소설",
+    "추리/스릴러"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,769 @@
+{
+ "recommendation_id": "rec_8f3a2c",
+ "model_version": "hybrid_div_mock",
+ "preference_snapshot_id": "snap_01",
+ "user_key": "u_9f21",
+ "fallback_level": 0,
+ "cell": "B",
+ "latency_ms": {
+  "feature": 3,
+  "retrieval": 21,
+  "ranking": 14,
+  "rerank": 4,
+  "compose": 2,
+  "total": 44
+ },
+ "user_state_weights": {
+  "alpha": 0.6,
+  "beta": 0.3,
+  "gamma": 0.1
+ },
+ "dedup_removed": 7,
+ "rows": [
+  {
+   "row_id": "persona_shelf",
+   "title": "오디세우스의 서가",
+   "purpose": "discover",
+   "channel_mix": {
+    "content": 12,
+    "itemknn": 0,
+    "popularity": 0
+   },
+   "items": [
+    {
+     "book_id": 25,
+     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474171184m/136251.jpg",
+     "position": 0,
+     "score": 0.9,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 22위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 307,
+     "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+     "authors": "Patrick Rothfuss",
+     "image_url": "https://images.gr-assets.com/books/1452624392m/1215032.jpg",
+     "position": 1,
+     "score": 0.87,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 336위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 27,
+     "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1361039191m/1.jpg",
+     "position": 2,
+     "score": 0.84,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 25위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 18,
+     "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "authors": "J.K. Rowling, Mary GrandPré, Rufus Beck",
+     "image_url": "https://images.gr-assets.com/books/1499277281m/5.jpg",
+     "position": 3,
+     "score": 0.81,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 15위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 24,
+     "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1361482611m/6.jpg",
+     "position": 4,
+     "score": 0.78,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 21위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 175,
+     "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+     "authors": "Rick Riordan",
+     "image_url": "https://images.gr-assets.com/books/1327924597m/4502507.jpg",
+     "position": 5,
+     "score": 0.75,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 184위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": "PDF"
+    },
+    {
+     "book_id": 189,
+     "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+     "authors": "J.R.R. Tolkien",
+     "image_url": "https://images.gr-assets.com/books/1411114164m/33.jpg",
+     "position": 6,
+     "score": 0.72,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 191위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 21,
+     "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1387141547m/2.jpg",
+     "position": 7,
+     "score": 0.69,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 23위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 31,
+     "title": "The Help",
+     "authors": "Kathryn Stockett",
+     "image_url": "https://images.gr-assets.com/books/1346100365m/4667024.jpg",
+     "position": 8,
+     "score": 0.66,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 30위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 294,
+     "title": "The Son of Neptune (The Heroes of Olympus, #2)",
+     "authors": "Rick Riordan",
+     "image_url": "https://images.gr-assets.com/books/1464201114m/9520360.jpg",
+     "position": 9,
+     "score": 0.63,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 254위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": "PDF"
+    },
+    {
+     "book_id": 250,
+     "title": "Wonder",
+     "authors": "R.J. Palacio",
+     "image_url": "https://images.gr-assets.com/books/1309285027m/11387515.jpg",
+     "position": 10,
+     "score": 0.6,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 365위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": null
+    },
+    {
+     "book_id": 394,
+     "title": "Shadow Kiss (Vampire Academy, #3)",
+     "authors": "Richelle Mead",
+     "image_url": "https://images.gr-assets.com/books/1361099049m/2802316.jpg",
+     "position": 11,
+     "score": 0.57,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 301위"
+     },
+     "reason": "『The Hunger Games (The Hunger Games, #1)』을 좋아하셨다면",
+     "format": "PDF"
+    }
+   ]
+  },
+  {
+   "row_id": "similar_readers",
+   "title": "비슷한 독자들이 읽은 책",
+   "purpose": "discover",
+   "channel_mix": {
+    "content": 0,
+    "itemknn": 12,
+    "popularity": 0
+   },
+   "items": [
+    {
+     "book_id": 2,
+     "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg",
+     "position": 0,
+     "score": 0.9,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 2위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 4,
+     "title": "To Kill a Mockingbird",
+     "authors": "Harper Lee",
+     "image_url": "https://images.gr-assets.com/books/1361975680m/2657.jpg",
+     "position": 1,
+     "score": 0.87,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 4위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 5,
+     "title": "The Great Gatsby",
+     "authors": "F. Scott Fitzgerald",
+     "image_url": "https://images.gr-assets.com/books/1490528560m/4671.jpg",
+     "position": 2,
+     "score": 0.84,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 5위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 6,
+     "title": "The Fault in Our Stars",
+     "authors": "John Green",
+     "image_url": "https://images.gr-assets.com/books/1360206420m/11870085.jpg",
+     "position": 3,
+     "score": 0.81,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 6위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 10,
+     "title": "Pride and Prejudice",
+     "authors": "Jane Austen",
+     "image_url": "https://images.gr-assets.com/books/1320399351m/1885.jpg",
+     "position": 4,
+     "score": 0.78,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 9위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 9,
+     "title": "Angels & Demons  (Robert Langdon, #1)",
+     "authors": "Dan Brown",
+     "image_url": "https://images.gr-assets.com/books/1303390735m/960.jpg",
+     "position": 5,
+     "score": 0.75,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 10위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 15,
+     "title": "The Diary of a Young Girl",
+     "authors": "Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",
+     "image_url": "https://images.gr-assets.com/books/1358276407m/48855.jpg",
+     "position": 6,
+     "score": 0.72,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 11위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 12,
+     "title": "Divergent (Divergent, #1)",
+     "authors": "Veronica Roth",
+     "image_url": "https://images.gr-assets.com/books/1328559506m/13335037.jpg",
+     "position": 7,
+     "score": 0.69,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 13위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 14,
+     "title": "Animal Farm",
+     "authors": "George Orwell",
+     "image_url": "https://images.gr-assets.com/books/1424037542m/7613.jpg",
+     "position": 8,
+     "score": 0.66,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 14위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 11,
+     "title": "The Kite Runner",
+     "authors": "Khaled Hosseini",
+     "image_url": "https://images.gr-assets.com/books/1484565687m/77203.jpg",
+     "position": 9,
+     "score": 0.63,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 17위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 23,
+     "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474169725m/15881.jpg",
+     "position": 10,
+     "score": 0.6,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 19위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 19,
+     "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+     "authors": "J.R.R. Tolkien",
+     "image_url": "https://images.gr-assets.com/books/1298411339m/34.jpg",
+     "position": 11,
+     "score": 0.57,
+     "source_channels": [
+      "itemknn"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 20위"
+     },
+     "reason": null,
+     "format": null
+    }
+   ]
+  },
+  {
+   "row_id": "trending",
+   "title": "지금 많이 읽는 책",
+   "purpose": "fallback",
+   "channel_mix": {
+    "content": 0,
+    "itemknn": 0,
+    "popularity": 12
+   },
+   "items": [
+    {
+     "book_id": 1,
+     "title": "The Hunger Games (The Hunger Games, #1)",
+     "authors": "Suzanne Collins",
+     "image_url": "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
+     "position": 0,
+     "score": 0.9,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 1위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 3,
+     "title": "Twilight (Twilight, #1)",
+     "authors": "Stephenie Meyer",
+     "image_url": "https://images.gr-assets.com/books/1361039443m/41865.jpg",
+     "position": 1,
+     "score": 0.84,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 3위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 7,
+     "title": "The Hobbit",
+     "authors": "J.R.R. Tolkien",
+     "image_url": "https://images.gr-assets.com/books/1372847500m/5907.jpg",
+     "position": 2,
+     "score": 0.72,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 7위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 8,
+     "title": "The Catcher in the Rye",
+     "authors": "J.D. Salinger",
+     "image_url": "https://images.gr-assets.com/books/1398034300m/5107.jpg",
+     "position": 3,
+     "score": 0.69,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 8위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 13,
+     "title": "1984",
+     "authors": "George Orwell, Erich Fromm, Celâl Üster",
+     "image_url": "https://images.gr-assets.com/books/1348990566m/5470.jpg",
+     "position": 4,
+     "score": 0.57,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 12위"
+     },
+     "reason": null,
+     "format": null
+    }
+   ]
+  },
+  {
+   "row_id": "fresh_picks",
+   "title": "새로운 발견",
+   "purpose": "explore",
+   "channel_mix": {
+    "content": 12,
+    "itemknn": 0,
+    "popularity": 0
+   },
+   "items": [
+    {
+     "book_id": 279,
+     "title": "Harry Potter and the Cursed Child - Parts One and Two (Harry Potter, #8)",
+     "authors": "John Tiffany, Jack Thorne, J.K. Rowling",
+     "image_url": "https://images.gr-assets.com/books/1470082995m/29056083.jpg",
+     "position": 0,
+     "score": 0.9,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 293위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 61,
+     "title": "The Girl on the Train",
+     "authors": "Paula Hawkins",
+     "image_url": "https://images.gr-assets.com/books/1490903702m/22557272.jpg",
+     "position": 1,
+     "score": 0.87,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 53위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 267,
+     "title": "The Nightingale",
+     "authors": "Kristin Hannah",
+     "image_url": "https://images.gr-assets.com/books/1451446316m/21853621.jpg",
+     "position": 2,
+     "score": 0.84,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 320위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 143,
+     "title": "All the Light We Cannot See",
+     "authors": "Anthony Doerr",
+     "image_url": "https://images.gr-assets.com/books/1451445646m/18143977.jpg",
+     "position": 3,
+     "score": 0.81,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 142위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 262,
+     "title": "Big Little Lies",
+     "authors": "Liane Moriarty",
+     "image_url": "https://images.gr-assets.com/books/1492239430m/19486412.jpg",
+     "position": 4,
+     "score": 0.78,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 249위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 348,
+     "title": "We Were Liars",
+     "authors": "E. Lockhart",
+     "image_url": "https://images.gr-assets.com/books/1402749479m/16143347.jpg",
+     "position": 5,
+     "score": 0.75,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 290위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 352,
+     "title": "Yes Please",
+     "authors": "Amy Poehler",
+     "image_url": "https://images.gr-assets.com/books/1402815435m/20910157.jpg",
+     "position": 6,
+     "score": 0.72,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 324위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 164,
+     "title": "Eleanor & Park",
+     "authors": "Rainbow Rowell",
+     "image_url": "https://images.gr-assets.com/books/1341952742m/15745753.jpg",
+     "position": 7,
+     "score": 0.69,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 117위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 105,
+     "title": "Allegiant (Divergent, #3)",
+     "authors": "Veronica Roth",
+     "image_url": "https://images.gr-assets.com/books/1395582745m/18710190.jpg",
+     "position": 8,
+     "score": 0.66,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 149위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 146,
+     "title": "The Goldfinch",
+     "authors": "Donna Tartt",
+     "image_url": "https://images.gr-assets.com/books/1451554970m/17333223.jpg",
+     "position": 9,
+     "score": 0.63,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 185위"
+     },
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 324,
+     "title": "Fangirl",
+     "authors": "Rainbow Rowell",
+     "image_url": "https://images.gr-assets.com/books/1499565420m/16068905.jpg",
+     "position": 10,
+     "score": 0.6,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 223위"
+     },
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 253,
+     "title": "The Cuckoo's Calling (Cormoran Strike, #1)",
+     "authors": "Robert Galbraith, J.K. Rowling",
+     "image_url": "https://images.gr-assets.com/books/1358716559m/16160797.jpg",
+     "position": 11,
+     "score": 0.57,
+     "source_channels": [
+      "content"
+     ],
+     "badge": {
+      "type": "bestseller",
+      "text": "인기 257위"
+     },
+     "reason": null,
+     "format": null
+    }
+   ]
+  }
+ ]
+}

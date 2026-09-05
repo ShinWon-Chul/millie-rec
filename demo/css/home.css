@@ -1,0 +1,103 @@
+/* S7 메인 화면 · S8 책 상세 바텀시트 */
+
+/* ── 상단 인사 + 프로필 칩 ── */
+.home__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 6px var(--pad) 20px;
+}
+.home__hello {
+  min-width: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.5px;
+  word-break: keep-all;   /* 한글이 단어 중간에서 잘리지 않게 */
+}
+.home__hello small {
+  display: block; margin-top: 5px; font-size: 13px; font-weight: 400;
+  line-height: 1.45; color: var(--text-2);
+}
+.profile-chip {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 5px;
+  height: 34px; padding: 0 14px; border-radius: var(--r-pill);
+  border: 1px solid var(--line); background: var(--surface);
+  font-size: 13px; color: var(--text-2); white-space: nowrap;
+}
+.profile-chip.is-hot { border-color: var(--accent); color: var(--accent); }
+
+/* ── 행 ── */
+.row + .row { margin-top: 26px; }
+.row__head {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 0 var(--pad) 12px;
+}
+.row__title { font-size: 18px; font-weight: 700; letter-spacing: -0.4px; }
+.row__chev { color: var(--text-3); }
+.row__sub { padding: 0 var(--pad) 12px; margin-top: -8px; font-size: 13px; color: var(--text-2); }
+.row__strip {
+  display: flex; gap: 12px; padding: 0 var(--pad) 2px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.row__strip::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ── 행 안의 책 카드 ── */
+.tile {
+  display: flex; flex-direction: column; align-items: stretch;
+  flex: 0 0 auto; width: 108px; min-width: 0; text-align: left;
+}
+.tile .cover { aspect-ratio: 2 / 3; }
+.tile__title {
+  margin: 8px 0 3px; font-size: 13px; font-weight: 500; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.tile__author {
+  font-size: 12px; color: var(--text-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tile__reason {
+  margin-top: 5px; font-size: 11px; line-height: 1.35; color: var(--text-2);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.badge {
+  display: inline-block; margin-top: 6px; padding: 2px 7px;
+  border-radius: var(--r-pill); font-size: 11px; font-weight: 600; letter-spacing: -0.2px;
+  border: 1px solid var(--accent); color: var(--accent);
+}
+.badge[data-type="bestseller"] { background: var(--accent); color: var(--on-accent); }
+.badge[data-type="buzz"] { border-color: var(--warn); color: var(--warn); }
+
+/* ── 클라이언트 fallback 안내 ── */
+.fb-note {
+  margin: 0 var(--pad) 20px; padding: 12px 14px;
+  border: 1px solid var(--warn); border-radius: 12px;
+  font-size: 13px; line-height: 1.5; color: var(--warn); background: rgba(245, 166, 110, 0.08);
+}
+
+/* ── S8 바텀시트 ── */
+.sheet-wrap { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; }
+.sheet-wrap__dim { flex: 1 1 auto; background: rgba(0, 0, 0, 0.6); }
+.sheet {
+  flex: 0 0 auto; padding: 10px var(--pad) 26px;
+  background: var(--surface); border-radius: 24px 24px 0 0;
+}
+.sheet__grip {
+  width: 40px; height: 4px; margin: 0 auto 20px;
+  border-radius: var(--r-pill); background: var(--line);
+}
+.sheet__top { display: flex; gap: 16px; }
+.sheet__cover { flex: 0 0 96px; min-width: 0; }
+.sheet__cover .cover { aspect-ratio: 2 / 3; }
+.sheet__meta { flex: 1 1 auto; min-width: 0; padding-top: 2px; }
+.sheet__title { margin: 0 0 6px; font-size: 18px; font-weight: 700; line-height: 1.35; }
+.sheet__author { font-size: var(--fs-author); color: var(--text-2); }
+.sheet__reason {
+  margin: 12px 0 0; padding: 10px 12px; border-radius: 10px;
+  background: #232326; font-size: 13px; line-height: 1.5; color: var(--text-2);
+}
+.sheet__actions { display: flex; gap: 10px; margin-top: 20px; }
+.sheet__actions .cta { flex: 1 1 auto; }
+.sheet__ghost {
+  flex: 0 0 132px; border: 1px solid var(--line); background: transparent;
+  color: var(--text); border-radius: var(--r-pill); height: var(--cta-h);
+  font-size: var(--fs-option); font-weight: 600;
+}
+.sheet__finish {
+  display: block; width: 100%; margin: 14px 0 0;
+  font-size: 12px; color: var(--text-3); text-decoration: underline;
+}

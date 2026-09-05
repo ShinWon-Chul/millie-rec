@@ -1,0 +1,596 @@
+{
+ "recommendation_id": "rec_client_fb",
+ "model_version": "static_popular",
+ "preference_snapshot_id": null,
+ "user_key": null,
+ "fallback_level": 3,
+ "cell": null,
+ "latency_ms": {
+  "feature": 0,
+  "retrieval": 0,
+  "ranking": 0,
+  "rerank": 0,
+  "compose": 0,
+  "total": 0
+ },
+ "user_state_weights": {
+  "alpha": 0.0,
+  "beta": 0.0,
+  "gamma": 0.0
+ },
+ "dedup_removed": 0,
+ "rows": [
+  {
+   "row_id": "trending",
+   "title": "지금 많이 읽는 책",
+   "purpose": "fallback",
+   "channel_mix": {
+    "content": 0,
+    "itemknn": 0,
+    "popularity": 40
+   },
+   "items": [
+    {
+     "book_id": 1,
+     "title": "The Hunger Games (The Hunger Games, #1)",
+     "authors": "Suzanne Collins",
+     "image_url": "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
+     "position": 0,
+     "score": 1.0,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 2,
+     "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg",
+     "position": 1,
+     "score": 0.99,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 3,
+     "title": "Twilight (Twilight, #1)",
+     "authors": "Stephenie Meyer",
+     "image_url": "https://images.gr-assets.com/books/1361039443m/41865.jpg",
+     "position": 2,
+     "score": 0.98,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 4,
+     "title": "To Kill a Mockingbird",
+     "authors": "Harper Lee",
+     "image_url": "https://images.gr-assets.com/books/1361975680m/2657.jpg",
+     "position": 3,
+     "score": 0.97,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 5,
+     "title": "The Great Gatsby",
+     "authors": "F. Scott Fitzgerald",
+     "image_url": "https://images.gr-assets.com/books/1490528560m/4671.jpg",
+     "position": 4,
+     "score": 0.96,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 6,
+     "title": "The Fault in Our Stars",
+     "authors": "John Green",
+     "image_url": "https://images.gr-assets.com/books/1360206420m/11870085.jpg",
+     "position": 5,
+     "score": 0.95,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 7,
+     "title": "The Hobbit",
+     "authors": "J.R.R. Tolkien",
+     "image_url": "https://images.gr-assets.com/books/1372847500m/5907.jpg",
+     "position": 6,
+     "score": 0.94,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 8,
+     "title": "The Catcher in the Rye",
+     "authors": "J.D. Salinger",
+     "image_url": "https://images.gr-assets.com/books/1398034300m/5107.jpg",
+     "position": 7,
+     "score": 0.93,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 10,
+     "title": "Pride and Prejudice",
+     "authors": "Jane Austen",
+     "image_url": "https://images.gr-assets.com/books/1320399351m/1885.jpg",
+     "position": 8,
+     "score": 0.92,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 9,
+     "title": "Angels & Demons  (Robert Langdon, #1)",
+     "authors": "Dan Brown",
+     "image_url": "https://images.gr-assets.com/books/1303390735m/960.jpg",
+     "position": 9,
+     "score": 0.91,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 15,
+     "title": "The Diary of a Young Girl",
+     "authors": "Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",
+     "image_url": "https://images.gr-assets.com/books/1358276407m/48855.jpg",
+     "position": 10,
+     "score": 0.9,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 13,
+     "title": "1984",
+     "authors": "George Orwell, Erich Fromm, Celâl Üster",
+     "image_url": "https://images.gr-assets.com/books/1348990566m/5470.jpg",
+     "position": 11,
+     "score": 0.89,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 12,
+     "title": "Divergent (Divergent, #1)",
+     "authors": "Veronica Roth",
+     "image_url": "https://images.gr-assets.com/books/1328559506m/13335037.jpg",
+     "position": 12,
+     "score": 0.88,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 14,
+     "title": "Animal Farm",
+     "authors": "George Orwell",
+     "image_url": "https://images.gr-assets.com/books/1424037542m/7613.jpg",
+     "position": 13,
+     "score": 0.87,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 18,
+     "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "authors": "J.K. Rowling, Mary GrandPré, Rufus Beck",
+     "image_url": "https://images.gr-assets.com/books/1499277281m/5.jpg",
+     "position": 14,
+     "score": 0.86,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 17,
+     "title": "Catching Fire (The Hunger Games, #2)",
+     "authors": "Suzanne Collins",
+     "image_url": "https://images.gr-assets.com/books/1358273780m/6148028.jpg",
+     "position": 15,
+     "score": 0.85,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 11,
+     "title": "The Kite Runner",
+     "authors": "Khaled Hosseini",
+     "image_url": "https://images.gr-assets.com/books/1484565687m/77203.jpg",
+     "position": 16,
+     "score": 0.84,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 16,
+     "title": "The Girl with the Dragon Tattoo (Millennium, #1)",
+     "authors": "Stieg Larsson, Reg Keeland",
+     "image_url": "https://images.gr-assets.com/books/1327868566m/2429135.jpg",
+     "position": 17,
+     "score": 0.83,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 23,
+     "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474169725m/15881.jpg",
+     "position": 18,
+     "score": 0.82,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 19,
+     "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+     "authors": "J.R.R. Tolkien",
+     "image_url": "https://images.gr-assets.com/books/1298411339m/34.jpg",
+     "position": 19,
+     "score": 0.81,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 24,
+     "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1361482611m/6.jpg",
+     "position": 20,
+     "score": 0.8,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 25,
+     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1474171184m/136251.jpg",
+     "position": 21,
+     "score": 0.79,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 21,
+     "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1387141547m/2.jpg",
+     "position": 22,
+     "score": 0.78,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 20,
+     "title": "Mockingjay (The Hunger Games, #3)",
+     "authors": "Suzanne Collins",
+     "image_url": "https://images.gr-assets.com/books/1358275419m/7260188.jpg",
+     "position": 23,
+     "score": 0.77,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 27,
+     "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "authors": "J.K. Rowling, Mary GrandPré",
+     "image_url": "https://images.gr-assets.com/books/1361039191m/1.jpg",
+     "position": 24,
+     "score": 0.76,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 29,
+     "title": "Romeo and Juliet",
+     "authors": "William Shakespeare, Robert           Jackson",
+     "image_url": "https://images.gr-assets.com/books/1327872146m/18135.jpg",
+     "position": 25,
+     "score": 0.75,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 22,
+     "title": "The Lovely Bones",
+     "authors": "Alice Sebold",
+     "image_url": "https://images.gr-assets.com/books/1457810586m/12232938.jpg",
+     "position": 26,
+     "score": 0.74,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 28,
+     "title": "Lord of the Flies",
+     "authors": "William Golding",
+     "image_url": "https://images.gr-assets.com/books/1327869409m/7624.jpg",
+     "position": 27,
+     "score": 0.73,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 37,
+     "title": "The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)",
+     "authors": "C.S. Lewis",
+     "image_url": "https://images.gr-assets.com/books/1353029077m/100915.jpg",
+     "position": 28,
+     "score": 0.72,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 31,
+     "title": "The Help",
+     "authors": "Kathryn Stockett",
+     "image_url": "https://images.gr-assets.com/books/1346100365m/4667024.jpg",
+     "position": 29,
+     "score": 0.71,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 32,
+     "title": "Of Mice and Men",
+     "authors": "John Steinbeck",
+     "image_url": "https://images.gr-assets.com/books/1437235233m/890.jpg",
+     "position": 30,
+     "score": 0.7,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 26,
+     "title": "The Da Vinci Code (Robert Langdon, #2)",
+     "authors": "Dan Brown",
+     "image_url": "https://images.gr-assets.com/books/1303252999m/968.jpg",
+     "position": 31,
+     "score": 0.69,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 41,
+     "title": "The Lightning Thief (Percy Jackson and the Olympians, #1)",
+     "authors": "Rick Riordan",
+     "image_url": "https://images.gr-assets.com/books/1400602609m/28187.jpg",
+     "position": 32,
+     "score": 0.68,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 34,
+     "title": "Fifty Shades of Grey (Fifty Shades, #1)",
+     "authors": "E.L. James",
+     "image_url": "https://images.gr-assets.com/books/1385207843m/10818853.jpg",
+     "position": 33,
+     "score": 0.67,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 39,
+     "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+     "authors": "George R.R. Martin",
+     "image_url": "https://images.gr-assets.com/books/1436732693m/13496.jpg",
+     "position": 34,
+     "score": 0.66,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 33,
+     "title": "Memoirs of a Geisha",
+     "authors": "Arthur Golden",
+     "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+     "position": 35,
+     "score": 0.65,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 35,
+     "title": "The Alchemist",
+     "authors": "Paulo Coelho, Alan R. Clarke",
+     "image_url": "https://images.gr-assets.com/books/1483412266m/865.jpg",
+     "position": 36,
+     "score": 0.64,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": "PDF"
+    },
+    {
+     "book_id": 36,
+     "title": "The Giver (The Giver, #1)",
+     "authors": "Lois Lowry",
+     "image_url": "https://images.gr-assets.com/books/1342493368m/3636.jpg",
+     "position": 37,
+     "score": 0.63,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 42,
+     "title": "Little Women (Little Women, #1)",
+     "authors": "Louisa May Alcott",
+     "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+     "position": 38,
+     "score": 0.62,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    },
+    {
+     "book_id": 43,
+     "title": "Jane Eyre",
+     "authors": "Charlotte Brontë, Michael Mason",
+     "image_url": "https://images.gr-assets.com/books/1327867269m/10210.jpg",
+     "position": 39,
+     "score": 0.61,
+     "source_channels": [
+      "popularity"
+     ],
+     "badge": null,
+     "reason": null,
+     "format": null
+    }
+   ]
+  }
+ ]
+}

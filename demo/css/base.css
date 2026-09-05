@@ -1,0 +1,100 @@
+/* reset · 2열 레이아웃 · 폰 프레임 · 상태바 · 상단 바 */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* ── 상단 바 ── */
+.topbar {
+  display: flex; align-items: center; gap: 18px;
+  height: 44px; padding: 0 22px;
+  background: #1F2024; border-bottom: 1px solid var(--panel-line);
+}
+.topbar__title { font-size: 14px; font-weight: 700; letter-spacing: -0.2px; }
+.topbar__meta { font-family: var(--mono); font-size: 12px; color: var(--text-2); }
+.topbar__meta b { color: var(--accent); font-weight: 500; }
+.topbar__dot { color: var(--ok); }
+.topbar__dot[data-source="mock"] { color: var(--warn); }
+
+/* ── 2열 레이아웃 ── */
+.layout {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 40px; padding: 28px 24px 40px;
+}
+@media (max-width: 1199px) {           /* 최소 폭 미만이면 인스펙터를 아래로 스택 */
+  .layout { flex-direction: column; align-items: center; }
+}
+
+/* ── 폰 프레임 ── */
+.phone {
+  position: relative; flex: 0 0 auto;
+  width: calc(var(--phone-w) + var(--bezel) * 2);
+  height: calc(var(--phone-h) + var(--bezel) * 2);
+  background: #000; border-radius: var(--r-phone);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.phone__screen {
+  position: absolute; inset: var(--bezel);
+  display: flex; flex-direction: column;
+  width: var(--phone-w); height: var(--phone-h);
+  background: var(--bg); border-radius: calc(var(--r-phone) - var(--bezel));
+  overflow: hidden;
+}
+
+/* ── 상태바 ── */
+.statusbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex: 0 0 auto; height: 44px; padding: 0 26px 0 30px;
+}
+.statusbar__time { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+.statusbar__icons { display: flex; align-items: center; gap: 6px; }
+
+/* ── 스크롤 영역 · 하단 CTA ── */
+.screen {
+  position: relative; display: flex; flex-direction: column;
+  flex: 1 1 auto; min-height: 0;
+  overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.screen::-webkit-scrollbar { width: 0; height: 0; }
+.screen__body { flex: 1 1 auto; padding: 0 var(--pad); }
+.screen__foot {
+  position: sticky; bottom: 0; flex: 0 0 auto;
+  padding: 12px var(--pad) 22px;
+  background: linear-gradient(to top, var(--bg) 62%, rgba(18, 18, 18, 0));
+}
+
+/* ── 공용 CTA ── */
+.cta {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: var(--cta-h);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-option); font-weight: 600; letter-spacing: -0.3px;
+  background: var(--accent-dim); color: rgba(255, 255, 255, 0.45);
+  transition: background 0.15s, color 0.15s;
+}
+.cta.is-on { background: var(--accent); color: var(--on-accent); }
+.cta.is-light { background: #FFFFFF; color: #1A1A1A; }
+.cta:disabled { cursor: default; }
+
+/* ── 헤더(뒤로·건너뛰기) ── */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex: 0 0 auto; height: 48px; padding: 0 var(--pad);
+}
+.navbar__back { display: flex; padding: 4px; }
+.navbar__action { font-size: var(--fs-body); color: var(--text-2); }
+.navbar__label { font-size: var(--fs-body); font-weight: 600; }
+
+/* ── 캡처 모드: 인스펙터·상단바 숨김, 배경 단색 ── */
+body.is-capture { background: #1A1B1E; }
+body.is-capture .topbar,
+body.is-capture .inspector { display: none; }
+body.is-capture .layout { padding: 36px 24px; }

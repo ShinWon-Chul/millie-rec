@@ -1,0 +1,43 @@
+/* 디자인 토큰 — 색·간격·타이포는 전부 이 파일에서만 바꾼다 (설계서 §5) */
+:root {
+  /* 색 */
+  --bg: #121212;            /* 폰 배경 */
+  --surface: #1C1C1E;       /* 카드·시트 */
+  --line: #3A3A3C;          /* 선택지 테두리 */
+  --chip: #2C2C2E;          /* 세부 카테고리 칩 채움 */
+  --text: #FFFFFF;
+  --text-2: #A1A1A6;        /* 저자·카운터·안내 */
+  --text-3: #6E6E73;
+  --accent: #F5E06E;        /* 노랑: 진행바·선택 테두리·체크·활성 CTA */
+  --accent-dim: rgba(245, 224, 110, 0.38);  /* 비활성 CTA (올리브톤) */
+  --on-accent: #1A1A1A;     /* 노란 버튼 위 글자 */
+  --sel-bg: #1E1E1A;        /* 선택된 선택지 배경 */
+  --card-grad: linear-gradient(160deg, #FFE98A 0%, #FFF4CF 45%, #FFE7B3 100%); /* S6 카드 */
+  --page-bg: #2B2B30;       /* PC 페이지 배경 */
+  --panel-bg: #17181A;      /* 인스펙터 */
+  --panel-line: #26272A;
+  --ok: #6BD98A;
+  --warn: #F5A66E;
+
+  /* 형태 */
+  --r-option: 14px;
+  --r-pill: 999px;
+  --r-cover: 6px;
+  --r-card: 40px;
+  --r-phone: 44px;
+  --cta-h: 56px;
+  --pad: 20px;
+  --phone-w: 390px;
+  --phone-h: 844px;
+  --bezel: 12px;
+
+  /* 타이포 */
+  --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --fs-title: 24px;
+  --fs-option: 17px;
+  --fs-body: 15px;
+  --fs-book: 16px;
+  --fs-author: 14px;
+}
