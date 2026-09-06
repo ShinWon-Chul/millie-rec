@@ -7,10 +7,13 @@
   letter-spacing: -0.5px;
 }
 .start__art {
-  display: flex; align-items: center; justify-content: center; gap: 18px;
-  flex: 1 1 auto; font-size: 74px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  flex: 1 1 auto; line-height: 1;
 }
-.start__art span { filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5)); }
+.start__art img {
+  width: 88px; height: 88px; border-radius: 22%;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5));
+}
 
 /* ── 진행바 · 질문 제목 · 카운터 ── */
 .progress {

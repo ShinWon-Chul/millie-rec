@@ -51,6 +51,7 @@ export function render(state) {
   return `<div class="screen">
     <div class="screen__body">
       <div class="home__head">
+        <img class="home__mark" src="assets/brand/millie-mark.png" alt="밀리의서재" width="24" height="24">
         <div class="home__hello">${esc(hello)}<small>${esc(sub)}</small></div>
         <button class="profile-chip" data-act="nav" data-to="#/library">내 서재</button>
       </div>

@@ -5,8 +5,10 @@
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 6px var(--pad) 20px;
 }
+.home__mark { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 22%; }
 .home__hello {
-  min-width: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.5px;
+  min-width: 0; flex: 1 1 auto;   /* 마크가 들어와도 인사말 폭이 그대로 남게 */
+  font-size: 19px; font-weight: 700; letter-spacing: -0.5px;
   word-break: keep-all;   /* 한글이 단어 중간에서 잘리지 않게 */
 }
 .home__hello small {

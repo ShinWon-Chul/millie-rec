@@ -11,7 +11,7 @@ const num = (v, d = 3) => (v == null ? "—" : Number(v).toFixed(d));
 const routeTail = (r) => { const s = String(r ?? ""); return s.startsWith("#/") ? s.slice(2) : ""; };
 
 function header(s, state) {
-  return `<div class="page-head"><div><h1>${TITLE}</h1>
+  return `<div class="page-head"><div><h1><img class="page-head__mark" src="assets/brand/millie-mark.png" alt="밀리의서재" width="40" height="40">${TITLE}</h1>
     <p class="philosophy">${esc(s.philosophy)}</p></div>
     <div class="page-head__meta">model_version ${esc(state.health?.model_version ?? "—")} · source ${esc(state.source)}
       · <a href="/docs" target="_blank" rel="noreferrer">/docs</a></div></div>`;
