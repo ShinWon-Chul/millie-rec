@@ -114,7 +114,7 @@ def test_meta_categories_supported_when_eligible_ge_20_subcategories_static_and_
     out2 = OnboardingMeta.model_validate(client2.get("/api/meta/onboarding").json())
     by = {c.name: c for c in out2.categories}
     assert by["IT"].supported is True and len(by["IT"].subcategories) == 6
-    assert len(by["소설"].subcategories) == 7 and by["에세이"].subcategories == []
+    assert len(by["소설"].subcategories) == 20 and by["에세이"].subcategories == []
 
 
 def test_meta_without_catalog_has_empty_categories(tmp_path: Path):
