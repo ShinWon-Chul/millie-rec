@@ -154,7 +154,7 @@ flowchart LR
 | 저장 | SQLite(WAL) | Feature Store + Redis 캐시 | 스냅샷·이벤트·추천 로그 영구 저장 |
 | 배포·관측 | Docker 1컨테이너 · Sentry(예외) · 가동 모니터(5분 간격 헬스체크) | Prometheus → Grafana · 오토스케일링 | 이미지·헬스체크·재배포 경계가 동일. 지표 수집기는 설계만 |
 
-**의도적으로 넣지 않은 것.** LLM(Large Language Model: 대규모 언어 모델)은 넣지 않았다. 추천이 이 문제의 본질이고 LLM은 도서 소개 임베딩 같은 오프라인 표현 생성에만 쓸 여지가 있다. Two-Tower는 넣지 않았다 — 수십만 권 규모에서 Item-KNN 대비 이득이 작고 같은 이웃 행렬이 추천 이유(『○○』을 좋아하셨다면)까지 설명하는 장점을 잃는다. ALS(Alternating Least Squares: 행렬 분해 협업 필터링)도 빌드 리스크 대비 Item-KNN과 설명력 차이가 작아 뺐다.
+**의도적으로 넣지 않은 것.** LLM(Large Language Model: 대규모 언어 모델)은 넣지 않았다. 추천이 이 문제의 본질이고 LLM은 도서 소개 임베딩 같은 오프라인 표현 생성에만 쓸 여지가 있다. Two-Tower는 넣지 않았다 — 약 9천 권 규모에서 Item-KNN 대비 이득이 작고 같은 이웃 행렬이 추천 이유(『○○』을 좋아하셨다면)까지 설명하는 장점을 잃는다. ALS(Alternating Least Squares: 행렬 분해 협업 필터링)도 빌드 리스크 대비 Item-KNN과 설명력 차이가 작아 뺐다.
 
 ## 3-3. 실서비스 ↔ 데모 대응 [③]
 | 실서비스 | 데모 축소판 | 보존되는 의미 |
