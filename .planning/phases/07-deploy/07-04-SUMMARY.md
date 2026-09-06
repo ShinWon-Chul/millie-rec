@@ -130,7 +130,9 @@ Verdict `needs-attention`, 5건:
 - **장애 대응(§7) 상위 4줄:** `ModuleNotFoundError: millie_rec` → 두 번째 `uv sync` · `unable to open database file` → 볼륨/`DATA_DIR` ·
   헬스체크 반복 실패 → `${PORT}` · 표지 안 뜸 → 밀리 CDN 핫링크(플레이스홀더 정상, 다운로드 금지).
 - **철거(§8):** 심사 결과 통보 +7일 → Railway 서비스 Delete(볼륨 포함) → Sentry·UptimeRobot 정리 → PROGRESS 종료 기록. 캘린더 알림은 사용자 몫.
-- **Codex 인계(C1·C5):** `PROGRESS.md` 미결 참조. C1 은 Phase 8 이후 `onboarding_api.py`(익명 호출 미저장 또는 TTL), C5 는 draft 문구.
+- **Codex 인계(C1·C5):** `PROGRESS.md` 미결 참조. C1 은 Phase 8 이후 `onboarding_api.py`(익명 호출 미저장 또는 TTL), C5 는 draft 문구 → Phase 8 'PDF 제출물' 08-01 에서 draft §4-3 에 'variant 공통 전역 p95' 반영 완료.
+- **Sentry 확인(Phase 8 'PDF 제출물' 제출 전 점검, `.planning/phases/08-pdf/08-04-SUMMARY.md` · 결정 D-17 'Sentry 정상 동작 확인'(`.planning/phases/08-pdf/08-CONTEXT.md`)):** 미확인 — 배포본 예외 이벤트 0 건, 사용자 터미널 probe 미실행(사용자 선택, 2026-09-06 20:3x KST). 확인이 필요해지면 사용자 터미널에서 DSN 인라인 probe 1 회. DSN 은 기록하지 않는다.
+- **UptimeRobot 키워드(Codex C2 권고):** `"status":"ok"` 유지 — 사용자 결정(2026-09-06 20:3x KST), 키워드 변경 없음. `FREEZE_BOOK_STATS`: 미설정 유지(사용자 결정) — 화면 `book_stats` 가 이벤트로 변할 수 있어 `PROGRESS.md` 미결 1 행으로 인계.
 
 ## Self-Check: PASSED
 - 게이트 12행 · 캡처 7장 · draft 마커 0 · 기록 4곳 grep 확인 · 커밋 3 · push 완료 · 위 "push 후 검증" 절 참조.
