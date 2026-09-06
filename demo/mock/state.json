@@ -8,26 +8,31 @@
    {
     "book_id": 1012,
     "title": "싯다르타",
+    "authors": "헤르만 헤세 / 박병덕 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg"
    },
    {
     "book_id": 2765,
     "title": "데미안",
+    "authors": "헤르만 헤세 / 전영애 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179593874/faf2484da8c840ab8cd4e12aa6a91aba.jpg"
    },
    {
     "book_id": 1446,
     "title": "위버멘쉬",
+    "authors": "프리드리히 니체 / 어나니머스 옮김",
     "image_url": "https://image.millie.co.kr/service/cover/180081272/21c0ae05555343d58f60d2b350cd47fc.jpg"
    },
    {
     "book_id": 1222,
     "title": "쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라",
+    "authors": "쇼펜하우어",
     "image_url": "https://image.millie.co.kr/service/cover/179644570/7598303266bc4524a3ada8ce9de807f4.jpg"
    },
    {
     "book_id": 2292,
     "title": "빅터 프랭클의 죽음의 수용소에서",
+    "authors": "빅터프랭클, 이시형 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg"
    }
   ],

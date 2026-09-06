@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-09-06T00:56:35.219725+00:00",
+ "generated_at": "2026-09-06T02:26:18.965115+00:00",
  "seed": 42,
  "generator": "demo/scripts/make_mock.py",
  "inputs": {
   "books_kr.json": "2719098770b2b42389e027f7b38f4202",
   "item_edges_kr.json": "844fae4b18114499da7062a7c2ff0b82",
   "eval_table.json": "841c93ad476ae216aac2dd00ffaa7ebe",
-  "onboarding.json": "e85ee6e0894e6f3e3496b600401f0c0b"
+  "onboarding.json": "508b185a3a3c749e0ba966bff50c7489"
  },
  "outputs": {
   "catalog_kr.json": 4560057,
@@ -14,12 +14,12 @@
   "meta_onboarding.json": 3280,
   "candidates_onboarding.json": 8302,
   "preferences_response.json": 424,
-  "state.json": 1435,
+  "state.json": 1695,
   "dashboard.json": 1235,
   "recommend_pop.json": 43765,
   "recommend_cf.json": 43484,
   "recommend_hybrid.json": 43488,
   "recommend_hybrid_div.json": 41958,
-  "showcase.json": 8274
+  "showcase.json": 9024
  }
 }

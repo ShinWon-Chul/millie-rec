@@ -437,6 +437,7 @@ def preferences_response(persona: dict) -> dict:
 def user_state(by_id: dict, seeds, categories, criterion: str) -> dict:
     """UserStateOut — 시드 5권이 서재 added 버킷에 담긴 상태."""
     library = [{"book_id": int(s), "title": by_id[int(s)]["title"],
+                "authors": by_id[int(s)]["authors"],
                 "image_url": by_id[int(s)]["image_url"]} for s in seeds if int(s) in by_id]
     return {
         "user_key": DEMO_USER_KEY, "consent": True, "cell": _cell(), "is_new": False,
@@ -477,8 +478,8 @@ def personal_case(by_id: dict, nbrs: dict, seeds) -> dict | None:
     picked = [int(s) for s in seeds]
     if not picked or any(s not in by_id for s in picked):
         return None
-    books = [{"book_id": s, "title": by_id[s]["title"], "image_url": by_id[s]["image_url"],
-              "reason": None, "badge": None} for s in picked]
+    books = [{"book_id": s, "title": by_id[s]["title"], "authors": by_id[s]["authors"],
+              "image_url": by_id[s]["image_url"], "reason": None, "badge": None} for s in picked]
     pools = [[d for d, _ in nbrs.get(str(s), [])] for s in picked]
     seen_ids = set(picked)
     seen_titles = {normalize_title(by_id[s]["title"]) for s in picked}
@@ -493,7 +494,8 @@ def personal_case(by_id: dict, nbrs: dict, seeds) -> dict | None:
             seen_ids.add(dst)
             seen_titles.add(key)
             recs.append({
-                "book_id": dst, "title": by_id[dst]["title"], "image_url": by_id[dst]["image_url"],
+                "book_id": dst, "title": by_id[dst]["title"],
+                "authors": by_id[dst]["authors"], "image_url": by_id[dst]["image_url"],
                 "reason": REASON_ANCHOR.format(title=by_id[picked[index]]["title"]),
                 "badge": badge_for(by_id[dst], DEMO_CRITERION),
             })

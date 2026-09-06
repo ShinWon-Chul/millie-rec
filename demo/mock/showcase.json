@@ -56,6 +56,7 @@
    {
     "book_id": 1012,
     "title": "싯다르타",
+    "authors": "헤르만 헤세 / 박병덕 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg",
     "reason": null,
     "badge": null
@@ -63,6 +64,7 @@
    {
     "book_id": 2765,
     "title": "데미안",
+    "authors": "헤르만 헤세 / 전영애 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179593874/faf2484da8c840ab8cd4e12aa6a91aba.jpg",
     "reason": null,
     "badge": null
@@ -70,6 +72,7 @@
    {
     "book_id": 1446,
     "title": "위버멘쉬",
+    "authors": "프리드리히 니체 / 어나니머스 옮김",
     "image_url": "https://image.millie.co.kr/service/cover/180081272/21c0ae05555343d58f60d2b350cd47fc.jpg",
     "reason": null,
     "badge": null
@@ -77,6 +80,7 @@
    {
     "book_id": 1222,
     "title": "쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라",
+    "authors": "쇼펜하우어",
     "image_url": "https://image.millie.co.kr/service/cover/179644570/7598303266bc4524a3ada8ce9de807f4.jpg",
     "reason": null,
     "badge": null
@@ -84,6 +88,7 @@
    {
     "book_id": 2292,
     "title": "빅터 프랭클의 죽음의 수용소에서",
+    "authors": "빅터프랭클, 이시형 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg",
     "reason": null,
     "badge": null
@@ -93,6 +98,7 @@
    {
     "book_id": 1007,
     "title": "호신술 클럽",
+    "authors": "김지윤",
     "image_url": "https://image.millie.co.kr/service/cover/180174017/37ca9e036ccf4914a26587fba248623b.jpg",
     "reason": "『위버멘쉬』을 좋아하셨다면",
     "badge": {
@@ -103,6 +109,7 @@
    {
     "book_id": 6989,
     "title": "쇼펜하우어의 인생 수업",
+    "authors": "지은이 | 아르투어 쇼펜하우어",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179629867/ffea10399ee84c7699cc337c6bcb7f1b.jpg",
     "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
     "badge": {
@@ -113,6 +120,7 @@
    {
     "book_id": 1447,
     "title": "혼자일 수 없다면 나아갈 수 없다",
+    "authors": "프리드리히 니체 / 김욱 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179644312/a0dafd12822c4b468d363bec20d971fd.jpg",
     "reason": "『위버멘쉬』을 좋아하셨다면",
     "badge": {
@@ -123,6 +131,7 @@
    {
     "book_id": 4149,
     "title": "쇼펜하우어 인생수업 2: 한 번뿐인 삶 이렇게 살아라",
+    "authors": "쇼펜하우어 / 김지민 옮김",
     "image_url": "https://image.millie.co.kr/service/cover/180106084/abde2a702ff04b4088e969c4a924e49f.jpg",
     "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
     "badge": {
@@ -133,6 +142,7 @@
    {
     "book_id": 2295,
     "title": "청소년을 위한 빅터 프랭클의 죽음의 수용소에서",
+    "authors": "빅터 프랭클 / 이시형, 김혜림 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179593802/7442d44a031a41eda190fcd5e782ef60.jpg",
     "reason": "『빅터 프랭클의 죽음의 수용소에서』을 좋아하셨다면",
     "badge": {
@@ -143,6 +153,7 @@
    {
     "book_id": 1448,
     "title": "차라투스트라는 이렇게 말했다",
+    "authors": "프리드리히 니체 / 장희창 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/180070799/fc527e54c7454ddabe6a2362547dec98.jpg",
     "reason": "『위버멘쉬』을 좋아하셨다면",
     "badge": {
@@ -153,6 +164,7 @@
    {
     "book_id": 7856,
     "title": "마흔에 읽는 쇼펜하우어",
+    "authors": "강용수",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179624926/fff3a96a31914c90b1a4e2952499848e.jpg",
     "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
     "badge": {
@@ -163,6 +175,7 @@
    {
     "book_id": 5728,
     "title": "그럼에도 삶에 ‘예’라고 답할 때",
+    "authors": "빅터프랭클, 마정현 옮김",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179491532/137b2384e7764a8a8c9cad471d31583a.jpg",
     "reason": "『빅터 프랭클의 죽음의 수용소에서』을 좋아하셨다면",
     "badge": {
@@ -173,6 +186,7 @@
    {
     "book_id": 1449,
     "title": "니체 인생수업: 니체가 세상에 남긴 66가지 인생지혜",
+    "authors": "프리드리히 니체 / 김지민 엮음",
     "image_url": "https://img.millie.co.kr/200x/service/cover/180085180/1ef31d2cde2b41efac31be30bb42298c.jpg",
     "reason": "『위버멘쉬』을 좋아하셨다면",
     "badge": {
@@ -183,6 +197,7 @@
    {
     "book_id": 5587,
     "title": "쇼펜하우어의 의지와 표상으로서의 세계",
+    "authors": "박은미",
     "image_url": "https://img.millie.co.kr/200x/service/cover/179578736/bd6779efa7e1418aac223339f3fd42ca.jpg",
     "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
     "badge": {
