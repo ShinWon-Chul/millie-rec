@@ -166,6 +166,7 @@ flowchart LR
 | Kubernetes | 컨테이너 1개 | 이미지·헬스체크·재배포 동일 |
 
 - (Day 1 실측, Phase 3 '밀리 카탈로그 빌드') 데모 카탈로그 = 밀리의서재 공개 도서 페이지 9,447권(2026-09-04~05 수집 + 09-05 배지 제목 896건 재수집, 최종 스냅샷 09-06; 비로그인 화면의 수치·메타·표지 URL만, 리뷰 텍스트 미저장, 책 소개는 TF-IDF 입력 전용·미노출). 커버리지 title 100%·표지 100.0%·완독지수 82.5%(`results/millie_coverage.csv`, 결측 완독지수 책은 `difficulty=None` 으로 가드 모집단에서 제외). 앵커 이웃은 제목·소개 문자 2~4gram TF-IDF cosine top-20(content_sim, 동일 카테고리 비율 0.356, `results/millie_edges_gate.json`), 다양성 벡터는 같은 TF-IDF 의 SVD 128이다. 협업 필터링(Item-KNN) 수치는 Goodbooks(Track A)에서만 측정하고 두 트랙의 숫자는 각 표에 따로 싣는다. 서버는 `artifacts/serving/books_kr.json` 이 있으면 카탈로그를 주입해 `/api/recommend` 가 밀리 책으로 응답한다. 이 스냅샷은 Day 3 freeze 대상이라 이후 재빌드하지 않는다.
+- (Day 2·Day 4 실측, Phase 7 '배포') 같은 이미지가 로컬 docker 와 Railway 에서 똑같이 뜬다(`/health` 의 `model_version` 이 양쪽 모두 `hybrid_div_v1`). 코드 push 재배포는 정지→시작이라 5초 폴링에서 1표본이 실패했고(약 5~15초, 2026-09-06 실측 3회), 볼륨을 처음 붙이는 재배포만 30~40초 걸렸다. 그 사이에도 볼륨 `/data` 의 SQLite 는 유지되어 재시작 후 사용자·스냅샷 행이 그대로였다. 가동은 5분 간격 헬스체크로 감시한다.
 
 ---
 
@@ -240,7 +241,7 @@ flowchart LR
 
 같은 응답의 '셜록 홈즈의 서가'가 4단계 파이프라인을 통과한 유일한 행이다. 인스펙터에서 모델을 바꾸면 이 행의 책이 바뀌고 혼합비도 함께 움직인다. 로컬 bench p95는 79.5ms다(`results/latency.json`).
 
-`[Phase 7]` 배포 URL·QR·스크린샷 6장(온보딩 7단계 → 메인 → 상세 → 뷰어 완독 → 재설정 → 메인 변화).
+데모: https://millie-rec-production.up.railway.app (QR 이미지 `report/figures/p5_qr.png` — 조판 시 삽입). 화면 6장은 배포본에서 그대로 찍었다: 취향 설정 7단계 → 메인(앵커 행) → 책 상세 → 뷰어 완독 → 취향 재설정 → 메인 변화(`report/figures/p5_01_onboarding.png` ~ `p5_06_home_after.png`, 폰 프레임 2x). 그림 파일은 밀리 표지가 들어 있어 repo 에 넣지 않는다.
 
 **로드맵(설계만).** Two-Tower + ANN · 다중 목표 학습 랭커 · Kafka 기반 Nearline · 텍스트 가독성 난이도 · 다독가 리뷰 통로 · Interleaving · 적응형 취향 질의(다음 질문을 불확실성 기준으로 선택).
 

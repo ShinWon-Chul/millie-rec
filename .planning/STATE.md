@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
 status: executing
-stopped_at: Phase 7 '배포' wave 3(07-03 본배포) 완료 — push `9fb53ab` 14:34 KST → Active 14:48 · 배포 URL 완주 12/12·4 variant 전환 ✅ · Day 게이트 4 ✅ — 다음 /gsd-execute-phase 7 --wave 4 (07-04 문서·캡처·Codex 마감)
-last_updated: "2026-09-06T06:00:00.000Z"
+stopped_at: Phase 7 '배포' wave 4(07-04 마감) — 게이트 12행 ✅ · 캡처 6장+QR ✅ · Codex 2회차 5건 3분류 → 사용자 승인 대기 · 데모 버그(신규 유저 체험하기 → startFresh) 수정·검증 완료 → 커밋·push 승인 대기
+last_updated: "2026-09-06T07:40:00.000Z"
 last_activity: 2026-09-06
 progress:
   total_phases: 8
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-09-05)
 
 **Core value:** 설계서의 주장(취향 설정은 갱신되는 explicit prior · 4단계 파이프라인 · 3지표 1:1 대응 · 앵커/난이도/시간 가변 가중치)이 로컬에서 실행되는 코드와 실측 숫자로 증명되어 PDF 5페이지 안에 들어간다. 데모·서버가 죽어도 PDF는 완결된다.
-**Current focus:** Phase 7 '배포' — wave 3 완료(본배포·Day 4 ✅), wave 4(07-04 문서·캡처·Codex 마감) 대기
+**Current focus:** Phase 7 '배포' — wave 4(07-04 마감) 진행: 자동 부분 완료(게이트·캡처·기록 4곳·Codex 3분류), 사용자 승인(Codex 반영·커밋·push) 대기
 
 ## Current Position
 
 Phase: 5 '서빙 Must 완성' ✅ · 3 '밀리 카탈로그 빌드' ✅ · 6 '데모 재구성' ✅ 완료(다른 세션 — UAT 3/3, Gap 1 `authors` optional 종결) · 7 '배포' 실행 중(4 plans·4 waves 중 wave 3 완료 — 07-03 이 Phase 6 api 완주 게이트 겸 통과)
 Plan: 07-01 ✅(sentry-sdk + `init_sentry()` fail-open · 게이트 20/20 · 전역 535 passed · docker 스모크 PASS · Codex 3분류 F1 반영) · 07-02~04 대기. **push 0** — 07-02 Task 1 에서 승인 시 커밋 16개(대부분 Phase 6)가 함께 올라간다. 사용자 몫: Railway 결제·프로젝트 생성(35분)
-Status: 07-03 '본배포' ✅ 완료(Task 1~3, 사용자 approved 14:5x) — 다음 07-04(PROGRESS·개발일지 D82·draft 캡처 6장+QR·DEPLOY-04 폐기·Codex 배포 전체 리뷰·표식 `probe-main-20260906` 이름 확인)
+Status: 07-04 '마감' 진행 — Task 1 게이트 12행 ✅(저작권 0(brand 예외 1) · /health 5/5 200 · /metrics 404 · pytest 573 · smoke PASS · users 8≥7 · 표식 `probe-main-20260906` state 200 — 14:54 재기동 후에도 유지) · Task 3 캡처 6장+QR ✅(`report/figures/p5_*.png`, 콘솔 에러 0) · draft §3-3·§5-3 ✅ · 기록 4곳 ✅(PROGRESS 3행+미결 5 해소 · 개발일지 **D85**(D81~84 다른 세션 선점) · 아키텍처 01 §2-1) · Codex 2회차 5건 3분류 → **사용자 승인 대기** · 사용자 지시 데모 버그 수정(`presets.js` `startFresh`) api·mock Playwright PASS·architect APPROVE → 커밋·push 승인 대기
 Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지 · **본배포 9fb53ab 2026-09-06 14:48**(push 14:34:53 → Active 14:48:19, Dockerfile 변경 빌드 13.5분) · SENTRY_DSN 투입 14:2x · 배포 완주 Playwright 12/12 콘솔 에러 0 · 4 variant distinct 4 · showcase p95 79.5 표시 · 신규 표식 `probe-main-20260906` level 0 — 이름 기준 영구성 확인은 07-04 push 때)
 Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN **Railway 투입 완료**(07-03, 배포 로그 sentry 에러 0)
 Downtime(D-14, /health 5초 폴링): 코드 push 재배포 **약 5~15초**(실패 1표본 ×3회: 502·502·연결끊김) · 볼륨 최초 부착 재배포 **30~40초**(404 6표본). ⚠️ railway.json 은 Railway 정책(Config as Code 2026-08-28 옵트인 종료)으로 **무효** — healthcheckPath 는 대시보드 수동 입력, 07-04 문서 정정
