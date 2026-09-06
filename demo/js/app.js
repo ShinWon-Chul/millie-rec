@@ -126,6 +126,8 @@ function modalHTML() {
 function render() {
   const pc = state.route.page === "dashboard" || state.route.page === "showcase";
   document.body.classList.toggle("is-page", pc);
+  // 쇼케이스에서는 "← 처음 화면" 버튼이 자기 자신을 가리키므로 감춘다(base.css)
+  document.body.classList.toggle("is-showcase", state.route.page === "showcase");
   $page.hidden = !pc;
   if (pc) {
     $page.innerHTML = state.route.page === "dashboard" ? d7(state) : d8(state);
