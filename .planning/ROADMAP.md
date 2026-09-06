@@ -25,7 +25,7 @@
 - [ ] **Phase 3: 밀리 카탈로그 빌드** - 밀리 공개 도서 전량 → `books_kr`·content_sim 이웃·완독지수 난이도가 게이트를 통과해 서빙 아티팩트가 된다 (Day 1 밤~Day 2, Phase 2와 병렬)
 - [x] **Phase 4: 추천 파이프라인과 모델 freeze** - 후보 3통로 → 가중합 랭킹 → MMR·가드로 비교표 4행과 본인 5권 케이스가 나오고 Day 3에 모델이 얼어붙는다 (Day 2~3) (completed 2026-09-06 — 🧊 freeze 선언, verification passed 5/5)
 - [x] **Phase 5: 서빙 Must 완성** - Must 엔드포인트 9개·SQLite 4테이블·Nearline·fallback cascade·p95 < 200ms가 떠 있는 서버 위에 붙는다 (Day 2 골격 → Day 3~4, Phase 6과 병렬) (completed 2026-09-06 — 12 plans · bench p95 79.5ms · verification passed 6/6, Codex 필수 fix 7 + 토론 3 반영(결정 D79))
-- [ ] **Phase 6: 데모 재구성** - v1 데모 27파일을 8페이지 해시 라우팅·새 스키마·밀리 카탈로그로 재구성해 로컬 API에 붙인다 (Day 2~4, Phase 5와 병렬)
+- [x] **Phase 6: 데모 재구성** - v1 데모 27파일을 8페이지 해시 라우팅·새 스키마·밀리 카탈로그로 재구성해 로컬 API에 붙인다 (Day 2~4, Phase 5와 병렬) (completed 2026-09-06 — 8 plans · mock 완주 17/17 콘솔 에러 0 · verification 9/9 musts · UAT 3/3 passed, Gap 1(저자 표시) 종결)
 - [ ] **Phase 7: 배포** - Day 2 Railway 스켈레톤으로 배포 리스크를 먼저 노출하고 Day 4에 본배포한다 (Day 2 · Day 4)
 - [ ] **Phase 8: PDF 제출물** - `results/`의 숫자만으로 P1~P5를 채우고 5페이지 이내로 조판·제출한다 (Day 4 문장 → Day 5 조판)
 
@@ -279,7 +279,7 @@ Phase 1 → (Phase 2 ‖ Phase 3) → Phase 4 → (Phase 5 ‖ Phase 6) → Phas
 | 3. 밀리 카탈로그 빌드 | 1~2 | 8/8 | Complete (verify 미실행) | 2026-09-06 |
 | 4. 추천 파이프라인과 모델 freeze | 2~3 | 6/6 | Complete | 2026-09-06 |
 | 5. 서빙 Must 완성 | 2~4 | 12/12 | Complete | 2026-09-06 |
-| 6. 데모 재구성 | 2~4 | 0/7 | Planned | - |
+| 6. 데모 재구성 | 2~4 | 8/8 | Complete | 2026-09-06 |
 | 7. 배포 | 2 · 4 | 0/TBD | Not started | - |
 | 8. PDF 제출물 | 4~5 | 0/TBD | Not started | - |
 

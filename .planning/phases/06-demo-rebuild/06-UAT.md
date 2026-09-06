@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 phase: 06-demo-rebuild
 source: [06-VERIFICATION.md, 06-VERIFICATION-NOTES.md, 06-HUMAN-UAT.md]
 started: 2026-09-06
@@ -8,7 +8,7 @@ updated: 2026-09-06
 
 ## Current Test
 
-[3건 응답 완료 — 2번이 이슈로 판정돼 gap 1건 진단·수정 위임]
+[완료 — 3건 응답, Gap 1 수정·검증 종결. Phase 6 닫힘]
 
 ## Tests
 
@@ -41,8 +41,8 @@ result: **passed** — 사용자 "승인합니다"(2026-09-06).
 ## Summary
 
 total: 3
-passed: 2
-issues: 1
+passed: 3
+issues: 0
 pending: 0
 skipped: 0
 blocked: 0
@@ -50,7 +50,7 @@ blocked: 0
 ## Gaps
 
 ### Gap 1 — 서재·쇼케이스에서 저자가 표시되지 않는다
-status: failed
+status: resolved
 plan: 06-08-PLAN.md
 
 **증상.** `#/library` 담은 책 5권과 `#/` 쇼케이스 본인 5권의 저자 자리가 전부 "저자 미상"이다.
@@ -79,3 +79,22 @@ plan: 06-08-PLAN.md
 
 **영향 범위 (7파일).** 계약 2 · 서버 1 · demo 4 + 테스트.
 `src/**` 는 평소 Phase 5·7 세션 소유라 이번에만 사용자 승인으로 이 세션이 편집한다.
+
+**해소 (2026-09-06, `06-08-PLAN.md` · 커밋 `aa73286`~`fee6b19` 6건).**
+계약 2줄(`LibraryBook`·`ShowcaseBook` 각 `authors: str | None = None`) · `privacy_api.py`
+`BOOK_KEYS` 에 단어 1개 · demo 4곳(`make_mock.py` 2곳 · `mock.js` · `d5_library.js` ·
+`d8_showcase.js`). `src/` 변경은 승인받은 3파일 밖으로 새지 않았다.
+
+Advisor 검증 실측 — `uv run pytest` 529 → **534 passed, failed 0** · ruff clean ·
+`/contract-sync` **11/11** 유지(여분 키 0) · `make smoke` PASS · 생성기 재실행 시
+`showcase.json`·`state.json`·`catalog_kr.json` md5 불변(결정성 유지) · 구 형태 grep 0 ·
+250줄 상한 초과 0.
+
+화면 실측(Playwright, `<scratchpad>/pw_demo06/authors_result.json`) —
+쇼케이스 `.case__author` 15칸 전부 실제 저자(예: `헤르만 헤세 / 박병덕 옮김`,
+`빅터 프랭클 / 이시형, 김혜림 옮김`), 서재 `.tile__author` 5칸 전부 실제 저자
+(`채사장` · `이미예` · `비욘 나티코 린데블라드 …` · `김호연` · `김호연`).
+**"저자 미상" 0건 · `book_id` 폴백 0건 · 콘솔 에러 0 · pageerror 0.**
+`p4_showcase.png` · `p3_library_timeline.png` 재캡처 완료.
+
+개발일지 D81 기록(`../../../../.assets/개발일지/2026-09-06_Day2_Phase4_파이프라인과_freeze.md`).
