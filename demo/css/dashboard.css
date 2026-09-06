@@ -80,9 +80,6 @@
 .memo__claim { font-weight:700; margin-bottom:6px }
 .memo__how { color:var(--text-2) }
 .memo__card a { color:var(--accent); font-size:12px; display:inline-block; margin-top:8px; font-family:var(--mono) }
-.roadmap { display:flex; flex-wrap:wrap; gap:8px }
-.roadmap__card { border:1px solid var(--line); color:var(--text-3); border-radius:var(--r-pill); padding:6px 12px; font-size:12px }
-.roadmap__tag { font-family:var(--mono); font-size:10px; margin-left:6px }
 .start { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
 .start .cta { width:auto; padding:0 28px }
 .start__preset {

@@ -4,8 +4,10 @@ import { badge, cover, esc } from "./ui.js";
 import { render as home, dots } from "./d2_home.js";
 
 // 후보 통로 문구. co-read 계열 표현은 데이터가 없어 쓰지 않는다(../.claude/rules/data.md).
+// 서비스 화면에는 "(협업 필터링 아님)" 같은 부정형 단서를 두지 않는다(사용자 결정 2026-09-06).
+// 방법 고지는 쇼케이스 데이터 고지 절이 맡는다 — 통로 이름 자체가 이미 co-read 를 주장하지 않는다.
 const CHANNEL_TEXT = {
-  content: "콘텐츠 유사도 이웃 — 제목·소개 TF-IDF(협업 필터링 아님)",
+  content: "콘텐츠 유사도 이웃 — 제목·소개 TF-IDF",
   popularity: "지금 많이 읽는 책 — 인기 순위(pop_rank) 기반",
 };
 

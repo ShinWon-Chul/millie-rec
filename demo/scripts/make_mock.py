@@ -82,10 +82,11 @@ ROADMAP = (
     "Reviewer-affinity", "Interleaving", "선호 교정 루프", "텍스트 난이도",
     "Two-Tower/ANN", "Kafka/K8s", "피크 autoscaling",
 )
+# 정본은 serving/dashboard_api.py DATA_NOTICE — 글자 단위로 같아야 한다(mock/서버 표류 방지).
 DATA_NOTICE = (
-    "평가 비교표 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리의서재 공개 도서 "
-    "페이지(수치·메타·표지 URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 "
-    "유사도(협업 필터링 아님) · 개인정보 무수집 · 서버 latency는 참고값 · 표지는 밀리 CDN 링크"
+    "평가 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리 공개 도서 페이지(수치·메타·표지 "
+    "URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도 · 개인정보 무수집 · "
+    "서버 latency는 참고값"
 )
 MDE_NOTE = "데모 표본으로 검정하지 않음 — MDE +1%p 검출에 셀당 n만 명"
 KPI_EMPTY_NOTE = "세션 이벤트 집계 전 — 데모 브라우저가 채운다"

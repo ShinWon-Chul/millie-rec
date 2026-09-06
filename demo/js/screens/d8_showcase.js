@@ -65,8 +65,7 @@ function personalCase(s) {
     <div class="case">
       <div class="case__col"><h3>내가 읽은 ${seeds.length}권</h3><div class="case__grid">${seeds.map(book).join("")}</div></div>
       <div class="case__col"><h3>추천 상위 ${recs.length}</h3><div class="case__grid">${recs.map(book).join("")}</div></div>
-    </div>
-    <p class="caption">데모 이웃 = 콘텐츠 유사도(협업 필터링 아님)</p></section>`;
+    </div></section>`;   // 이웃이 콘텐츠 유사도라는 고지는 데이터 고지 절과 책 상세 시트에 있다
 }
 
 function memorable(s) {
@@ -75,7 +74,7 @@ function memorable(s) {
     <div class="memo__claim">${esc(m.claim)}</div>
     <div class="memo__how">${esc(m.how_to_verify)}</div>
     <a href="#/${esc(routeTail(m.route))}">#/${esc(routeTail(m.route))} →</a></div>`).join("");
-  return `<section><h2>심사자가 기억할 5가지</h2><div class="memo">${cards}</div></section>`;
+  return `<section><h2>이 설계의 핵심 5가지</h2><div class="memo">${cards}</div></section>`;
 }
 
 function start() {
@@ -88,12 +87,8 @@ function start() {
     <p class="caption">동선: 취향 설정 → 메인 → 상세 → 뷰어(완독·별점) → 메인 "다음은" 행 → 서재(재설정·철회) → 대시보드</p></section>`;
 }
 
-function roadmap(s) {
-  if (!s.roadmap?.length) return "";
-  const cards = s.roadmap.map((r) =>
-    `<span class="roadmap__card">${esc(r)}<span class="roadmap__tag">roadmap</span></span>`).join("");
-  return `<section><h2>설계만 — production roadmap</h2><div class="roadmap">${cards}</div></section>`;
-}
+// 로드맵 칩 절은 걷었다(사용자 결정 2026-09-06) — '설계만' 범위는 제출 문서 5장이 다룬다.
+// 서버 ShowcaseOut.roadmap 필드는 계약 freeze 라 남겨 두고 화면만 그리지 않는다.
 
 export function render(state) {
   const s = state.showcase;
@@ -102,7 +97,7 @@ export function render(state) {
     return `${head}<div class="page-head"><h1>${TITLE}</h1></div>
       <div class="empty">이 항목은 아직 없음 — 쇼케이스 데이터를 불러오지 못했습니다(GET /api/showcase).</div>${start()}`;
   }
-  return `${head}${header(s, state)}${metricsTable(s)}${start()}${personalCase(s)}${memorable(s)}${roadmap(s)}
+  return `${head}${header(s, state)}${metricsTable(s)}${start()}${personalCase(s)}${memorable(s)}
     <section><h2>데이터 고지</h2><p class="caption">${esc(s.data_notice)}
       밀리의서재 로고는 상표권자의 자산이며, 이 사전과제 데모가 무엇에 관한 것인지 식별하기 위해서만 사용한다.</p></section>`;
 }
