@@ -97,5 +97,6 @@ export function render(state) {
       <div class="empty">이 항목은 아직 없음 — 쇼케이스 데이터를 불러오지 못했습니다(GET /api/showcase).</div>${start()}`;
   }
   return `${head}${header(s, state)}${metricsTable(s)}${start()}${personalCase(s)}${memorable(s)}${roadmap(s)}
-    <section><h2>데이터 고지</h2><p class="caption">${esc(s.data_notice)}</p></section>`;
+    <section><h2>데이터 고지</h2><p class="caption">${esc(s.data_notice)}
+      밀리의서재 로고는 상표권자의 자산이며, 이 사전과제 데모가 무엇에 관한 것인지 식별하기 위해서만 사용한다.</p></section>`;
 }
