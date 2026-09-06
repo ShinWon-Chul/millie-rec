@@ -1,0 +1,47 @@
+/* D4 뷰어 시뮬레이션 · 별점 모달 — 색은 tokens.css 토큰만 쓴다(리터럴 0).
+   --star · --star-off 은 06-05 가 tokens.css 에 넣는다. 없는 동안은 색 상속으로 떨어진다. */
+
+/* ── 상단 표지 + 제목 ── */
+.reader__head { display: flex; gap: 14px; padding: 12px 0 4px; }
+.reader__head .cover { flex: 0 0 72px; width: 72px; aspect-ratio: 2 / 3; }
+.reader__meta { min-width: 0; padding-top: 2px; }
+.reader__title {
+  margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35; letter-spacing: -0.4px;
+}
+.reader__author { margin: 4px 0 0; font-size: var(--fs-author); color: var(--text-2); }
+.reader__pct { margin: 8px 0 0; font-family: var(--mono); font-size: 13px; color: var(--accent); }
+
+/* ── 본문 자리(회색 placeholder — 실제 본문 없음) ── */
+.reader__paper {
+  display: flex; align-items: center; justify-content: center;
+  height: 260px; margin: 12px 0 16px;
+  border-radius: 16px; background: var(--surface);
+  color: var(--text-3); font-size: 14px; text-align: center;
+}
+.reader__paper p { margin: 0 24px; line-height: 1.5; }
+
+/* ── 시뮬레이션 상태 표(가상 시간 · QRS 임계 · 현재 상태) ── */
+.reader__sim {
+  display: grid; grid-template-columns: 150px 1fr; gap: 8px 12px;
+  margin: 0; font-size: 13px;
+}
+.reader__sim dt { color: var(--text-2); }
+.reader__sim dd { margin: 0; font-family: var(--mono); line-height: 1.4; }
+.reader__note { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-3); }
+
+/* ── 조작 버튼 ── */
+.reader__actions { display: flex; gap: 10px; }
+.reader__actions .cta { flex: 1 1 auto; }
+.reader__actions .cta small { margin-left: 6px; font-size: 12px; opacity: 0.7; }
+.reader__actions .sheet__ghost { flex: 0 0 104px; }
+.reader__actions button:disabled { opacity: 0.45; cursor: default; }
+
+/* ── 별점 모달(화면 구성 02 §3 RatingModal — 별 44px, 1탭 즉시 전송) ── */
+.rating__title { margin: 0 0 16px; font-size: 20px; font-weight: 700; text-align: center; }
+.rating__stars { display: flex; justify-content: center; gap: 8px; color: var(--text-3); }
+.rating__star { width:44px; height: 44px; font-size: 34px; line-height: 44px; color: var(--star-off); }
+.rating__star:hover, .rating__star:focus { color: var(--star); }
+.rating__later { display: block; margin: 16px auto 0; font-size: 14px; color: var(--text-2); }
+.rating__note {
+  margin: 12px 0 0; font-size: 11px; line-height: 1.5; color: var(--text-3); text-align: center;
+}
