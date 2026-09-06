@@ -1,17 +1,15 @@
 {
- "recommendation_id": "rec_client_fb",
- "model_version": "static_popular",
+ "recommendation_id": "rec_static",
+ "model_version": "fallback_v1",
  "preference_snapshot_id": null,
  "user_key": null,
- "fallback_level": 3,
  "cell": null,
- "latency_ms": {
-  "feature": 0,
-  "retrieval": 0,
-  "ranking": 0,
-  "rerank": 0,
-  "compose": 0,
-  "total": 0
+ "forced": false,
+ "fallback_level": 3,
+ "context": null,
+ "latency_ms": 0.0,
+ "latency_breakdown": {
+  "total": 0.0
  },
  "user_state_weights": {
   "alpha": 0.0,
@@ -19,578 +17,659 @@
   "gamma": 0.0
  },
  "dedup_removed": 0,
+ "nearline_lag_s": null,
+ "items": [],
  "rows": [
   {
    "row_id": "trending",
    "title": "지금 많이 읽는 책",
    "purpose": "fallback",
-   "channel_mix": {
-    "content": 0,
-    "itemknn": 0,
-    "popularity": 40
-   },
    "items": [
     {
-     "book_id": 1,
-     "title": "The Hunger Games (The Hunger Games, #1)",
-     "authors": "Suzanne Collins",
-     "image_url": "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
+     "book_id": 1004,
+     "score": 40.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "불편한 편의점",
+     "authors": "김호연",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179513691/42ba225f9b6840feabf19f5deadaa6a6.jpg",
      "position": 0,
-     "score": 1.0,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.42206005018777937
     },
     {
-     "book_id": 2,
-     "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg",
+     "book_id": 2081,
+     "score": 39.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "달러구트 꿈 백화점",
+     "authors": "이미예",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179467030/0a02d0ead74b4cbda9e8a945e1c125de.jpg",
      "position": 1,
-     "score": 0.99,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.5681311237051055
     },
     {
-     "book_id": 3,
-     "title": "Twilight (Twilight, #1)",
-     "authors": "Stephenie Meyer",
-     "image_url": "https://images.gr-assets.com/books/1361039443m/41865.jpg",
+     "book_id": 2843,
+     "score": 38.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "세이노의 가르침",
+     "authors": "세이노",
+     "image_url": "https://image.millie.co.kr/service/cover/179590093/6eaa1b2983f341e1891c69a8fa145cc3.jpg",
      "position": 2,
-     "score": 0.98,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.6476647943791002
     },
     {
-     "book_id": 4,
-     "title": "To Kill a Mockingbird",
-     "authors": "Harper Lee",
-     "image_url": "https://images.gr-assets.com/books/1361975680m/2657.jpg",
+     "book_id": 1060,
+     "score": 37.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "돈의 속성 400쇄 개정증보판",
+     "authors": "김승호",
+     "image_url": "https://image.millie.co.kr/service/cover/179466986/baf6ad26ee9a438c9bbaedb2f98d655f.jpg",
      "position": 3,
-     "score": 0.97,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.2845122929771409
     },
     {
-     "book_id": 5,
-     "title": "The Great Gatsby",
-     "authors": "F. Scott Fitzgerald",
-     "image_url": "https://images.gr-assets.com/books/1490528560m/4671.jpg",
+     "book_id": 4320,
+     "score": 36.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "홍학의 자리",
+     "authors": "정해연",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179620124/93ca598bf2744f7d9c34633bf7d0cc4a.jpg",
      "position": 4,
-     "score": 0.96,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.2499162206515874
     },
     {
-     "book_id": 6,
-     "title": "The Fault in Our Stars",
-     "authors": "John Green",
-     "image_url": "https://images.gr-assets.com/books/1360206420m/11870085.jpg",
+     "book_id": 2204,
+     "score": 35.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "구의 증명",
+     "authors": "최진영",
+     "image_url": "https://image.millie.co.kr/service/cover/179482075/71687964b97b47728fd1bfd88d290f1d.jpg",
      "position": 5,
-     "score": 0.95,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.3007115287173277
     },
     {
-     "book_id": 7,
-     "title": "The Hobbit",
-     "authors": "J.R.R. Tolkien",
-     "image_url": "https://images.gr-assets.com/books/1372847500m/5907.jpg",
+     "book_id": 108,
+     "score": 34.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "이기적 유전자",
+     "authors": "리처드 도킨스, 홍영남,이상임 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/15926256/538ef91a7ed34194908a6a68ae86095c.jpg",
      "position": 6,
-     "score": 0.94,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "전자책",
+     "difficulty": 0.8836882774038002
     },
     {
-     "book_id": 8,
-     "title": "The Catcher in the Rye",
-     "authors": "J.D. Salinger",
-     "image_url": "https://images.gr-assets.com/books/1398034300m/5107.jpg",
+     "book_id": 621,
+     "score": 33.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "사피엔스",
+     "authors": "유발 하라리 / 조현욱 옮김",
+     "image_url": "https://image.millie.co.kr/service/cover/7880427/a2f4bd360a964e15836e46b8b32bbaca.jpg",
      "position": 7,
-     "score": 0.93,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "전자책",
+     "difficulty": 0.6950969096172004
     },
     {
-     "book_id": 10,
-     "title": "Pride and Prejudice",
-     "authors": "Jane Austen",
-     "image_url": "https://images.gr-assets.com/books/1320399351m/1885.jpg",
+     "book_id": 1355,
+     "score": 32.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "지적 대화를 위한 넓고 얕은 지식 1",
+     "authors": "채사장",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179462588/e765b2df9df045cb95312c62e848badf.jpg",
      "position": 8,
-     "score": 0.92,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "전자책",
+     "difficulty": 0.6011406085594383
     },
     {
-     "book_id": 9,
-     "title": "Angels & Demons  (Robert Langdon, #1)",
-     "authors": "Dan Brown",
-     "image_url": "https://images.gr-assets.com/books/1303390735m/960.jpg",
+     "book_id": 1467,
+     "score": 31.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "물고기는 존재하지 않는다",
+     "authors": "룰루 밀러 / 정지인",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179555067/1f23ea1aee174b6e832b89f51e2e783b.jpg",
      "position": 9,
-     "score": 0.91,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.3230064679942956
     },
     {
-     "book_id": 15,
-     "title": "The Diary of a Young Girl",
-     "authors": "Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",
-     "image_url": "https://images.gr-assets.com/books/1358276407m/48855.jpg",
+     "book_id": 5585,
+     "score": 30.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "마흔에 읽는 쇼펜하우어",
+     "authors": "강용수",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179624926/fff3a96a31914c90b1a4e2952499848e.jpg",
      "position": 10,
-     "score": 0.9,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.4732563467977996
     },
     {
-     "book_id": 13,
-     "title": "1984",
-     "authors": "George Orwell, Erich Fromm, Celâl Üster",
-     "image_url": "https://images.gr-assets.com/books/1348990566m/5470.jpg",
+     "book_id": 386,
+     "score": 29.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "인간 실격",
+     "authors": "다자이오사무, 김춘미 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/429283/b972ec0811394e2da1ab2476e55e8edf.jpg",
      "position": 11,
-     "score": 0.89,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.4713259368504131
     },
     {
-     "book_id": 12,
-     "title": "Divergent (Divergent, #1)",
-     "authors": "Veronica Roth",
-     "image_url": "https://images.gr-assets.com/books/1328559506m/13335037.jpg",
+     "book_id": 1144,
+     "score": 28.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "데일 카네기 인간관계론",
+     "authors": "데일 카네기, 임상훈 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179464131/a44f936380084d91807d3fa0ff535ff8.jpg",
      "position": 12,
-     "score": 0.88,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.67210924997864
     },
     {
-     "book_id": 14,
-     "title": "Animal Farm",
-     "authors": "George Orwell",
-     "image_url": "https://images.gr-assets.com/books/1424037542m/7613.jpg",
+     "book_id": 753,
+     "score": 27.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "EBS 다큐프라임 자본주의",
+     "authors": "EBS 자본주의 제작팀",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/5501593/75f24a462969420e909b3ce8e6c2bf19.jpg",
      "position": 13,
-     "score": 0.87,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "전자책",
+     "difficulty": 0.4011662061871708
     },
     {
-     "book_id": 18,
-     "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
-     "authors": "J.K. Rowling, Mary GrandPré, Rufus Beck",
-     "image_url": "https://images.gr-assets.com/books/1499277281m/5.jpg",
+     "book_id": 1151,
+     "score": 26.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "오늘 밤, 세계에서 이 사랑이 사라진다 해도",
+     "authors": "이치조 미사키 / 권영주 옮김",
+     "image_url": "https://img.millie.co.kr/400x/service/profile/4071209/f4aabc316a844002a9cf2f6b7272215a.jpeg",
      "position": 14,
-     "score": 0.86,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "전자책",
+     "difficulty": 0.35823596727762685
     },
     {
-     "book_id": 17,
-     "title": "Catching Fire (The Hunger Games, #2)",
-     "authors": "Suzanne Collins",
-     "image_url": "https://images.gr-assets.com/books/1358273780m/6148028.jpg",
+     "book_id": 2205,
+     "score": 25.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "불편한 편의점",
+     "authors": "김호연",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179537543/f5093cdd6cbf418497181fb891a9ae8c.jpg",
      "position": 15,
-     "score": 0.85,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.5803348972292667
     },
     {
-     "book_id": 11,
-     "title": "The Kite Runner",
-     "authors": "Khaled Hosseini",
-     "image_url": "https://images.gr-assets.com/books/1484565687m/77203.jpg",
+     "book_id": 1013,
+     "score": 24.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "용의자 X의 헌신",
+     "authors": "히가시노 게이고 / 양억관 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179567051/6419fa129cef4881a9d6419bd4432b34.jpg",
      "position": 16,
-     "score": 0.84,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.3750747821675164
     },
     {
-     "book_id": 16,
-     "title": "The Girl with the Dragon Tattoo (Millennium, #1)",
-     "authors": "Stieg Larsson, Reg Keeland",
-     "image_url": "https://images.gr-assets.com/books/1327868566m/2429135.jpg",
+     "book_id": 1356,
+     "score": 23.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "지적 대화를 위한 넓고 얕은 지식 0(제로)",
+     "authors": "채사장",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179463933/299efaaf058b45a689628dcd5824faf0.jpg",
      "position": 17,
-     "score": 0.83,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.7563986445137241
     },
     {
-     "book_id": 23,
-     "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1474169725m/15881.jpg",
+     "book_id": 1357,
+     "score": 22.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "지적 대화를 위한 넓고 얕은 지식 0(제로)",
+     "authors": "채사장",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179462586/17d9fdfe342147f6bfc1065413c78400.jpg",
      "position": 18,
-     "score": 0.82,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.5506509704265138
     },
     {
-     "book_id": 19,
-     "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
-     "authors": "J.R.R. Tolkien",
-     "image_url": "https://images.gr-assets.com/books/1298411339m/34.jpg",
+     "book_id": 1917,
+     "score": 21.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "우리가 빛의 속도로 갈 수 없다면",
+     "authors": "김초엽",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179471152/90e88296b00d4483ad97ca549d43eaed.jpg",
      "position": 19,
-     "score": 0.81,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.6459316896424434
     },
     {
-     "book_id": 24,
-     "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1361482611m/6.jpg",
+     "book_id": 3854,
+     "score": 20.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "불편한 편의점 2",
+     "authors": "김호연",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179572960/cbfa5805ee684c30b55c71f1dda3dba9.jpg",
      "position": 20,
-     "score": 0.8,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.523503387057425
     },
     {
-     "book_id": 25,
-     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1474171184m/136251.jpg",
+     "book_id": 8303,
+     "score": 19.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "급류",
+     "authors": "정대건",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179694679/b5e0d9af383e4d199957e495b4e1e88a.jpg",
      "position": 21,
-     "score": 0.79,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": null
     },
     {
-     "book_id": 21,
-     "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1387141547m/2.jpg",
+     "book_id": 1012,
+     "score": 18.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "싯다르타",
+     "authors": "헤르만 헤세 / 박병덕 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg",
      "position": 22,
-     "score": 0.78,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.6308369841585941
     },
     {
-     "book_id": 20,
-     "title": "Mockingjay (The Hunger Games, #3)",
-     "authors": "Suzanne Collins",
-     "image_url": "https://images.gr-assets.com/books/1358275419m/7260188.jpg",
+     "book_id": 8373,
+     "score": 17.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "초역 부처의 말",
+     "authors": "코이케 류노스케",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179663372/7b4855393e864fd5855a624e8b18bf25.jpg",
      "position": 23,
-     "score": 0.77,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.6271923532127393
     },
     {
-     "book_id": 27,
-     "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
-     "authors": "J.K. Rowling, Mary GrandPré",
-     "image_url": "https://images.gr-assets.com/books/1361039191m/1.jpg",
+     "book_id": 570,
+     "score": 16.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "타이탄의 도구들(블랙 에디션)",
+     "authors": "팀페리스 / 박선령, 정지현 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/15653234/85ced2d0a76e4bb38b75ff85c51487cc.jpg",
      "position": 24,
-     "score": 0.76,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "전자책",
+     "difficulty": 0.5700217154382026
     },
     {
-     "book_id": 29,
-     "title": "Romeo and Juliet",
-     "authors": "William Shakespeare, Robert           Jackson",
-     "image_url": "https://images.gr-assets.com/books/1327872146m/18135.jpg",
+     "book_id": 1900,
+     "score": 15.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "스토너",
+     "authors": "존윌리엄스, 김승욱 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179532886/a649b0dc053d4b20b26bcfa09fa0b44a.jpg",
      "position": 25,
-     "score": 0.75,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.5397851186902534
     },
     {
-     "book_id": 22,
-     "title": "The Lovely Bones",
-     "authors": "Alice Sebold",
-     "image_url": "https://images.gr-assets.com/books/1457810586m/12232938.jpg",
+     "book_id": 2207,
+     "score": 14.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "천 개의 파랑",
+     "authors": "천선란",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179496644/7bd031d4093d46749b04f4d0a9b34343.jpg",
      "position": 26,
-     "score": 0.74,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.47049976017801304
     },
     {
-     "book_id": 28,
-     "title": "Lord of the Flies",
-     "authors": "William Golding",
-     "image_url": "https://images.gr-assets.com/books/1327869409m/7624.jpg",
+     "book_id": 1001,
+     "score": 13.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "두고 온 여름",
+     "authors": "성해나",
+     "image_url": "https://image.millie.co.kr/service/cover/180064473/b02cf2a796724a369c1dcc961dd68252.jpg",
      "position": 27,
-     "score": 0.73,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.1827450264053981
     },
     {
-     "book_id": 37,
-     "title": "The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)",
-     "authors": "C.S. Lewis",
-     "image_url": "https://images.gr-assets.com/books/1353029077m/100915.jpg",
+     "book_id": 1928,
+     "score": 12.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "어서 오세요, 휴남동 서점입니다",
+     "authors": "황보름",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179544336/993c760a07314817872211e74221c01c.jpg",
      "position": 28,
-     "score": 0.72,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.4735526108881144
     },
     {
-     "book_id": 31,
-     "title": "The Help",
-     "authors": "Kathryn Stockett",
-     "image_url": "https://images.gr-assets.com/books/1346100365m/4667024.jpg",
+     "book_id": 2688,
+     "score": 11.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "부의 추월차선 10주년 기념 에디션",
+     "authors": "엠제이 드마코 저 / 신소영",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179470430/0a26c686201c440d89a0edb0ebcc0106.jpg",
      "position": 29,
-     "score": 0.71,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "챗북",
+     "difficulty": 0.504163775221258
     },
     {
-     "book_id": 32,
-     "title": "Of Mice and Men",
-     "authors": "John Steinbeck",
-     "image_url": "https://images.gr-assets.com/books/1437235233m/890.jpg",
+     "book_id": 2765,
+     "score": 10.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "데미안",
+     "authors": "헤르만 헤세 / 전영애 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179593874/faf2484da8c840ab8cd4e12aa6a91aba.jpg",
      "position": 30,
-     "score": 0.7,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.7648646436278157
     },
     {
-     "book_id": 26,
-     "title": "The Da Vinci Code (Robert Langdon, #2)",
-     "authors": "Dan Brown",
-     "image_url": "https://images.gr-assets.com/books/1303252999m/968.jpg",
+     "book_id": 4236,
+     "score": 9.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "혼모노",
+     "authors": "성해나",
+     "image_url": "https://image.millie.co.kr/service/cover/180114011/979257e6cef44a3f85f6937465d8f332.jpg",
      "position": 31,
-     "score": 0.69,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.5595598102999384
     },
     {
-     "book_id": 41,
-     "title": "The Lightning Thief (Percy Jackson and the Olympians, #1)",
-     "authors": "Rick Riordan",
-     "image_url": "https://images.gr-assets.com/books/1400602609m/28187.jpg",
+     "book_id": 1206,
+     "score": 8.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "영어 필사 100일의 기적",
+     "authors": "퍼포먼스 코치 리아",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179551393/6eb29836e75c45dfba29bb4d50eacead.jpg",
      "position": 32,
-     "score": 0.68,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.717809072631776
     },
     {
-     "book_id": 34,
-     "title": "Fifty Shades of Grey (Fifty Shades, #1)",
-     "authors": "E.L. James",
-     "image_url": "https://images.gr-assets.com/books/1385207843m/10818853.jpg",
+     "book_id": 2906,
+     "score": 7.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "달러구트 꿈 백화점",
+     "authors": "이미예",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179467030/a8c1de995d3e4cf09bac87975692469c.jpg",
      "position": 33,
-     "score": 0.67,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": null
     },
     {
-     "book_id": 39,
-     "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
-     "authors": "George R.R. Martin",
-     "image_url": "https://images.gr-assets.com/books/1436732693m/13496.jpg",
+     "book_id": 4318,
+     "score": 6.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "역행자 : 확장판",
+     "authors": "자청",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179607538/beb6900006a24d92874dc397a9f7a058.jpg",
      "position": 34,
-     "score": 0.66,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.2856691084805847
     },
     {
-     "book_id": 33,
-     "title": "Memoirs of a Geisha",
-     "authors": "Arthur Golden",
-     "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+     "book_id": 1015,
+     "score": 5.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "나미야 잡화점의 기적",
+     "authors": "히가시노 게이고 / 양윤옥 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179585446/32fd53251b6b4bbf9d578b39d0a88aec.jpg",
      "position": 35,
-     "score": 0.65,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "전자책",
+     "difficulty": 0.5879898781187733
     },
     {
-     "book_id": 35,
-     "title": "The Alchemist",
-     "authors": "Paulo Coelho, Alan R. Clarke",
-     "image_url": "https://images.gr-assets.com/books/1483412266m/865.jpg",
+     "book_id": 2206,
+     "score": 4.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "달러구트 꿈 백화점 2",
+     "authors": "이미예",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179531408/bf44e44b14ae46ae8e042739d47d986a.jpg",
      "position": 36,
-     "score": 0.64,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": "PDF"
+     "book_format": "오디오북",
+     "difficulty": 0.4380874624108258
     },
     {
-     "book_id": 36,
-     "title": "The Giver (The Giver, #1)",
-     "authors": "Lois Lowry",
-     "image_url": "https://images.gr-assets.com/books/1342493368m/3636.jpg",
+     "book_id": 7126,
+     "score": 3.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "눈물을 마시는 새 1",
+     "authors": "이영도",
+     "image_url": "https://image.millie.co.kr/service/cover/179574053/03fb008170a4474f8f5e5fc660a58455.jpg",
      "position": 37,
-     "score": 0.63,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.5720615182764235
     },
     {
-     "book_id": 42,
-     "title": "Little Women (Little Women, #1)",
-     "authors": "Louisa May Alcott",
-     "image_url": "https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png",
+     "book_id": 1332,
+     "score": 2.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "프로젝트 헤일메리",
+     "authors": "앤디 위어",
+     "image_url": "https://image.millie.co.kr/service/cover/180111232/352ca7e3e4fb4a92ad0c84a82563516f.jpg",
      "position": 38,
-     "score": 0.62,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.7634835760012052
     },
     {
-     "book_id": 43,
-     "title": "Jane Eyre",
-     "authors": "Charlotte Brontë, Michael Mason",
-     "image_url": "https://images.gr-assets.com/books/1327867269m/10210.jpg",
+     "book_id": 2292,
+     "score": 1.0,
+     "source": "popularity",
+     "reason": null,
+     "title": "빅터 프랭클의 죽음의 수용소에서",
+     "authors": "빅터프랭클, 이시형 옮김",
+     "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg",
      "position": 39,
-     "score": 0.61,
      "source_channels": [
       "popularity"
      ],
      "badge": null,
-     "reason": null,
-     "format": null
+     "book_format": "오디오북",
+     "difficulty": 0.4732563467977996
     }
-   ]
+   ],
+   "subtitle": null,
+   "channel_mix": {
+    "popularity": 40
+   }
   }
  ]
 }
