@@ -10,7 +10,7 @@ progress:
   total_phases: 8
   completed_phases: 5
   total_plans: 41
-  completed_plans: 35
+  completed_plans: 36
   percent: 83
 ---
 
@@ -27,7 +27,10 @@ See: .planning/PROJECT.md (updated 2026-09-05)
 
 Phase: 5 '서빙 Must 완성' ✅ · 3 '밀리 카탈로그 빌드' ✅ · 6 '데모 재구성' ✅ 완료(다른 세션 — UAT 3/3, Gap 1 `authors` optional 종결) · 7 '배포' 실행 중(4 plans·4 waves 중 wave 1 완료)
 Plan: 07-01 ✅(sentry-sdk + `init_sentry()` fail-open · 게이트 20/20 · 전역 535 passed · docker 스모크 PASS · Codex 3분류 F1 반영) · 07-02~04 대기. **push 0** — 07-02 Task 1 에서 승인 시 커밋 16개(대부분 Phase 6)가 함께 올라간다. 사용자 몫: Railway 결제·프로젝트 생성(35분)
-Status: Ready to execute 07-02 '스켈레톤 배포'(Phase 7 '배포' wave 2)
+Status: 07-02 '스켈레톤 배포' ✅ 완료(Task 1~3) — 다음 07-03 '본배포'(Phase 6 완료 게이트 → SENTRY_DSN → push)
+Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지)
+Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN 보관(Railway 미투입, 07-03)
+Downtime(D-14, /health 5초 폴링): 코드 push 재배포 **약 5~15초**(실패 1표본 ×3회: 502·502·연결끊김) · 볼륨 최초 부착 재배포 **30~40초**(404 6표본). ⚠️ railway.json 은 Railway 정책(Config as Code 2026-08-28 옵트인 종료)으로 **무효** — healthcheckPath 는 대시보드 수동 입력, 07-04 문서 정정
 Last activity: 2026-09-06
 
 Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 통과 · Phase 3 검증(/gsd-verify-work 3)만 남음)
@@ -73,7 +76,7 @@ Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 �
 | Day | 최소 종료 조건 | 상태 |
 |-----|---------------|------|
 | 1 | Phase 1 스켈레톤 `make smoke` PASS ✅(09-05) · `pop` Recall@20 실측 1개 ✅(09-05, `results/latest.csv` pop 0.063) · `millie_pages.jsonl` ≥600 ✅(09-05, 8,810줄) | ✅ |
-| 2 | 커버리지 게이트·이웃 게이트 3 통과 ✅(09-05 20:28, 8,708권 스냅샷 — 최종 재빌드 대기) · Recall 3행 ⬜ · 배포 URL `/health` 200·볼륨 영구 확인 ⬜ | 🔶 |
+| 2 | 커버리지 게이트·이웃 게이트 3 통과 ✅(09-05 20:28, 8,708권 스냅샷 — 최종 재빌드 대기) · Recall 3행 ✅(09-06 비교표 4행) · 배포 URL `/health` 200 ✅(09-06 13:07, `millie-rec-production.up.railway.app`) · 볼륨 영구 확인 ✅(09-06 13:55 재배포 후 표식 행 유지) | ✅ |
 | 3 | 비교표 4행 실측 ✅(09-06, `results/latest.csv`·D-07 게이트 통과) · 본인 5권 케이스 ✅(`report/demo_5books.md`, SEEDS=1012,2765,1446,1222,2292) · **모델·API 형태 freeze 선언 ✅ 🧊**(09-06 00:5x, D-14 4종 — STATE·개발일지 D72·draft §4-1 각주·§5-1) | ✅ |
 | 4 | 배포 URL에서 쇼케이스 화면(`#/`) → 관제 대시보드 화면(`#/dashboard`) 완주, variant 전환 시 책이 바뀐다 | ⬜ |
 | 5 | `/pdf-check` 통과 · 5페이지 이내 · 제출(09-08 22:00 KST 가정) | ⬜ |
