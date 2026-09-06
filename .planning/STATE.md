@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
 status: executing
-stopped_at: Phase 6 '데모 재구성' 완료(다른 세션, 06-08 Gap 1 종결 `1ec59df`) · Phase 7 '배포' wave 1(07-01 코드 준비) 완료·커밋 `68cef80`·`ec1a007` — 다음 /gsd-execute-phase 7 --wave 2 (07-02 스켈레톤 배포, 사용자 Railway 결제·프로젝트 생성 35분 선행)
-last_updated: "2026-09-06T11:55:00.000Z"
+stopped_at: Phase 7 '배포' wave 3(07-03 본배포) 완료 — push `9fb53ab` 14:34 KST → Active 14:48 · 배포 URL 완주 12/12·4 variant 전환 ✅ · Day 게이트 4 ✅ — 다음 /gsd-execute-phase 7 --wave 4 (07-04 문서·캡처·Codex 마감)
+last_updated: "2026-09-06T06:00:00.000Z"
 last_activity: 2026-09-06
 progress:
   total_phases: 8
@@ -21,15 +21,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-09-05)
 
 **Core value:** 설계서의 주장(취향 설정은 갱신되는 explicit prior · 4단계 파이프라인 · 3지표 1:1 대응 · 앵커/난이도/시간 가변 가중치)이 로컬에서 실행되는 코드와 실측 숫자로 증명되어 PDF 5페이지 안에 들어간다. 데모·서버가 죽어도 PDF는 완결된다.
-**Current focus:** Phase 7 '배포' — wave 1 완료, wave 2(스켈레톤 배포) 대기
+**Current focus:** Phase 7 '배포' — wave 3 완료(본배포·Day 4 ✅), wave 4(07-04 문서·캡처·Codex 마감) 대기
 
 ## Current Position
 
-Phase: 5 '서빙 Must 완성' ✅ · 3 '밀리 카탈로그 빌드' ✅ · 6 '데모 재구성' ✅ 완료(다른 세션 — UAT 3/3, Gap 1 `authors` optional 종결) · 7 '배포' 실행 중(4 plans·4 waves 중 wave 1 완료)
+Phase: 5 '서빙 Must 완성' ✅ · 3 '밀리 카탈로그 빌드' ✅ · 6 '데모 재구성' ✅ 완료(다른 세션 — UAT 3/3, Gap 1 `authors` optional 종결) · 7 '배포' 실행 중(4 plans·4 waves 중 wave 3 완료 — 07-03 이 Phase 6 api 완주 게이트 겸 통과)
 Plan: 07-01 ✅(sentry-sdk + `init_sentry()` fail-open · 게이트 20/20 · 전역 535 passed · docker 스모크 PASS · Codex 3분류 F1 반영) · 07-02~04 대기. **push 0** — 07-02 Task 1 에서 승인 시 커밋 16개(대부분 Phase 6)가 함께 올라간다. 사용자 몫: Railway 결제·프로젝트 생성(35분)
-Status: 07-02 '스켈레톤 배포' ✅ 완료(Task 1~3) — 다음 07-03 '본배포'(Phase 6 완료 게이트 → SENTRY_DSN → push)
-Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지)
-Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN 보관(Railway 미투입, 07-03)
+Status: 07-03 '본배포' ✅ 완료(Task 1~3, 사용자 approved 14:5x) — 다음 07-04(PROGRESS·개발일지 D82·draft 캡처 6장+QR·DEPLOY-04 폐기·Codex 배포 전체 리뷰·표식 `probe-main-20260906` 이름 확인)
+Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지 · **본배포 9fb53ab 2026-09-06 14:48**(push 14:34:53 → Active 14:48:19, Dockerfile 변경 빌드 13.5분) · SENTRY_DSN 투입 14:2x · 배포 완주 Playwright 12/12 콘솔 에러 0 · 4 variant distinct 4 · showcase p95 79.5 표시 · 신규 표식 `probe-main-20260906` level 0 — 이름 기준 영구성 확인은 07-04 push 때)
+Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN **Railway 투입 완료**(07-03, 배포 로그 sentry 에러 0)
 Downtime(D-14, /health 5초 폴링): 코드 push 재배포 **약 5~15초**(실패 1표본 ×3회: 502·502·연결끊김) · 볼륨 최초 부착 재배포 **30~40초**(404 6표본). ⚠️ railway.json 은 Railway 정책(Config as Code 2026-08-28 옵트인 종료)으로 **무효** — healthcheckPath 는 대시보드 수동 입력, 07-04 문서 정정
 Last activity: 2026-09-06
 
@@ -78,7 +78,7 @@ Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 �
 | 1 | Phase 1 스켈레톤 `make smoke` PASS ✅(09-05) · `pop` Recall@20 실측 1개 ✅(09-05, `results/latest.csv` pop 0.063) · `millie_pages.jsonl` ≥600 ✅(09-05, 8,810줄) | ✅ |
 | 2 | 커버리지 게이트·이웃 게이트 3 통과 ✅(09-05 20:28, 8,708권 스냅샷 — 최종 재빌드 대기) · Recall 3행 ✅(09-06 비교표 4행) · 배포 URL `/health` 200 ✅(09-06 13:07, `millie-rec-production.up.railway.app`) · 볼륨 영구 확인 ✅(09-06 13:55 재배포 후 표식 행 유지) | ✅ |
 | 3 | 비교표 4행 실측 ✅(09-06, `results/latest.csv`·D-07 게이트 통과) · 본인 5권 케이스 ✅(`report/demo_5books.md`, SEEDS=1012,2765,1446,1222,2292) · **모델·API 형태 freeze 선언 ✅ 🧊**(09-06 00:5x, D-14 4종 — STATE·개발일지 D72·draft §4-1 각주·§5-1) | ✅ |
-| 4 | 배포 URL에서 쇼케이스 화면(`#/`) → 관제 대시보드 화면(`#/dashboard`) 완주, variant 전환 시 책이 바뀐다 | ⬜ |
+| 4 | 배포 URL에서 쇼케이스 화면(`#/`) → 관제 대시보드 화면(`#/dashboard`) 완주 ✅(09-06 14:5x, Playwright 12/12·콘솔 에러 0 + 사용자 approved) · variant 전환 시 책이 바뀐다 ✅(4 variant 제목 목록 4종) | ✅ |
 | 5 | `/pdf-check` 통과 · 5페이지 이내 · 제출(09-08 22:00 KST 가정) | ⬜ |
 
 ### Pending Todos
