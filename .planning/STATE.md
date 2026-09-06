@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
-status: "07-04 '마감' ✅ — 게이트 12행 · 캡처 6장+QR(`report/figures/`, repo 밖) · draft §3-3·§5-3 · 기록 4곳(PROGRESS 3행 · 개발일지 D85 · 아키텍처 01 §2-1) · Codex 2회차 5건(C3·C4 반영, C1·C5 인계, C2 무시) · 사용자 지시 데모 버그(`startFresh`) 수정 · 커밋 3 push `ad8cd4a..8455408` 16:33:37 → Active 16:34:23(다운 1표본) · **표식 `probe-main-20260906` state 200(이름 기준 볼륨 확인)** · 배포본 fresh_check PASS · C3 실측 403. 운영 인계는 07-04-SUMMARY"
-stopped_at: Phase 8 'PDF 제출물' context gathered (08-CONTEXT.md D-01~D-18) — 다음 /gsd-plan-phase 8
-last_updated: "2026-09-06T09:15:33.751Z"
-last_activity: 2026-09-06
+status: executing
+stopped_at: Phase 8 'PDF 제출물' planned — 5 plans(08-01~05, wave 1~5 순차, 08-04·08-05 사용자 체크포인트) · checker 2회+architect 1회 BLOCKER 0 · D-19 완독 후 추천 플로우 포함 — 다음 /gsd-execute-phase 8
+last_updated: "2026-09-06T10:31:10.503Z"
+last_activity: 2026-09-06 -- Phase 8 planning complete
 progress:
   total_phases: 8
   completed_phases: 7
-  total_plans: 46
+  total_plans: 51
   completed_plans: 46
-  percent: 100
+  percent: 90
 ---
 
 # Project State
@@ -27,11 +27,11 @@ See: .planning/PROJECT.md (updated 2026-09-05)
 
 Phase: 8
 Plan: Not started
-Status: 07-04 '마감' ✅ — 게이트 12행 · 캡처 6장+QR(`report/figures/`, repo 밖) · draft §3-3·§5-3 · 기록 4곳(PROGRESS 3행 · 개발일지 D85 · 아키텍처 01 §2-1) · Codex 2회차 5건(C3·C4 반영, C1·C5 인계, C2 무시) · 사용자 지시 데모 버그(`startFresh`) 수정 · 커밋 3 push `ad8cd4a..8455408` 16:33:37 → Active 16:34:23(다운 1표본) · **표식 `probe-main-20260906` state 200(이름 기준 볼륨 확인)** · 배포본 fresh_check PASS · C3 실측 403. 운영 인계는 07-04-SUMMARY
+Status: Ready to execute
 Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지 · **본배포 9fb53ab 2026-09-06 14:48**(push 14:34:53 → Active 14:48:19, Dockerfile 변경 빌드 13.5분) · SENTRY_DSN 투입 14:2x · 배포 완주 Playwright 12/12 콘솔 에러 0 · 4 variant distinct 4 · showcase p95 79.5 표시 · 신규 표식 `probe-main-20260906` level 0 · **07-04 push `8455408` 16:34 재배포 후 `/state` 200 — 이름 기준 영구성 확인 ✅**)
 Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN **Railway 투입 완료**(07-03, 배포 로그 sentry 에러 0)
 Downtime(D-14, /health 5초 폴링): 코드 push 재배포 **약 5~15초**(실패 1표본 ×3회: 502·502·연결끊김) · 볼륨 최초 부착 재배포 **30~40초**(404 6표본). ⚠️ railway.json 은 Railway 정책(Config as Code 2026-08-28 옵트인 종료)으로 **무효** — healthcheckPath 는 대시보드 수동 입력, 07-04 문서 정정
-Last activity: 2026-09-06
+Last activity: 2026-09-06 -- Phase 8 planning complete
 
 Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 통과 · Phase 3 검증(/gsd-verify-work 3)만 남음)
 
@@ -105,5 +105,5 @@ Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 �
 ## Session Continuity
 
 Last session: 2026-09-06T09:15:33.749Z
-Stopped at: Phase 8 'PDF 제출물' context gathered (08-CONTEXT.md D-01~D-18) — 다음 /gsd-plan-phase 8
+Stopped at: Phase 8 'PDF 제출물' planned(5 plans) — 다음 /gsd-execute-phase 8
 Resume file: .planning/phases/08-pdf/08-CONTEXT.md
