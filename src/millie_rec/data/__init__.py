@@ -33,6 +33,7 @@ from millie_rec.data.onboarding import (
     mask_onboarding,
     select_test_users,
 )
+from millie_rec.data.segment_popularity import SegmentPopularity
 from millie_rec.data.split import TEST_FRAC, Split, split
 from millie_rec.data.vectors_kr import VECTORS_KR_NPZ, VectorsKR
 
@@ -56,6 +57,7 @@ __all__ = [
     "VECTORS_KR_NPZ",
     "CatalogKR",
     "OnboardingStates",
+    "SegmentPopularity",
     "Split",
     "VectorsKR",
     "build_goodbooks",

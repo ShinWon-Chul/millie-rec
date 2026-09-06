@@ -24,7 +24,8 @@ SQL_USER_INS = "INSERT INTO users(user_key, created_at, consent, cell, is_new) V
 SQL_USER_CONSENT = "UPDATE users SET consent = ? WHERE user_key = ?"
 SQL_SNAP_INS = (
     "INSERT INTO preference_snapshots(snapshot_id, user_key, created_at, reading_time, categories,"
-    " criterion, subcategories, seeds, persona) VALUES(?,?,?,?,?,?,?,?,?)"
+    " criterion, subcategories, seeds, persona, reading_times, criteria, authors)"
+    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
 )
 SQL_SNAP_COUNT = "SELECT COUNT(*) FROM preference_snapshots WHERE user_key = ?"
 SQL_LIB_ADD = (  # D-08 seeds 자동 기록. payload 는 빈 JSON, quality_flag 는 NULL
@@ -70,12 +71,17 @@ def build_router(
         now_s, con = _iso(clock()), db.connect()
         row = con.execute(SQL_USER, (body.user_key,)).fetchone()
         cell = row[0] if row else assign_cell(body.user_key)
-        persona = assign_persona(body.categories, labels.get(body.criterion))
+        # 다중 선택. 단수는 "처음 고른 값" — 배지·페르소나가 이걸 쓴다(데이터 소스 09 §3-3)
+        times = list(body.reading_times) or ([body.reading_time] if body.reading_time else [])
+        crits = list(body.criteria) or ([body.criterion] if body.criterion else [])
+        rt, crit = (times[0] if times else None), (crits[0] if crits else None)
+        persona = assign_persona(body.categories, labels.get(crit))
         sid = new_id("snap_")
         seeds = list(body.seeds) if body.consent else []  # consent=false 면 seeds 미저장
-        snap = (sid, body.user_key, now_s, body.reading_time, _j(body.categories), body.criterion)
+        snap = (sid, body.user_key, now_s, rt, _j(body.categories), crit)
         tail = (EVENT_LIBRARY_ADD, now_s, SURFACE_ONBOARDING, sid, body.candidate_set_id)
-        rest = (_j(body.subcategories), _j(seeds), _j(asdict(persona)))
+        rest = (_j(body.subcategories), _j(seeds), _j(asdict(persona)),
+                _j(times), _j(crits), _j(list(body.authors)))  # fmt: skip
         with con:  # 확정 16: with con 으로 커밋
             if row is None:
                 con.execute(SQL_USER_INS, (body.user_key, now_s, int(body.consent), cell))

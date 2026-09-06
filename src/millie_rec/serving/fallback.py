@@ -14,6 +14,8 @@ TRENDING_ROW_ID = "trending"  # contracts.ROW_IDS 안
 TRENDING_TITLE = "지금 많이 읽는 책"  # 백엔드 01 §5 응답 예시. Phase 5 compose.py 가 재사용
 TRENDING_PURPOSE = "fallback"  # contracts.ROW_PURPOSES 안
 SOURCE_POPULARITY = "popularity"  # contracts.Candidate.source 허용값
+SEG_POOL_FACTOR = 3  # 세그먼트 후보를 k 의 3배 받는다 — eligible·seen 탈락 여유
+SEG_POOL_FACTOR_CAT = 60  # 카테고리 교집합용. k*3 은 행 12권 충족 30.8%, k*60 은 100%(09-07 실측)
 CacheKey = tuple[str, str, str]  # (user_key, snapshot_id, variant) — D-10 캐시 키
 
 
@@ -41,13 +43,29 @@ def trending_row(items: Sequence[ScoredItem]) -> Row:
 
 
 def segment_popular(
-    catalog: Catalog | None, user: UserState, categories: Sequence[str], k: int
+    catalog: Catalog | None,
+    user: UserState,
+    categories: Sequence[str],
+    k: int,
+    *,
+    segpop=None,  # data.SegmentPopularity — serving 은 data 를 import 못 해 타입을 적지 않는다
+    segment: str | None = None,
 ) -> list[ScoredItem]:
-    """level 2 재료 — popular(categories) 에서 seen 을 뺀 상위 k. categories 가 비면 전역."""
+    """level 2 재료 — 신호 우선순위는 카테고리 > 세그먼트 > 전역. 세그먼트 rank 순서를 유지한다."""
     if catalog is None:
         return []
-    pool = catalog.popular(list(categories), n=k + len(user.seen))
-    ids = [b for b in pool if b not in user.seen][:k]
+    ids: list[int] = []
+    if segpop is not None and segment is not None:  # 연령×성별 세그먼트 rank 순서를 유지한다
+        pool = segpop.ranked(segment, k * (SEG_POOL_FACTOR_CAT if categories else SEG_POOL_FACTOR))
+        ok = set(catalog.eligible(pool))
+        if categories:  # 카테고리 밖의 책은 세그먼트 순위가 높아도 뺀다. meta 는 한 번만
+            wanted = set(categories)
+            ok &= {int(m["book_id"]) for m in catalog.meta(pool)
+                   if wanted & set(m.get("categories") or ())}  # fmt: skip
+        ids = [b for b in pool if b in ok and b not in user.seen][:k]
+    if not ids:  # 세그먼트가 비었거나 전부 걸러졌다 — 폴백의 폴백(이 단계에서 빈 응답 금지)
+        pool = catalog.popular(list(categories), n=k + len(user.seen))
+        ids = [b for b in pool if b not in user.seen][:k]
     return [
         ScoredItem(
             book_id=b,

@@ -1,18 +1,19 @@
 {
- "generated_at": "2026-09-06T12:30:04.651684+00:00",
+ "generated_at": "2026-09-06T15:42:27.540852+00:00",
  "seed": 42,
  "generator": "demo/scripts/make_mock.py",
  "inputs": {
   "books_kr.json": "95cb904910221f98c9676dde98b99319",
   "item_edges_kr.json": "844fae4b18114499da7062a7c2ff0b82",
   "eval_table.json": "841c93ad476ae216aac2dd00ffaa7ebe",
-  "onboarding.json": "508b185a3a3c749e0ba966bff50c7489"
+  "onboarding.json": "0508b1dc3fb3933cf2ddf23a56a20076"
  },
  "outputs": {
   "catalog_kr.json": 4817506,
   "neighbors_kr.json": 2287133,
   "meta_onboarding.json": 10097,
   "candidates_onboarding.json": 8302,
+  "authors_onboarding.json": 13479,
   "preferences_response.json": 424,
   "state.json": 1695,
   "dashboard.json": 1340,

@@ -53,10 +53,10 @@ class Cascade:
 
     def __init__(self, pipelines, fallback, *, catalog=None, db, neighbors=None, store=None,
                  cache, weights=None, default=None, all_categories=(), criteria_labels=None,
-                 now: Callable[[], float] | None = None) -> None:  # fmt: skip
+                 segpop=None, now: Callable[[], float] | None = None) -> None:  # fmt: skip
         self.pipelines, self.fallback, self.catalog, self.db = pipelines, fallback, catalog, db
         self.neighbors, self.store, self.cache, self.weights = neighbors, store, cache, weights
-        self.default, self.all_categories = default, tuple(all_categories)
+        self.default, self.all_categories, self.segpop = default, tuple(all_categories), segpop
         self.criteria_labels = criteria_labels or {}  # criterion id → 라벨(응답 문구용)
         self._now = now or time.time
 
@@ -123,6 +123,7 @@ class Cascade:
             rows, dd = compose_rows(items=items, catalog=self.catalog, neighbors=self.neighbors,
                                     level=FALLBACK_PERSONALIZED, seeds=r.seeds,
                                     categories=r.categories, criterion=r.criterion,
+                                    criteria=r.criteria, picked_authors=r.authors,
                                     persona_name=r.persona_name, continue_ids=conts,
                                     read_ids=user.history, all_categories=self.all_categories,
                                     after_completion=stored(store, r.user_key))  # fmt: skip

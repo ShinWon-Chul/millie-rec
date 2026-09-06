@@ -19,7 +19,7 @@ import { render as d8 } from "./screens/d8_showcase.js";
 const VARIANTS = ["pop", "cf", "hybrid", "hybrid_div"];
 const QUALIFIED_READ_MINUTES = 15;
 const BATCH = 50;
-const EMPTY_PREFS = () => ({ readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] });
+const EMPTY_PREFS = () => ({ readingTimes: [], categories: [], criteria: [], authors: [], subcategories: [], seedBooks: [] });
 
 const state = {
   route: { page: "showcase", params: {} },
@@ -32,7 +32,7 @@ const state = {
   prefs: EMPTY_PREFS(),
   steps: [],
   meta: null,
-  candidateSet: { id: null, items: [], impressions: [] },
+  candidateSet: { id: null, items: [], impressions: [] }, authorSet: { items: [] },
   snapshots: [],
   model: null,
   recommend: null,
@@ -64,7 +64,7 @@ function setState(patch) {
 }
 
 const snap = () => state.snapshots[state.snapshots.length - 1];
-const criterionId = () => state.meta?.criteria?.find((c) => c.label === state.prefs.criterion)?.id ?? null;
+const criterionIds = () => (state.prefs.criteria ?? []).map((l) => state.meta?.criteria?.find((c) => c.label === l)?.id).filter(Boolean);
 
 let flushTimer = null;
 let impressedRecId = null;
@@ -155,7 +155,7 @@ function toast(msg) {
 async function requestRecommend() {
   state.recommend = await api.getRecommend(state.source, {
     userKey: state.userKey, snapshotId: snap()?.id ?? null,
-    model: state.model, k: 40, context: state.prefs.readingTime,
+    model: state.model, k: 40, context: state.prefs.readingTimes.join(","),
   });
   const r = state.recommend;
   state.nearlineLagSec = r?.nearline_lag_s ?? null;
@@ -184,7 +184,7 @@ async function onRoute(route) {
   const p = route.page;
   try {
     if (p === "showcase") state.showcase ??= await api.getShowcase(state.source);
-    if (p === "onboarding" && !state.prefs.readingTime && state.screen !== "S6") {
+    if (p === "onboarding" && !state.prefs.readingTimes.length && state.screen !== "S6") {
       Object.assign(state, { resetting: false, screen: "S0" });
     }
     if (p === "refresh") {
@@ -217,7 +217,7 @@ async function onRoute(route) {
 }
 
 const ACTIONS = createActions({
-  state, setState, render, log, snap, criterionId, requestRecommend,
+  state, setState, render, log, snap, criterionIds, requestRecommend,
   api, presets, VARIANTS, QUALIFIED_READ_MINUTES, toast,
 });
 

@@ -1,0 +1,426 @@
+{
+ "survey_variant": "v1",
+ "created_at": "2026-09-06T00:00:00+00:00",
+ "items": [
+  {
+   "name": "강용수",
+   "book_id": 5585,
+   "title": "마흔에 읽는 쇼펜하우어",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179624926/fff3a96a31914c90b1a4e2952499848e.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "구병모",
+   "book_id": 3336,
+   "title": "파과",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/180082206/380a927c6d3e4bbea3c49ddd86990c98.jpg",
+   "n_books": 4
+  },
+  {
+   "name": "글배우",
+   "book_id": 720,
+   "title": "지쳤거나 좋아하는 게 없거나",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179456492/b0715bdd2f3446d3be766333c1f02d7f.jpg",
+   "n_books": 10
+  },
+  {
+   "name": "김난주",
+   "book_id": 1225,
+   "title": "가면 산장 살인 사건",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179567052/245d92a60a4f4ed492f81f7564a78455.jpg",
+   "n_books": 9
+  },
+  {
+   "name": "김동식",
+   "book_id": 877,
+   "title": "회색 인간",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15788255/61fc6aa1edd54e9ab9b137fb2eead6ae.jpg",
+   "n_books": 16
+  },
+  {
+   "name": "김선형",
+   "book_id": 799,
+   "title": "가재가 노래하는 곳",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/37781287/d022459b4948433d9593fb9ce8e26a07.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "김승호",
+   "book_id": 1060,
+   "title": "돈의 속성 400쇄 개정증보판",
+   "image_url": "https://image.millie.co.kr/service/cover/179466986/baf6ad26ee9a438c9bbaedb2f98d655f.jpg",
+   "n_books": 10
+  },
+  {
+   "name": "김애란",
+   "book_id": 1014,
+   "title": "안녕이라 그랬어",
+   "image_url": "https://image.millie.co.kr/service/cover/180143984/4ee43ecb7a2749fe89fff46ad6e18841.jpg",
+   "n_books": 7
+  },
+  {
+   "name": "김주환",
+   "book_id": 2849,
+   "title": "회복탄력성",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179464097/1ee88e6a26bb47a2b41a916816eb73ef.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "김초엽",
+   "book_id": 1917,
+   "title": "우리가 빛의 속도로 갈 수 없다면",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179471152/90e88296b00d4483ad97ca549d43eaed.jpg",
+   "n_books": 16
+  },
+  {
+   "name": "김혜남",
+   "book_id": 1476,
+   "title": "만일 내가 인생을 다시 산다면",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179580677/ea926cd186014095befc4e647a6d5c0e.jpg",
+   "n_books": 18
+  },
+  {
+   "name": "김호연",
+   "book_id": 1004,
+   "title": "불편한 편의점",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179513691/42ba225f9b6840feabf19f5deadaa6a6.jpg",
+   "n_books": 11
+  },
+  {
+   "name": "김희상",
+   "book_id": 4326,
+   "title": "마음의 법칙",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179563532/a4267e734b00496bbd4fb866476b3003.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "다자이 오사무",
+   "book_id": 386,
+   "title": "인간 실격",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/429283/b972ec0811394e2da1ab2476e55e8edf.jpg",
+   "n_books": 17
+  },
+  {
+   "name": "데일카네기",
+   "book_id": 1144,
+   "title": "데일 카네기 인간관계론",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179464131/a44f936380084d91807d3fa0ff535ff8.jpg",
+   "n_books": 27
+  },
+  {
+   "name": "델리아 오언스",
+   "book_id": 799,
+   "title": "가재가 노래하는 곳",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/37781287/d022459b4948433d9593fb9ce8e26a07.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "레몬심리",
+   "book_id": 4197,
+   "title": "기분이 태도가 되지 않게",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179470523/dfd38655ee5a46599875bf371ba67324.jpg",
+   "n_books": 9
+  },
+  {
+   "name": "로버트 치알디니",
+   "book_id": 1145,
+   "title": "설득의 심리학 1 (20주년 기념 개정증보판)",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179605619/271b1277b51e495aa0989ad33f18464c.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "류쉬안",
+   "book_id": 2072,
+   "title": "성숙한 어른이 갖춰야 할 좋은 심리 습관",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179467304/e350538eaa534d948716ab39493bee24.jpg",
+   "n_books": 11
+  },
+  {
+   "name": "리처드 도킨스",
+   "book_id": 108,
+   "title": "이기적 유전자",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15926256/538ef91a7ed34194908a6a68ae86095c.jpg",
+   "n_books": 8
+  },
+  {
+   "name": "마티아스 뇔케",
+   "book_id": 3776,
+   "title": "나를 소모하지 않는 현명한 태도에 관하여",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179657580/5ea6fa5b85164e95a0b37eda9b648b65.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "박선령",
+   "book_id": 570,
+   "title": "타이탄의 도구들(블랙 에디션)",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15653234/85ced2d0a76e4bb38b75ff85c51487cc.jpg",
+   "n_books": 4
+  },
+  {
+   "name": "빅터 프랭클",
+   "book_id": 2292,
+   "title": "빅터 프랭클의 죽음의 수용소에서",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg",
+   "n_books": 8
+  },
+  {
+   "name": "성해나",
+   "book_id": 1001,
+   "title": "두고 온 여름",
+   "image_url": "https://image.millie.co.kr/service/cover/180064473/b02cf2a796724a369c1dcc961dd68252.jpg",
+   "n_books": 13
+  },
+  {
+   "name": "세이노",
+   "book_id": 2843,
+   "title": "세이노의 가르침",
+   "image_url": "https://image.millie.co.kr/service/cover/179590093/6eaa1b2983f341e1891c69a8fa145cc3.jpg",
+   "n_books": 6
+  },
+  {
+   "name": "알랭 드 보통",
+   "book_id": 2792,
+   "title": "불안",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179586406/615bc647e17e4a269f62cce9b4948955.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "앤디 위어",
+   "book_id": 1332,
+   "title": "프로젝트 헤일메리",
+   "image_url": "https://image.millie.co.kr/service/cover/180111232/352ca7e3e4fb4a92ad0c84a82563516f.jpg",
+   "n_books": 5
+  },
+  {
+   "name": "올더스 헉슬리",
+   "book_id": 197,
+   "title": "멋진 신세계",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/9424133/a62c121f78a84b34a78c4b8019aa1caf.jpg",
+   "n_books": 8
+  },
+  {
+   "name": "요나스요나손",
+   "book_id": 275,
+   "title": "창문 넘어 도망친 100세 노인",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/42933109/c3940f5426e640f5a1cf6dd518f67b72.jpg",
+   "n_books": 8
+  },
+  {
+   "name": "유발하라리",
+   "book_id": 621,
+   "title": "사피엔스",
+   "image_url": "https://image.millie.co.kr/service/cover/7880427/a2f4bd360a964e15836e46b8b32bbaca.jpg",
+   "n_books": 9
+  },
+  {
+   "name": "유시민",
+   "book_id": 1087,
+   "title": "거꾸로 읽는 세계사",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179548661/fa73235df6ea4defbaab951472a38c9a.jpg",
+   "n_books": 16
+  },
+  {
+   "name": "윤정은",
+   "book_id": 4317,
+   "title": "메리골드 마음 세탁소",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179598201/485b118193a94fd4b58ef818ceb30ab6.jpg",
+   "n_books": 10
+  },
+  {
+   "name": "윤홍균",
+   "book_id": 181,
+   "title": "자존감 수업",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/14247171/f35aa2bfce094ba391e6b3a473ae64c1.jpg",
+   "n_books": 8
+  },
+  {
+   "name": "이꽃님",
+   "book_id": 3815,
+   "title": "죽이고 싶은 아이",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179549239/a3d2c041345c4365a1e57e2a3ca6fc80.jpg",
+   "n_books": 10
+  },
+  {
+   "name": "이나모리 가즈오",
+   "book_id": 771,
+   "title": "왜 일하는가",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/3132302/cb3f8febb979449eb0363e9bdacd7fd3.jpg",
+   "n_books": 11
+  },
+  {
+   "name": "이미예",
+   "book_id": 2081,
+   "title": "달러구트 꿈 백화점",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179467030/0a02d0ead74b4cbda9e8a945e1c125de.jpg",
+   "n_books": 12
+  },
+  {
+   "name": "이영도",
+   "book_id": 7126,
+   "title": "눈물을 마시는 새 1",
+   "image_url": "https://image.millie.co.kr/service/cover/179574053/03fb008170a4474f8f5e5fc660a58455.jpg",
+   "n_books": 18
+  },
+  {
+   "name": "이준영",
+   "book_id": 7006,
+   "title": "트렌드 코리아 2023",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179580688/d051803c00f240c49a22ccea403344ea.jpg",
+   "n_books": 16
+  },
+  {
+   "name": "이치조 미사키",
+   "book_id": 1151,
+   "title": "오늘 밤, 세계에서 이 사랑이 사라진다 해도",
+   "image_url": "https://img.millie.co.kr/400x/service/profile/4071209/f4aabc316a844002a9cf2f6b7272215a.jpeg",
+   "n_books": 6
+  },
+  {
+   "name": "자청",
+   "book_id": 4318,
+   "title": "역행자 : 확장판",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179607538/beb6900006a24d92874dc397a9f7a058.jpg",
+   "n_books": 6
+  },
+  {
+   "name": "장재형",
+   "book_id": 2590,
+   "title": "마흔에 읽는 니체",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179575201/a82e6ffa3f364692ac91a243c379de36.jpg",
+   "n_books": 7
+  },
+  {
+   "name": "정대건",
+   "book_id": 8303,
+   "title": "급류",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179694679/b5e0d9af383e4d199957e495b4e1e88a.jpg",
+   "n_books": 4
+  },
+  {
+   "name": "정유정",
+   "book_id": 7265,
+   "title": "7년의 밤",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179655134/57623439cf3b45ffb0766c83699e0f0a.jpg",
+   "n_books": 13
+  },
+  {
+   "name": "정지인",
+   "book_id": 1467,
+   "title": "물고기는 존재하지 않는다",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179555067/1f23ea1aee174b6e832b89f51e2e783b.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "정해연",
+   "book_id": 4320,
+   "title": "홍학의 자리",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179620124/93ca598bf2744f7d9c34633bf7d0cc4a.jpg",
+   "n_books": 22
+  },
+  {
+   "name": "조던B.피터슨",
+   "book_id": 213,
+   "title": "12가지 인생의 법칙 (40만 부 기념 스페셜 에디션)",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15906293/fe69cd93b24a49ab8f06e80c461b94bc.jpg",
+   "n_books": 9
+  },
+  {
+   "name": "조예은",
+   "book_id": 5019,
+   "title": "칵테일, 러브, 좀비",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179614414/b6111e180e98412b9991eaed09cef2d2.jpg",
+   "n_books": 15
+  },
+  {
+   "name": "조원재",
+   "book_id": 647,
+   "title": "방구석 미술관",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15906133/32f682760c434cd9a3ef904a08665de2.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "조지 오웰",
+   "book_id": 2766,
+   "title": "1984",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179595038/bd80fcf1ab9e461884874805359888de.jpg",
+   "n_books": 24
+  },
+  {
+   "name": "존윌리엄스",
+   "book_id": 1900,
+   "title": "스토너",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179532886/a649b0dc053d4b20b26bcfa09fa0b44a.jpg",
+   "n_books": 5
+  },
+  {
+   "name": "채사장",
+   "book_id": 1355,
+   "title": "지적 대화를 위한 넓고 얕은 지식 1",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179462588/e765b2df9df045cb95312c62e848badf.jpg",
+   "n_books": 11
+  },
+  {
+   "name": "천선란",
+   "book_id": 2207,
+   "title": "천 개의 파랑",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179496644/7bd031d4093d46749b04f4d0a9b34343.jpg",
+   "n_books": 19
+  },
+  {
+   "name": "최진영",
+   "book_id": 2204,
+   "title": "구의 증명",
+   "image_url": "https://image.millie.co.kr/service/cover/179482075/71687964b97b47728fd1bfd88d290f1d.jpg",
+   "n_books": 17
+  },
+  {
+   "name": "코이케 류노스케",
+   "book_id": 8373,
+   "title": "초역 부처의 말",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179663372/7b4855393e864fd5855a624e8b18bf25.jpg",
+   "n_books": 2
+  },
+  {
+   "name": "팀 마샬",
+   "book_id": 3171,
+   "title": "지리의 힘",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179465425/640254aa9c1748f3b41ccabc81713e93.jpg",
+   "n_books": 4
+  },
+  {
+   "name": "팀페리스",
+   "book_id": 570,
+   "title": "타이탄의 도구들(블랙 에디션)",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15653234/85ced2d0a76e4bb38b75ff85c51487cc.jpg",
+   "n_books": 4
+  },
+  {
+   "name": "폴커 키츠",
+   "book_id": 4326,
+   "title": "마음의 법칙",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179563532/a4267e734b00496bbd4fb866476b3003.jpg",
+   "n_books": 3
+  },
+  {
+   "name": "프리드리히 니체",
+   "book_id": 1446,
+   "title": "위버멘쉬",
+   "image_url": "https://image.millie.co.kr/service/cover/180081272/21c0ae05555343d58f60d2b350cd47fc.jpg",
+   "n_books": 25
+  },
+  {
+   "name": "헤르만헤세",
+   "book_id": 1012,
+   "title": "싯다르타",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg",
+   "n_books": 42
+  },
+  {
+   "name": "히가시노 게이고",
+   "book_id": 1013,
+   "title": "용의자 X의 헌신",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179567051/6419fa129cef4881a9d6419bd4432b34.jpg",
+   "n_books": 62
+  }
+ ]
+}

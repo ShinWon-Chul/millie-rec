@@ -3,7 +3,7 @@
 import logging
 import threading
 import time
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
@@ -104,7 +104,8 @@ class StateStore:
 
     def user_state(self, user_key: str, *, seeds: Sequence[int] = (),
                    categories: Sequence[str] = (), subcategories: Sequence[str] = (),
-                   context: str | None = None) -> UserState:  # fmt: skip
+                   context: str | None = None,
+                   extra: Mapping[str, str] | None = None) -> UserState:  # fmt: skip
         """요청 시점 스냅샷. context 값은 전부 str(계약의 dict[str, str])."""
         rec = self._snapshot(user_key)
         done = str(len(rec.completed))
@@ -112,6 +113,8 @@ class StateStore:
                "subcategories": ",".join(subcategories)}  # fmt: skip
         if context:
             ctx["reading_time"] = context
+        if extra:  # 신호가 계속 늘어 키를 따로 받지 않는다 — ctx 조립 뒤라 덮어쓸 수 있다
+            ctx.update(extra)
         return UserState(
             user_id=None,
             explicit_seeds=tuple(int(s) for s in seeds),

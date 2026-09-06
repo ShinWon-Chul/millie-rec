@@ -31,6 +31,12 @@ SURVEY_VARIANT = "v1"
 CRITERIA_IDS = ("author", "publisher", "bestseller", "buzz", "review")  # S3 옵션 순서와 1:1
 DEMO_CATEGORIES = ("소설", "인문", "자기계발")
 DEMO_CRITERION = "bestseller"
+# 저자 정규화 — serving/authors.py 와 같은 규칙을 다시 쓴다(생성기는 서버를 import 하지 않는다)
+AUTHOR_PAREN, AUTHOR_SPLIT = re.compile(r"\([^)]*\)"), re.compile(r"[,/·&]")
+AUTHOR_ROLES = ("지음", "글", "그림", "사진", "저", "엮음", "편저", "원작", "각본", "구성")
+NON_AUTHOR_ROLES = ("옮김", "역", "번역", "감수", "해설", "편역")  # 역자는 조각째 버린다
+NON_PERSON = ("편집부", "저작권팀", "Disney Books")
+AUTHOR_MIN_LEN, AUTHOR_MIN_BOOKS, N_AUTHORS = 2, 2, 60
 COVER_HOST_SUFFIX, ADULT_COVER_MARK = ".millie.co.kr", "adult-cover"
 REVIEW_MIN_COUNT, REVIEW_MIN_COUNT_NO_RATING = 3, 10  # 배지 review 3단 폴백
 SOURCE_CONTENT, SOURCE_POPULARITY = "content", "popularity"  # 데모 이웃은 콘텐츠 유사도다
@@ -210,6 +216,55 @@ def all_categories(cards: list[dict]) -> tuple[list[str], dict[str, int]]:
         for cat in card["categories"]:
             counts[cat] = counts.get(cat, 0) + 1
     return sorted(counts, key=lambda c: (-counts[c], c)), counts
+
+
+def author_key(name: str) -> str:
+    """비교용 키. 내부 공백 제거 + 소문자화 — '히가시노 게이고' == '히가시노게이고'."""
+    return "".join(name.split()).lower()
+
+
+NON_PERSON_KEYS = frozenset(author_key(n) for n in NON_PERSON)
+
+
+def _role_spaced(text: str, role: str) -> bool:
+    """역할어 앞에 공백이 있나. 없으면 이름의 일부다 — '에이든토저'·'송기역' 훼손 방지."""
+    head = text[: -len(role)]
+    return bool(head) and head[-1].isspace()
+
+
+def _strip_roles(segment: str) -> str | None:
+    """끝의 역할어를 반복 제거. 비저자 역할이면 조각째 버린다(역자가 작가가 되는 것을 막는다)."""
+    text = segment.strip()
+    while True:
+        if any(text.endswith(r) and _role_spaced(text, r) for r in NON_AUTHOR_ROLES):
+            return None
+        for role in AUTHOR_ROLES:
+            if text.endswith(role) and _role_spaced(text, role):
+                text = text[: -len(role)].strip()
+                break
+        else:
+            return text
+
+
+def split_authors(value: object) -> tuple[str, ...]:
+    """표시용 이름들. 괄호 제거 → , / · & 분리 → 끝의 역할어 제거 → 역자·비인물 제외."""
+    if not value:
+        return ()
+    names: list[str] = []
+    seen: set[str] = set()
+    for segment in AUTHOR_SPLIT.split(AUTHOR_PAREN.sub(" ", str(value))):
+        name = _strip_roles(segment)
+        if not name or len(name) < AUTHOR_MIN_LEN or author_key(name) in NON_PERSON_KEYS:
+            continue
+        if author_key(name) not in seen:
+            seen.add(author_key(name))
+            names.append(name)
+    return tuple(names)
+
+
+def _ganada(name: str) -> tuple[int, str]:
+    """가나다 정렬 키 — 한글 아닌 이름은 뒤로."""
+    return (0 if name and HANGUL_BASE <= ord(name[0]) <= HANGUL_LAST else 1, name)
 
 
 def badge_for(
@@ -422,6 +477,32 @@ def meta_onboarding(cards: list[dict], config: Path) -> dict:
     }
 
 
+def authors_onboarding(cards: list[dict], categories=DEMO_CATEGORIES, n=N_AUTHORS) -> dict:
+    """S3A 작가 후보 — 2권 이상 ∧ 데모 카테고리에 책 있음 → 대표 책 pop_rank 상위 n → 가나다 순."""
+    spell: dict[str, dict[str, int]] = {}   # 키별 표기 빈도 — 표시 이름은 최다 표기
+    best: dict[str, dict] = {}              # 키별 대표 책 = pop_rank 최상위
+    in_demo: set[str] = set()
+    for card in cards:
+        demo = any(cat in card["categories"] for cat in categories)
+        for name in split_authors(card.get("authors")):
+            k = author_key(name)
+            seen = spell.setdefault(k, {})
+            seen[name] = seen.get(name, 0) + 1
+            top = best.get(k)
+            if top is None or (_rank(card), card["book_id"]) < (_rank(top), top["book_id"]):
+                best[k] = card
+            if demo:
+                in_demo.add(k)
+    keys = [k for k in in_demo if sum(spell[k].values()) >= AUTHOR_MIN_BOOKS]
+    keys.sort(key=lambda k: (_rank(best[k]), best[k]["book_id"]))
+    items = [{"name": min(spell[k], key=lambda s: (-spell[k][s], s)),
+              "book_id": best[k]["book_id"], "title": best[k]["title"],
+              "image_url": best[k]["image_url"], "n_books": sum(spell[k].values())}
+             for k in keys[:n]]
+    items.sort(key=lambda a: _ganada(a["name"]))
+    return {"survey_variant": SURVEY_VARIANT, "created_at": FIXED_TS, "items": items}
+
+
 def candidates(cards: list[dict], by_id: dict, categories=DEMO_CATEGORIES, n=N_CANDIDATES) -> dict:
     """취향 설정 S5 후보 — 카테고리 라운드로빈(pop_rank 순)."""
     pools = [[c["book_id"] for c in cards if cat in c["categories"]] for cat in categories]
@@ -558,7 +639,7 @@ def _md5(path: Path) -> str | None:
 def build(
     artifacts, out, config, *, eval_table=None, latency=None, fallback=None, seeds=SEEDS
 ) -> dict[str, int]:
-    """밀리 아티팩트 → mock 13파일. 시각·난수 없음(_manifest.json 만 예외)."""
+    """밀리 아티팩트 → mock 14파일. 시각·난수 없음(_manifest.json 만 예외)."""
     artifacts, out, config = Path(artifacts), Path(out), Path(config)
     eval_path = Path(eval_table) if eval_table else artifacts / "eval_table.json"
     out.mkdir(parents=True, exist_ok=True)
@@ -576,6 +657,8 @@ def build(
         "meta_onboarding.json": _write(out, "meta_onboarding.json", meta),
         "candidates_onboarding.json": _write(
             out, "candidates_onboarding.json", candidates(cards, by_id)),
+        "authors_onboarding.json": _write(
+            out, "authors_onboarding.json", authors_onboarding(cards)),
         "preferences_response.json": _write(
             out, "preferences_response.json", preferences_response(persona)),
         "state.json": _write(

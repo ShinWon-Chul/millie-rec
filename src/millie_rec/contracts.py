@@ -206,6 +206,11 @@ class PreferenceSnapshot:
     seeds: tuple[int, ...] = ()
     consent: bool = True  # 정본은 users.consent. 응답 편의용
     persona: Persona | None = None
+    # 2026-09-07 다중 선택. 단수 reading_time·criterion 은 "처음 고른 값"으로 남는다
+    # (freeze — 삭제·개명 금지. PROGRESS 2026-09-07 결정 · 개발일지 항목 D91 참조)
+    reading_times: tuple[str, ...] = ()
+    criteria: tuple[str, ...] = ()  # 배지·페르소나 대표는 criteria[0] = criterion
+    authors: tuple[str, ...] = ()  # 취향 설정에서 직접 고른 작가 표시 이름
 
 
 @dataclass(frozen=True, slots=True)

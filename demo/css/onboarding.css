@@ -28,6 +28,9 @@
   margin: 40px 0 0; font-size: var(--fs-title); font-weight: 700;
   line-height: 1.35; letter-spacing: -0.5px; white-space: pre-line;
 }
+/* 작가 단계 제목은 실제 서비스 문구를 그대로 쓰는데 그 기기가 428pt, 이 프레임이 390px 이라
+   같은 글자 크기에서 한 줄이 더 넘친다("요" 한 글자가 떨어진다). 두 줄로 맞춰 캡처를 지킨다. */
+.screen[data-layout="author-list"] .step__title { font-size: calc(var(--fs-title) - 3px); }
 .step__counter { margin: 26px 0 18px; font-size: 16px; color: var(--text-2); }
 .step__title + .step__list, .step__title + .step__grid { margin-top: 30px; }
 
@@ -66,6 +69,39 @@
   border: 1px solid transparent; transition: border-color 0.12s, background 0.12s;
 }
 .chip.is-on { background: var(--sel-bg); border-color: var(--accent); color: var(--accent); }
+
+/* ── 작가 선택 (S3A) ── */
+/* 정렬 방식이 하나뿐이라 버튼이 아니다 — 카운터 줄 오른쪽에 상태만 얹는다 */
+.step__sort { float: right; font-size: var(--fs-author); color: var(--text-3); }
+.picks { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+.pick {
+  display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px;
+  border-radius: var(--r-pill); background: var(--sel-bg);
+  border: 1px solid var(--accent); color: var(--accent);
+  font-size: var(--fs-author); letter-spacing: -0.2px;
+}
+.pick__x { font-size: 15px; line-height: 1; opacity: 0.75; }
+.authors { display: grid; gap: 10px; }
+.author {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; padding: 8px 14px 8px 8px; text-align: left;
+  border: 1px solid var(--line); border-radius: var(--r-option);
+  transition: border-color 0.12s, background 0.12s;
+}
+.author.is-on { border: 1.5px solid var(--accent); background: var(--sel-bg); }
+/* 행 안의 표지는 48×64 고정 — .cover 기본값(너비 100% · 2/3)을 여기서만 덮는다 */
+.author .cover { flex: 0 0 48px; width: 48px; aspect-ratio: 3 / 4; }
+.author .cover::before { font-size: 20px; }
+.author__body { display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto; min-width: 0; }
+.author__name {
+  font-size: var(--fs-book); font-weight: 700; letter-spacing: -0.3px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.author__book {
+  font-size: var(--fs-author); color: var(--text-2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.author__check { flex: 0 0 17px; color: var(--accent); }
 
 /* ── 책 그리드 (S5) ── */
 /* minmax(0,…)와 min-width:0이 없으면 표지 img의 고유 너비가 열 최소폭이 되어 프레임을 넘친다 */

@@ -1,4 +1,4 @@
-// S1~S5 공용 렌더러. 단계가 5개여도 코드는 1벌 — 차이는 config/onboarding.json이 만든다.
+// S1~S5 공용 렌더러. 단계가 늘어도 코드는 1벌 — 차이는 config/onboarding.json이 만든다.
 import { cover, cta, esc, icon, navbar } from "./ui.js";
 
 /** 현재 단계에서 선택된 값 (스칼라 필드는 배열로 감싸 한 갈래로 처리) */
@@ -74,13 +74,45 @@ function bookGrid(state, step) {
   }).join("")}</div>`;
 }
 
+/** 고른 작가 칩. × 도 같은 pick 이라 다시 누르면 토글로 해제된다. */
+function authorPicks(state, step) {
+  const sel = picked(state, step);
+  if (!sel.length) return "";
+  return `<div class="picks">${sel.map((name) => `<button class="pick" data-act="pick"
+    data-step="${esc(step.id)}" data-val="${esc(name)}"
+    >${esc(name)}<span class="pick__x">\u00d7</span></button>`).join("")}</div>`;
+}
+
+/** 작가 목록(S3A). 서버가 가나다 순으로 주므로 정렬 방식은 하나뿐 — 토글 버튼 대신 상태만 적는다. */
+function authorList(state, step) {
+  const sel = picked(state, step);
+  const items = state.authorSet.items;
+  if (!items.length) return `<p class="step__counter">작가를 불러오는 중…</p>`;
+  return `<div class="authors">${items.map((a) => {
+    const on = sel.includes(a.name);
+    return `<button class="author${on ? " is-on" : ""}" data-act="pick"
+      data-step="${esc(step.id)}" data-val="${esc(a.name)}">
+      ${cover({ title: a.title, image_url: a.image_url })}
+      <span class="author__body">
+        <span class="author__name">${esc(a.name)}</span>
+        <span class="author__book">${esc(a.title || "-")}</span>
+      </span>
+      <span class="author__check">${on ? icon("check", 17, 16) : ""}</span>
+    </button>`;
+  }).join("")}</div>`;
+}
+
 export function render(state, step, meta) {
   const sel = picked(state, step);
+  const authors = step.layout === "author-list";
   const body = step.layout === "chips-grouped" ? chipGroups(state, step, meta)
     : step.layout === "book-grid3" ? bookGrid(state, step)
+    : authors ? authorList(state, step)
     : optionList(state, step, meta);
+  // 정렬 방식이 하나뿐이라 버튼이 아니라 상태 표시다(누르면 아무 일도 안 하는 버튼보다 정직하다)
+  const sort = authors ? `<span class="step__sort">가나다 순</span>` : "";
   const counter = step.counter
-    ? `<p class="step__counter">${esc(step.counter.replace("{n}", sel.length))}</p>` : "";
+    ? `<p class="step__counter">${esc(step.counter.replace("{n}", sel.length))}${sort}</p>` : "";
   const notice = step.consentNotice ? `<div class="notice">
     <span class="notice__icon">${icon("info", 18, 18)}</span>
     <span>맞춤형 서비스 제공을 위해 정보를 수집활용합니다. 동의하시면 아래 버튼을 눌러주세요</span>
@@ -92,10 +124,10 @@ export function render(state, step, meta) {
   const ctaText = state.resetting && step.id === "S5" ? "새 취향으로 추천 받기" : step.cta;
   return `${navbar({ label: state.resetting ? "취향 다시 설정" : "" })}
   ${bar}
-  <div class="screen">
+  <div class="screen" data-layout="${esc(step.layout)}">
     <div class="screen__body">
       <h1 class="step__title">${esc(step.title)}</h1>
-      ${counter}${body}${notice}
+      ${authors ? authorPicks(state, step) : ""}${counter}${body}${notice}
     </div>
     <div class="screen__foot">${cta(ctaText, sel.length >= step.min, "next")}</div>
   </div>`;

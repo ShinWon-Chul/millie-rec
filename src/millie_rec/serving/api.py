@@ -23,6 +23,7 @@ from millie_rec.contracts import (
     Pipeline,
     UserState,
 )
+from millie_rec.serving.authors_api import build_router as authors_router
 from millie_rec.serving.cascade import Cascade
 from millie_rec.serving.compose import catalog_categories, default_variant
 from millie_rec.serving.db import Database
@@ -53,20 +54,16 @@ def _parse_seeds(raw: str | None) -> tuple[int, ...]:
         raise _422("seeds", "seeds must be comma-separated integers") from e
 
 
-def create_app(
-    pipelines: dict[str, Pipeline],
-    fallback: Pipeline,
-    *,
-    catalog: Catalog | None = None,
-    db: Database,
-    neighbors: Neighbors | None = None,
-    book_stats: BookStatsSource | None = None,
-    state: object | None = None,
-    weights: Callable[[UserState], dict[str, float]] | None = None,
-) -> FastAPI:
+def create_app(pipelines: dict[str, Pipeline], fallback: Pipeline, *,
+               catalog: Catalog | None = None, db: Database,
+               neighbors: Neighbors | None = None, book_stats: BookStatsSource | None = None,
+               weights: Callable[[UserState], dict[str, float]] | None = None,
+               state: object | None = None, segpop: object | None = None) -> FastAPI:  # fmt: skip
     """주입만 받는다. 비즈니스 규칙은 슬라이스 함수에. db 는 keyword-only 필수(D-09 + 리뷰 W-1).
 
     weights: ranking.state_weights 주입(Phase 4 D-09) — 없으면 user_state_weights 는 0 셋.
+    segpop: data.SegmentPopularity 주입 — 없으면 폴백 2단계가 기존 카테고리 인기로 돈다.
+    시그니처가 한 줄에 모인 이유는 이 파일이 150줄 상한이라서다(Cascade.__init__ 과 같은 관례).
     """
     started = {"t": perf_counter()}
     loaded_at = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
@@ -79,7 +76,7 @@ def create_app(
     inv = cache.invalidate
     cascade = Cascade(pipelines, fallback, catalog=catalog, db=db, neighbors=neighbors,
                       store=state, cache=cache, weights=weights, default=default,
-                      all_categories=all_cats, criteria_labels=labels)  # fmt: skip
+                      all_categories=all_cats, criteria_labels=labels, segpop=segpop)  # fmt: skip
 
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
@@ -109,10 +106,10 @@ def create_app(
             wake_box["fn"]()
 
     app.include_router(onboarding_router(db=db, catalog=catalog))
+    app.include_router(authors_router(catalog=catalog))  # 취향 설정 작가 선택 화면(D91)
     app.include_router(demo_router(db=db, catalog=catalog, wake=wake_fn, invalidate=inv))
-    app.include_router(
-        privacy_router(db=db, catalog=catalog, state=state, weights=weights, invalidate=inv)
-    )
+    app.include_router(privacy_router(db=db, catalog=catalog, state=state, weights=weights,
+                                      invalidate=inv))  # fmt: skip
     app.include_router(ratings_router(db=db, wake=wake_fn, invalidate=inv))
     try:  # 05-07 이 병렬로 만드는 중 — wave 2 종료 후엔 항상 존재
         from millie_rec.serving.dashboard_api import build_router as dashboard_router

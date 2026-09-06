@@ -3,7 +3,7 @@
 
 export const PRESET_NAMES = ["newUser", "skipUser", "resetUser"];
 
-const EMPTY_PREFS = () => ({ readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] });
+const EMPTY_PREFS = () => ({ readingTimes: [], categories: [], criteria: [], authors: [], subcategories: [], seedBooks: [] });
 const FIRST_CATS = ["IT", "소설", "철학"];
 const SECOND_CATS = ["인문", "역사", "에세이/시"];
 const SUBS = ["개발/프로그래밍", "SF", "서양"];
@@ -37,9 +37,10 @@ function prefsFor(state, categories) {
     .filter((c, i, a) => c && a.indexOf(c) === i);
   const allowed = picked.flatMap((c) => cats.find((x) => x.name === c)?.subcategories ?? []);
   return {
-    readingTime: (state.meta?.reading_times ?? [])[2] ?? null,
+    readingTimes: [(state.meta?.reading_times ?? [])[2]].filter(Boolean),
     categories: picked,
-    criterion: (state.meta?.criteria ?? []).find((c) => c.id === "bestseller")?.label ?? null,
+    criteria: [(state.meta?.criteria ?? []).find((c) => c.id === "bestseller")?.label].filter(Boolean),
+    authors: [],                       // 프리셋 기준은 베스트셀러뿐이라 S3A 를 지나지 않는다
     subcategories: SUBS.filter((s) => allowed.includes(s)),
     seedBooks: [],
   };
@@ -47,7 +48,7 @@ function prefsFor(state, categories) {
 
 /** 취향 설정 7단계를 자동 완주해 스냅샷 1개를 만든다(단계 머신과 같은 이벤트 순서). */
 async function runOnboarding(ctx, categories) {
-  const { state, log, api, criterionId } = ctx;
+  const { state, log, api, criterionIds } = ctx;
   log("preference_started", { payload: { preset: "1" } });
   state.consent = true;
   state.prefs = prefsFor(state, categories);
@@ -72,9 +73,12 @@ async function runOnboarding(ctx, categories) {
       candidate_set_id: state.candidateSet.id, surface: "onboarding",
     });
   });
+  const crits = criterionIds();
   const res = await api.postPreferences(state.source, {
-    user_key: state.userKey, consent: true, reading_time: state.prefs.readingTime,
-    categories: state.prefs.categories, criterion: criterionId(),
+    user_key: state.userKey, consent: true,
+    reading_times: state.prefs.readingTimes, reading_time: state.prefs.readingTimes[0] ?? null,
+    categories: state.prefs.categories,
+    criteria: crits, criterion: crits[0] ?? null, authors: state.prefs.authors,
     subcategories: state.prefs.subcategories, seeds: state.prefs.seedBooks,
     candidate_set_id: state.candidateSet.id, restart: state.resetting,
   });

@@ -15,8 +15,8 @@ NOT_FOUND_SNAPSHOT = "snapshot_id not found for user_key"
 
 SQL_USER = "SELECT consent, cell FROM users WHERE user_key = ?"
 SNAP_COLS = (
-    "SELECT snapshot_id, categories, criterion, seeds, persona, subcategories"
-    " FROM preference_snapshots "
+    "SELECT snapshot_id, categories, criterion, seeds, persona, subcategories,"
+    " reading_times, criteria, authors FROM preference_snapshots "
 )
 # created_at 은 초 단위라 같은 초에 두 벌이 들어올 수 있다 — 동률은 삽입 순서(rowid)로 깬다
 SQL_SNAP_ONE = SNAP_COLS + "WHERE user_key = ? ORDER BY created_at DESC, rowid DESC LIMIT 1"
@@ -41,6 +41,9 @@ class Resolved:
     latest_created_at: str | None = None
     # 위 필드들은 위치 인자로 넘어온다 — 새 필드는 반드시 맨 끝에 두고 키워드로 전달한다
     subcategories: tuple[str, ...] = ()
+    reading_times: tuple[str, ...] = ()
+    criteria: tuple[str, ...] = ()
+    authors: tuple[str, ...] = ()
 
 
 def _j(value: object, default: object) -> object:
@@ -68,14 +71,19 @@ def resolve_user(db: Database, user_key: str, snapshot_id: str | None) -> Resolv
     cats = tuple(_j(s.get("categories"), []))
     return Resolved(user_key, True, bool(u[0]["consent"]), u[0]["cell"], s.get("snapshot_id"),
                     seeds, cats, s.get("criterion"), name, count, latest,
-                    subcategories=tuple(_j(s.get("subcategories"), [])))  # fmt: skip
+                    subcategories=tuple(_j(s.get("subcategories"), [])),
+                    reading_times=tuple(_j(s.get("reading_times"), [])),
+                    criteria=tuple(_j(s.get("criteria"), [])),
+                    authors=tuple(_j(s.get("authors"), [])))  # fmt: skip
 
 
 def user_state_of(store, r: Resolved, context: str | None) -> UserState:
     """Resolved → 파이프라인 입력. store 가 없으면(스켈레톤) 스냅샷만으로 — 값은 전부 str(계약)."""
     kw = {"seeds": r.seeds, "categories": r.categories, "subcategories": r.subcategories}
+    extra = {"criteria": ",".join(r.criteria), "authors": ",".join(r.authors),
+             "reading_times": ",".join(r.reading_times)}  # fmt: skip
     if store is not None:
-        return store.user_state(r.user_key, context=context, **kw)
+        return store.user_state(r.user_key, context=context, extra=extra, **kw)
     ctx = {"user_key": r.user_key, "n_completed": "0", "categories": ",".join(r.categories),
-           "subcategories": ",".join(r.subcategories)}  # fmt: skip
+           "subcategories": ",".join(r.subcategories), **extra}  # fmt: skip
     return UserState(None, explicit_seeds=r.seeds, context=ctx)

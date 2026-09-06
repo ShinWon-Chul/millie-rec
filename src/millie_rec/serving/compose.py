@@ -84,6 +84,8 @@ def compose_rows(
     seeds: Sequence[int] = (),
     categories: Sequence[str] = (),
     criterion: str | None = None,
+    criteria: Sequence[str] = (),
+    picked_authors: Sequence[str] = (),
     persona_name: str | None = None,
     continue_ids: Sequence[int] = (),
     read_ids: Sequence[int] = (),
@@ -97,16 +99,16 @@ def compose_rows(
         exclude = {int(s) for s in seeds} | {i.book_id for i in trend.items}
         rows: tuple[Row, ...] = (trend, fresh_row(catalog, (), (), all_categories, exclude))
     else:
-        rows = personal_rows(
-            items, catalog, neighbors, seeds, categories, persona_name, continue_ids, all_categories
-        )
+        rows = personal_rows(items, catalog, neighbors, seeds, categories, persona_name,
+                             continue_ids, all_categories)  # fmt: skip
         rows = prepend_after(rows, after_completion, catalog, seeds)  # D-13 최상단
     read = {int(s) for s in seeds} | {int(b) for b in read_ids}
     if after_completion:
         read.add(int(after_completion[0]))
     rows = drop_same_work(rows, catalog, sorted(read))  # 이미 읽은 작품의 판본(보고 09-06)
     rows, removed = dedup_rows(rows)
-    return attach_badges(rows, catalog, criterion, seeds), removed
+    return attach_badges(rows, catalog, criterion, seeds, criteria=criteria,
+                         picked_authors=picked_authors), removed  # fmt: skip
 
 
 def build_response(

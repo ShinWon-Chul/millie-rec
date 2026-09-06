@@ -19,6 +19,7 @@ from millie_rec.contracts import (
     RecommendResponse,
     UserState,
 )
+from millie_rec.serving import segment
 from millie_rec.serving.compose import build_response, compose_rows
 from millie_rec.serving.fallback import segment_popular
 from millie_rec.serving.rows import ROW_SIZE
@@ -78,7 +79,10 @@ def nonpersonal(cs, user, level, categories, k, t0, context, bd, criterion) -> R
 def _staged(cs, user, level, categories, k, t0, context, bd, criterion) -> RecommendResponse:
     """한 단계의 재료 → 행 조립 → 응답. catalog 가 없으면 기존 1행(스켈레톤 기동)."""
     if level == FALLBACK_SEGMENT_POP:
-        items = segment_popular(cs.catalog, user, categories, k)
+        seg = None  # 시드가 없으면 추정하지 않는다(불필요한 meta 조회 0)
+        if cs.segpop is not None and cs.catalog is not None and user.explicit_seeds:
+            seg = segment.estimate(cs.catalog.meta(list(user.explicit_seeds)))
+        items = segment_popular(cs.catalog, user, categories, k, segpop=cs.segpop, segment=seg)
     else:
         items = cs.fallback.recommend(user, k)
     rows, dd = None, 0

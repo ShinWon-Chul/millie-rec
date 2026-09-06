@@ -5,8 +5,9 @@ import os
 
 from fastapi.staticfiles import StaticFiles
 
-from millie_rec.app.pipeline import build_pipelines, load_catalog
+from millie_rec.app.pipeline import DIR_SERVING, build_pipelines, load_catalog
 from millie_rec.contracts import ROOT
+from millie_rec.data import SegmentPopularity
 from millie_rec.ranking import state_weights
 from millie_rec.serving import (
     Database,
@@ -45,9 +46,9 @@ init_sentry()
 # → 표시 혼합비 = 실제 혼합비.
 # Phase 5 D-07·D-08: 상태 1개를 create_app(state=) 와 파이프라인 book_stats 양쪽에
 # → 가드·gap 이 서빙 완독 수·user_level 을 본다. 카탈로그 없으면 stats 도 없다(local-run.md)
-catalog = load_catalog()
-store = StateStore()
+catalog, store = load_catalog(), StateStore()
 stats = ServingBookStats(catalog, store) if catalog is not None else None
+segpop = SegmentPopularity.load(DIR_SERVING)  # None 이면 폴백 2단계가 카테고리 인기로 돈다(D91)
 app = create_app(
     pipelines=build_pipelines(catalog=catalog, weights=state_weights, book_stats=stats),
     fallback=GlobalPopularFallback(catalog),
@@ -57,6 +58,7 @@ app = create_app(
     book_stats=stats,
     weights=state_weights,
     state=store,
+    segpop=segpop,
 )
 # 반드시 마지막 — 앞에 두면 /health·/api/* 가 StaticFiles 에 가려진다
 app.mount("/", StaticFiles(directory=ROOT / "demo", html=True), name="demo")

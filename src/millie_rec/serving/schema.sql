@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS users (
 );
 CREATE TABLE IF NOT EXISTS preference_snapshots (
     snapshot_id TEXT PRIMARY KEY, user_key TEXT, created_at TEXT, reading_time TEXT,
-    categories TEXT, criterion TEXT, subcategories TEXT, seeds TEXT, persona TEXT  -- JSON: categories subcategories seeds persona
+    categories TEXT, criterion TEXT, subcategories TEXT, seeds TEXT, persona TEXT,
+    reading_times TEXT, criteria TEXT, authors TEXT  -- JSON: categories subcategories seeds persona reading_times criteria authors
 );
 CREATE TABLE IF NOT EXISTS events (
     event_id TEXT PRIMARY KEY, user_key TEXT, book_id INTEGER, event_type TEXT, ts TEXT,

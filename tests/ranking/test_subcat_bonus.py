@@ -10,7 +10,7 @@ import pytest
 
 from millie_rec.app.staged import StagedPipeline
 from millie_rec.contracts import BookStats, Candidate, UserState
-from millie_rec.ranking.hybrid import W_SUBCAT, blend_channels
+from millie_rec.ranking import W_SUBCAT, blend_channels
 from millie_rec.reranking import GUARD_TOP_N, DifficultyGuard, MMRReranker
 
 WANT = "추리/스릴러"

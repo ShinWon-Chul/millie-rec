@@ -72,6 +72,13 @@ export async function getCandidates(source, { categories, subcategories = [], n 
   return soft(get("/api/candidates/onboarding?" + p));
 }
 
+/** S3A 작가 후보. mock 모드는 정적 파일 — mock.js 는 250줄 상한이라 meta_onboarding.json 과 같은 취급이다. */
+export async function getAuthors(source, { categories, n = 60 }) {
+  if (source === "mock") return soft(local("mock/authors_onboarding.json"));
+  const p = new URLSearchParams({ categories: categories.join(","), n: String(n) });
+  return soft(get("/api/candidates/authors?" + p));
+}
+
 export async function postPreferences(source, body) {
   if (await useMock(source)) return mock.postPreferences(body);
   return soft(post("/api/preferences", body));

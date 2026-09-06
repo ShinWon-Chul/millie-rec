@@ -12,6 +12,7 @@ import pytest
 
 from millie_rec.contracts import BADGE_TYPES, ROW_ANCHOR_PREFIX, ROW_IDS
 from millie_rec.serving.schemas import (
+    AuthorSet,
     CandidateSet,
     OnboardingMeta,
     PreferencesResponse,
@@ -53,6 +54,7 @@ STAGES = ["Candidate Retrieval", "Ranking", "Re-ranking"]
 CONTRACT_FILES = {
     "meta_onboarding.json": OnboardingMeta,
     "candidates_onboarding.json": CandidateSet,
+    "authors_onboarding.json": AuthorSet,
     "preferences_response.json": PreferencesResponse,
     "recommend_pop.json": RecommendOut,
     "recommend_cf.json": RecommendOut,
@@ -158,6 +160,49 @@ def test_meta_criteria_ids_in_badge_order(built):
     assert len(meta["reading_times"]) == 5
 
 
+def test_split_authors_keeps_names_that_end_in_a_role_without_a_space():
+    """공백을 요구하지 않으면 '에이든토저'→'에이든토'·'송기역'→'송기' 로 실제 이름이 훼손된다."""
+    mm = _load()
+    assert mm.split_authors("김영하 지음") == ("김영하",)
+    assert mm.split_authors("에이든토저") == ("에이든토저",)
+    assert mm.split_authors("송기역") == ("송기역",)
+    assert mm.split_authors("히가시노 게이고, 김난주 옮김") == ("히가시노 게이고",)
+    assert mm.split_authors("편집부") == ()
+    assert mm.split_authors("김금희 (글)") == ("김금희",)
+    assert mm.split_authors(None) == ()
+
+
+def test_authors_onboarding_needs_two_books_and_sorts_hangul_first():
+    """대표 책은 pop_rank 최상위, 표시 이름은 최다 표기, 정렬은 가나다(비한글은 뒤)."""
+    mm = _load()
+
+    def card(book_id, authors, cat="소설", rank=None):
+        return {
+            "book_id": book_id,
+            "authors": authors,
+            "categories": [cat],
+            "title": f"책 {book_id}",
+            "image_url": None,
+            "pop_rank": book_id if rank is None else rank,
+        }
+
+    cards = [
+        card(1, "히가시노 게이고"),
+        card(2, "히가시노게이고"),
+        card(3, "히가시노 게이고"),
+        card(4, "Yuval Harari"),
+        card(5, "Yuval Harari"),
+        card(6, "한 번만 쓴 작가"),
+        card(7, "다른 분야 작가", cat="과학"),
+        card(8, "다른 분야 작가", cat="과학"),
+    ]
+    out = mm.authors_onboarding(cards)
+    assert [a["name"] for a in out["items"]] == ["히가시노 게이고", "Yuval Harari"]
+    first = out["items"][0]
+    assert first["book_id"] == 1 and first["n_books"] == 3
+    assert out["survey_variant"] == "v1"
+
+
 def test_preferences_has_cell_and_snapshots_count(built):
     d = _read(built, "preferences_response.json")
     assert d["cell"] in {"A", "B"}
@@ -216,6 +261,7 @@ def test_manifest_records_seed_and_input_digests(built):
     assert manifest["seed"] == 42
     assert set(manifest["inputs"]) >= {"books_kr.json", "item_edges_kr.json", "onboarding.json"}
     assert manifest["outputs"]["catalog_kr.json"] > 0
+    assert manifest["outputs"]["authors_onboarding.json"] > 0
 
 
 def test_build_is_deterministic(tmp_path_factory, millie_serving_sample):

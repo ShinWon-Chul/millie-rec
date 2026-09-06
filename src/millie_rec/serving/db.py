@@ -14,6 +14,13 @@ PRAGMAS = ("PRAGMA journal_mode=WAL", "PRAGMA busy_timeout=5000", "PRAGMA synchr
 SQL_TABLES = (
     "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
 )
+# 기존 DB(Railway 볼륨)에는 CREATE TABLE IF NOT EXISTS 가 컬럼을 더하지 않는다.
+# ALTER TABLE ADD COLUMN 은 SQLite 에서 O(1) 이고, 이미 있으면 건너뛴다(멱등).
+ADDED_COLUMNS = (
+    ("preference_snapshots", "reading_times", "TEXT"),
+    ("preference_snapshots", "criteria", "TEXT"),
+    ("preference_snapshots", "authors", "TEXT"),
+)
 
 
 def resolve_db_path() -> Path:
@@ -41,8 +48,14 @@ class Database:
         return con
 
     def apply_schema(self) -> None:
-        """schema.sql 을 executescript 로 적용(IF NOT EXISTS → 멱등). 행은 쓰지 않는다(D-06)."""
-        self.connect().executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        """schema.sql executescript(IF NOT EXISTS 멱등) + 기존 DB 컬럼 보강. 행은 안 쓴다(D-06)."""
+        con = self.connect()
+        con.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        for table, col, decl in ADDED_COLUMNS:
+            # 테이블·컬럼 이름은 위 상수뿐 — 사용자 입력이 아니라 f-string 이 안전하다
+            have = {r[1] for r in con.execute(f"PRAGMA table_info({table})")}
+            if col not in have:
+                con.execute(f"ALTER TABLE {table} ADD COLUMN {col} {decl}")
 
     def table_names(self) -> list[str]:
         return [r[0] for r in self.connect().execute(SQL_TABLES).fetchall()]

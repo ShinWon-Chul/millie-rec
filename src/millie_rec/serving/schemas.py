@@ -83,6 +83,23 @@ class OnboardingMeta(_Strict):
     categories: list[CategoryMeta]
 
 
+# ── §3-2 /api/candidates/authors (2026-09-07 신설, 설계서 데이터 소스 09 §5-4) ────────
+class AuthorItem(_Strict):
+    """작가 1명. name 은 표시 이름(공백 유지) — 비교 키는 서버 내부에만 있다."""
+
+    name: str
+    book_id: int  # 대표 책 = 그 작가 책 중 pop_rank 최상위
+    title: str
+    image_url: str | None = None
+    n_books: int = 0  # 카탈로그 안 권수. 화면 미사용, 인스펙터 신호 해석용
+
+
+class AuthorSet(_Strict):
+    survey_variant: str
+    created_at: str
+    items: list[AuthorItem] = []
+
+
 # ── §3 /api/candidates/onboarding ───────────────────────────────────────────
 class CandidateItem(_Strict):
     book_id: int
@@ -111,6 +128,10 @@ class PreferencesRequest(_Strict):
     seeds: list[int] = Field(default_factory=list, max_length=30)
     candidate_set_id: str | None = None
     restart: bool = False
+    # 2026-09-07 다중 선택. 단수 reading_time·criterion 은 처음 고른 값으로 서버가 파생한다
+    reading_times: list[str] = Field(default_factory=list, max_length=5)
+    criteria: list[BadgeType] = Field(default_factory=list, max_length=5)
+    authors: list[str] = Field(default_factory=list, max_length=20)
 
 
 class PersonaOut(_Strict):

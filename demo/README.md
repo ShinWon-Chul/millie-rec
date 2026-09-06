@@ -33,7 +33,7 @@ PDF용 스크린샷은 `?capture=1` 또는 `?capture=2`로 열고 ⇧⌘4로 영
 | 라우트 | 페이지 | 프레임 |
 |---|---|---|
 | `#/` | 쇼케이스 랜딩 (평가 비교표·본인 5권·기억할 5가지) | PC 전폭 |
-| `#/onboarding` | 취향 설정 7단계 (S0~S6) | 폰 |
+| `#/onboarding` | 취향 설정 8단계 (S0~S6 + 조건부 S3A 작가 선택) | 폰 |
 | `#/home` | 메인 (5행 구성 · 배지 · 앵커 행) | 폰 |
 | `#/book/:id` | 책 상세 (바텀시트) | 폰 |
 | `#/reader/:id` | 뷰어 시뮬레이션 — 데모 전용 | 폰 |
@@ -52,7 +52,7 @@ demo/
 ├── js/
 │   ├── router.js              해시 → {page, params} (≤30줄, 라우트 표의 정본)
 │   ├── app.js                 state 1개 + setState 1개 + render 1개 + 이벤트 큐(log/flush)
-│   ├── actions.js             data-act 딕셔너리 + 취향 설정 단계 머신(S1~S5)
+│   ├── actions.js             data-act 딕셔너리 + 취향 설정 단계 머신(S1~S5 + 조건부 S3A)
 │   ├── presets.js             쇼케이스 시나리오 프리셋 3종
 │   ├── api.js                 source=api|mock 스위치, 4초 타임아웃 → 클라이언트 fallback
 │   ├── mock.js · mock_store.js  브라우저 내 상태 시뮬레이션 (점수 계산은 하지 않는다)

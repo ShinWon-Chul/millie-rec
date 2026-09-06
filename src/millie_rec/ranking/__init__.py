@@ -21,13 +21,21 @@ from millie_rec.ranking.hybrid import (
     W_GAP_POS,
     W_NCOMP_GAP,
     W_POP,
-    W_SUBCAT,
     HybridRanker,
     blend_channels,
+)
+from millie_rec.ranking.prefs import (
+    BONUS_CAP,
+    W_AUTHOR,
+    W_AUTHOR_PICKED,
+    W_SEGMENT,
+    W_SUBCAT,
+    estimate_segment,
 )
 
 __all__ = [
     "ALPHA0",
+    "BONUS_CAP",
     "ALPHA_FLOOR",
     "BETA0",
     "CHANNEL_WEIGHTS",
@@ -38,14 +46,18 @@ __all__ = [
     "SLOT_OF_SOURCE",
     "TAU",
     "WEIGHT_KEYS",
+    "W_AUTHOR",
+    "W_AUTHOR_PICKED",
     "W_CF",
     "W_CONTENT",
     "W_GAP",
     "W_GAP_POS",
     "W_NCOMP_GAP",
     "W_POP",
+    "W_SEGMENT",
     "W_SUBCAT",
     "HybridRanker",
     "blend_channels",
+    "estimate_segment",
     "state_weights",
 ]

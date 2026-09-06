@@ -1,11 +1,14 @@
-// data-act 딕셔너리 1벌 + 취향 설정 단계 머신(S1~S5). 화면 파일은 data-act 만 찍고 여기로 모인다.
+// data-act 딕셔너리 1벌 + 취향 설정 단계 머신(단계 목록 정본은 config/onboarding.json).
 // 정본: 화면 구성 02 §5 UI 행동 → 이벤트 표(contracts.EVENT_TYPES 13종과 1:1).
 
 export function createActions(ctx) {
-  const { state, setState, render, log, snap, criterionId, requestRecommend,
+  const { state, setState, render, log, snap, criterionIds, requestRecommend,
     api, presets, VARIANTS, QUALIFIED_READ_MINUTES, toast } = ctx;
 
-  const ORDER = ["S1", "S2", "S3", "S4", "S5"];
+  // S3A 는 고르는 기준에 '좋아하는 작가'가 있을 때만 들어간다(onboarding.json 의 requires)
+  const order = () => state.steps
+    .filter((s) => !s.requires || criterionIds().includes(s.requires))
+    .map((s) => s.id);
   const step = (id) => state.steps.find((s) => s.id === id);
   const subsOf = (cat) => (state.meta?.categories ?? []).find((c) => c.name === cat)?.subcategories ?? [];
 
@@ -21,6 +24,8 @@ export function createActions(ctx) {
       const allowed = state.prefs.categories.flatMap(subsOf);
       state.prefs.subcategories = state.prefs.subcategories.filter((s) => allowed.includes(s));
     }
+    // 기준에서 '좋아하는 작가'를 빼면 S3A 가 사라진다 — 고르지 않은 기준의 작가를 서버로 보내지 않는다
+    if (stepId === "S3" && !criterionIds().includes("author")) state.prefs.authors = [];
     log("preference_step", { payload: { step: stepId, field: st.field } });
     render();
   }
@@ -42,11 +47,20 @@ export function createActions(ctx) {
     }));
   }
 
+  /** S3A 진입 시 작가 후보. 서버가 가나다 순으로 주므로 프론트는 다시 정렬하지 않는다. */
+  async function loadAuthors() {
+    const res = await api.getAuthors(state.source, { categories: state.prefs.categories, n: 60 });
+    state.authorSet = { items: res?.items ?? [] };
+  }
+
   /** 스냅샷은 append only — 재설정도 push 한다(Refresh ≠ Reset). 시드 5권 서재 담기는 서버가 기록한다. */
   async function completeOnboarding() {
+    const crits = criterionIds();
     const res = await api.postPreferences(state.source, {
-      user_key: state.userKey, consent: true, reading_time: state.prefs.readingTime,
-      categories: state.prefs.categories, criterion: criterionId(),
+      user_key: state.userKey, consent: true,
+      reading_times: state.prefs.readingTimes, reading_time: state.prefs.readingTimes[0] ?? null,
+      categories: state.prefs.categories,
+      criteria: crits, criterion: crits[0] ?? null, authors: state.prefs.authors,
       subcategories: state.prefs.subcategories, seeds: state.prefs.seedBooks,
       candidate_set_id: state.candidateSet.id, restart: state.resetting,
     });
@@ -65,18 +79,21 @@ export function createActions(ctx) {
   }
 
   async function goNext() {
-    const i = ORDER.indexOf(state.screen);
+    const ids = order();
+    const i = ids.indexOf(state.screen);
     if (state.screen === "S1") state.consent = true;
-    if (i === ORDER.length - 1) return completeOnboarding();
-    const nextId = ORDER[i + 1];
+    if (i === ids.length - 1) return completeOnboarding();
+    const nextId = ids[i + 1];
+    if (nextId === "S3A") await loadAuthors();
     if (nextId === "S5") await loadCandidates();
     setState({ screen: nextId });
   }
 
   function goBack() {
-    const i = ORDER.indexOf(state.screen);
+    const ids = order();
+    const i = ids.indexOf(state.screen);
     if (i === 0 && state.resetting) { location.hash = "#/home"; return; }
-    setState({ screen: i > 0 ? ORDER[i - 1] : "S0" });
+    setState({ screen: i > 0 ? ids[i - 1] : "S0" });
   }
 
   /** 서재 타일은 LibraryBook 3필드뿐이라 ItemOut 형태의 최소 detail 을 만들어 넘긴다. */
