@@ -1,11 +1,13 @@
 {
- "user_key": "u_9f21",
- "preference_snapshot_id": "snap_01",
- "created_at": "2026-09-04T23:36:00+09:00",
+ "user_key": "00000000-0000-4000-8000-000000000042",
+ "preference_snapshot_id": "snap_2a9751",
+ "created_at": "2026-09-06T00:00:00+00:00",
+ "cell": "B",
+ "snapshots_count": 1,
  "persona": {
-  "name": "오디세우스",
-  "work": "오디세이아",
-  "quote": "지혜로 승리하리라!",
-  "description": "회원님은 IT와 소설을 즐기고, 베스트셀러로 책을 고르는 독서가입니다."
+  "name": "셜록 홈즈",
+  "work": "주홍색 연구",
+  "quote": "사소한 것이 가장 중요하다.",
+  "description": "회원님은 소설과 인문을 즐기고, 베스트셀러로 책을 고르는 독서가입니다."
  }
 }

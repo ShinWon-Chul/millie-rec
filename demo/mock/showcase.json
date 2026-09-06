@@ -1,0 +1,232 @@
+{
+ "philosophy": "사용자가 취향 설정에서 직접 알려준 선호를 cold-start(콜드 스타트, 초기 데이터 부족 상태)의 강한 prior(사전 정보)로 사용하되, 영구적인 취향 label(라벨)로 고정하지 않는다. 실제 독서 행동과 현재 세션 의도가 축적되면 행동 신호의 비중을 높이고, 취향 설정을 다시 수행하면 새로운 explicit preference state(명시적 선호 상태)를 생성해 즉시 반영한다. 이 사용자 상태로 Candidate Retrieval(후보 생성) → Ranking(순위화) → Re-ranking(재순위화) → Page Composition(페이지 구성)을 수행해 '클릭할 책'이 아니라 '실제로 읽기 시작할 책'을 메인에 노출한다.",
+ "eval_table": {
+  "split_mode": "holdout",
+  "source": {
+   "metrics": "results/latest.csv",
+   "p95": "results/latency.json"
+  },
+  "rows": [
+   {
+    "variant": "pop",
+    "recall_at_20": 0.063,
+    "ndcg_at_10": 0.054,
+    "ild_at_10": 0.764,
+    "p95_ms": null
+   },
+   {
+    "variant": "cf",
+    "recall_at_20": 0.117,
+    "ndcg_at_10": 0.107,
+    "ild_at_10": 0.643,
+    "p95_ms": null
+   },
+   {
+    "variant": "hybrid",
+    "recall_at_20": 0.118,
+    "ndcg_at_10": 0.11,
+    "ild_at_10": 0.606,
+    "p95_ms": 79.5
+   },
+   {
+    "variant": "hybrid_div",
+    "recall_at_20": 0.116,
+    "ndcg_at_10": 0.107,
+    "ild_at_10": 0.684,
+    "p95_ms": 79.5
+   }
+  ]
+ },
+ "metric_mapping": [
+  {
+   "stage": "Candidate Retrieval",
+   "metric": "Recall@20"
+  },
+  {
+   "stage": "Ranking",
+   "metric": "NDCG@10"
+  },
+  {
+   "stage": "Re-ranking",
+   "metric": "ILD@10"
+  }
+ ],
+ "personal_case": {
+  "seeds": [
+   {
+    "book_id": 1012,
+    "title": "싯다르타",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg",
+    "reason": null,
+    "badge": null
+   },
+   {
+    "book_id": 2765,
+    "title": "데미안",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179593874/faf2484da8c840ab8cd4e12aa6a91aba.jpg",
+    "reason": null,
+    "badge": null
+   },
+   {
+    "book_id": 1446,
+    "title": "위버멘쉬",
+    "image_url": "https://image.millie.co.kr/service/cover/180081272/21c0ae05555343d58f60d2b350cd47fc.jpg",
+    "reason": null,
+    "badge": null
+   },
+   {
+    "book_id": 1222,
+    "title": "쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라",
+    "image_url": "https://image.millie.co.kr/service/cover/179644570/7598303266bc4524a3ada8ce9de807f4.jpg",
+    "reason": null,
+    "badge": null
+   },
+   {
+    "book_id": 2292,
+    "title": "빅터 프랭클의 죽음의 수용소에서",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg",
+    "reason": null,
+    "badge": null
+   }
+  ],
+  "recommendations": [
+   {
+    "book_id": 1007,
+    "title": "호신술 클럽",
+    "image_url": "https://image.millie.co.kr/service/cover/180174017/37ca9e036ccf4914a26587fba248623b.jpg",
+    "reason": "『위버멘쉬』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 2499위"
+    }
+   },
+   {
+    "book_id": 6989,
+    "title": "쇼펜하우어의 인생 수업",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179629867/ffea10399ee84c7699cc337c6bcb7f1b.jpg",
+    "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 4178위"
+    }
+   },
+   {
+    "book_id": 1447,
+    "title": "혼자일 수 없다면 나아갈 수 없다",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179644312/a0dafd12822c4b468d363bec20d971fd.jpg",
+    "reason": "『위버멘쉬』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 430위"
+    }
+   },
+   {
+    "book_id": 4149,
+    "title": "쇼펜하우어 인생수업 2: 한 번뿐인 삶 이렇게 살아라",
+    "image_url": "https://image.millie.co.kr/service/cover/180106084/abde2a702ff04b4088e969c4a924e49f.jpg",
+    "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 2684위"
+    }
+   },
+   {
+    "book_id": 2295,
+    "title": "청소년을 위한 빅터 프랭클의 죽음의 수용소에서",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179593802/7442d44a031a41eda190fcd5e782ef60.jpg",
+    "reason": "『빅터 프랭클의 죽음의 수용소에서』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 3534위"
+    }
+   },
+   {
+    "book_id": 1448,
+    "title": "차라투스트라는 이렇게 말했다",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/180070799/fc527e54c7454ddabe6a2362547dec98.jpg",
+    "reason": "『위버멘쉬』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 788위"
+    }
+   },
+   {
+    "book_id": 7856,
+    "title": "마흔에 읽는 쇼펜하우어",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179624926/fff3a96a31914c90b1a4e2952499848e.jpg",
+    "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 2504위"
+    }
+   },
+   {
+    "book_id": 5728,
+    "title": "그럼에도 삶에 ‘예’라고 답할 때",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179491532/137b2384e7764a8a8c9cad471d31583a.jpg",
+    "reason": "『빅터 프랭클의 죽음의 수용소에서』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 4570위"
+    }
+   },
+   {
+    "book_id": 1449,
+    "title": "니체 인생수업: 니체가 세상에 남긴 66가지 인생지혜",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/180085180/1ef31d2cde2b41efac31be30bb42298c.jpg",
+    "reason": "『위버멘쉬』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 899위"
+    }
+   },
+   {
+    "book_id": 5587,
+    "title": "쇼펜하우어의 의지와 표상으로서의 세계",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179578736/bd6779efa7e1418aac223339f3fd42ca.jpg",
+    "reason": "『쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라』을 좋아하셨다면",
+    "badge": {
+     "type": "bestseller",
+     "text": "인기 2256위"
+    }
+   }
+  ]
+ },
+ "memorable_5": [
+  {
+   "claim": "취향 설정 = cold-start 입력이자 언제든 갱신되는 explicit preference state",
+   "how_to_verify": "취향 재설정 후 인스펙터 snap_01 → snap_02, α +0.15",
+   "route": "#/refresh"
+  },
+  {
+   "claim": "설문 답변을 전부 같은 feature로 보지 않음 — semantic / item seed / selection-policy / context / UX layer 분리",
+   "how_to_verify": "취향 설정 각 단계의 인스펙터 신호 해석",
+   "route": "#/onboarding"
+  },
+  {
+   "claim": "클릭이 목표가 아니다 — Qualified Reading Start 중심 KPI + primary/secondary/guardrail 분리",
+   "how_to_verify": "뷰어에서 가상 15분 도달 시 qualified_read, 대시보드 KPI 첫 카드",
+   "route": "#/dashboard"
+  },
+  {
+   "claim": "Top-K에서 끝나지 않음 — Page Composition까지가 메인 추천 문제",
+   "how_to_verify": "메인 5행(이어 읽기·앵커·서가·인기·새로운 발견)과 dedup_removed",
+   "route": "#/home"
+  },
+  {
+   "claim": "정확도와 production constraint(지연·품질·개인정보·비용)를 같은 수준에서 다룸",
+   "how_to_verify": "인스펙터 latency 예산선 200ms · 서재 동의 철회 → level 3",
+   "route": "#/library"
+  }
+ ],
+ "roadmap": [
+  "Reviewer-affinity",
+  "Interleaving",
+  "선호 교정 루프",
+  "텍스트 난이도",
+  "Two-Tower/ANN",
+  "Kafka/K8s",
+  "피크 autoscaling"
+ ],
+ "data_notice": "평가 비교표 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리의서재 공개 도서 페이지(수치·메타·표지 URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도(협업 필터링 아님) · 개인정보 무수집 · 서버 latency는 참고값 · 표지는 밀리 CDN 링크"
+}

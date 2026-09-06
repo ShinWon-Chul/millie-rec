@@ -1,0 +1,247 @@
+{
+ "candidate_set_id": "cand_2a9751",
+ "survey_variant": "v1",
+ "created_at": "2026-09-06T00:00:00+00:00",
+ "items": [
+  {
+   "book_id": 1004,
+   "title": "불편한 편의점",
+   "authors": "김호연",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179513691/42ba225f9b6840feabf19f5deadaa6a6.jpg",
+   "position": 0,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 621,
+   "title": "사피엔스",
+   "authors": "유발 하라리 / 조현욱 옮김",
+   "image_url": "https://image.millie.co.kr/service/cover/7880427/a2f4bd360a964e15836e46b8b32bbaca.jpg",
+   "position": 1,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 2843,
+   "title": "세이노의 가르침",
+   "authors": "세이노",
+   "image_url": "https://image.millie.co.kr/service/cover/179590093/6eaa1b2983f341e1891c69a8fa145cc3.jpg",
+   "position": 2,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 2081,
+   "title": "달러구트 꿈 백화점",
+   "authors": "이미예",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179467030/0a02d0ead74b4cbda9e8a945e1c125de.jpg",
+   "position": 3,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1355,
+   "title": "지적 대화를 위한 넓고 얕은 지식 1",
+   "authors": "채사장",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179462588/e765b2df9df045cb95312c62e848badf.jpg",
+   "position": 4,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 1144,
+   "title": "데일 카네기 인간관계론",
+   "authors": "데일 카네기, 임상훈 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179464131/a44f936380084d91807d3fa0ff535ff8.jpg",
+   "position": 5,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 4320,
+   "title": "홍학의 자리",
+   "authors": "정해연",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179620124/93ca598bf2744f7d9c34633bf7d0cc4a.jpg",
+   "position": 6,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 5585,
+   "title": "마흔에 읽는 쇼펜하우어",
+   "authors": "강용수",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179624926/fff3a96a31914c90b1a4e2952499848e.jpg",
+   "position": 7,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 570,
+   "title": "타이탄의 도구들(블랙 에디션)",
+   "authors": "팀페리스 / 박선령, 정지현 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15653234/85ced2d0a76e4bb38b75ff85c51487cc.jpg",
+   "position": 8,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 2204,
+   "title": "구의 증명",
+   "authors": "최진영",
+   "image_url": "https://image.millie.co.kr/service/cover/179482075/71687964b97b47728fd1bfd88d290f1d.jpg",
+   "position": 9,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1357,
+   "title": "지적 대화를 위한 넓고 얕은 지식 0(제로)",
+   "authors": "채사장",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179462586/17d9fdfe342147f6bfc1065413c78400.jpg",
+   "position": 10,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 4318,
+   "title": "역행자 : 확장판",
+   "authors": "자청",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179607538/beb6900006a24d92874dc397a9f7a058.jpg",
+   "position": 11,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1151,
+   "title": "오늘 밤, 세계에서 이 사랑이 사라진다 해도",
+   "authors": "이치조 미사키 / 권영주 옮김",
+   "image_url": "https://img.millie.co.kr/400x/service/profile/4071209/f4aabc316a844002a9cf2f6b7272215a.jpeg",
+   "position": 12,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 8373,
+   "title": "초역 부처의 말",
+   "authors": "코이케 류노스케",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179663372/7b4855393e864fd5855a624e8b18bf25.jpg",
+   "position": 13,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 4246,
+   "title": "데일 카네기 자기관리론",
+   "authors": "데일카네기, 임상훈 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179490620/fe16efd4bab74807af85d5ca5a57c6d7.jpg",
+   "position": 14,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1013,
+   "title": "용의자 X의 헌신",
+   "authors": "히가시노 게이고 / 양억관 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179567051/6419fa129cef4881a9d6419bd4432b34.jpg",
+   "position": 15,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 2292,
+   "title": "빅터 프랭클의 죽음의 수용소에서",
+   "authors": "빅터프랭클, 이시형 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg",
+   "position": 16,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 4307,
+   "title": "역행자",
+   "authors": "자청",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179566551/8866a72490d24eeb8056ab295899a77f.jpg",
+   "position": 17,
+   "book_format": "챗북"
+  },
+  {
+   "book_id": 1917,
+   "title": "우리가 빛의 속도로 갈 수 없다면",
+   "authors": "김초엽",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179471152/90e88296b00d4483ad97ca549d43eaed.jpg",
+   "position": 18,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1476,
+   "title": "만일 내가 인생을 다시 산다면",
+   "authors": "김혜남",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179580677/ea926cd186014095befc4e647a6d5c0e.jpg",
+   "position": 19,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 181,
+   "title": "자존감 수업",
+   "authors": "윤홍균",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/14247171/f35aa2bfce094ba391e6b3a473ae64c1.jpg",
+   "position": 20,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 3854,
+   "title": "불편한 편의점 2",
+   "authors": "김호연",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179572960/cbfa5805ee684c30b55c71f1dda3dba9.jpg",
+   "position": 21,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1477,
+   "title": "생각이 너무 많은 어른들을 위한 심리학",
+   "authors": "김혜남",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179622936/9377a66b68b740739190e8e7e7cb7eea.jpg",
+   "position": 22,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 2849,
+   "title": "회복탄력성",
+   "authors": "김주환",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179464097/1ee88e6a26bb47a2b41a916816eb73ef.jpg",
+   "position": 23,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 8303,
+   "title": "급류",
+   "authors": "정대건",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179694679/b5e0d9af383e4d199957e495b4e1e88a.jpg",
+   "position": 24,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 2661,
+   "title": "다정한 것이 살아남는다",
+   "authors": "브라이언헤어,버네사우즈 / 이민아",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179548891/ce3854b247d9485fb74c0343653b6d39.jpg",
+   "position": 25,
+   "book_format": "전자책"
+  },
+  {
+   "book_id": 4197,
+   "title": "기분이 태도가 되지 않게",
+   "authors": "레몬심리, 박영란 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/179470523/dfd38655ee5a46599875bf371ba67324.jpg",
+   "position": 26,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1012,
+   "title": "싯다르타",
+   "authors": "헤르만 헤세 / 박병덕 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg",
+   "position": 27,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 213,
+   "title": "12가지 인생의 법칙 (40만 부 기념 스페셜 에디션)",
+   "authors": "조던B.피터슨, 강주헌 옮김",
+   "image_url": "https://img.millie.co.kr/200x/service/cover/15906293/fe69cd93b24a49ab8f06e80c461b94bc.jpg",
+   "position": 28,
+   "book_format": "오디오북"
+  },
+  {
+   "book_id": 1140,
+   "title": "아주 작은 습관의 힘",
+   "authors": "제임스 클리어 / 이한이 옮김",
+   "image_url": "https://image.millie.co.kr/service/cover/179682757/ea695e915611497dae87336d16855bf2.jpg",
+   "position": 29,
+   "book_format": "전자책"
+  }
+ ]
+}

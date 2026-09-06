@@ -1,0 +1,56 @@
+{
+ "user_key": "00000000-0000-4000-8000-000000000042",
+ "consent": true,
+ "cell": "B",
+ "is_new": false,
+ "library": {
+  "added": [
+   {
+    "book_id": 1012,
+    "title": "싯다르타",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/180070787/59bb3770c3b246ca90973d16891c39bf.jpg"
+   },
+   {
+    "book_id": 2765,
+    "title": "데미안",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179593874/faf2484da8c840ab8cd4e12aa6a91aba.jpg"
+   },
+   {
+    "book_id": 1446,
+    "title": "위버멘쉬",
+    "image_url": "https://image.millie.co.kr/service/cover/180081272/21c0ae05555343d58f60d2b350cd47fc.jpg"
+   },
+   {
+    "book_id": 1222,
+    "title": "쇼펜하우어 인생수업: 한 번뿐인 삶 이렇게 살아라",
+    "image_url": "https://image.millie.co.kr/service/cover/179644570/7598303266bc4524a3ada8ce9de807f4.jpg"
+   },
+   {
+    "book_id": 2292,
+    "title": "빅터 프랭클의 죽음의 수용소에서",
+    "image_url": "https://img.millie.co.kr/200x/service/cover/179469945/55cc9f11e78a42179ca59850a4d32ae3.jpg"
+   }
+  ],
+  "reading": [],
+  "completed": []
+ },
+ "snapshots": [
+  {
+   "snapshot_id": "snap_2a9751",
+   "created_at": "2026-09-06T00:00:00+00:00",
+   "categories": [
+    "소설",
+    "인문",
+    "자기계발"
+   ],
+   "criterion": "bestseller",
+   "active": true
+  }
+ ],
+ "user_state_weights": {
+  "alpha": 0.7,
+  "beta": 0.2,
+  "gamma": 0.1
+ },
+ "nearline_lag_s": 1.0
+}
