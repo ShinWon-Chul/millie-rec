@@ -80,8 +80,14 @@
 .memo__claim { font-weight:700; margin-bottom:6px }
 .memo__how { color:var(--text-2) }
 .memo__card a { color:var(--accent); font-size:12px; display:inline-block; margin-top:8px; font-family:var(--mono) }
-.start { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
-.start .cta { width:auto; padding:0 28px }
+/* 이름이 onboarding.css 의 S0 화면 .start 와 겹친다(폰 = 세로 중앙, 여기 = 가로 행).
+   `.page` 로 범위를 좁혀 양방향 누출을 끊는다 — 범위 없이 속성만 덮으면 S0 가 가로로 눕는다(실측).
+   onboarding 쪽 height:100%·text-align:center 는 여기서 명시적으로 되돌려야 한다. */
+.page .start {
+  display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; align-items:center;
+  height:auto; text-align:left;
+}
+.page .start .cta { width:auto; padding:0 28px }
 .start__preset {
   height:40px; border-radius:var(--r-pill); border:1px solid var(--line);
   padding:0 16px; font-size:13px; color:var(--text-2); background:transparent; cursor:pointer;
