@@ -11,5 +11,6 @@ artifacts/*
 !artifacts/serving
 notebooks
 report
-results
+results/*
+!results/latency.json
 tests
