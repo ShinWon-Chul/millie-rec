@@ -79,7 +79,7 @@ export function tabbar(active) {
 }
 
 /** 밀리 앱에 없는 화면(D4·D7·D8)에 붙이는 24px 고지 띠. */
-export const demoLabel = (text = "데모 전용 · 실제 밀리 화면 아님") =>
+export const demoLabel = (text = "데모 전용, 실제 밀리 화면 아님") =>
   `<div class="demo-label">${esc(text)}</div>`;
 
 export const banner = (text) => (text ? `<div class="banner">${esc(text)}</div>` : "");

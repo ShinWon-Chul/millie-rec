@@ -119,7 +119,7 @@ function screenHTML() {
 /** modal() 에 넘기는 마크업은 여기서 이미 esc() 한 것만. "rating" 모달은 D4 화면 파일이 그린다. */
 function modalHTML() {
   if (state.modal === "mydata") return modal(`<h3>내 데이터</h3><pre>${esc(JSON.stringify(state.mydata, null, 1))}</pre><button class="cta is-on" data-act="closeModal">닫기</button>`);
-  if (state.modal === "withdraw") return modal(`<h3>맞춤 추천 동의를 철회할까요?</h3><p>스냅샷·이벤트·별점·추천 로그가 삭제되고 이후에는 비개인화 인기 도서만 보입니다.</p><button class="cta is-on" data-act="withdrawConfirm">철회</button><button class="sheet__ghost" data-act="closeModal">취소</button>`);
+  if (state.modal === "withdraw") return modal(`<h3>맞춤 추천 동의를 철회할까요?</h3><p>스냅샷, 이벤트, 별점, 추천 로그가 삭제되고 이후에는 비개인화 인기 도서만 보입니다.</p><button class="cta is-on" data-act="withdrawConfirm">철회</button><button class="sheet__ghost" data-act="closeModal">취소</button>`);
   return "";
 }
 
@@ -139,7 +139,7 @@ function render() {
     $insp.innerHTML = inspector.render(state);
   }
   document.getElementById("bar-model").textContent = state.model ?? (state.cell === "A" ? "hybrid" : state.cell === "B" ? "hybrid_div" : "auto");
-  document.getElementById("bar-version").textContent = state.health?.model_version ?? "—";
+  document.getElementById("bar-version").textContent = state.health?.model_version ?? "-";
   const dot = document.getElementById("bar-source");
   dot.textContent = state.source; dot.dataset.source = state.source;
   $toast.hidden = !state.toast;
@@ -163,11 +163,11 @@ async function requestRecommend() {
   const lvl = r?.fallback_level ?? 3;
   // 위에서 먼저 맞는 것 1개. 건너뛰기·철회(②)가 서버측 폴백(③)보다 앞이라 문구가 유지된다.
   if (r?.client_fallback_reason) {
-    state.banner = "추천 서버 응답이 없어 정적 인기 목록으로 대체했습니다 (fallback_level 3 · client)";
+    state.banner = "추천 서버 응답이 없어 정적 인기 목록으로 대체했습니다 (fallback_level 3, client)";
   } else if (state.consent === false || (lvl === 3 && !snap()?.id)) {
     state.banner = "비개인화 인기 도서";
   } else if (lvl >= 1) {
-    state.banner = `개인화 응답 지연 — 캐시/인기 도서로 대체 (level ${lvl})`;
+    state.banner = `개인화 응답이 지연되어 캐시와 인기 도서로 대체했습니다 (level ${lvl})`;
   } else {
     state.banner = null;
   }

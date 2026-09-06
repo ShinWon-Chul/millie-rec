@@ -19,7 +19,7 @@ const CRITERION_LABEL = {
   publisher: "좋아하는 출판사",
   bestseller: "베스트셀러",
   buzz: "화제작",
-  review: "리뷰·별점",
+  review: "리뷰와 별점",
 };
 
 /** 저자 정본은 응답의 LibraryBook.authors — 없을 때만 추천 응답에서 같은 book_id 를 찾는다(D-07b ③). */
@@ -55,12 +55,12 @@ function tabs(state) {
 function timeline(state) {
   const snaps = state.userState?.snapshots ?? [];
   const label = (id) =>
-    state.meta?.criteria?.find((c) => c.id === id)?.label ?? CRITERION_LABEL[id] ?? id ?? "—";
+    state.meta?.criteria?.find((c) => c.id === id)?.label ?? CRITERION_LABEL[id] ?? id ?? "-";
   const when = (ts) => String(ts ?? "").slice(5, 16).replace("T", " ");
   const items = snaps.map((s) => `<li class="timeline__item${s.active ? " is-on" : ""}">
       <span class="timeline__id">${esc(s.snapshot_id)}</span>
       <span class="timeline__t">${esc(when(s.created_at))}</span>
-      <span class="timeline__cats">${esc((s.categories ?? []).join("·"))} / ${esc(label(s.criterion))}</span>
+      <span class="timeline__cats">${esc((s.categories ?? []).join(", "))} / ${esc(label(s.criterion))}</span>
     </li>`).join("");
   return `<section class="lib__sec">
     <h2>취향 히스토리</h2>

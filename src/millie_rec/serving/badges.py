@@ -27,7 +27,7 @@ def badge_for(
         return best
     if criterion == "review":
         if avg is not None and n >= REVIEW_MIN_COUNT:
-            return Badge("review", f"★{avg:.1f} · 리뷰 {n}")  # shelf_count 는 넣지 않는다
+            return Badge("review", f"★{avg:.1f}, 리뷰 {n}")  # shelf_count 는 넣지 않는다
         if n >= REVIEW_MIN_COUNT_NO_RATING:
             return Badge("review", f"리뷰 {n}")
         return best

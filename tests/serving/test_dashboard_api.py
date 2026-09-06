@@ -35,7 +35,7 @@ EVAL_JSON = """{
            "created_at": "2026-09-05T15:14:05+00:00"}
 }"""
 
-NOTICE_VERBATIM = "평가 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리 공개 도서 페이지(수치·메타·표지 URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도 · 개인정보 무수집 · 서버 latency는 참고값"  # noqa: E501
+NOTICE_VERBATIM = "평가는 Goodbooks-10k(CC BY-SA 4.0)을 씁니다. 데모 카탈로그는 밀리 공개 도서 페이지의 수치, 메타, 표지 URL만 쓰고 텍스트는 노출하지 않으며 요청 시 삭제합니다. 데모 이웃은 콘텐츠 유사도입니다. 개인정보는 수집하지 않고 서버 latency는 참고값입니다"  # noqa: E501
 
 
 def _paths(root: Path, *, eval_json: str | None = EVAL_JSON, latency: dict | None = None):

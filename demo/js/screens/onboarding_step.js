@@ -53,7 +53,7 @@ function chipGroups(state, step, meta) {
             data-step="${esc(step.id)}" data-val="${esc(s)}"${full && !on ? " disabled" : ""}
             >${esc(s)}</button>`;
         }).join("")}</div>`
-      : `<p class="group__none">세부 분류 없음 · 카테고리 전체로 추천합니다</p>`;
+      : `<p class="group__none">세부 분류 없음, 카테고리 전체로 추천합니다</p>`;
     return `<section class="group"><h2 class="group__title">${esc(cat)}</h2>${body}</section>`;
   }).join("");
 }

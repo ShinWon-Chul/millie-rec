@@ -30,7 +30,7 @@ function ratingModal() {
     <div class="rating__stars">${stars}</div>
     <div class="rating__scale"><span>별로예요</span><span>최고예요</span></div>
     <button class="rating__later" data-act="rateLater">나중에</button>
-    <p class="rating__note">1탭 즉시 전송 · 라벨은 별점 원본, 리워드는 UX 제안만</p>`);
+    <p class="rating__note">1탭으로 바로 전송합니다. 라벨은 별점 원본을 쓰고 리워드는 UX 제안으로만 둡니다</p>`);
 }
 
 export function render(state) {
@@ -39,7 +39,7 @@ export function render(state) {
   const title = b.title ?? "(제목 없음)";
   const pct = Math.max(0, Math.min(100, Number(r.progressPct) || 0));
   const minutes = Number(r.virtualMinutes) || 0;
-  return `${demoLabel("데모 전용 · 실제 뷰어 아님")}
+  return `${demoLabel("데모 전용, 실제 뷰어 아님")}
   <div class="navbar">
     <button class="navbar__back" data-act="nav" data-to="#/home">${icon("back", 20, 23)}</button>
     <span class="navbar__label">${esc(title)}</span>
@@ -68,7 +68,7 @@ export function render(state) {
       <p class="reader__note">T=15분은 데모 상수, production은 로그 분포로 보정 (main 설계서 §4)</p>
     </div>
     <div class="screen__foot reader__actions">
-      <button class="cta is-on" data-act="read10"${r.completed ? " disabled" : ""}>10분 읽기 <small>+8% · +10분</small></button>
+      <button class="cta is-on" data-act="read10"${r.completed ? " disabled" : ""}>10분 읽기 <small>+8%, +10분</small></button>
       <button class="sheet__ghost" data-act="complete"${r.completed ? " disabled" : ""}>완독</button>
     </div>
   </div>

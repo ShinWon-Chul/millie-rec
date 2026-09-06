@@ -7,8 +7,8 @@ import { render as home, dots } from "./d2_home.js";
 // 서비스 화면에는 "(협업 필터링 아님)" 같은 부정형 단서를 두지 않는다(사용자 결정 2026-09-06).
 // 방법 고지는 쇼케이스 데이터 고지 절이 맡는다 — 통로 이름 자체가 이미 co-read 를 주장하지 않는다.
 const CHANNEL_TEXT = {
-  content: "콘텐츠 유사도 이웃 — 제목·소개 TF-IDF",
-  popularity: "지금 많이 읽는 책 — 인기 순위(pop_rank) 기반",
+  content: "제목과 소개 TF-IDF 로 찾은 콘텐츠 유사도 이웃",
+  popularity: "인기 순위(pop_rank)로 고른 지금 많이 읽는 책",
 };
 
 // 세부 분류(밀리 3depth) — 이름만 나열하면 무엇인지 알 수 없어 라벨을 앞에 둔다. 시트가 좁아 3개까지.
@@ -25,14 +25,14 @@ function subcatsLine(it, picks) {
   const want = new Set(picks ?? []);
   const ordered = [...all.filter((s) => want.has(s)), ...all.filter((s) => !want.has(s))];
   const shown = ordered.slice(0, SUBCATS_MAX)
-    .map((s) => (want.has(s) ? `<b>${esc(s)}</b>` : esc(s))).join(" · ");
+    .map((s) => (want.has(s) ? `<b>${esc(s)}</b>` : esc(s))).join(", ");
   const more = all.length > SUBCATS_MAX ? ` +${all.length - SUBCATS_MAX}` : "";
-  return `<p class="sheet__subcats">${SUBCATS_LABEL} · ${shown}${more}</p>`;
+  return `<p class="sheet__subcats">${SUBCATS_LABEL} ${shown}${more}</p>`;
 }
 
 function fitLine(it) {
   return it.difficulty == null
-    ? `<p class="sheet__fit">난이도 적합도 — 완독지수 없음 · 카테고리 평균 기준</p>`
+    ? `<p class="sheet__fit">난이도 적합도는 완독지수가 없어 카테고리 평균을 씁니다</p>`
     : `<p class="sheet__fit">난이도 적합도 ${dots(it.difficulty)} ${esc(FIT(it.difficulty))}</p>`;
 }
 
@@ -40,7 +40,7 @@ export function render(state) {
   const d = state.detail;
   if (!d) return home(state);
   const it = d.item;
-  const ch = (it.source_channels ?? []).map((c) => CHANNEL_TEXT[c] ?? c).join(" · ");
+  const ch = (it.source_channels ?? []).map((c) => CHANNEL_TEXT[c] ?? c).join(", ");
   const where = d.rowId === "library" ? "내 서재" : (d.rowId ?? "");
   return `${home(state)}
   <div class="sheet-wrap">
@@ -53,7 +53,7 @@ export function render(state) {
           <h2 class="sheet__title">${esc(it.title ?? "(제목 없음)")}</h2>
           <p class="sheet__author">${esc(it.authors ?? "저자 미상")}</p>
           ${subcatsLine(it, state.prefs?.subcategories)}
-          <small>${esc(it.book_format ?? "")}${it.book_format && where ? " · " : ""}${esc(where)}</small>
+          <small>${esc(it.book_format ?? "")}${it.book_format && where ? ", " : ""}${esc(where)}</small>
           ${badge(it.badge)}${dots(it.difficulty)}
         </div>
       </div>
@@ -65,7 +65,7 @@ export function render(state) {
         <button class="sheet__ghost" data-act="library" data-book="${esc(it.book_id)}">서재 담기</button>
       </div>
       <button class="sheet__disabled" disabled
-        title="production roadmap — 선호 교정 루프">이 책 추천하지 않기</button>
+        title="선호 교정 루프는 production roadmap 항목입니다">이 책 추천하지 않기</button>
     </div>
   </div>`;
 }

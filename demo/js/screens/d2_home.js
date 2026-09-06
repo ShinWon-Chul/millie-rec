@@ -56,7 +56,7 @@ export function render(state) {
         <button class="profile-chip" data-act="nav" data-to="#/library">내 서재</button>
       </div>
       ${rec?.cell
-        ? `<span class="cell-chip">cell ${esc(rec.cell)}${rec.forced ? " · forced" : ""} · 데모 표시용</span>`
+        ? `<span class="cell-chip">cell ${esc(rec.cell)}${rec.forced ? ", forced" : ""}, 데모 표시용</span>`
         : ""}
       ${rows.length
         ? rows.map(row).join("")

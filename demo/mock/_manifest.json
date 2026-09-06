@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-06T11:53:43.344540+00:00",
+ "generated_at": "2026-09-06T12:30:04.651684+00:00",
  "seed": 42,
  "generator": "demo/scripts/make_mock.py",
  "inputs": {
@@ -15,11 +15,11 @@
   "candidates_onboarding.json": 8302,
   "preferences_response.json": 424,
   "state.json": 1695,
-  "dashboard.json": 1235,
+  "dashboard.json": 1340,
   "recommend_pop.json": 48675,
   "recommend_cf.json": 48420,
   "recommend_hybrid.json": 48424,
   "recommend_hybrid_div.json": 46702,
-  "showcase.json": 8949
+  "showcase.json": 9322
  }
 }

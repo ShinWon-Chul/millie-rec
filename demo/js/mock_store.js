@@ -5,8 +5,8 @@ const SESSION_WINDOW_S = 1800;                                     // 05-CONTEXT
 const READ_TYPES = ["reader_open", "qualified_read"];              // privacy_api._library
 const HISTORY_TYPES = ["reader_open", "qualified_read", "completion"];
 const STAGES = ["feature", "retrieval", "ranking", "rerank", "compose"];
-const MDE_NOTE = "데모 표본으로 검정하지 않음 — MDE +1%p 검출에 셀당 n만 명";
-const NOTE_P95 = "mock 상수 · 참고용 — PDF 숫자 아님";
+const MDE_NOTE = "데모 표본으로는 검정하지 않습니다. read-start +1%p 를 검출할 셀당 표본은 실서비스 트래픽으로 산정합니다";
+const NOTE_P95 = "mock 상수 참고용입니다. PDF 숫자가 아닙니다";
 const NOTE_QRS = "QRS = 가상 15분 도달 / 뷰어 진입";
 const NOTE_ERR = "mock 은 오류를 내지 않는다";
 const NOTE_PRIVACY = "가명 user_key 외 개인정보 없음";

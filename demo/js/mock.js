@@ -93,7 +93,7 @@ function badgeFor(card, criterion, seedAuthors, seedPublishers) {
   const n = card.review_count ?? 0;
   if (criterion === "bestseller") return best;
   if (criterion === "review") {
-    if (card.average_rating != null && n >= REVIEW_MIN_COUNT) return { type: "review", text: `★${card.average_rating.toFixed(1)} · 리뷰 ${n}` };
+    if (card.average_rating != null && n >= REVIEW_MIN_COUNT) return { type: "review", text: `★${card.average_rating.toFixed(1)}, 리뷰 ${n}` };
     return n >= REVIEW_MIN_COUNT_NO_RATING ? { type: "review", text: `리뷰 ${n}` } : best;
   }
   if (criterion === "author" && seedAuthors.has(card.authors)) return { type: "author", text: `${card.authors} 작가` };

@@ -246,7 +246,7 @@ def test_normalize_title_strips_space_symbols_and_casefolds():
 def test_badge_for_six_types_and_review_three_step_fallback():
     m1, m5, m7, m9 = _meta(1), _meta(5), _meta(7), _meta(9)
     assert badge_for(m7, criterion="bestseller") == Badge("bestseller", "인기 7위")
-    assert badge_for(m7, criterion="review") == Badge("review", "★4.2 · 리뷰 21")
+    assert badge_for(m7, criterion="review") == Badge("review", "★4.2, 리뷰 21")
     assert badge_for(m5, criterion="review") == Badge("review", "리뷰 15")
     low = badge_for({**m5, "review_count": 6}, criterion="review")
     assert low == Badge("bestseller", "인기 5위")

@@ -145,7 +145,7 @@ def test_dashboard_parses_kpi_six_keys_all_with_n_and_note(tmp_path: Path):
     out = _get(_seeded(tmp_path), tmp_path)
     assert set(out.kpi) == set(KPI_KEYS)
     assert all(out.kpi[k].n is not None for k in KPI_KEYS)
-    assert _kpi(out, "p95_latency_ms").note == P95_NOTE == "서버 실측·참고용"
+    assert _kpi(out, "p95_latency_ms").note == P95_NOTE == "서버 실측 참고용"
     assert out.window == "all"
     assert out.generated_at.startswith("20") and "T" in out.generated_at
 

@@ -9,18 +9,18 @@ const TIMELINE = [["reader_open", "reader_open"], ["qualified_read", "qualified_
   ["completion", "completion"], ["rating", "rating"]];
 
 const SIGNALS = {
-  S0: { type: "—", read: "건너뛰기 시 consent=absent → fallback: diverse popular (§7 개인정보 graceful degradation)" },
+  S0: { type: "-", read: "건너뛰기 시 consent=absent → fallback: diverse popular (§7 개인정보 graceful degradation)" },
   S1: { type: "Context prior(맥락 사전 정보)", read: "장르 규칙 금지, ranker의 context×format 피처", extra: "consent=granted" },
   S2: { type: "Broad taste prior", read: "후보 생성 필터/부스팅 채널" },
   S3: { type: "Selection-policy preference", read: "랭킹 피처 가중 + 노출 배지 타입 결정 (Netflix Artwork Personalization)" },
   S4: { type: "Fine-grained taste prior", read: "prior 정밀화" },
   S5: { type: "Strong explicit positive seeds", read: "노출 로그 테이블 실시간 누적 candidate_set_id / book_id / position / selected → \"미선택 ≠ negative\"", extra: "library_add(source=onboarding) 이벤트" },
-  S6: { type: "UX layer — 모델 입력 아님", read: "설명 문구가 실제 explicit state에서 생성됨을 표시 (밀리 현행은 고정 템플릿으로 보임 → 개선점)" },
-  home: { type: "Serving — Page Composition", read: "recommendation_id / model_version / snapshot_id / cell / fallback_level · latency_breakdown · U_t · 행별 channel_mix · dedup_removed" },
-  book: { type: "Implicit positive (detail_click)", read: "카드 탭 → detail_click 기록. 바로 읽기 → reader_open → Nearline 세션·이어 읽기 행" },
-  reader: { type: "Implicit positive (reader_open · qualified_read · completion)", read: "가상 15분 도달 = Qualified Reading Start(주 지표 분자) · 완독 → Nearline 웨이크 → after_completion 행 · β↑" },
-  library: { type: "열람·삭제·철회권 + U_t", read: "GET …/state · GET …/data · DELETE …/personalization → consent=false · 이후 level 3" },
-  refresh: { type: "Preference Refresh ≠ Profile Reset", read: "snap_01 → snap_02 · 독서 기록·이어 읽기 유지 · α +0.15(24h)" },
+  S6: { type: "UX layer, 모델 입력 아님", read: "설명 문구가 실제 explicit state에서 생성됨을 표시 (밀리 현행은 고정 템플릿으로 보임 → 개선점)" },
+  home: { type: "Serving, Page Composition", read: "recommendation_id / model_version / snapshot_id / cell / fallback_level, latency_breakdown, U_t, 행별 channel_mix, dedup_removed" },
+  book: { type: "Implicit positive (detail_click)", read: "카드 탭 → detail_click 기록. 바로 읽기 → reader_open → Nearline 세션과 이어 읽기 행" },
+  reader: { type: "Implicit positive (reader_open, qualified_read, completion)", read: "가상 15분 도달 = Qualified Reading Start(주 지표 분자), 완독 → Nearline 웨이크 → after_completion 행, β↑" },
+  library: { type: "열람, 삭제, 철회권 + U_t", read: "GET …/state, GET …/data, DELETE …/personalization → consent=false, 이후 level 3" },
+  refresh: { type: "Preference Refresh ≠ Profile Reset", read: "snap_01 → snap_02, 독서 기록과 이어 읽기 유지, α +0.15(24h)" },
 };
 
 const snapId = (state) => state.snapshots[state.snapshots.length - 1]?.id || "none";
@@ -48,12 +48,12 @@ function signalSection(state) {
   if (state.resetting) rows.push(["스냅샷", `${snapId(state)} → 재설정 완료 시 새 스냅샷 추가`]);
   if (state.screen === "S5" && key === "S5") {
     const imp = state.candidateSet.impressions;
-    rows.push(["노출 로그", `${imp.length}건 누적 · selected ${imp.filter((i) => i.selected).length}건`]);
-    rows.push(["candidate_set_id", state.candidateSet.id || "—"]);
+    rows.push(["노출 로그", `${imp.length}건 누적, selected ${imp.filter((i) => i.selected).length}건`]);
+    rows.push(["candidate_set_id", state.candidateSet.id || "-"]);
   }
   const unsupported = (state.meta?.categories ?? []).filter((c) => !c.supported).map((c) => c.name);
   const unsup = state.prefs.categories.filter((c) => unsupported.includes(c));
-  if (unsup.length) rows.push(["미지원 카테고리", `${unsup.join(", ")} — 데모 데이터 미지원`]);
+  if (unsup.length) rows.push(["미지원 카테고리", `${unsup.join(", ")} (데모 데이터 미지원)`]);
   return sec(`현재 위치의 신호 해석 (${where})`, kv(rows));
 }
 
@@ -64,10 +64,10 @@ function journeySection(state) {
     const it = state.detail?.item;
     if (!it) return "";
     const last = [...state.events].reverse().find((e) => e.event_type === "detail_click");
-    return sec("책 상세 — 암묵 신호", kv([
-      ["detail", `book_id ${it.book_id} · row ${state.detail.rowId ?? "—"} · position ${it.position ?? 0}`],
+    return sec("책 상세 암묵 신호", kv([
+      ["detail", `book_id ${it.book_id}, row ${state.detail.rowId ?? "-"}, position ${it.position ?? 0}`],
       ["detail_click", last ? `${last.t} ${last.detail}` : "아직 기록 없음"],
-      ["다음 신호", "바로 읽기 → reader_open · 서재 담기 → library_add(surface=main)"],
+      ["다음 신호", "바로 읽기 → reader_open, 서재 담기 → library_add(surface=main)"],
     ]));
   }
   if (page === "reader") {
@@ -75,10 +75,10 @@ function journeySection(state) {
     const marks = TIMELINE.map(([id, label]) =>
       `<span class="${seen.has(id) ? "is-on" : ""}">${seen.has(id) ? "●" : "○"} ${esc(label)}</span>`).join("");
     const r = state.reading;
-    return sec("뷰어 — QRS 타임라인",
+    return sec("뷰어 QRS 타임라인",
       `<div class="timeline-mini">${marks}</div>${kv([
-        ["가상 독서 시간", r ? `${r.virtualMinutes}분 · 진행률 ${r.progressPct}%` : "—"],
-        ["qualified / completed", r ? `${r.qualified ? "도달" : "미도달"} / ${r.completed ? "완독" : "읽는 중"}` : "—"],
+        ["가상 독서 시간", r ? `${r.virtualMinutes}분, 진행률 ${r.progressPct}%` : "-"],
+        ["qualified / completed", r ? `${r.qualified ? "도달" : "미도달"} / ${r.completed ? "완독" : "읽는 중"}` : "-"],
         ["임계", "T=15분은 데모 상수, production은 로그 분포로 보정"],
         ["별점", "리뷰 리워드는 positivity bias 유발 → 라벨은 별점 원본, 리워드는 UX 제안만"],
       ])}`);
@@ -107,7 +107,7 @@ function latencySection(state) {
     <span class="lat__track"><span class="lat__fill" style="width:${(Number(br[k]) / max) * 100}%"></span></span>
     <span class="lat__val">${esc(Number(br[k]).toFixed(1))}ms</span>`).join("");
   const totalPct = Math.min(100, (total / BUDGET_MS) * 100);
-  return sec("파이프라인 · latency",
+  return sec("파이프라인 latency",
     `<div class="lat">${bars}
       <span class="lat__name lat__total">total</span>
       <span class="lat__track lat__total"><span class="lat__fill" style="width:${totalPct}%"></span></span>
@@ -115,8 +115,8 @@ function latencySection(state) {
       <span class="lat__budget"><span style="left:100%">BUDGET ${BUDGET_MS}ms</span></span>
     </div>`,
     state.source === "mock"
-      ? "mock 지연은 결정적 표시값 — PDF 숫자가 아님(PDF p95 는 results/latency.json)"
-      : "서버 실측 · 참고용 — PDF p95 는 로컬 bench(results/latency.json)");
+      ? "mock 지연은 결정적 표시값입니다. PDF 숫자가 아닙니다(PDF p95 는 results/latency.json)"
+      : "서버 실측 참고용입니다. PDF p95 는 로컬 bench 입니다(results/latency.json)");
 }
 
 function weightsSection(state) {
@@ -128,12 +128,12 @@ function weightsSection(state) {
   ].map(([k, v, n]) => `<div class="weight"><div class="weight__k">${k}</div>
     <div class="weight__v">${esc(Number(v).toFixed(2))}</div><div class="weight__n">${esc(n)}</div></div>`).join("");
   const note = !state.recommend
-    ? "아직 추천 응답이 없습니다 — 취향 설정을 마치면 가중치가 채워집니다."
+    ? "아직 추천 응답이 없습니다. 취향 설정을 마치면 가중치가 채워집니다."
     : state.consent === false
       ? "consent=false → 개인화 차단, 가중치 전부 0"
-      : `U_t = ${Number(w.alpha ?? 0).toFixed(2)}·explicit + ${Number(w.beta ?? 0).toFixed(2)}·long`
-        + ` + ${Number(w.gamma ?? 0).toFixed(2)}·session`
-        + (state.snapshots.length >= 2 ? " · 재설정 스냅샷 ≥2 → α 부스트 후보" : "");
+      : `U_t = ${Number(w.alpha ?? 0).toFixed(2)} explicit + ${Number(w.beta ?? 0).toFixed(2)} long`
+        + ` + ${Number(w.gamma ?? 0).toFixed(2)} session`
+        + (state.snapshots.length >= 2 ? ", 재설정 스냅샷 ≥2 → α 부스트 후보" : "");
   return sec("U_t 가중치", `<div class="weights">${cells}</div>`, note);
 }
 
@@ -150,20 +150,20 @@ function modelSection(state) {
   const client = rec?.client_fallback_reason;
   const rows = [
     ["source", state.source, client ? `client fallback: ${client}` : ""],
-    ["recommendation_id", rec?.recommendation_id || "—", ""],
-    ["model_version", rec?.model_version || "—", ""],
-    ["snapshot_id", rec?.preference_snapshot_id || "—", ""],
-    ["cell", rec?.cell ?? "—", rec?.cell ? (rec.forced ? "forced (model= 지정)" : "셀 배정") : ""],
-    ["fallback_level", rec ? rec.fallback_level : "—", client ? "client" : ""],
-    ["dedup_removed", rec ? `${rec.dedup_removed}권 (book_id ∧ 정규화 제목)` : "—", ""],
-    ["Nearline 반영", rec?.nearline_lag_s != null ? `${Number(rec.nearline_lag_s).toFixed(1)}초` : "—", ""],
+    ["recommendation_id", rec?.recommendation_id || "-", ""],
+    ["model_version", rec?.model_version || "-", ""],
+    ["snapshot_id", rec?.preference_snapshot_id || "-", ""],
+    ["cell", rec?.cell ?? "-", rec?.cell ? (rec.forced ? "forced (model= 지정)" : "셀 배정") : ""],
+    ["fallback_level", rec ? rec.fallback_level : "-", client ? "client" : ""],
+    ["dedup_removed", rec ? `${rec.dedup_removed}권 (book_id ∧ 정규화 제목)` : "-", ""],
+    ["Nearline 반영", rec?.nearline_lag_s != null ? `${Number(rec.nearline_lag_s).toFixed(1)}초` : "-", ""],
   ];
   const mix = (rec?.rows ?? []).map((r) => {
     const parts = Object.entries(r.channel_mix ?? {}).filter(([, v]) => v)
       .map(([k, v]) => `${k}:${v}`).join(" ");
-    return `<div class="chan"><b>${esc(r.row_id)}</b> ${esc(parts || "—")} (${(r.items ?? []).length}권)</div>`;
+    return `<div class="chan"><b>${esc(r.row_id)}</b> ${esc(parts || "-")} (${(r.items ?? []).length}권)</div>`;
   }).join("");
-  return sec("모델 전환 · 응답 ID",
+  return sec("모델 전환과 응답 ID",
     `<div class="models">${radios}</div>
      <dl class="kv">${rows.map(([k, v, f]) => `<dt>${esc(k)}</dt><dd class="mono">${esc(v)}${
        f ? `<span class="insp-flag">${esc(f)}</span>` : ""}</dd>`).join("")}</dl>

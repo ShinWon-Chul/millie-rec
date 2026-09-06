@@ -17,8 +17,8 @@ KPI_KEYS = tuple(
     "qualified_reading_start_rate first_completion_rate_new fallback_rate "
     "p95_latency_ms error_rate active_user_keys".split()
 )
-MDE_NOTE = "데모 표본으로 검정하지 않음 — read-start +1%p 검출에 필요한 셀당 n 은 실서비스 트래픽으로 산정한다"  # noqa: E501 — 고정 문장 verbatim(줄을 나누면 글자 대조가 불가능하다)
-P95_NOTE, ERROR_NOTE = "서버 실측·참고용", "5xx 없음 — cascade 가 항상 200"
+MDE_NOTE = "데모 표본으로는 검정하지 않습니다. read-start +1%p 를 검출할 셀당 표본은 실서비스 트래픽으로 산정합니다"  # noqa: E501 — 고정 문장 verbatim(줄을 나누면 글자 대조가 불가능하다)
+P95_NOTE, ERROR_NOTE = "서버 실측 참고용", "5xx 없음, cascade 가 항상 200 을 냅니다"
 
 SQL_RECS = "SELECT latency_total_ms, latency_breakdown, fallback_level, model_version, cell, ts FROM recommendations"  # noqa: E501
 SQL_USERS = "SELECT user_key, cell, is_new FROM users"

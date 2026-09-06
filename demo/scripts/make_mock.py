@@ -84,38 +84,44 @@ ROADMAP = (
 )
 # 정본은 serving/dashboard_api.py DATA_NOTICE — 글자 단위로 같아야 한다(mock/서버 표류 방지).
 DATA_NOTICE = (
-    "평가 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리 공개 도서 페이지(수치·메타·표지 "
-    "URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도 · 개인정보 무수집 · "
-    "서버 latency는 참고값"
+    "평가는 Goodbooks-10k(CC BY-SA 4.0)을 씁니다. 데모 카탈로그는 밀리 공개 도서 페이지의 "
+    "수치, 메타, 표지 URL만 쓰고 텍스트는 노출하지 않으며 요청 시 삭제합니다. "
+    "데모 이웃은 콘텐츠 유사도입니다. 개인정보는 수집하지 않고 서버 latency는 참고값입니다"
 )
-MDE_NOTE = "데모 표본으로 검정하지 않음 — MDE +1%p 검출에 셀당 n만 명"
-KPI_EMPTY_NOTE = "세션 이벤트 집계 전 — 데모 브라우저가 채운다"
+MDE_NOTE = ("데모 표본으로는 검정하지 않습니다. "
+            "read-start +1%p 를 검출할 셀당 표본은 실서비스 트래픽으로 산정합니다")
+KPI_EMPTY_NOTE = "세션 이벤트 집계 전입니다. 데모 브라우저가 채웁니다"
 KPI_NAMES = (
     ("qualified_reading_start_rate", KPI_EMPTY_NOTE),
     ("first_completion_rate_new", KPI_EMPTY_NOTE),
     ("fallback_rate", KPI_EMPTY_NOTE),
-    ("p95_latency_ms", "mock 상수 · 참고용"),
+    ("p95_latency_ms", "mock 상수 참고용"),
     ("error_rate", KPI_EMPTY_NOTE),
     ("active_user_keys", KPI_EMPTY_NOTE),
 )
 # 쇼케이스 '기억에 남을 5가지' — 각 주장은 눌러서 확인할 라우트를 가진다
+# 정본은 serving/dashboard_api.py MEMORABLE_5 — 같은 내용이어야 한다(mock/서버 표류 방지).
 MEMORABLE_5 = (
-    {"claim": "취향 설정 = cold-start 입력이자 언제든 갱신되는 explicit preference state",
-     "how_to_verify": "취향 재설정 후 인스펙터 snap_01 → snap_02, α +0.15",
+    {"claim": "취향 설정은 시작점이고 언제든 다시 씁니다. "
+              "다시 설정해도 읽은 기록은 지우지 않습니다",
+     "how_to_verify": "취향을 다시 설정하면 앵커 행의 기준 책이 바뀌고 스냅샷이 두 개로 늘어납니다",
      "route": "#/refresh"},
-    {"claim": "설문 답변을 전부 같은 feature로 보지 않음 — semantic / item seed / "
-              "selection-policy / context / UX layer 분리",
-     "how_to_verify": "취향 설정 각 단계의 인스펙터 신호 해석",
+    {"claim": "설문 7단계를 한 덩어리로 보지 않습니다. 카테고리, 고르는 기준, 고른 5권이 각각 "
+              "다른 일을 합니다",
+     "how_to_verify": "취향 설정 3단계에서 고르는 기준을 바꾸면 카드에 붙는 배지 종류가 달라집니다",
      "route": "#/onboarding"},
-    {"claim": "클릭이 목표가 아니다 — Qualified Reading Start 중심 KPI + "
-              "primary/secondary/guardrail 분리",
-     "how_to_verify": "뷰어에서 가상 15분 도달 시 qualified_read, 대시보드 KPI 첫 카드",
+    {"claim": "목표는 클릭이 아니라 실제로 읽기 시작하는 것입니다. "
+              "읽은 시간과 완독이 상태를 바꿉니다",
+     "how_to_verify": "뷰어에서 가상 15분에 닿으면 유효 독서로 기록되고 "
+                      "대시보드 첫 카드에 반영됩니다",
      "route": "#/dashboard"},
-    {"claim": "Top-K에서 끝나지 않음 — Page Composition까지가 메인 추천 문제",
-     "how_to_verify": "메인 5행(이어 읽기·앵커·서가·인기·새로운 발견)과 dedup_removed",
+    {"claim": "추천은 상위 목록을 뽑고 끝나지 않습니다. 어떤 행을 어떤 순서로 놓는지까지가 메인 "
+              "추천입니다",
+     "how_to_verify": "메인에 다섯 행이 뜨고 행 사이 중복을 걸러낸 권수가 함께 표시됩니다",
      "route": "#/home"},
-    {"claim": "정확도와 production constraint(지연·품질·개인정보·비용)를 같은 수준에서 다룸",
-     "how_to_verify": "인스펙터 latency 예산선 200ms · 서재 동의 철회 → level 3",
+    {"claim": "정확도와 실서비스 제약을 같은 무게로 다룹니다. 지연과 개인정보는 나중에 붙이는 "
+              "항목이 아닙니다",
+     "how_to_verify": "서재에서 맞춤 추천 동의를 철회하면 즉시 비개인화 목록으로 내려갑니다",
      "route": "#/library"},
 )
 FALLBACK_KEYS = {
@@ -217,7 +223,7 @@ def badge_for(
         return best
     if criterion == "review":
         if avg is not None and n >= REVIEW_MIN_COUNT:
-            return {"type": "review", "text": f"★{avg:.1f} · 리뷰 {n}"}
+            return {"type": "review", "text": f"★{avg:.1f}, 리뷰 {n}"}
         if n >= REVIEW_MIN_COUNT_NO_RATING:
             return {"type": "review", "text": f"리뷰 {n}"}
         return best
