@@ -10,27 +10,16 @@ from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlsplit
 
+# fmt: off  — 상수 표는 조밀하게 유지한다(포매터가 한 줄 한 항목으로 펼치지 않도록)
 ROOT = Path(__file__).resolve().parents[2]
 SEED = 42  # 결정성 표시값 — 이 생성기에 난수는 없다
-SEEDS = (1012, 2765, 1446, 1222, 2292)  # 본인 5권(싯다르타·데미안·위버멘쉬·쇼펜하우어 인생수업·죽음의 수용소에서)
+# 본인 5권: 싯다르타 · 데미안 · 위버멘쉬 · 쇼펜하우어 인생수업 · 죽음의 수용소에서
+SEEDS = (1012, 2765, 1446, 1222, 2292)
 # 카드 필드 화이트리스트 — 블랙리스트가 아니라 이 16개만 통과시킨다(밀리 저작 텍스트 차단)
 CARD_KEYS = (
-    "book_id",
-    "title",
-    "authors",
-    "image_url",
-    "categories",
-    "publisher",
-    "book_format",
-    "pop_rank",
-    "millie_label",
-    "average_rating",
-    "review_count",
-    "completion_prob",
-    "category_avg_prob",
-    "expected_min",
-    "difficulty",
-    "formats",
+    "book_id", "title", "authors", "image_url", "categories", "publisher", "book_format",
+    "pop_rank", "millie_label", "average_rating", "review_count", "completion_prob",
+    "category_avg_prob", "expected_min", "difficulty", "formats",
 )
 ROW_SIZE, ANCHOR_NEIGHBORS, K_ITEMS, N_CANDIDATES, SUPPORTED_MIN = 12, 20, 40, 30, 20
 N_PERSONAL_RECS = 10  # 쇼케이스 본인 5권 케이스의 이웃 추천 수
@@ -52,7 +41,8 @@ REASON_ANCHOR = "『{title}』을 좋아하셨다면"
 HANGUL_BASE, HANGUL_LAST, JONG, JONG_RIEUL = 0xAC00, 0xD7A3, 28, 8
 # 세부 카테고리 — serving/onboarding_meta.json 과 문자 단위로 같아야 한다
 SUBCATEGORIES = {
-    "IT": ["개발/프로그래밍", "그래픽/멀티미디어", "IT 교양", "e비즈니스", "오피스 활용", "컴퓨터 수험서"],
+    "IT": ["개발/프로그래밍", "그래픽/멀티미디어", "IT 교양", "e비즈니스", "오피스 활용",
+           "컴퓨터 수험서"],
     "소설": ["추리/스릴러", "SF", "판타지", "영미 소설", "한국 소설", "일본 소설", "유럽 소설"],
     "철학": ["동양", "정치/경제", "예술/문화", "서양"],
 }
@@ -65,21 +55,24 @@ PERSONAS = (
 CATEGORY_TO_PERSONA = {
     "경제경영": 0, "자기계발": 0, "IT": 0, "소설": 1, "과학": 1, "철학": 1,
     "인문": 2, "역사": 2, "사회": 2, "에세이/시": 3, "라이프스타일": 3,
-}  # fmt: skip
+}
 DESCRIPTION = "회원님은 {cats}{eul} 즐기고, {criterion}{ro} 책을 고르는 독서가입니다."
 CATS_NONE, CRITERION_NONE, CATS_SHOWN_MAX = "다양한 분야", "취향", 2
-LATENCY = {"feature": 4.0, "retrieval": 12.0, "ranking": 9.0, "rerank": 6.0, "compose": 7.0, "total": 38.0}  # 표시값 — PDF 숫자 아님
+# latency 는 표시값이다 — PDF 숫자는 results/latency.json 만(백엔드 01 §0)
+LATENCY = {"feature": 4.0, "retrieval": 12.0, "ranking": 9.0, "rerank": 6.0,
+           "compose": 7.0, "total": 38.0}
 WEIGHTS = {"alpha": 0.7, "beta": 0.2, "gamma": 0.1}  # 표시값(blend.py 공식의 예시 상태)
 FIXED_TS = "2026-09-06T00:00:00+00:00"  # 결정성: 계약 파일 안의 시각은 전부 이 상수
 DEMO_USER_KEY = "00000000-0000-4000-8000-000000000042"  # 고정 예시 UUID — 개인정보 아님
 CONTEXT = "저녁, 하루를 마치며"
 NEARLINE_LAG_S = 1.0
 PHILOSOPHY = (
-    "사용자가 취향 설정에서 직접 알려준 선호를 cold-start(콜드 스타트, 초기 데이터 부족 상태)의 강한 "
-    "prior(사전 정보)로 사용하되, 영구적인 취향 label(라벨)로 고정하지 않는다. 실제 독서 행동과 현재 세션 "
-    "의도가 축적되면 행동 신호의 비중을 높이고, 취향 설정을 다시 수행하면 새로운 explicit preference "
-    "state(명시적 선호 상태)를 생성해 즉시 반영한다. 이 사용자 상태로 Candidate Retrieval(후보 생성) → "
-    "Ranking(순위화) → Re-ranking(재순위화) → Page Composition(페이지 구성)을 수행해 '클릭할 책'이 아니라 "
+    "사용자가 취향 설정에서 직접 알려준 선호를 cold-start(콜드 스타트, 초기 데이터 부족 "
+    "상태)의 강한 prior(사전 정보)로 사용하되, 영구적인 취향 label(라벨)로 고정하지 "
+    "않는다. 실제 독서 행동과 현재 세션 의도가 축적되면 행동 신호의 비중을 높이고, 취향 "
+    "설정을 다시 수행하면 새로운 explicit preference state(명시적 선호 상태)를 생성해 "
+    "즉시 반영한다. 이 사용자 상태로 Candidate Retrieval(후보 생성) → Ranking(순위화) → "
+    "Re-ranking(재순위화) → Page Composition(페이지 구성)을 수행해 '클릭할 책'이 아니라 "
     "'실제로 읽기 시작할 책'을 메인에 노출한다."
 )
 METRIC_MAPPING = (
@@ -90,11 +83,11 @@ METRIC_MAPPING = (
 ROADMAP = (
     "Reviewer-affinity", "Interleaving", "선호 교정 루프", "텍스트 난이도",
     "Two-Tower/ANN", "Kafka/K8s", "피크 autoscaling",
-)  # fmt: skip
+)
 DATA_NOTICE = (
-    "평가 비교표 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리의서재 공개 도서 페이지"
-    "(수치·메타·표지 URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도(협업 필터링 아님) · "
-    "개인정보 무수집 · 서버 latency는 참고값 · 표지는 밀리 CDN 링크"
+    "평가 비교표 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리의서재 공개 도서 "
+    "페이지(수치·메타·표지 URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 "
+    "유사도(협업 필터링 아님) · 개인정보 무수집 · 서버 latency는 참고값 · 표지는 밀리 CDN 링크"
 )
 MDE_NOTE = "데모 표본으로 검정하지 않음 — MDE +1%p 검출에 셀당 n만 명"
 KPI_EMPTY_NOTE = "세션 이벤트 집계 전 — 데모 브라우저가 채운다"
@@ -106,23 +99,32 @@ KPI_NAMES = (
     ("error_rate", KPI_EMPTY_NOTE),
     ("active_user_keys", KPI_EMPTY_NOTE),
 )
+# 쇼케이스 '기억에 남을 5가지' — 각 주장은 눌러서 확인할 라우트를 가진다
 MEMORABLE_5 = (
     {"claim": "취향 설정 = cold-start 입력이자 언제든 갱신되는 explicit preference state",
-     "how_to_verify": "취향 재설정 후 인스펙터 snap_01 → snap_02, α +0.15", "route": "#/refresh"},
-    {"claim": "설문 답변을 전부 같은 feature로 보지 않음 — semantic / item seed / selection-policy / context / UX layer 분리",
-     "how_to_verify": "취향 설정 각 단계의 인스펙터 신호 해석", "route": "#/onboarding"},
-    {"claim": "클릭이 목표가 아니다 — Qualified Reading Start 중심 KPI + primary/secondary/guardrail 분리",
-     "how_to_verify": "뷰어에서 가상 15분 도달 시 qualified_read, 대시보드 KPI 첫 카드", "route": "#/dashboard"},
+     "how_to_verify": "취향 재설정 후 인스펙터 snap_01 → snap_02, α +0.15",
+     "route": "#/refresh"},
+    {"claim": "설문 답변을 전부 같은 feature로 보지 않음 — semantic / item seed / "
+              "selection-policy / context / UX layer 분리",
+     "how_to_verify": "취향 설정 각 단계의 인스펙터 신호 해석",
+     "route": "#/onboarding"},
+    {"claim": "클릭이 목표가 아니다 — Qualified Reading Start 중심 KPI + "
+              "primary/secondary/guardrail 분리",
+     "how_to_verify": "뷰어에서 가상 15분 도달 시 qualified_read, 대시보드 KPI 첫 카드",
+     "route": "#/dashboard"},
     {"claim": "Top-K에서 끝나지 않음 — Page Composition까지가 메인 추천 문제",
-     "how_to_verify": "메인 5행(이어 읽기·앵커·서가·인기·새로운 발견)과 dedup_removed", "route": "#/home"},
+     "how_to_verify": "메인 5행(이어 읽기·앵커·서가·인기·새로운 발견)과 dedup_removed",
+     "route": "#/home"},
     {"claim": "정확도와 production constraint(지연·품질·개인정보·비용)를 같은 수준에서 다룸",
-     "how_to_verify": "인스펙터 latency 예산선 200ms · 서재 동의 철회 → level 3", "route": "#/library"},
-)  # fmt: skip
+     "how_to_verify": "인스펙터 latency 예산선 200ms · 서재 동의 철회 → level 3",
+     "route": "#/library"},
+)
 FALLBACK_KEYS = {
     "recommendation_id", "model_version", "preference_snapshot_id", "user_key", "cell", "forced",
     "fallback_level", "context", "latency_ms", "latency_breakdown", "user_state_weights",
     "dedup_removed", "nearline_lag_s", "items", "rows",
-}  # fmt: skip
+}
+# fmt: on
 
 
 def _hex(text: str, n: int = 6) -> str:
@@ -140,7 +142,8 @@ def is_eligible(row: dict) -> bool:
     url = row.get("image_url") or ""
     url = url if isinstance(url, str) else ""
     host = urlsplit(url).hostname or ""
-    return bool(row.get("title")) and host.endswith(COVER_HOST_SUFFIX) and ADULT_COVER_MARK not in url
+    named = bool(row.get("title"))
+    return named and host.endswith(COVER_HOST_SUFFIX) and ADULT_COVER_MARK not in url
 
 
 def normalize_title(value: object) -> str:
@@ -161,6 +164,12 @@ def josa(word: str, with_final: str, without: str) -> str:
     return with_final
 
 
+def _rank(card: dict) -> int:
+    """pop_rank 결측을 맨 뒤로 — 카탈로그 정렬 키."""
+    value = card.get("pop_rank")
+    return MISSING_RANK if value is None else int(value)
+
+
 def load_catalog(artifacts: Path) -> list[dict]:
     """books_kr.json → eligible 카드 배열(pop_rank 순). CARD_KEYS 외 필드는 버린다."""
     rows = json.loads((artifacts / "books_kr.json").read_text(encoding="utf-8"))
@@ -173,7 +182,7 @@ def load_catalog(artifacts: Path) -> list[dict]:
         card["categories"] = list(card["categories"] or [])
         card["formats"] = list(card["formats"] or [])
         cards.append(card)
-    cards.sort(key=lambda c: (c["pop_rank"] if c["pop_rank"] is not None else MISSING_RANK, c["book_id"]))
+    cards.sort(key=lambda c: (_rank(c), c["book_id"]))
     return cards
 
 
@@ -197,7 +206,9 @@ def all_categories(cards: list[dict]) -> tuple[list[str], dict[str, int]]:
     return sorted(counts, key=lambda c: (-counts[c], c)), counts
 
 
-def badge_for(card: dict, criterion: str | None, seed_authors=frozenset(), seed_publishers=frozenset()):
+def badge_for(
+    card: dict, criterion: str | None, seed_authors=frozenset(), seed_publishers=frozenset()
+):
     """배지 6종 — serving/badges.py 1:1. light 는 Should → None."""
     rank, avg = card.get("pop_rank"), card.get("average_rating")
     n = card.get("review_count") or 0
@@ -256,7 +267,7 @@ def item(card: dict, position: int, *, source: str, reason: str | None = None, s
     }
 
 
-def row_of(row_id: str, title: str, purpose: str, items: list[dict], subtitle: str | None = None) -> dict:
+def row_of(row_id: str, title: str, purpose: str, items: list, subtitle: str | None = None) -> dict:
     """RowOut — channel_mix 는 items 의 source_channels 집계."""
     mix: dict[str, int] = {}
     for entry in items:
@@ -443,7 +454,8 @@ def dashboard_empty() -> dict:
         "kpi": {name: {"value": 0.0, "n": 0, "note": note} for name, note in KPI_NAMES},
         "ab_table": [], "mde_note": MDE_NOTE,
         "latency": {"p50": 0.0, "p95": 0.0, "p99": 0.0, "by_stage": {}},
-        "quality": {"impression_receipt_rate": 0.0, "flagged_events": 0.0, "feature_freshness_s": 0.0},
+        "quality": {"impression_receipt_rate": 0.0, "flagged_events": 0.0,
+                    "feature_freshness_s": 0.0},
         "events_recent": [], "impressions_log": [], "by_variant": {}, "by_hour": [],
     }
 
@@ -456,7 +468,8 @@ def _p95_by_variant(latency: Path | None) -> dict[str, float]:
     p95 = data.get("p95")
     if p95 is None:
         return {}
-    return {v: round(float(p95), 1) for v in VARIANTS if f"{v}{MODEL_SUFFIX}" in data.get("variants", {})}
+    benched = data.get("variants", {})
+    return {v: round(float(p95), 1) for v in VARIANTS if f"{v}{MODEL_SUFFIX}" in benched}
 
 
 def personal_case(by_id: dict, nbrs: dict, seeds) -> dict | None:
@@ -533,7 +546,9 @@ def _md5(path: Path) -> str | None:
     return hashlib.md5(Path(path).read_bytes()).hexdigest() if Path(path).exists() else None
 
 
-def build(artifacts, out, config, *, eval_table=None, latency=None, fallback=None, seeds=SEEDS) -> dict[str, int]:
+def build(
+    artifacts, out, config, *, eval_table=None, latency=None, fallback=None, seeds=SEEDS
+) -> dict[str, int]:
     """밀리 아티팩트 → mock 13파일. 시각·난수 없음(_manifest.json 만 예외)."""
     artifacts, out, config = Path(artifacts), Path(out), Path(config)
     eval_path = Path(eval_table) if eval_table else artifacts / "eval_table.json"
@@ -550,9 +565,12 @@ def build(artifacts, out, config, *, eval_table=None, latency=None, fallback=Non
         "catalog_kr.json": _write(out, "catalog_kr.json", cards, compact=True),
         "neighbors_kr.json": _write(out, "neighbors_kr.json", nbrs, compact=True),
         "meta_onboarding.json": _write(out, "meta_onboarding.json", meta),
-        "candidates_onboarding.json": _write(out, "candidates_onboarding.json", candidates(cards, by_id)),
-        "preferences_response.json": _write(out, "preferences_response.json", preferences_response(persona)),
-        "state.json": _write(out, "state.json", user_state(by_id, seeds, DEMO_CATEGORIES, DEMO_CRITERION)),
+        "candidates_onboarding.json": _write(
+            out, "candidates_onboarding.json", candidates(cards, by_id)),
+        "preferences_response.json": _write(
+            out, "preferences_response.json", preferences_response(persona)),
+        "state.json": _write(
+            out, "state.json", user_state(by_id, seeds, DEMO_CATEGORIES, DEMO_CRITERION)),
         "dashboard.json": _write(out, "dashboard.json", dashboard_empty()),
     }
     for variant in VARIANTS:
@@ -573,7 +591,8 @@ def build(artifacts, out, config, *, eval_table=None, latency=None, fallback=Non
         "outputs": dict(sizes),
     }
     sizes["_manifest.json"] = _write(out, "_manifest.json", manifest)
-    validate_fallback(fallback if fallback is not None else out.parent / "fallback" / "popular.json")
+    default_fb = out.parent / "fallback" / "popular.json"
+    validate_fallback(fallback if fallback is not None else default_fb)
     return sizes
 
 
@@ -585,7 +604,8 @@ def main() -> None:
     ap.add_argument("--latency", type=Path, default=ROOT / "results" / "latency.json")
     args = ap.parse_args()
     sizes = build(args.artifacts, args.out, args.config, latency=args.latency)
-    print(f"[make_mock] wrote {len(sizes)} files → {args.out} ({sum(sizes.values()) / 1024:.0f} KB)")
+    total = sum(sizes.values()) / 1024
+    print(f"[make_mock] wrote {len(sizes)} files → {args.out} ({total:.0f} KB)")
 
 
 if __name__ == "__main__":

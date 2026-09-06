@@ -1,4 +1,7 @@
-"""make_mock — 계약(model_validate 10파일) · 정확성(카드 키·top-20·결정성·eval float) · 안전성(자격·누출·구 형태)."""
+"""make_mock — 계약(model_validate 10파일) · 정확성(카드 키·top-20·결정성·eval float).
+
+안전성: 자격 없는 책 제외 · 밀리 저작 텍스트 누출 0건 · 구 형태(v1 흔적) 0건.
+"""
 
 import importlib.util
 import json
@@ -59,7 +62,14 @@ CONTRACT_FILES = {
     "showcase.json": ShowcaseOut,
 }
 # 카탈로그 축약본 2파일에만 적용한다(persona.description 은 PersonaOut 필수 필드).
-FORBIDDEN = ('"description"', '"curator_note"', '"seg_dist"', '"millie_id"', '"tags"', '"shelf_count"')
+FORBIDDEN = (
+    '"description"',
+    '"curator_note"',
+    '"seg_dist"',
+    '"millie_id"',
+    '"tags"',
+    '"shelf_count"',
+)
 FORBIDDEN_FILES = ("catalog_kr.json", "neighbors_kr.json")
 # goodbooks 는 넣지 않는다 — data_notice 의 데이터셋 귀속 고지가 정본이다.
 OLD_SHAPE = (
