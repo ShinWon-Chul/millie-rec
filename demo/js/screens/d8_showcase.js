@@ -38,9 +38,15 @@ function metricsTable(s) {
       <td class="num">${num(r.recall_at_20)}</td><td class="num">${num(r.ndcg_at_10)}</td>
       <td class="num">${num(r.ild_at_10)}</td>
       <td class="num">${r.p95_ms == null ? "—" : num(r.p95_ms, 1)}</td></tr>`).join("");
-  return `<section><h2>평가 3지표 비교표 <span class="ref-label">Track A</span></h2>${mapping(s)}
+  // 이 표는 n=0(온보딩 직후) 한 상태다 — n>=k 표는 제출 문서 전용(app/export.py D-09).
+  // 상태를 밝히지 않으면 처음 보는 사람이 콜드스타트 수치를 대표 성능으로 읽는다.
+  return `<section><h2>평가 3지표 비교표 <span class="ref-label">Track A</span>
+      <span class="ref-label">온보딩 직후 n=0</span></h2>${mapping(s)}
     <table class="dt"><thead><tr><th>variant</th><th>Recall@20</th><th>NDCG@10</th><th>ILD@10</th><th>p95 ms</th></tr></thead>
     <tbody>${body || '<tr><td colspan="5" class="empty">비교표가 아직 없습니다</td></tr>'}</tbody></table>
+    <p class="caption">취향 설정 5권만 주고 독서 이력은 전부 가린 상태입니다.
+      후보를 좁히지 않고 카탈로그 전체에서 20권을 고르게 했습니다(네거티브 샘플링 없음).
+      이력이 쌓인 상태(n≥20)의 같은 표는 제출 문서 4장에 함께 싣습니다.</p>
     <p class="caption">split_mode: ${esc(mode)}${mode === "temporal" ? " (train.ts.max < test.ts.min 단언 통과)" : ""}
       · 출처 ${esc(t.source?.metrics)} · p95 출처 ${esc(t.source?.p95)}(로컬 bench${noP95 ? " — 아직 없음" : ""})</p></section>`;
 }
