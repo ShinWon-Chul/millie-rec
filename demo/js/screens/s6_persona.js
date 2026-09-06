@@ -6,17 +6,21 @@ const ART = { "오디세우스": "🏛️", "셜록 홈즈": "🔎", "돈키호�
 export function render(state) {
   const p = state.snapshots[state.snapshots.length - 1]?.persona;
   if (!p) return `${navbar()}<div class="screen"><div class="screen__body"></div></div>`;
+  // D6(취향 재설정) 완료 화면에서는 CTA 문구가 바뀐다(화면 구성 02 §2 D6)
+  const cta = state.resetting
+    ? "새 취향으로 추천 받기"
+    : `${p.name}${josa(p.name, "이", "가")} 추천하는 책 보기`;
   return `${navbar({ action: { text: "이미지 저장", act: "noop" } })}
   <div class="screen">
     <div class="persona">
-      <p class="persona__who">${esc(state.userKey)}님은</p>
+      <p class="persona__who">회원님은</p>
       <h1 class="persona__name">${esc(p.name)}</h1>
       <p class="persona__work">《${esc(p.work)}》</p>
       <div class="persona__art">${ART[p.name] || "📖"}</div>
       <p class="persona__quote">“${esc(p.quote)}”</p>
       <p class="persona__desc">${esc(p.description)}</p>
       <button class="persona__cta" data-act="toHome"
-        >${esc(p.name)}${esc(josa(p.name, "이", "가"))} 추천하는 책 보기</button>
+        >${esc(cta)}</button>
       <button class="persona__share" data-act="noop">결과 공유하기</button>
     </div>
   </div>`;

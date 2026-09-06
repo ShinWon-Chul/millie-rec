@@ -1,7 +1,7 @@
 // S0 시작 화면. 밀리 3D 캐릭터는 자사 에셋이라 이모지로 대체한다.
 import { navbar } from "./ui.js";
 
-export function render() {
+export function render(state) {   // 인자는 쓰지 않지만 화면 파일 규약(render(state))을 맞춘다
   return `${navbar({ back: false, action: { text: "건너뛰기", act: "skip" } })}
   <div class="screen">
     <div class="screen__body start">

@@ -27,16 +27,21 @@ function optionList(state, step, meta) {
   }).join("")}</div>`;
 }
 
+/** OnboardingMeta.categories[] = {name, supported, subcategories} — 세부 카테고리는 여기서만 나온다. */
+function subsOf(meta, cat) {
+  return (meta?.categories ?? []).find((c) => c.name === cat)?.subcategories ?? [];
+}
+
 function chipGroups(state, step, meta) {
   const sel = picked(state, step);
   const full = sel.length >= step.max;
-  const cats = state.prefs.categories.filter((c) => (meta.subcategories[c] || []).length);
+  const cats = state.prefs.categories.filter((c) => subsOf(meta, c).length);
   if (!cats.length) {
     return `<p class="step__counter">먼저 카테고리를 선택해 주세요.</p>`;
   }
   return cats.map((cat) => `<section class="group">
     <h2 class="group__title">${esc(cat)}</h2>
-    <div class="chips">${meta.subcategories[cat].map((s) => {
+    <div class="chips">${subsOf(meta, cat).map((s) => {
       const on = sel.includes(s);
       return `<button class="chip${on ? " is-on" : ""}" data-act="pick"
         data-step="${esc(step.id)}" data-val="${esc(s)}"${full && !on ? " disabled" : ""}
@@ -54,8 +59,8 @@ function bookGrid(state, step) {
     return `<button class="book${on ? " is-on" : ""}" data-act="pickbook"
       data-book="${b.book_id}" data-pos="${b.position}">
       ${cover(b, `<span class="cover__check">${icon("check", 15, 14)}</span>
-        ${b.format === "PDF" ? '<span class="cover__pdf">PDF</span>' : ""}`)}
-      <div class="book__title">${esc(b.title)}</div>
+        ${["오디오북", "챗북"].includes(b.book_format) ? `<span class="cover__pdf">${esc(b.book_format)}</span>` : ""}`)}
+      <div class="book__title">${esc(b.title ?? "(제목 없음)")}</div>
       <div class="book__author">${esc(b.authors)}</div>
     </button>`;
   }).join("")}</div>`;
@@ -73,13 +78,17 @@ export function render(state, step, meta) {
     <span>맞춤형 서비스 제공을 위해 정보를 수집활용합니다. 동의하시면 아래 버튼을 눌러주세요</span>
     <span class="notice__chev">${icon("chev", 18, 18)}</span>
   </div>` : "";
+  // S2 는 진행바가 없다(캡처 실측 — config/onboarding.json 의 progress: null)
+  const bar = step.progress == null ? ""
+    : `<div class="progress"><div class="progress__fill" style="width:${step.progress * 100}%"></div></div>`;
+  const ctaText = state.resetting && step.id === "S5" ? "새 취향으로 추천 받기" : step.cta;
   return `${navbar({ label: state.resetting ? "취향 다시 설정" : "" })}
-  <div class="progress"><div class="progress__fill" style="width:${step.progress * 100}%"></div></div>
+  ${bar}
   <div class="screen">
     <div class="screen__body">
       <h1 class="step__title">${esc(step.title)}</h1>
       ${counter}${body}${notice}
     </div>
-    <div class="screen__foot">${cta(step.cta, sel.length >= step.min, "next")}</div>
+    <div class="screen__foot">${cta(ctaText, sel.length >= step.min, "next")}</div>
   </div>`;
 }

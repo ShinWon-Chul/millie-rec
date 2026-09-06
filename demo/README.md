@@ -1,20 +1,17 @@
-# 밀리 메인 추천 데모 (정적 프론트)
+# 밀리의서재 메인 추천 시스템 — 설계 데모(정적 프론트)
 
-밀리의서재 온보딩 7단계와 메인 추천 화면을 PC 브라우저에서 모바일 앱처럼 재현하고,
-오른쪽 인스펙터에 **그 순간 시스템이 받는 신호와 파이프라인 내부**를 보여주는 한 페이지짜리 데모.
+해시 라우팅 8페이지짜리 한 장짜리 SPA다. 폰 프레임(390×844) 오른쪽에 인스펙터(560px)를 두어
+**그 순간 시스템이 받는 신호와 파이프라인 내부**를 같이 보여주고, 관제 대시보드와 쇼케이스는
+폰 프레임 없이 전폭 페이지로 그린다.
 
 빌드 도구·npm·Node·프레임워크를 쓰지 않는다. 순수 HTML5 + CSS3 + Vanilla JS(ES2020 module)이고,
-외부 리소스는 Pretendard 폰트 CSS 한 줄뿐이다. 폴더를 그대로 Cloudflare Pages에 올리면 배포가 끝난다.
+외부 리소스는 Pretendard 폰트 CSS 한 줄뿐이다.
 
 ## 실행법
 
 ```bash
-cd millie-rec/demo
-python3 -m http.server 8080
-# 브라우저:
-#   http://localhost:8080/?source=mock                 (모델 없이 UI만 — 기본 권장)
-#   http://localhost:8080/?source=api&api=http://localhost:8000   (로컬 FastAPI와 함께)
-#   배포본은 API_BASE(HF Spaces)로 자동 연결, 실패 시 fallback/popular.json
+make demo-serve      # → http://localhost:8080/?source=mock   (서버 없이 UI만 — 기본 권장)
+make serve           # → http://localhost:8000/?source=api    (FastAPI가 /에 이 폴더를 서빙)
 ```
 
 `file://`로 직접 열면 ES module과 `fetch`가 CORS로 막힌다. 반드시 HTTP 서버로 열어야 한다.
@@ -24,101 +21,84 @@ Chrome 최신(데스크톱)만 지원하고, 화면 폭 1200px 미만에서는 �
 
 | 파라미터 | 값 | 동작 |
 |---|---|---|
-| `source` | `mock` \| `api` | 데이터 출처. **생략하면 `mock/books.json`이 있으면 자동으로 mock**, 없으면 api |
-| `api` | 예: `http://localhost:8000` | `API_BASE`를 이 주소로 덮어쓴다 (`source=api`와 함께) |
-| `capture` | `1` | 인스펙터·상단바를 숨기고 페이지 배경을 단색으로 — 폰 프레임만 남는 PDF 스크린샷용 |
+| `source` | `mock` \| `api` | 데이터 출처. **생략하면 `/health`가 200이면 `api`, 아니면 `mock`** |
+| `api` | 예: `http://localhost:8000` | `API_BASE`(기본 `""` = 같은 origin)를 이 주소로 덮어쓴다 |
+| `capture` | `1` | 상단바·인스펙터를 숨겨 폰 프레임만 남긴다 (PDF 캡처용) |
+| `capture` | `2` | 상단바만 숨기고 인스펙터를 남긴다 (신호 해석까지 담는 캡처) |
 
-PDF용 스크린샷: `?capture=1`로 열고 ⇧⌘4로 프레임 영역을 캡처한다. Retina면 자동 2x.
+PDF용 스크린샷은 `?capture=1` 또는 `?capture=2`로 열고 ⇧⌘4로 영역을 캡처한다. Retina면 자동 2x.
 
-## `API_BASE` 교체 지점
+## 라우트 8개
 
-`js/api.js` 파일 **최상단 상수 하나**만 바꾼다.
+| 라우트 | 페이지 | 프레임 |
+|---|---|---|
+| `#/` | 쇼케이스 랜딩 (평가 비교표·본인 5권·기억할 5가지) | PC 전폭 |
+| `#/onboarding` | 취향 설정 7단계 (S0~S6) | 폰 |
+| `#/home` | 메인 (5행 구성 · 배지 · 앵커 행) | 폰 |
+| `#/book/:id` | 책 상세 (바텀시트) | 폰 |
+| `#/reader/:id` | 뷰어 시뮬레이션 — 데모 전용 | 폰 |
+| `#/library` | 내 서재 (스냅샷 타임라인 · 열람/삭제/철회) | 폰 |
+| `#/refresh` | 취향 재설정 (취향 설정 컴포넌트 재진입, 새 스냅샷) | 폰 |
+| `#/dashboard` | 관제 대시보드 — 데모 전용 | PC 전폭 |
 
-```js
-// ▼▼ 배포 시 교체 지점 — Hugging Face Spaces 주소를 여기에 넣는다 ▼▼
-const API_BASE = "https://REPLACE-ME.hf.space";
-```
-
-배포 후 `?source=api`로 접속해 인스펙터의 `source: api` · `fallback_level: 0`을 확인한다.
-
-## 클라이언트 fallback
-
-`source=api`에서 요청이 **4초 안에 응답하지 않거나 네트워크 오류**면 `fallback/popular.json`
-(전역 인기 40권)으로 `trending` 행만 렌더하고, 인스펙터에 `fallback_level: 3 (client)` 배너를 띄운다.
-"추천 API 장애 ≠ 메인 장애"를 프론트에서도 실증하는 장치다. 브라우저 내 JS 스코어링은 하지 않는다.
-
-## mock 데이터와 그 한계
-
-`mock/*.json`은 `scripts/make_mock.py`가 생성한다. 표준 라이브러리만 쓰고 **시드 42로 완전 결정적**이다.
-
-```bash
-python3 scripts/make_mock.py --cache /tmp/goodbooks_books.csv
-```
-
-원본은 [Goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) `books.csv`의
-`ratings_count` 상위 400권이다. 캐시 파일은 저장소에 넣지 않는다(`--cache`로 외부 경로 지정).
-
-**한계 — PDF에 "공개 데이터 시뮬레이션"으로 명시할 것:**
-
-- **카테고리는 데모용 임의 배정이다.** 밀리 카테고리 14개와 세부 카테고리를 시드 고정 RNG로
-  기계적으로 붙였을 뿐, 실제 태그 매핑(Goodreads shelves ↔ 밀리 카테고리)은 Day 2 콘텐츠 채널
-  작업이다. `mock/books.json` 최상단 `_note`가 이 사실을 명시한다.
-- **영어책이다.** 한글 UI 위에 영어 제목·저자·표지가 뜬다.
-- 세부 카테고리 중 **IT·소설·철학 3그룹만 실제 캡처에서 옮긴 값**이고 나머지 11개 그룹은 데모용 구성이다.
-- S2 카테고리 20개 중 6개(라이프스타일·외국어·매거진·사회·부모·웹툰/웹소설)는 대응 태그가 없어
-  `supported: false`로 회색 비활성 처리되고, 인스펙터에 "데모 데이터 미지원"으로 표기된다.
-- **출판사 컬럼이 없다.** S3에서 "좋아하는 출판사"를 고르면 배지를 생략하고 인스펙터에
-  "데모 데이터 미지원"을 표시한다(§4-4 규칙).
-- 표지는 `images.gr-assets.com` 원본 URL을 그대로 쓴다. 링크가 죽으면 `<img>`가 스스로 제거되고
-  제목 첫 글자 + 해시 색상 플레이스홀더가 드러난다.
-- `latency_ms`는 **고정값 + ±3ms 지터**다. 서버 측정값이 아니므로 **PDF 숫자로 쓰지 않는다**
-  (p95는 로컬 `bench.py` 값만 쓴다).
+알 수 없는 해시는 쇼케이스로 떨어진다. 라우트 표의 정본은 `js/router.js` 하나다.
 
 ## 폴더 구조
 
 ```text
 demo/
-├── index.html                 페이지 1장 (폰 프레임 + 인스펙터)
-├── css/
-│   ├── tokens.css             디자인 토큰 — 색·간격·폰트 전부 여기
-│   ├── base.css               reset, 2열 레이아웃, 폰 프레임, 상태바, capture 모드
-│   ├── onboarding.css         S0~S6
-│   ├── home.css               S7~S8
-│   └── inspector.css          우측 패널
+├── index.html                 페이지 1장 (상단바 · 폰 + 인스펙터 · 전폭 페이지 · 토스트)
+├── css/                       tokens · base · onboarding · home · inspector · reader · library · dashboard
 ├── js/
-│   ├── app.js                 state + setState + render() + 이벤트 위임 + 프리셋
-│   ├── api.js                 source=api|mock 스위치, API_BASE, 4초 타임아웃 → 클라이언트 fallback
-│   ├── mock.js                mock 엔진 — 후보 생성·스냅샷·페르소나·행 조립·배지
-│   ├── inspector.js           우측 패널 6섹션
-│   └── screens/               ui.js(공용) · s0_start · onboarding_step(S1~S5 공용) · s6_persona · s7_home · s8_detail
-├── config/onboarding.json     단계별 질문·옵션·선택 제한·레이아웃
-├── mock/                      books(400권) · meta_onboarding · preferences_response · recommend_{pop,cf,hybrid,hybrid_div}
-├── fallback/popular.json      서버 무응답 시 인기 40권 (/recommend 응답 형태)
-└── scripts/make_mock.py       mock 생성기 (표준 라이브러리, 시드 42)
+│   ├── router.js              해시 → {page, params} (≤30줄, 라우트 표의 정본)
+│   ├── app.js                 state 1개 + setState 1개 + render 1개 + 이벤트 큐(log/flush)
+│   ├── actions.js             data-act 딕셔너리 + 취향 설정 단계 머신(S1~S5)
+│   ├── presets.js             쇼케이스 시나리오 프리셋 3종
+│   ├── api.js                 source=api|mock 스위치, 4초 타임아웃 → 클라이언트 fallback
+│   ├── mock.js · mock_store.js  브라우저 내 상태 시뮬레이션 (점수 계산은 하지 않는다)
+│   ├── inspector.js           우측 신호 해석 패널
+│   └── screens/               ui.js(공용) · s0_start · onboarding_step · s6_persona · d2~d8
+├── config/onboarding.json     화면 텍스트·옵션·선택 제한·진행바의 정본
+├── mock/                      생성기 산출물 — 손으로 편집하지 않는다
+├── fallback/popular.json      서버 무응답 시 인기 40권 (`make millie-export` 산출)
+└── scripts/make_mock.py       mock 생성기 (표준 라이브러리, 결정적)
 ```
 
-## 화면과 인스펙터
+## mock 재생성
 
-`S0` 시작(건너뛰기 → `consent=false` → S7) · `S1~S5` 온보딩(공용 렌더러 1벌 + 설정 JSON) ·
-`S6` 페르소나 · `S7` 메인 · `S8` 책 상세 바텀시트 · `S9` 취향 재설정(= S1~S6 재진입, 새 스냅샷).
+```bash
+uv run python demo/scripts/make_mock.py
+```
 
-인스펙터 6섹션: ① 시나리오 프리셋 3종 ② 현재 단계의 신호 해석 ③ 이벤트 로그(최근 20건)
-④ 파이프라인·latency 바(BUDGET 200ms 기준선) ⑤ `U_t` 가중치 α/β/γ ⑥ 모델 전환 라디오
-(`pop`/`cf`/`hybrid`/`hybrid_div`) + `recommendation_id`/`model_version`/`snapshot_id`/
-`fallback_level`/`dedup_removed`/행별 `channel_mix`.
+`make mock` 타겟은 아직 이 생성기를 가리키지 않으므로 **쓰지 않는다**(Makefile 정정은 미결 항목).
+`mock/*.json` 손편집 금지 — `_manifest.json`의 입력 md5·출력 bytes가 재생성 판정 근거다.
 
-시나리오 프리셋은 각각 상태를 초기화한 뒤 실행된다.
+## 계약
 
-| 프리셋 | 결과 |
-|---|---|
-| 신규 유저 A | 저녁·IT/소설/철학·베스트셀러·개발/프로그래밍·SF·서양 + 시드 5권 자동 → S6 |
-| 건너뛰기 유저 | `consent=false` → S7, `trending` 1행, `fallback_level 3`, 가중치 전부 0 |
-| 재설정 유저 | `snap_01` + `reader_open` 2건 상태로 S7, "취향 다시 설정" 칩 강조 |
+응답 형태의 정본은 `src/millie_rec/serving/schemas.py`·`schemas_should.py`이고, 문서 정본은
+`.assets/설계서/백엔드 서빙/01_백엔드_서버_구성.md`다. mock과 api는 **같은 형태**를 반환해야 하며
+`/contract-sync` 스킬이 이를 검증한다. `latency_ms`는 float(단계별은 `latency_breakdown`),
+타임스탬프 필드 이름은 `ts`다. mock의 지연값은 표시용이며 PDF 숫자로 쓰지 않는다.
+
+## 클라이언트 fallback
+
+`source=api`에서 요청이 4초 안에 응답하지 않거나 네트워크 오류면 `fallback/popular.json`으로
+`trending` 행만 렌더하고 배너와 인스펙터에 `fallback_level: 3 (client)`를 띄운다.
+"추천 API 장애 ≠ 메인 장애"를 프론트에서도 실증하는 장치다. 브라우저 내 JS 스코어링은 하지 않는다.
+
+## 데이터 고지
+
+평가 비교표 = Goodbooks-10k(CC BY-SA 4.0) · 데모 카탈로그 = 밀리의서재 공개 도서 페이지(수치·메타·표지
+URL만, 텍스트 미노출, 요청 시 삭제) · 데모 이웃 = 콘텐츠 유사도(협업 필터링 아님) · 개인정보 무수집 ·
+서버 latency는 참고값. 표지는 밀리 CDN 핫링크만 쓰고 이미지를 저장하지 않으며, 밀리 저작 텍스트
+(책 소개·큐레이터 노트·리뷰)는 화면에 노출하지 않는다.
 
 ## 규칙
 
 - 상태를 바꾸는 곳은 `setState` 하나, 화면을 그리는 곳은 `render()` 하나.
-  화면별 파일은 `render(state) → HTML 문자열`만 반환하고 이벤트는 `app.js`가 위임으로 처리한다.
-- 응답 스키마의 정본은 `.assets/설계서/백엔드 서빙/01_백엔드_서버_구성.md` §3이다.
-  mock과 api는 **같은 형태**를 반환해야 한다.
+  화면별 파일은 `render(state) → HTML 문자열`만 반환하고 이벤트는 `actions.js`가 위임으로 처리한다.
+- 색·간격·타이포 리터럴은 `css/tokens.css`에만 둔다. JS/CSS 파일은 250줄 이하.
+- 화면 문구는 `config/onboarding.json`, 이름은 `src/millie_rec/contracts.py`가 정본이다.
+- 자세한 규칙은 `.claude/rules/demo.md`, 화면 정본은 `.assets/설계서/화면 구성 및 디자인/`의
+  `01_기술스택_및_화면설계.md`와 `02_화면구성_v2_8페이지.md`다.
 - 밀리 로고·3D 캐릭터 등 자사 에셋은 쓰지 않는다. 캐릭터 자리는 이모지로 대체했다.
