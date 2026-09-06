@@ -120,6 +120,7 @@ export function createActions(ctx) {
     toHome: () => { state.resetting = false; location.hash = "#/home"; },
     nav: (el) => { location.hash = el.dataset.to; },
     preset: (el) => presets.run(el.dataset.preset, ctx),
+    startFresh: () => presets.startFresh(ctx),
     card: (el) => {
       const bookId = Number(el.dataset.book);
       const rowId = el.dataset.row;

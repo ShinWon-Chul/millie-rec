@@ -17,9 +17,15 @@ function resetAll(state) {
   Object.assign(state, {
     consent: null, snapshots: [], recommend: null, detail: null, reading: null, ratings: {},
     library: { added: [], reading: [], completed: [] }, events: [], banner: null, model: null,
-    cell: null, resetting: false, prefs: EMPTY_PREFS(),
-    candidateSet: { id: null, items: [], impressions: [] },
+    cell: null, resetting: false, prefs: EMPTY_PREFS(), screen: "S0",
+    candidateSet: { id: null, items: [], impressions: [] }, userState: null, mydata: null, modal: null,
   });
+}
+
+/** D8 "신규 유저로 체험하기" — 프리셋과 같은 초기화(새 user_key) 뒤 취향 설정 S0 부터. 이전 키의 서버 행은 지우지 않고 분리만 한다. */
+export function startFresh(ctx) {
+  resetAll(ctx.state);
+  location.hash = "#/onboarding";   // 버튼은 쇼케이스(#/)에만 있어 hashchange 가 항상 뜬다
 }
 
 /** 화면 텍스트는 meta 에서 가져온다 — 하드코딩은 카테고리·세부 이름뿐이고 미지원이면 대체한다. */

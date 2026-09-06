@@ -80,7 +80,7 @@ function memorable(s) {
 
 function start() {
   return `<section><h2>직접 눌러보기</h2><div class="start">
-    <button class="cta is-on" data-act="nav" data-to="#/onboarding">신규 유저로 체험하기</button>
+    <button class="cta is-on" data-act="startFresh">신규 유저로 체험하기</button>
     <button class="start__preset" data-act="preset" data-preset="newUser">신규 유저 A</button>
     <button class="start__preset" data-act="preset" data-preset="skipUser">건너뛰기 유저</button>
     <button class="start__preset" data-act="preset" data-preset="resetUser">재설정 유저</button>
