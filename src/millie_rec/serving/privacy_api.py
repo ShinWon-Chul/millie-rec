@@ -22,7 +22,7 @@ DELETED_KEYS = ("snapshots", "events", "ratings", "recommendations", "candidate_
 HISTORY_EVENT_TYPES = ("reader_open", "qualified_read", "completion")  # D-05 (state.py 와 중복)
 LIBRARY_ADD, COMPLETION, NOT_FOUND = "library_add", "completion", "user_key not found"
 ZERO_WEIGHTS = {"alpha": 0.0, "beta": 0.0, "gamma": 0.0}
-SNAP_KEYS, BOOK_KEYS = ("snapshot_id", "created_at", "criterion"), ("title", "image_url")
+SNAP_KEYS, BOOK_KEYS = ("snapshot_id", "created_at", "criterion"), ("title", "authors", "image_url")
 _JSON = "categories subcategories seeds persona payload latency_breakdown weights rows book_ids"
 JSON_COLS = _JSON.split()  # book_ids = candidate_sets (Codex T3, 2026-09-06)
 SQL_USER = "SELECT user_key, created_at, consent, cell, is_new FROM users WHERE user_key = ?"

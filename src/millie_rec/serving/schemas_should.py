@@ -75,6 +75,7 @@ class MetricMapping(_Strict):
 class ShowcaseBook(_Strict):
     book_id: int
     title: str | None = None
+    authors: str | None = None
     image_url: str | None = None
     reason: str | None = None
     badge: BadgeOut | None = None

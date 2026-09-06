@@ -241,7 +241,8 @@ def test_state_library_books_carry_authors_and_none_without_catalog(tmp_path: Pa
     assert added, "added 버킷이 비어 있으면 저자 단정이 무의미하다"
     assert [b.get("authors") for b in added] == [f"저자{b['book_id']}" for b in added]
     out = UserStateOut.model_validate(payload)  # _Strict — 여분 키가 있으면 여기서 걸린다
-    assert [b.authors for b in out.library["added"]] == [f"저자{b.book_id}" for b in added]
+    lib = out.library["added"]
+    assert [b.authors for b in lib] == [f"저자{b.book_id}" for b in lib]
 
     db2, client2 = _client(tmp_path, name="no_catalog.db")  # 카탈로그 미주입 → 조인 없음
     _seed_user(db2, "u-1")

@@ -239,6 +239,7 @@ class RatingOut(_Strict):
 class LibraryBook(_Strict):
     book_id: int
     title: str | None = None
+    authors: str | None = None
     image_url: str | None = None
 
 
