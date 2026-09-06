@@ -25,10 +25,11 @@ def init_sentry() -> bool:
         return False
     import sentry_sdk  # 지연 import — 로컬·테스트 기동 경로는 SDK 를 건드리지 않는다(네트워크 0)
 
-    # traces 0 = 예외만(성능 추적 없음) · PII off = 가명 user_key 외 미전송(백엔드 §3-8)
+    # traces 0 = 예외만 · PII off + 요청 본문 미수집(Codex C4) = 가명 user_key 외 미전송
     env = os.environ.get("RAILWAY_ENVIRONMENT_NAME", "local")
     try:  # fail-open(Codex F1) — 관측 기능이 기동을 막지 않는다. DSN 은 로그에 안 남긴다
-        sentry_sdk.init(dsn=dsn, traces_sample_rate=0, send_default_pii=False, environment=env)
+        sentry_sdk.init(dsn=dsn, traces_sample_rate=0, send_default_pii=False, environment=env,
+                        max_request_body_size="never")  # fmt: skip
     except Exception:
         logging.getLogger(__name__).warning("SENTRY_DSN 이 잘못돼 Sentry 를 끕니다")
         return False

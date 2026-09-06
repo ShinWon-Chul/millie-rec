@@ -96,6 +96,24 @@ def test_rating_calls_wake_and_invalidate_once_only_when_inserted(tmp_path: Path
     assert len(wake.calls) == 1 and inv.calls == [USER]
 
 
+def test_rating_after_consent_withdrawal_403_stores_nothing_no_wake(tmp_path: Path):
+    """Codex C3 — 철회(consent=0) 뒤 별점이 ratings·events 를 다시 만들면 삭제 응답이 거짓이다."""
+    wake, inv = _Spy(), _Spy()
+    db, client = _build(tmp_path, wake=wake, invalidate=inv)
+    con = db.connect()
+    with con:
+        con.execute(
+            "INSERT INTO users(user_key, created_at, consent, cell, is_new) VALUES(?,?,0,'A',0)",
+            (USER, TS_Z),
+        )
+    r = client.post("/api/ratings", json=RATING)
+    assert r.status_code == 403, r.text
+    assert _count(db, "ratings") == 0 and _count(db, "events") == 0
+    assert wake.calls == [] and inv.calls == []
+    # users 행이 없는 익명 키는 events_gate T2 와 같이 막지 않는다
+    assert client.post("/api/ratings", json=dict(RATING, user_key="u-anon")).status_code == 201
+
+
 def test_rating_without_recommendation_id_is_null(tmp_path: Path):
     db, client = _build(tmp_path)
     body = {k: v for k, v in RATING.items() if k != "recommendation_id"}

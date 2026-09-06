@@ -56,6 +56,8 @@ def test_dsn_inits_once_with_no_tracing_no_pii(tmp_path: Path, monkeypatch, mill
     assert kw["dsn"] == FAKE_DSN
     assert kw["traces_sample_rate"] == 0
     assert kw["send_default_pii"] is False
+    # Codex 2회차 C4 — PII off 만으로는 요청 본문·query_string 이 오류 이벤트에 실린다
+    assert kw["max_request_body_size"] == "never"
     assert isinstance(kw["environment"], str) and kw["environment"]
 
 

@@ -12,6 +12,7 @@ from datetime import UTC, datetime
 
 from fastapi import APIRouter, HTTPException
 
+from millie_rec.serving import events_gate
 from millie_rec.serving.db import Database
 from millie_rec.serving.schemas import RatingIn, RatingOut
 
@@ -68,6 +69,9 @@ def build_router(
                  json.dumps({"stars": str(body.stars)}), None)  # fmt: skip
         con = db.connect()
         with con:  # 확정 16: with con 으로 커밋. 두 INSERT 는 같은 트랜잭션
+            # 철회 유저(consent=0)는 저장도 웨이크도 없다 — events_gate T2 기준(Codex C3)
+            if events_gate.consent_off_keys(con, [body.user_key]):
+                raise HTTPException(status_code=403, detail="consent withdrawn")
             inserted = con.execute(SQL_RATING_INS, rating).rowcount
             if inserted:  # 재전송(rating_id 중복)이면 이벤트도 늘리지 않는다
                 con.execute(SQL_EVENT_INS, event)
