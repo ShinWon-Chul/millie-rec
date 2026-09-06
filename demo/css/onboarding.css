@@ -58,6 +58,7 @@
 /* ── 세부 카테고리 칩 (S4) ── */
 .group + .group { margin-top: 24px; border-top: 1px solid var(--chip); padding-top: 24px; }
 .group__title { margin: 0 0 14px; font-size: 18px; font-weight: 700; }
+.group__none { margin: 0; font-size: 14px; color: var(--text-3); }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip {
   height: 40px; padding: 0 18px; border-radius: var(--r-pill);

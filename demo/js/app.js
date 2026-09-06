@@ -126,22 +126,22 @@ function modalHTML() {
 function render() {
   const pc = state.route.page === "dashboard" || state.route.page === "showcase";
   document.body.classList.toggle("is-page", pc);
-  // 쇼케이스에서는 "← 처음 화면" 버튼이 자기 자신을 가리키므로 감춘다(base.css)
-  document.body.classList.toggle("is-showcase", state.route.page === "showcase");
+  document.body.classList.toggle("is-showcase", state.route.page === "showcase");  // "← 처음 화면" 숨김
   $page.hidden = !pc;
   if (pc) {
     $page.innerHTML = state.route.page === "dashboard" ? d7(state) : d8(state);
   } else {
     $page.innerHTML = "";
+    const key = state.route.page + state.screen;  // 같은 화면을 다시 그릴 때만 .screen 스크롤 유지 — 옵션 클릭마다 맨 위로 튀지 않게
+    const top = key === render.last ? ($phone.querySelector(".screen")?.scrollTop ?? 0) : 0; render.last = key;
     $phone.innerHTML = statusbar() + banner(state.banner) + screenHTML() + modalHTML();
+    if (top) $phone.querySelector(".screen").scrollTop = top;
     $insp.innerHTML = inspector.render(state);
   }
-  document.getElementById("bar-model").textContent =
-    state.model ?? (state.cell === "A" ? "hybrid" : state.cell === "B" ? "hybrid_div" : "auto");
+  document.getElementById("bar-model").textContent = state.model ?? (state.cell === "A" ? "hybrid" : state.cell === "B" ? "hybrid_div" : "auto");
   document.getElementById("bar-version").textContent = state.health?.model_version ?? "—";
   const dot = document.getElementById("bar-source");
-  dot.textContent = state.source;
-  dot.dataset.source = state.source;
+  dot.textContent = state.source; dot.dataset.source = state.source;
   $toast.hidden = !state.toast;
   $toast.textContent = state.toast ?? "";
 }

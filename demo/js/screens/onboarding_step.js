@@ -35,19 +35,27 @@ function subsOf(meta, cat) {
 function chipGroups(state, step, meta) {
   const sel = picked(state, step);
   const full = sel.length >= step.max;
-  const cats = state.prefs.categories.filter((c) => subsOf(meta, c).length);
+  const cats = state.prefs.categories;
   if (!cats.length) {
     return `<p class="step__counter">먼저 카테고리를 선택해 주세요.</p>`;
   }
-  return cats.map((cat) => `<section class="group">
-    <h2 class="group__title">${esc(cat)}</h2>
-    <div class="chips">${subsOf(meta, cat).map((s) => {
-      const on = sel.includes(s);
-      return `<button class="chip${on ? " is-on" : ""}" data-act="pick"
-        data-step="${esc(step.id)}" data-val="${esc(s)}"${full && !on ? " disabled" : ""}
-        >${esc(s)}</button>`;
-    }).join("")}</div>
-  </section>`).join("");
+  // 밀리 공개 도서 페이지는 대분류만 노출한다. 세부 분류가 없는 카테고리를 숨기면 고른 사람이
+  // "내 선택이 빠졌다"고 느낀다 — 전부 보여주고, 없는 것은 없다고 말한다(S4 는 min 0 이라 넘어갈 수 있다).
+  const anySubs = cats.some((c) => subsOf(meta, c).length);
+  const note = anySubs ? "" :
+    `<p class="step__counter">선택하신 카테고리는 세부 분류가 없어요. 카테고리 전체로 추천합니다.</p>`;
+  return note + cats.map((cat) => {
+    const subs = subsOf(meta, cat);
+    const body = subs.length
+      ? `<div class="chips">${subs.map((s) => {
+          const on = sel.includes(s);
+          return `<button class="chip${on ? " is-on" : ""}" data-act="pick"
+            data-step="${esc(step.id)}" data-val="${esc(s)}"${full && !on ? " disabled" : ""}
+            >${esc(s)}</button>`;
+        }).join("")}</div>`
+      : `<p class="group__none">세부 분류 없음 · 카테고리 전체로 추천합니다</p>`;
+    return `<section class="group"><h2 class="group__title">${esc(cat)}</h2>${body}</section>`;
+  }).join("");
 }
 
 function bookGrid(state, step) {
