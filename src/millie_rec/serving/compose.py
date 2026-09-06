@@ -4,7 +4,6 @@
 rows=None 이면 Phase 2 1행 형태(seeds cold-start 호환, Advisor 확정 7). __init__ 에 노출하지 않는다.
 """
 
-import re
 import uuid
 from collections import Counter
 from collections.abc import Sequence
@@ -27,6 +26,7 @@ from millie_rec.contracts import (
 )
 from millie_rec.serving.after_completion import prepend_after
 from millie_rec.serving.badges import attach_badges
+from millie_rec.serving.editions import drop_same_work, normalize_title
 from millie_rec.serving.fallback import trending_row
 from millie_rec.serving.rows import ROW_SIZE, fresh_row, mix, personal_rows, with_meta
 
@@ -45,11 +45,6 @@ def default_variant(pipelines: dict[str, Pipeline]) -> str | None:
 
 def new_rec_id() -> str:
     return "rec_" + uuid.uuid4().hex[:6]  # 백엔드 01 §0 ID 형식 rec_<6hex> (Phase 1 D-03)
-
-
-def normalize_title(s: object) -> str:
-    """D-04 dedup 키 — 공백·기호 제거 + casefold. app/demo_cli._norm 의 확장 중복 정의."""
-    return re.sub(r"[^\w]", "", str(s or "")).casefold()
 
 
 def catalog_categories(catalog: Catalog) -> list[str]:
@@ -91,6 +86,7 @@ def compose_rows(
     criterion: str | None = None,
     persona_name: str | None = None,
     continue_ids: Sequence[int] = (),
+    read_ids: Sequence[int] = (),
     all_categories: Sequence[str] = (),
     after_completion: tuple[int, Sequence[tuple[int, float]]] | None = None,
     k: int = ROW_SIZE,
@@ -105,6 +101,10 @@ def compose_rows(
             items, catalog, neighbors, seeds, categories, persona_name, continue_ids, all_categories
         )
         rows = prepend_after(rows, after_completion, catalog, seeds)  # D-13 최상단
+    read = {int(s) for s in seeds} | {int(b) for b in read_ids}
+    if after_completion:
+        read.add(int(after_completion[0]))
+    rows = drop_same_work(rows, catalog, sorted(read))  # 이미 읽은 작품의 판본(보고 09-06)
     rows, removed = dedup_rows(rows)
     return attach_badges(rows, catalog, criterion, seeds), removed
 

@@ -9,6 +9,7 @@ from dataclasses import replace
 from itertools import zip_longest
 
 from millie_rec.contracts import ROW_ANCHOR_PREFIX, Catalog, Neighbors, Row, ScoredItem
+from millie_rec.serving.editions import same_work
 from millie_rec.serving.fallback import SOURCE_POPULARITY, trending_row
 
 Items = Sequence[ScoredItem]
@@ -62,7 +63,8 @@ def neighbor_row(
     exclude: set[int],
 ) -> Row | None:
     """앵커·after_completion 공용 행. 자격·중복·시드를 뺀 가중 상위 ROW_SIZE, 비면 None."""
-    ok = set(catalog.eligible([b for b, _ in nbrs])) - exclude - {int(seed)}
+    ids = [b for b, _ in nbrs]
+    ok = set(catalog.eligible(ids)) - exclude - {int(seed)} - same_work(catalog, ids, [seed])
     picked = [(b, w) for b, w in nbrs if b in ok][:ROW_SIZE]
     items = tuple(
         ScoredItem(b, float(w), SOURCE_CONTENT, title, position=n, source_channels=CH_CONTENT)
@@ -112,7 +114,8 @@ def personal_rows(
     all_categories: Cats,
 ) -> tuple[Row, ...]:
     """level 0·1 의 Must 5행. 이웃·시드가 없거나 전부 자격 미달이면 앵커 행은 생략된다."""
-    exclude = {int(s) for s in seeds}
+    # exclude 는 continue_reading 에 안 쓰인다(conts 는 따로) — 이어 읽기는 남는다
+    exclude = {int(s) for s in seeds} | same_work(catalog, [i.book_id for i in items], seeds)
     conts = tuple(
         ScoredItem(int(b), float(len(continue_ids) - n), position=n)
         for n, b in enumerate(continue_ids[:ROW_SIZE])

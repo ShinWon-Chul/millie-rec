@@ -4,13 +4,11 @@ import { josa } from "./screens/ui.js";
 import * as store from "./mock_store.js";
 
 const ROW_SIZE = 12, ANCHOR_NEIGHBORS = 20, FRESH_POOL_N = 30;
-const REVIEW_MIN_COUNT = 3, REVIEW_MIN_COUNT_NO_RATING = 10;
-const VARIANTS = ["pop", "cf", "hybrid", "hybrid_div"];
+const REVIEW_MIN_COUNT = 3, REVIEW_MIN_COUNT_NO_RATING = 10, VARIANTS = ["pop", "cf", "hybrid", "hybrid_div"];
 const LATENCY = { feature: 4.0, retrieval: 12.0, ranking: 9.0, rerank: 6.0, compose: 7.0, total: 38.0 };  // 표시값 — PDF 숫자 아님
 const NEARLINE_LAG_S = 1.0;                 // mock 은 즉시 반영, 표시용 결정적 상수
 const T_CONTINUE = "이어 읽기", T_TREND = "지금 많이 읽는 책", T_FRESH = "새로운 발견";
-const T_PERSONA_DEFAULT = "회원님의 서가", SUBTITLE_ANCHOR = "결이 비슷한 책";
-const CATS_NONE = "다양한 분야", CRITERION_NONE = "취향";
+const T_PERSONA_DEFAULT = "회원님의 서가", SUBTITLE_ANCHOR = "결이 비슷한 책", CATS_NONE = "다양한 분야", CRITERION_NONE = "취향";
 const REASON_ANCHOR = (t) => `『${t}』을 좋아하셨다면`, TITLE_AFTER = (t) => `『${t}』을 완독하셨네요, 다음은`;
 const PERSONAS = [["오디세우스", "오디세이아", "지혜로 승리하리라!"], ["셜록 홈즈", "주홍색 연구", "사소한 것이 가장 중요하다."],
   ["돈키호테", "돈키호테", "이룰 수 없는 꿈을 꾸리라!"], ["제인 에어", "제인 에어", "나는 나 자신의 주인입니다."]];
@@ -47,9 +45,7 @@ function prioritize(cards, picks) {
   return [...hit, ...rest];
 }
 const mix = (its) => its.reduce((a, i) => { for (const c of i.source_channels) a[c] = (a[c] || 0) + 1; return a; }, {});
-export function health() {   // HealthOut 8키
-  return { status: "ok", api_version: "v2", model_version: "hybrid_div_v1", artifacts_loaded_at: null, db_ok: true, db_row_count: {}, nearline_last_run: null, uptime_s: 0 };
-}
+export const health = () => ({ status: "ok", api_version: "v2", model_version: "hybrid_div_v1", artifacts_loaded_at: null, db_ok: true, db_row_count: {}, nearline_last_run: null, uptime_s: 0 });   // HealthOut 8키
 export function loadMeta() { return metaData; }
 /** 05-CONTEXT D-15 — 선택 카테고리별 인기 목록을 1권씩 라운드로빈해 n 권. */
 export function getCandidates({ categories = [], subcategories = [], n = 30 } = {}) {
@@ -160,6 +156,10 @@ function shelfRow(variant, snap, persona, exclude) {
     picked.map(([b, src], i) => item(b, i, src)));
 }
 const normalizeTitle = (s) => String(s ?? "").replace(/[^\p{L}\p{N}_]/gu, "").toLowerCase();
+// 시드와 정규화 제목이 같은 책 = 같은 작품의 다른 판본. 카탈로그에 중복 레코드가 3,644권 있고
+// 콘텐츠 유사도 이웃에서 가중치 1.0 으로 항상 1위에 온다(serving/editions.same_work 1:1).
+const sameWork = (refs) => { const w = new Set((refs || []).map((r) => normalizeTitle(index.get(Number(r))?.title)).filter(Boolean));
+  return w.size ? pool.filter((b) => w.has(normalizeTitle(b.title))).map((b) => b.book_id) : []; };
 /** compose.dedup_rows — 렌더 순서 앞 행 우선, book_id 와 정규화 제목 둘 다. 빈 행도 남긴다. */
 function dedup(rows) {
   const ids = new Set(), titles = new Set();
@@ -192,7 +192,7 @@ export function getRecommend({ userKey, snapshotId, model, k = 40, context } = {
   const personalized = !!(user?.consent && snap && snap.consent);
   const forced = VARIANTS.includes(model);
   const variant = forced ? model : (user?.cell === "B" ? "hybrid_div" : "hybrid");
-  const rows = [], exclude = new Set(personalized ? (snap.seeds || []) : []);
+  const done = store.lastCompleted(uk), rows = [], exclude = new Set(personalized ? [...(snap.seeds || []), ...sameWork([...(snap.seeds || []), done])] : []);
   const eat = (r) => { if (r) { rows.push(r); for (const i of r.items) exclude.add(i.book_id); } };
   let level = 0, modelVersion = variant + "_v1";
   if (!personalized) {                                     // SERV-08 비개인화 2행
@@ -200,7 +200,7 @@ export function getRecommend({ userKey, snapshotId, model, k = 40, context } = {
     eat(popRow("trending", T_TREND, "fallback", pool, exclude));
     eat(freshRow([], exclude));
   } else {
-    const seeds = snap.seeds || [], seed1 = seeds[0], done = store.lastCompleted(uk);
+    const seeds = snap.seeds || [], seed1 = seeds[0];
     if (done && byId(done))                                // D-13: after_completion 이 최상단
       eat(neighborRow("after_completion", TITLE_AFTER(byId(done).title), null, done, exclude, "resume"));
     eat(continueRow(store.continueIds(uk), exclude));

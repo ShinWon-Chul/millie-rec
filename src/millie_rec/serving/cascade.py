@@ -124,7 +124,7 @@ class Cascade:
                                     level=FALLBACK_PERSONALIZED, seeds=r.seeds,
                                     categories=r.categories, criterion=r.criterion,
                                     persona_name=r.persona_name, continue_ids=conts,
-                                    all_categories=self.all_categories,
+                                    read_ids=user.history, all_categories=self.all_categories,
                                     after_completion=stored(store, r.user_key))  # fmt: skip
             self.cache.put(r.user_key, r.snapshot_id, name, rows, version)  # D-10 매 성공 시
         bd["compose"] = (perf_counter() - tc) * 1000
