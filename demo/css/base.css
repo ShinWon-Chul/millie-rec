@@ -17,7 +17,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   height: 44px; padding: 0 22px;
   background: #1F2024; border-bottom: 1px solid var(--panel-line);
 }
-.topbar__title { font-size: 14px; font-weight: 700; letter-spacing: -0.2px; }
+/* 제목이 쇼케이스 첫 화면으로 돌아가는 링크다 — 폰 화면 안에는 나가는 길이 없다 */
+.topbar__title {
+  font-size: 14px; font-weight: 700; letter-spacing: -0.2px;
+  color: var(--text); text-decoration: none;
+}
+.topbar__title:hover { color: var(--accent); }
 .topbar__meta { font-family: var(--mono); font-size: 12px; color: var(--text-2); }
 .topbar__meta b { color: var(--accent); font-weight: 500; }
 .topbar__dot { color: var(--ok); }

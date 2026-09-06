@@ -125,5 +125,15 @@ export async function getDashboard(source) {
 
 export async function getShowcase(source) {
   if (await useMock(source)) return mock.getShowcase();
-  return soft(get("/api/showcase"));
+  const out = await soft(get("/api/showcase"));
+  // 본인 5권 정성 케이스는 빌드 시점 산출물이라 서버가 계산하지 않는다(Phase 5 보류 —
+  // 임의 방문자에게 "본인이 읽은 5권"을 서버가 만들어 줄 수는 없다). 같은 이미지 안의
+  // 정적 파일에서 채운다. 나머지 필드는 전부 서버 응답 그대로다.
+  if (out && out.personal_case == null) {
+    out.personal_case = await fetch("mock/showcase.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((s) => s?.personal_case ?? null)
+      .catch(() => null);
+  }
+  return out;
 }
