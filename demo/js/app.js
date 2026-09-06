@@ -1,275 +1,248 @@
-// 상태를 바꾸는 곳은 setState 하나, 화면을 그리는 곳은 render 하나 (화면설계 §6).
+// 상태 1개(state) · 변경 1곳(setState) · 그리기 1곳(render) — 화면 구성 01 §6, 02 §4 상태 모델 v2.
+// 라우팅은 router.js, data-act 처리는 actions.js, D8 프리셋은 presets.js가 맡는다.
 import * as api from "./api.js";
+import * as router from "./router.js";
 import * as inspector from "./inspector.js";
-import { statusbar } from "./screens/ui.js";
+import { createActions } from "./actions.js";
+import * as presets from "./presets.js";
+import { statusbar, banner, modal, esc } from "./screens/ui.js";
 import { render as s0 } from "./screens/s0_start.js";
 import { render as stepView } from "./screens/onboarding_step.js";
 import { render as s6 } from "./screens/s6_persona.js";
-import { render as s7 } from "./screens/s7_home.js";
-import { render as s8 } from "./screens/s8_detail.js";
+import { render as d2 } from "./screens/d2_home.js";
+import { render as d3 } from "./screens/d3_detail.js";
+import { render as d4 } from "./screens/d4_reader.js";
+import { render as d5 } from "./screens/d5_library.js";
+import { render as d7 } from "./screens/d7_dashboard.js";
+import { render as d8 } from "./screens/d8_showcase.js";
 
-const PRESET_PREFS = {
-  readingTime: "저녁, 하루를 마치며",
-  categories: ["IT", "소설", "철학"],
-  criterion: "베스트셀러",
-  subcategories: ["개발/프로그래밍", "SF", "서양"],
-};
+const VARIANTS = ["pop", "cf", "hybrid", "hybrid_div"];
+const QUALIFIED_READ_MINUTES = 15;
+const BATCH = 50;
+const EMPTY_PREFS = () => ({ readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] });
 
 const state = {
-  screen: "S0", source: "mock", consent: null,
-  prefs: { readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] },
+  route: { page: "showcase", params: {} },
+  source: "mock",
+  userKey: null,
+  cell: null,
+  consent: null,
+  screen: "S0",
+  resetting: false,
+  prefs: EMPTY_PREFS(),
+  steps: [],
+  meta: null,
   candidateSet: { id: null, items: [], impressions: [] },
-  snapshots: [], userKey: null,
-  history: { readerOpens: [], libraryAdds: [], lastCompleted: null },
-  model: "hybrid_div", recommend: null, events: [],
-  steps: [], meta: { categories: [], subcategories: {} }, unsupported: [],
-  resetting: false, resetBoost: false, chipHot: false, detail: null,
+  snapshots: [],
+  model: null,
+  recommend: null,
+  detail: null,
+  reading: null,
+  ratings: {},
+  library: { added: [], reading: [], completed: [] },
+  libraryTab: "added",
+  userState: null,
+  mydata: null,
+  dashboard: null,
+  showcase: null,
+  health: null,
+  nearlineLagSec: null,
+  events: [],
+  toast: null,
+  banner: null,
+  modal: null,
 };
 
 const $phone = document.getElementById("phone");
 const $insp = document.getElementById("inspector");
+const $page = document.getElementById("page");
+const $toast = document.getElementById("toast");
 
 function setState(patch) {
   Object.assign(state, patch);
   render();
 }
 
-const step = (id) => state.steps.find((s) => s.id === id);
 const snap = () => state.snapshots[state.snapshots.length - 1];
+const criterionId = () => state.meta?.criteria?.find((c) => c.label === state.prefs.criterion)?.id ?? null;
 
-function log(event_type, detail = "") {
-  state.events.push({ t: new Date().toTimeString().slice(0, 8), event_type, detail });
-  api.postEvent(state.source, {
-    event_type, user_key: state.userKey, recommendation_id: state.recommend?.recommendation_id,
-    model_version: state.recommend?.model_version,
-    preference_snapshot_id: snap()?.id, timestamp: new Date().toISOString(),
-  });
+let flushTimer = null;
+let impressedRecId = null;
+
+/** EventIn 1건을 만들어 인스펙터 로그 + sessionStorage 큐에 넣는다(필드 이름은 contracts.Event 그대로). */
+function log(event_type, fields = {}) {
+  const ev = {
+    event_id: crypto.randomUUID(),
+    user_key: state.userKey,
+    event_type,
+    ts: new Date().toISOString(),
+    recommendation_id: state.recommend?.recommendation_id ?? null,
+    model_version: state.recommend?.model_version ?? null,
+    preference_snapshot_id: snap()?.id ?? null,
+    ...fields,
+  };
+  const bits = [ev.book_id != null && `book=${ev.book_id}`, ev.row_id && `row=${ev.row_id}`,
+    ev.position != null && `pos=${ev.position}`, ev.payload && JSON.stringify(ev.payload)];
+  state.events.push({ t: ev.ts.slice(11, 19), event_type, detail: bits.filter(Boolean).join(" ") });
+  if (state.events.length > 200) state.events = state.events.slice(-200);
+  const q = JSON.parse(sessionStorage.getItem("millie_events") || "[]");
+  q.push(ev);
+  sessionStorage.setItem("millie_events", JSON.stringify(q));
+  flush();
 }
 
-/** 프리셋은 항상 깨끗한 상태에서 시작한다 (스냅샷 번호까지 초기화). */
-function resetAll() {
-  api.resetMockState();
-  Object.assign(state, {
-    consent: null, snapshots: [], userKey: null, recommend: null, events: [], detail: null,
-    prefs: { readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] },
-    candidateSet: { id: null, items: [], impressions: [] },
-    history: { readerOpens: [], libraryAdds: [], lastCompleted: null },
-    resetting: false, resetBoost: false, chipHot: false,
-  });
+/** 큐를 50개씩 잘라 보낸다. 이벤트 유실은 화면을 막지 않는다 — await 하지 않고 성공 여부와 무관하게 비운다. */
+function flush() {
+  if (flushTimer) return;
+  flushTimer = setTimeout(() => {
+    flushTimer = null;
+    const q = JSON.parse(sessionStorage.getItem("millie_events") || "[]");
+    sessionStorage.setItem("millie_events", "[]");
+    for (let i = 0; i < q.length; i += BATCH) {  // 전송 실패는 삼킨다 — 수신율은 관제 대시보드가 드러낸다
+      Promise.resolve().then(() => api.postEvents(state.source, q.slice(i, i + BATCH))).catch(() => {});
+    }
+  }, 120);
 }
 
 function screenHTML() {
-  if (state.screen === "S0") return s0();
+  const p = state.route.page;
+  if (p === "home") return d2(state);
+  if (p === "book") return d3(state);
+  if (p === "reader") return d4(state);
+  if (p === "library") return d5(state);
+  if (state.screen === "S0") return s0(state);
   if (state.screen === "S6") return s6(state);
-  if (state.screen === "S7") return s7(state);
-  if (state.screen === "S8") return s8(state);
-  const st = step(state.screen);
-  return st ? stepView(state, st, state.meta) : s0();
+  const st = state.steps.find((s) => s.id === state.screen);
+  return st ? stepView(state, st, state.meta) : s0(state);
+}
+
+/** modal() 에 넘기는 마크업은 여기서 이미 esc() 한 것만. "rating" 모달은 D4 화면 파일이 그린다. */
+function modalHTML() {
+  if (state.modal === "mydata") return modal(`<h3>내 데이터</h3><pre>${esc(JSON.stringify(state.mydata, null, 1))}</pre><button class="cta is-on" data-act="closeModal">닫기</button>`);
+  if (state.modal === "withdraw") return modal(`<h3>맞춤 추천 동의를 철회할까요?</h3><p>스냅샷·이벤트·별점·추천 로그가 삭제되고 이후에는 비개인화 인기 도서만 보입니다.</p><button class="cta is-on" data-act="withdrawConfirm">철회</button><button class="sheet__ghost" data-act="closeModal">취소</button>`);
+  return "";
 }
 
 function render() {
-  $phone.innerHTML = statusbar() + screenHTML();
-  $insp.innerHTML = inspector.render(state);
-  document.getElementById("bar-model").textContent = state.model;
+  const pc = state.route.page === "dashboard" || state.route.page === "showcase";
+  document.body.classList.toggle("is-page", pc);
+  $page.hidden = !pc;
+  if (pc) {
+    $page.innerHTML = state.route.page === "dashboard" ? d7(state) : d8(state);
+  } else {
+    $page.innerHTML = "";
+    $phone.innerHTML = statusbar() + banner(state.banner) + screenHTML() + modalHTML();
+    $insp.innerHTML = inspector.render(state);
+  }
+  document.getElementById("bar-model").textContent =
+    state.model ?? (state.cell === "A" ? "hybrid" : state.cell === "B" ? "hybrid_div" : "auto");
+  document.getElementById("bar-version").textContent = state.health?.model_version ?? "—";
   const dot = document.getElementById("bar-source");
   dot.textContent = state.source;
   dot.dataset.source = state.source;
+  $toast.hidden = !state.toast;
+  $toast.textContent = state.toast ?? "";
 }
 
-async function loadCandidates() {
-  const res = await api.getCandidates(state.source, {
-    categories: state.prefs.categories, subcategories: state.prefs.subcategories, n: 30,
-  });
-  // 노출 로그 = candidate_set_id / book_id / position / selected. "미선택 ≠ negative"의 근거.
-  state.candidateSet = {
-    id: res.candidate_set_id,
-    items: res.items,
-    impressions: res.items.map((b) => ({ book_id: b.book_id, position: b.position, selected: false })),
-  };
-  log("impression", `set=${res.candidate_set_id} n=${res.items.length}`);
+function toast(msg) {
+  state.toast = msg;
+  render();
+  setTimeout(() => { state.toast = null; render(); }, 3000);
 }
 
 async function requestRecommend() {
   state.recommend = await api.getRecommend(state.source, {
-    model: state.model, prefs: state.prefs, history: state.history,
-    consent: state.consent, resetBoost: state.resetBoost,
-    snapshotId: snap()?.id, persona: snap()?.persona, userKey: state.userKey,
-    context: state.prefs.readingTime,
+    userKey: state.userKey, snapshotId: snap()?.id ?? null,
+    model: state.model, k: 40, context: state.prefs.readingTime,
   });
-  log("recommend", `model=${state.model} fallback=${state.recommend.fallback_level}`);
+  const r = state.recommend;
+  state.nearlineLagSec = r?.nearline_lag_s ?? null;
+  state.cell = r?.cell ?? state.cell;
+  const lvl = r?.fallback_level ?? 3;
+  // 위에서 먼저 맞는 것 1개. 건너뛰기·철회(②)가 서버측 폴백(③)보다 앞이라 문구가 유지된다.
+  if (r?.client_fallback_reason) {
+    state.banner = "추천 서버 응답이 없어 정적 인기 목록으로 대체했습니다 (fallback_level 3 · client)";
+  } else if (state.consent === false || (lvl === 3 && !snap()?.id)) {
+    state.banner = "비개인화 인기 도서";
+  } else if (lvl >= 1) {
+    state.banner = `개인화 응답 지연 — 캐시/인기 도서로 대체 (level ${lvl})`;
+  } else {
+    state.banner = null;
+  }
+  const recId = r?.recommendation_id ?? null;
+  if (recId && recId !== impressedRecId) {
+    impressedRecId = recId;
+    (r.rows ?? []).forEach((row) => (row.items ?? []).forEach((i) =>
+      log("impression", { book_id: i.book_id, row_id: row.row_id, position: i.position, surface: "home" })));
+  }
 }
 
-async function completeOnboarding() {
-  const res = await api.postPreferences(state.source, {
-    prefs: state.prefs, consent: state.consent, userKey: state.userKey,
-  });
-  state.userKey = res.user_key;
-  // 스냅샷은 추가만 한다 — 독서 기록과 "이어 읽기"는 그대로 남는다
-  state.snapshots.push({
-    id: res.preference_snapshot_id, createdAt: res.created_at,
-    prefs: { ...state.prefs }, persona: res.persona,
-  });
-  state.resetBoost = state.resetting;
-  log("preference_completed", `snapshot=${res.preference_snapshot_id} seeds=${state.prefs.seedBooks.length}`);
-  for (const id of state.prefs.seedBooks) log("library_add", `book=${id} source=onboarding`);
-  setState({ screen: "S6", resetting: false, chipHot: false });
-}
-
-function togglePick(stepId, val) {
-  const st = step(stepId);
-  const cur = state.prefs[st.field];
-  if (!Array.isArray(cur)) {
-    state.prefs[st.field] = cur === val ? null : val;
-  } else if (cur.includes(val)) {
-    state.prefs[st.field] = cur.filter((v) => v !== val);
-  } else if (cur.length < st.max) {
-    state.prefs[st.field] = [...cur, val];
+async function onRoute(route) {
+  state.route = route;
+  const p = route.page;
+  try {
+    if (p === "showcase") state.showcase ??= await api.getShowcase(state.source);
+    if (p === "onboarding" && !state.prefs.readingTime && state.screen !== "S6") {
+      Object.assign(state, { resetting: false, screen: "S0" });
+    }
+    if (p === "refresh") {
+      if (!state.resetting) log("preference_restarted", { payload: { from: snap()?.id ?? "none" } });
+      Object.assign(state, { prefs: EMPTY_PREFS(), resetting: true, screen: "S1" });
+    }
+    if (p === "home") await requestRecommend();
+    if (p === "book") {
+      const id = route.params.id;
+      if (state.detail?.item.book_id !== id) {
+        const found = (state.recommend?.rows ?? [])
+          .flatMap((r) => (r.items ?? []).map((i) => [r.row_id, i])).find(([, i]) => i.book_id === id);
+        state.detail = found ? { item: found[1], rowId: found[0] } : null;
+      }
+      if (!state.detail) location.hash = "#/home";
+    }
+    if (p === "reader" && state.reading?.bookId !== route.params.id) {
+      state.reading = { bookId: route.params.id, progressPct: 0, virtualMinutes: 0, qualified: false, completed: false };
+      log("reader_open", { book_id: route.params.id, row_id: state.detail?.rowId ?? null, surface: "detail" });
+    }
+    if (p === "library") {
+      state.userState = await api.getUserState(state.source, state.userKey);
+      state.library = state.userState?.library ?? { added: [], reading: [], completed: [] };
+    }
+    if (p === "dashboard") state.dashboard = await api.getDashboard(state.source);
+  } catch (e) {
+    console.warn("[route]", p, e);
   }
-  if (stepId === "S2") {
-    const allowed = state.prefs.categories.flatMap((c) => state.meta.subcategories[c] || []);
-    state.prefs.subcategories = state.prefs.subcategories.filter((s) => allowed.includes(s));
-  }
-  log("preference_step", `${stepId} ${st.field}=${JSON.stringify(state.prefs[st.field])}`);
   render();
 }
 
-const ORDER = ["S1", "S2", "S3", "S4", "S5"];
-
-async function next() {
-  const order = ORDER;
-  const i = order.indexOf(state.screen);
-  if (state.screen === "S1" && state.consent !== true) {
-    state.consent = true;
-    log("consent_granted", "맞춤형 서비스 제공 동의");
-  }
-  if (i === order.length - 1) return completeOnboarding();
-  const nextId = order[i + 1];
-  if (nextId === "S5") await loadCandidates();
-  setState({ screen: nextId });
-}
-
-const ACTIONS = {
-  start: () => { log("preference_started"); setState({ screen: "S1" }); },
-  skip: async () => {
-    state.consent = false;
-    state.snapshots = [];
-    log("preference_skipped", "consent=absent → fallback: diverse popular");
-    await requestRecommend();
-    setState({ screen: "S7" });
-  },
-  back: () => {
-    const i = ORDER.indexOf(state.screen);
-    if (i === 0 && state.resetting) return setState({ screen: "S7", resetting: false });
-    setState({ screen: i > 0 ? ORDER[i - 1] : "S0" });
-  },
-  pick: (el) => togglePick(el.dataset.step, el.dataset.val),
-  pickbook: (el) => {
-    const id = Number(el.dataset.book);
-    const cur = state.prefs.seedBooks;
-    const on = cur.includes(id);
-    state.prefs.seedBooks = on ? cur.filter((v) => v !== id) : [...cur, id];
-    const imp = state.candidateSet.impressions.find((x) => x.book_id === id);
-    if (imp) imp.selected = !on;
-    log("preference_book_selected", `book=${id} pos=${el.dataset.pos} selected=${!on}`);
-    render();
-  },
-  next,
-  toHome: async () => { await requestRecommend(); setState({ screen: "S7" }); },
-  detail: (el) => {
-    const row = state.recommend.rows.find((r) => r.row_id === el.dataset.row);
-    const item = row?.items.find((i) => i.book_id === Number(el.dataset.book));
-    if (!item) return;
-    log("detail_click", `book=${item.book_id} row=${row.row_id} pos=${item.position}`);
-    setState({ screen: "S8", detail: { item, rowId: row.row_id } });
-  },
-  closeSheet: () => setState({ screen: "S7", detail: null }),
-  read: async () => {
-    const id = state.detail.item.book_id;
-    state.history.readerOpens.push(id);
-    log("reader_open", `book=${id} row=${state.detail.rowId}`);
-    log("qualified_read", `book=${id}`);
-    state.resetBoost = false;
-    await requestRecommend();
-    setState({ screen: "S7", detail: null });
-  },
-  library: () => {
-    const id = state.detail.item.book_id;
-    state.history.libraryAdds.push(id);
-    log("library_add", `book=${id} source=main`);
-    render();
-  },
-  complete: async () => {
-    const id = state.detail.item.book_id;
-    state.history.lastCompleted = id;
-    log("completion", `book=${id}`);
-    await requestRecommend();
-    setState({ screen: "S7", detail: null });
-  },
-  reset: () => {
-    log("preference_restarted", `from=${snap()?.id || "none"} (history 유지)`);
-    state.prefs = { readingTime: null, categories: [], criterion: null, subcategories: [], seedBooks: [] };
-    setState({ screen: "S1", resetting: true, detail: null, chipHot: false });
-  },
-  model: async (el) => {
-    state.model = el.value;
-    await requestRecommend();
-    render();
-  },
-  preset: (el) => PRESETS[el.dataset.preset](),
-  noop: () => {},
-};
-
-/** 온보딩을 자동 완주해 S6까지 보낸다 (신규 유저 A 프리셋의 공통부). */
-async function runOnboarding() {
-  state.consent = true;
-  state.prefs = { ...PRESET_PREFS, seedBooks: [] };
-  log("preference_started", "preset");
-  log("consent_granted", "맞춤형 서비스 제공 동의");
-  await loadCandidates();
-  state.prefs.seedBooks = state.candidateSet.items.slice(0, 5).map((b) => b.book_id);
-  for (const im of state.candidateSet.impressions.slice(0, 5)) {
-    im.selected = true;
-    log("preference_book_selected", `book=${im.book_id} pos=${im.position} selected=true`);
-  }
-  await completeOnboarding();
-}
-
-const PRESETS = {
-  newUser: async () => { resetAll(); await runOnboarding(); },
-  skipUser: async () => { resetAll(); await ACTIONS.skip(); },
-  resetUser: async () => {
-    resetAll();
-    await runOnboarding();
-    await requestRecommend();
-    for (const it of state.recommend.rows[0].items.slice(0, 2)) {
-      state.history.readerOpens.push(it.book_id);
-      log("reader_open", `book=${it.book_id} row=${state.recommend.rows[0].row_id}`);
-    }
-    state.resetBoost = false;
-    await requestRecommend();
-    setState({ screen: "S7", chipHot: true });
-  },
-};
+const ACTIONS = createActions({
+  state, setState, render, log, snap, criterionId, requestRecommend,
+  api, presets, VARIANTS, QUALIFIED_READ_MINUTES, toast,
+});
 
 document.addEventListener("click", (e) => {
   const el = e.target.closest("[data-act]");
   if (!el || el.tagName === "INPUT") return;   // 라디오는 change 이벤트에서만 처리
-  if (ACTIONS[el.dataset.act]) ACTIONS[el.dataset.act](el);
+  ACTIONS[el.dataset.act]?.(el);
 });
 document.addEventListener("change", (e) => {
   const el = e.target.closest("[data-act]");
-  if (el && el.type === "radio" && ACTIONS[el.dataset.act]) ACTIONS[el.dataset.act](el);
+  if (el && el.type === "radio") ACTIONS[el.dataset.act]?.(el);
 });
 
 (async function boot() {
-  if (api.config.capture) document.body.classList.add("is-capture");
-  state.source = await api.resolveSource();
-  state.steps = await api.loadSteps();
   try {
-    state.meta = await api.loadMeta(state.source);
-  } catch {
-    state.meta = await fetch("mock/meta_onboarding.json").then((r) => r.json());
+    state.userKey = localStorage.getItem("millie_user_key") || crypto.randomUUID();
+    localStorage.setItem("millie_user_key", state.userKey);
+    const cap = api.config.capture;
+    if (cap === "1") document.body.classList.add("is-capture");
+    if (cap === "2") document.body.classList.add("is-capture-2");
+    state.source = await api.resolveSource();
+    state.health = await api.health(state.source);
+    state.steps = await api.loadSteps();
+    state.meta = (await api.loadMeta(state.source))
+      ?? { survey_variant: "v1", reading_times: [], criteria: [], categories: [] };
+  } catch (e) {
+    console.warn("[boot]", e);
   }
-  state.unsupported = state.meta.categories.filter((c) => !c.supported).map((c) => c.name);
-  render();
+  router.listen(onRoute);
 })();
