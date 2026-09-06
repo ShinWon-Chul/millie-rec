@@ -15,6 +15,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query
 
 from millie_rec.contracts import Catalog
+from millie_rec.serving import subcat
 from millie_rec.serving.db import Database
 from millie_rec.serving.schemas import (
     CandidateItem,
@@ -118,7 +119,14 @@ def build_router(
         cats = [c.strip() for c in categories.split(",") if c.strip()]
         if len(cats) > CATEGORIES_MAX:
             raise _422("categories", f"at most {CATEGORIES_MAX} categories")
-        ids = [] if catalog is None else _round_robin(catalog, cats, n)
+        want = subcat.wanted(subcategories)
+        if catalog is None:
+            ids = []
+        elif want:  # 넉넉한 풀에서 겹치는 책을 앞으로 — 하드 필터가 아니다(커버리지 42.6%)
+            pool = _round_robin(catalog, cats, n * subcat.POOL_FACTOR)
+            ids = subcat.prioritize(pool, catalog, want)[:n]
+        else:
+            ids = _round_robin(catalog, cats, n)
         metas = catalog.meta(ids) if ids else []
         items = [
             CandidateItem(

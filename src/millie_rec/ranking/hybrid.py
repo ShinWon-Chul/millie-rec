@@ -2,7 +2,7 @@
 
 from collections.abc import Sequence
 
-from millie_rec.contracts import BookStatsSource, Candidate, ScoredItem, UserState
+from millie_rec.contracts import BookStatsSource, Candidate, Catalog, ScoredItem, UserState
 
 CH_CF, CH_CONTENT, CH_POP = "cf", "content", "pop"  # 채널 슬롯. Candidate.source 와 다른 층
 W_CF, W_CONTENT, W_POP = 0.5, 0.3, 0.2  # D-03 초기값. Day 3 ≤3조합 그리드 1회 후 freeze(D-14 ①)
@@ -14,6 +14,9 @@ SOURCE_POPULARITY = "popularity"
 SLOT_OF_SOURCE = {SOURCE_ITEMKNN: CH_CF, SOURCE_CONTENT: CH_CONTENT, SOURCE_POPULARITY: CH_POP}
 # D-06 ★난이도 gap 3항 — 음수(어려운 쪽 감점). 결측·level None 은 가중 0. freeze(D-14 ①)
 W_GAP, W_GAP_POS, W_NCOMP_GAP = -0.10, -0.20, -0.01
+KEY_SUBCAT = "subcategories"  # UserState.context 키 — 채우는 곳은 serving/state.py
+# 세부 분류 겹침 가점. 채널 최소 가중(W_POP=0.2)보다 작아 통로 순서를 뒤집지 않는다
+W_SUBCAT = 0.06
 
 
 def _slot_rank(slot: str) -> int:
@@ -57,14 +60,26 @@ def _gap_bonus(
     return bonus, difficulty
 
 
+def _subcat_bonus(
+    user: UserState, book_ids: Sequence[int], catalog: Catalog | None
+) -> dict[int, float]:
+    """세부 카테고리 = Fine-grained taste prior(main 설계서 §3) → 가점. 위에서 재순위화가 판단."""
+    want = {s.strip() for s in (user.context.get(KEY_SUBCAT) or "").split(",") if s.strip()}
+    if not want or catalog is None:
+        return {}  # 선택이 없으면 catalog.meta 를 아예 부르지 않는다(p95 예산)
+    return {int(m["book_id"]): W_SUBCAT for m in catalog.meta(list(book_ids))
+            if want & set(m.get(KEY_SUBCAT) or ())}  # fmt: skip
+
+
 def blend_channels(
     user: UserState,
     channels: dict[str, list[Candidate]],
     weights: dict[str, float] | None = None,
     *,
     book_stats: BookStatsSource | None = None,
+    catalog: Catalog | None = None,
 ) -> list[ScoredItem]:
-    """슬롯별 min-max → Σ w_slot·norm(채널에 없으면 0) + gap 3항 → (−score, book_id) 정렬.
+    """슬롯별 min-max → Σ w_slot·norm(채널에 없으면 0) + gap 3항 + 세부 분류 가점 → 정렬.
 
     seen 은 넣지 않는다. 가중치가 없는 슬롯은 후보에서도 빠진다(cf variant = {"cf": 1.0}).
     """
@@ -77,10 +92,11 @@ def blend_channels(
     if not books:
         return []
     bonus, difficulty = _gap_bonus(user, books, book_stats)
+    sub = _subcat_bonus(user, books, catalog)
     scored: list[tuple[float, int, str, tuple[str, ...], float | None]] = []
     for b in books:
         contrib = {s: w[s] * norm[s][b] for s in slots if b in norm[s]}
-        total = sum(contrib.values()) + bonus.get(b, 0.0)
+        total = sum(contrib.values()) + bonus.get(b, 0.0) + sub.get(b, 0.0)
         best = max(contrib.items(), key=lambda kv: (kv[1], -_slot_rank(kv[0])))[0]
         chans = tuple(
             dict.fromkeys(src[s][b] for s in slots if b in norm[s])

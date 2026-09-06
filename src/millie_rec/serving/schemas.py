@@ -150,6 +150,7 @@ class ItemOut(_Strict):
     badge: BadgeOut | None = None
     book_format: str | None = None
     difficulty: float | None = None
+    subcategories: list[str] = []  # ScoredItem.subcategories — Day 3 freeze 후 optional 추가
 
 
 class RowOut(_Strict):

@@ -33,7 +33,12 @@ from millie_rec.serving.levels import (
     variant_for,
 )
 from millie_rec.serving.privacy_api import USER_KEY_RE
-from millie_rec.serving.resolve import NOT_FOUND_SNAPSHOT, Resolved, resolve_user
+from millie_rec.serving.resolve import (
+    NOT_FOUND_SNAPSHOT,
+    Resolved,
+    resolve_user,
+    user_state_of,
+)
 from millie_rec.serving.state import reset_boost
 
 log = logging.getLogger(__name__)
@@ -86,17 +91,9 @@ class Cascade:
                                    cell=cell, forced=forced, now=self._now)  # fmt: skip
         return resp, forced
 
-    def _user_state(self, r, context):
-        """store 가 없으면(스켈레톤) 스냅샷만으로 조립 — context 값은 전부 str(계약)."""
-        if self.store is not None:
-            return self.store.user_state(r.user_key, seeds=r.seeds, categories=r.categories,
-                                         context=context)  # fmt: skip
-        ctx = {"user_key": r.user_key, "n_completed": "0", "categories": ",".join(r.categories)}
-        return UserState(None, explicit_seeds=r.seeds, context=ctx)
-
     def _personal(self, r, model, k, t0, context, bd, tf):
         """level 0 — 상태 로드 → 파이프라인 → 예산 판정 → 5행 조립 + 캐시 저장(D-09·D-10)."""
-        store, user, kw = self.store, self._user_state(r, context), {}
+        store, user, kw = self.store, user_state_of(self.store, r, context), {}
         if reset_boost(r.snapshots_count, r.latest_created_at, now=self._now()):
             kw["reset_boost"] = True  # D-08 재설정 부스트
         if store is not None and store.session_active(r.user_key):

@@ -230,6 +230,9 @@ class ScoredItem:
     badge: Badge | None = None
     book_format: str | None = None  # 전자책 | 오디오북 | 챗북 (우선 오디오북 > 챗북 > 전자책)
     difficulty: float | None = None  # 난이도 점 표시용 (main §5-6)
+    # 세부 분류(밀리 3depth). 화면 표시 + 취향 세부 분류 가산의 근거를 같은 필드로 보인다.
+    # Day 3 freeze 후 추가 — 기본값 있는 optional(아키 규칙), PROGRESS 2026-09-06 결정 참조
+    subcategories: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

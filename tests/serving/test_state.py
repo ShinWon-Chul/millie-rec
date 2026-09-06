@@ -38,12 +38,14 @@ def test_parse_ts_accepts_z_offset_and_naive_as_utc():
 
 def test_user_state_context_has_user_key_n_completed_categories_reading_time():
     store = _store()
-    user = store.user_state("u", seeds=(1, 2), categories=("소설", "IT"), context="evening")
+    user = store.user_state("u", seeds=(1, 2), categories=("소설", "IT"),
+                            subcategories=("한국 소설",), context="evening")  # fmt: skip
     assert user.explicit_seeds == (1, 2)
     assert user.context == {
         "user_key": "u",
         "n_completed": "0",
         "categories": "소설,IT",
+        "subcategories": "한국 소설",
         "reading_time": "evening",
     }
     assert user.history == () and user.session == ()

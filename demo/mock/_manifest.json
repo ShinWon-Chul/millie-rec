@@ -1,25 +1,25 @@
 {
- "generated_at": "2026-09-06T02:33:57.301827+00:00",
+ "generated_at": "2026-09-06T08:17:22.409314+00:00",
  "seed": 42,
  "generator": "demo/scripts/make_mock.py",
  "inputs": {
-  "books_kr.json": "2719098770b2b42389e027f7b38f4202",
+  "books_kr.json": "95cb904910221f98c9676dde98b99319",
   "item_edges_kr.json": "844fae4b18114499da7062a7c2ff0b82",
   "eval_table.json": "841c93ad476ae216aac2dd00ffaa7ebe",
   "onboarding.json": "508b185a3a3c749e0ba966bff50c7489"
  },
  "outputs": {
-  "catalog_kr.json": 4560057,
+  "catalog_kr.json": 4817506,
   "neighbors_kr.json": 2287133,
-  "meta_onboarding.json": 3280,
+  "meta_onboarding.json": 10097,
   "candidates_onboarding.json": 8302,
   "preferences_response.json": 424,
   "state.json": 1695,
   "dashboard.json": 1235,
-  "recommend_pop.json": 43765,
-  "recommend_cf.json": 43484,
-  "recommend_hybrid.json": 43488,
-  "recommend_hybrid_div.json": 41958,
+  "recommend_pop.json": 48675,
+  "recommend_cf.json": 48420,
+  "recommend_hybrid.json": 48424,
+  "recommend_hybrid_div.json": 46702,
   "showcase.json": 9024
  }
 }

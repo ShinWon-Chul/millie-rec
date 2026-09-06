@@ -102,18 +102,14 @@ class StateStore:
         with self._lock:
             return self._users.get(user_key) or _Record()
 
-    def user_state(
-        self,
-        user_key: str,
-        *,
-        seeds: Sequence[int] = (),
-        categories: Sequence[str] = (),
-        context: str | None = None,
-    ) -> UserState:
+    def user_state(self, user_key: str, *, seeds: Sequence[int] = (),
+                   categories: Sequence[str] = (), subcategories: Sequence[str] = (),
+                   context: str | None = None) -> UserState:  # fmt: skip
         """요청 시점 스냅샷. context 값은 전부 str(계약의 dict[str, str])."""
         rec = self._snapshot(user_key)
         done = str(len(rec.completed))
-        ctx = {"user_key": user_key, "n_completed": done, "categories": ",".join(categories)}
+        ctx = {"user_key": user_key, "n_completed": done, "categories": ",".join(categories),
+               "subcategories": ",".join(subcategories)}  # fmt: skip
         if context:
             ctx["reading_time"] = context
         return UserState(

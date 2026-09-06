@@ -74,7 +74,9 @@ class StagedPipeline:
         t = perf_counter()
         cands = {slot: r.retrieve(user, self.pool) for slot, r in self.channels.items()}
         t1 = perf_counter()
-        items = blend_channels(user, cands, self.weights, book_stats=self.book_stats)
+        # catalog 는 Track B 에만 있다 — 세부 분류 가점이 Track A 평가 숫자를 건드리지 않는 경계
+        items = blend_channels(user, cands, self.weights, book_stats=self.book_stats,
+                               catalog=self.catalog)  # fmt: skip
         if self.catalog is not None:  # main §7 노출 자격 게이트(Track B 엣지 dst 는 자격 미검사)
             ok = set(self.catalog.eligible([i.book_id for i in items]))
             items = [i for i in items if i.book_id in ok]

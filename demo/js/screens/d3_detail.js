@@ -9,7 +9,24 @@ const CHANNEL_TEXT = {
   popularity: "지금 많이 읽는 책 — 인기 순위(pop_rank) 기반",
 };
 
+// 세부 분류(밀리 3depth) — 이름만 나열하면 무엇인지 알 수 없어 라벨을 앞에 둔다. 시트가 좁아 3개까지.
+const SUBCATS_LABEL = "세부 분류", SUBCATS_MAX = 3;
+
 const FIT = (d) => (d < 0.34 ? "가볍게" : d < 0.67 ? "비슷한 수준" : "조금 도전적");
+
+// 커버리지 42.6% — 비어 있으면 요소 자체를 그리지 않는다(빈 줄·구분점만 남는 자리 금지).
+// 취향 설정에서 고른 분류를 앞으로 보내 강조한다 — 3개 상한에 잘려 안 보이는 것을 막고,
+// 가점이 어디서 왔는지가 화면에서 읽힌다(가점 자체는 ranking/hybrid.py 가 준다).
+function subcatsLine(it, picks) {
+  const all = it.subcategories ?? [];
+  if (!all.length) return "";
+  const want = new Set(picks ?? []);
+  const ordered = [...all.filter((s) => want.has(s)), ...all.filter((s) => !want.has(s))];
+  const shown = ordered.slice(0, SUBCATS_MAX)
+    .map((s) => (want.has(s) ? `<b>${esc(s)}</b>` : esc(s))).join(" · ");
+  const more = all.length > SUBCATS_MAX ? ` +${all.length - SUBCATS_MAX}` : "";
+  return `<p class="sheet__subcats">${SUBCATS_LABEL} · ${shown}${more}</p>`;
+}
 
 function fitLine(it) {
   return it.difficulty == null
@@ -33,6 +50,7 @@ export function render(state) {
         <div class="sheet__meta">
           <h2 class="sheet__title">${esc(it.title ?? "(제목 없음)")}</h2>
           <p class="sheet__author">${esc(it.authors ?? "저자 미상")}</p>
+          ${subcatsLine(it, state.prefs?.subcategories)}
           <small>${esc(it.book_format ?? "")}${it.book_format && where ? " · " : ""}${esc(where)}</small>
           ${badge(it.badge)}${dots(it.difficulty)}
         </div>

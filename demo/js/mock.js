@@ -17,8 +17,7 @@ const PERSONAS = [["오디세우스", "오디세이아", "지혜로 승리하리
 const CATEGORY_TO_PERSONA = { 경제경영: 0, 자기계발: 0, IT: 0, 소설: 1, 과학: 1, 철학: 1,
   인문: 2, 역사: 2, 사회: 2, "에세이/시": 3, 라이프스타일: 3 };
 const local = (p) => fetch(p).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status} ${p}`); return r.json(); });
-let ready = null, pool = [], index = new Map(), nbrs = {}, byCat = new Map(), allCats = [];
-let showcaseData = null, metaData = null;
+let ready = null, pool = [], index = new Map(), nbrs = {}, byCat = new Map(), allCats = [], showcaseData = null, metaData = null;
 /** 카탈로그·이웃·계약 JSON 1회 로드(Promise 캐시). pool 은 pop_rank 오름차순이다. */
 export function init() {
   if (ready) return ready;
@@ -40,19 +39,24 @@ function byPop(cats) {   // 카테고리 교집합, pop_rank 순. 단일 카테�
   const want = new Set(cats);
   return pool.filter((b) => (b.categories || []).some((c) => want.has(c)));
 }
+/** subcat.py prioritize 1:1 — 선택 세부 분류와 겹치는 책을 앞으로(하드 필터 아님 · 커버리지 42.6%). 점수 계산이 아니라 표시 순서다. */
+function prioritize(cards, picks) {
+  if (!picks || !picks.length) return cards;   // 선택 없으면 항등
+  const want = new Set(picks), hit = [], rest = [];
+  for (const b of cards) ((b.subcategories || []).some((s) => want.has(s)) ? hit : rest).push(b);
+  return [...hit, ...rest];
+}
 const mix = (its) => its.reduce((a, i) => { for (const c of i.source_channels) a[c] = (a[c] || 0) + 1; return a; }, {});
 export function health() {   // HealthOut 8키
-  return { status: "ok", api_version: "v2", model_version: "hybrid_div_v1", artifacts_loaded_at: null,
-    db_ok: true, db_row_count: {}, nearline_last_run: null, uptime_s: 0 };
+  return { status: "ok", api_version: "v2", model_version: "hybrid_div_v1", artifacts_loaded_at: null, db_ok: true, db_row_count: {}, nearline_last_run: null, uptime_s: 0 };
 }
 export function loadMeta() { return metaData; }
 /** 05-CONTEXT D-15 — 선택 카테고리별 인기 목록을 1권씩 라운드로빈해 n 권. */
-export function getCandidates({ categories = [], n = 30 } = {}) {
-  const lists = (categories.length ? categories : allCats.slice(0, 3)).map((c) => byPop([c]));
+export function getCandidates({ categories = [], subcategories = [], n = 30 } = {}) {
+  const lists = (categories.length ? categories : allCats.slice(0, 3)).map((c) => prioritize(byPop([c]), subcategories));
   const picked = [], seen = new Set();
-  for (let i = 0; picked.length < n && lists.some((l) => l[i]); i += 1)
-    for (const l of lists)
-      if (l[i] && !seen.has(l[i].book_id) && picked.length < n) { seen.add(l[i].book_id); picked.push(l[i]); }
+  for (let i = 0; picked.length < n && lists.some((l) => l[i]); i += 1) for (const l of lists)
+    if (l[i] && !seen.has(l[i].book_id) && picked.length < n) { seen.add(l[i].book_id); picked.push(l[i]); }
   return { candidate_set_id: "cand_" + store.hex6(), survey_variant: metaData?.survey_variant ?? "v1",
     created_at: new Date().toISOString(), items: picked.map((b, i) => ({ book_id: b.book_id, title: b.title,
       authors: b.authors, image_url: b.image_url, position: i, book_format: b.book_format })) };
@@ -103,11 +107,11 @@ function attachBadges(rows, criterion, seeds) {
   const au = new Set(cards.map((c) => c.authors).filter(Boolean)), pu = new Set(cards.map((c) => c.publisher).filter(Boolean));
   for (const r of rows) for (const i of r.items) if (index.has(i.book_id)) i.badge = badgeFor(index.get(i.book_id), criterion, au, pu);
 }
-/** ItemOut 12키 화이트리스트 — 카탈로그 원문을 그대로 흘리지 않는다(T-06-03-04). */
+/** ItemOut 13키 화이트리스트 — 카탈로그 원문을 그대로 흘리지 않는다(T-06-03-04). */
 const item = (card, position, source, reason = null, score = null) => ({
   book_id: card.book_id, score: score ?? ROW_SIZE - position, source, reason, title: card.title ?? null,
   authors: card.authors ?? null, image_url: card.image_url ?? null, position, badge: null, source_channels: source ? [source] : [],
-  book_format: card.book_format ?? null, difficulty: card.difficulty ?? null });
+  book_format: card.book_format ?? null, difficulty: card.difficulty ?? null, subcategories: card.subcategories ?? [] });
 const row = (id, title, purpose, items, subtitle = null) => ({ row_id: id, title, purpose, items, subtitle, channel_mix: mix(items) });
 /** rows.neighbor_row — 앵커·after_completion 공용. 자격·중복·시드를 뺀 가중 상위 12, 비면 null. */
 function neighborRow(rowId, title, subtitle, seed, exclude, purpose = "discover") {
@@ -143,6 +147,7 @@ function shelfRow(variant, snap, persona, exclude) {
     for (const s of snap.seeds || []) for (const [d, w] of (nbrs[String(s)] || []).slice(0, ANCHOR_NEIGHBORS))
       if (index.has(d) && !exclude.has(d)) sc.set(d, Math.max(sc.get(d) ?? 0, w));
     let cards = [...sc.entries()].sort((a, b) => b[1] - a[1]).map(([d]) => index.get(d));
+    cards = prioritize(cards, snap.subcategories);   // Ranking 단계 가점에 대응 — 다양성이 그 위에서 판단한다
     if (variant === "hybrid_div") cards = interleave(cards);
     picked = cards.slice(0, ROW_SIZE).map((b) => [b, "content"]);
   }
@@ -164,8 +169,7 @@ function dedup(rows) {
     for (const i of r.items) {
       const key = normalizeTitle(i.title);
       if (ids.has(i.book_id) || (key && titles.has(key))) { removed += 1; continue; }
-      ids.add(i.book_id);
-      if (key) titles.add(key);
+      ids.add(i.book_id); if (key) titles.add(key);
       kept.push({ ...i, position: kept.length });   // position 재부여
     }
     return { ...r, items: kept, channel_mix: mix(kept) };
@@ -179,8 +183,7 @@ function weightsFor(uk, snaps, consent, now) {
   let a = Math.max(0.2, 0.7 - 0.05 * n), g = 0.1;
   if (store.sessionActive(uk, now)) g += 0.1;
   if (snaps.length >= 2 && Date.now() - Date.parse(snaps[0].created_at) < 86400e3) a += 0.15;
-  const s = a + b + g, r3 = (x) => Math.round((x / s) * 1000) / 1000;
-  return { alpha: r3(a), beta: r3(b), gamma: r3(g) };
+  const s = a + b + g, r3 = (x) => Math.round((x / s) * 1000) / 1000;   return { alpha: r3(a), beta: r3(b), gamma: r3(g) };
 }
 export function getRecommend({ userKey, snapshotId, model, k = 40, context } = {}) {
   const uk = userKey || "", now = new Date().toISOString();
@@ -228,15 +231,12 @@ export function postEvents(events) { return store.addEvents(events); }
 export function postRating(body) {
   store.addRating(body);   // rating 이벤트도 함께 — 대시보드 집계가 서버와 같아진다
   store.addEvents([{ event_id: crypto.randomUUID(), user_key: body.user_key, book_id: body.book_id,
-    event_type: "rating", ts: body.ts, recommendation_id: body.recommendation_id ?? null,
-    payload: { stars: String(body.stars) } }]);
+    event_type: "rating", ts: body.ts, recommendation_id: body.recommendation_id ?? null, payload: { stars: String(body.stars) } }]);
   return { ok: true, rating_id: body.rating_id };
 }
 export async function getUserState(userKey) {
-  const uk = userKey || "";
-  const user = store.getUser(uk), snaps = store.snapshotsOf(uk), lib = store.library(uk);
-  const card = (b) => ({ book_id: b, title: byId(b)?.title ?? null,
-    authors: byId(b)?.authors ?? null, image_url: byId(b)?.image_url ?? null });
+  const uk = userKey || "", user = store.getUser(uk), snaps = store.snapshotsOf(uk), lib = store.library(uk);
+  const card = (b) => ({ book_id: b, title: byId(b)?.title ?? null, authors: byId(b)?.authors ?? null, image_url: byId(b)?.image_url ?? null });
   return { user_key: uk, consent: user?.consent ?? false, cell: user?.cell ?? await store.cellFor(uk),
     is_new: snaps.length <= 1, nearline_lag_s: NEARLINE_LAG_S,
     library: { added: lib.added.map(card), reading: lib.reading.map(card), completed: lib.completed.map(card) },

@@ -15,11 +15,11 @@ ROOT = Path(__file__).resolve().parents[2]
 SEED = 42  # 결정성 표시값 — 이 생성기에 난수는 없다
 # 본인 5권: 싯다르타 · 데미안 · 위버멘쉬 · 쇼펜하우어 인생수업 · 죽음의 수용소에서
 SEEDS = (1012, 2765, 1446, 1222, 2292)
-# 카드 필드 화이트리스트 — 블랙리스트가 아니라 이 16개만 통과시킨다(밀리 저작 텍스트 차단)
+# 카드 필드 화이트리스트 — 블랙리스트가 아니라 이 17개만 통과시킨다(밀리 저작 텍스트 차단)
 CARD_KEYS = (
-    "book_id", "title", "authors", "image_url", "categories", "publisher", "book_format",
-    "pop_rank", "millie_label", "average_rating", "review_count", "completion_prob",
-    "category_avg_prob", "expected_min", "difficulty", "formats",
+    "book_id", "title", "authors", "image_url", "categories", "subcategories", "publisher",
+    "book_format", "pop_rank", "millie_label", "average_rating", "review_count",
+    "completion_prob", "category_avg_prob", "expected_min", "difficulty", "formats",
 )
 ROW_SIZE, ANCHOR_NEIGHBORS, K_ITEMS, N_CANDIDATES, SUPPORTED_MIN = 12, 20, 40, 30, 20
 N_PERSONAL_RECS = 10  # 쇼케이스 본인 5권 케이스의 이웃 추천 수
@@ -39,13 +39,11 @@ TITLE_PERSONA, TITLE_PERSONA_DEFAULT = "{name}의 서가", "회원님의 서가"
 SUBTITLE_ANCHOR = "결이 비슷한 책"
 REASON_ANCHOR = "『{title}』을 좋아하셨다면"
 HANGUL_BASE, HANGUL_LAST, JONG, JONG_RIEUL = 0xAC00, 0xD7A3, 28, 8
-# 세부 카테고리 — serving/onboarding_meta.json 과 문자 단위로 같아야 한다
-SUBCATEGORIES = {
-    "IT": ["개발/프로그래밍", "그래픽/멀티미디어", "IT 교양", "e비즈니스", "오피스 활용",
-           "컴퓨터 수험서"],
-    "소설": ["추리/스릴러", "SF", "판타지", "영미 소설", "한국 소설", "일본 소설", "유럽 소설"],
-    "철학": ["동양", "정치/경제", "예술/문화", "서양"],
-}
+# 세부 카테고리 — serving/onboarding_meta.json 이 정본이라 하드코딩 대신 그 파일을 읽는다
+# (밀리 3depth 328종 수집 2026-09-06 이후 28 카테고리로 늘어 손으로 맞출 수 없다)
+SUBCATEGORIES = json.loads(
+    (ROOT / "src/millie_rec/serving/onboarding_meta.json").read_text(encoding="utf-8")
+)["subcategories"]
 PERSONAS = (
     ("오디세우스", "오디세이아", "지혜로 승리하리라!"),
     ("셜록 홈즈", "주홍색 연구", "사소한 것이 가장 중요하다."),
@@ -180,6 +178,7 @@ def load_catalog(artifacts: Path) -> list[dict]:
         card = {key: row.get(key) for key in CARD_KEYS}
         card["book_id"] = int(row["book_id"])
         card["categories"] = list(card["categories"] or [])
+        card["subcategories"] = list(card["subcategories"] or [])
         card["formats"] = list(card["formats"] or [])
         cards.append(card)
     cards.sort(key=lambda c: (_rank(c), c["book_id"]))
@@ -250,7 +249,7 @@ def assign_persona(categories, criterion_label: str | None) -> dict:
 
 
 def item(card: dict, position: int, *, source: str, reason: str | None = None, score=None) -> dict:
-    """ItemOut 12필드 정확히. 배지는 행 조립 마지막에 붙인다."""
+    """ItemOut 13필드 정확히. 배지는 행 조립 마지막에 붙인다."""
     return {
         "book_id": card["book_id"],
         "score": float(ROW_SIZE - position) if score is None else float(score),
@@ -264,6 +263,7 @@ def item(card: dict, position: int, *, source: str, reason: str | None = None, s
         "badge": None,
         "book_format": card.get("book_format"),
         "difficulty": card.get("difficulty"),
+        "subcategories": list(card.get("subcategories") or []),
     }
 
 

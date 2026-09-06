@@ -41,7 +41,13 @@
     "text": "인기 686위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.6599875150307469
+   "difficulty": 0.6599875150307469,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "성우가 읽어주는 완독 오디오북",
+    "소설",
+    "유럽 소설"
+   ]
   },
   {
    "book_id": 2755,
@@ -60,7 +66,11 @@
     "text": "인기 1481위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6154818410653264
+   "difficulty": 0.6154818410653264,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "유럽 소설"
+   ]
   },
   {
    "book_id": 2756,
@@ -79,7 +89,8 @@
     "text": "인기 2598위"
    },
    "book_format": "전자책",
-   "difficulty": 0.4380874624108258
+   "difficulty": 0.4380874624108258,
+   "subcategories": []
   },
   {
    "book_id": 2757,
@@ -98,7 +109,11 @@
     "text": "인기 1104위"
    },
    "book_format": "전자책",
-   "difficulty": 0.5663814933998935
+   "difficulty": 0.5663814933998935,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "영미 소설"
+   ]
   },
   {
    "book_id": 2758,
@@ -117,7 +132,11 @@
     "text": "인기 960위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.9234748170748752
+   "difficulty": 0.9234748170748752,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "유럽 소설"
+   ]
   },
   {
    "book_id": 966,
@@ -136,7 +155,11 @@
     "text": "인기 140위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.1654878208943647
+   "difficulty": 0.1654878208943647,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "영미"
+   ]
   },
   {
    "book_id": 2759,
@@ -155,7 +178,11 @@
     "text": "인기 1482위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.6928388591595335
+   "difficulty": 0.6928388591595335,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "영미 소설"
+   ]
   },
   {
    "book_id": 1007,
@@ -174,7 +201,11 @@
     "text": "인기 2499위"
    },
    "book_format": "전자책",
-   "difficulty": 0.5284775582997908
+   "difficulty": 0.5284775582997908,
+   "subcategories": [
+    "소설",
+    "한국 소설"
+   ]
   },
   {
    "book_id": 2958,
@@ -193,7 +224,8 @@
     "text": "인기 9035위"
    },
    "book_format": "전자책",
-   "difficulty": 0.5981811340629521
+   "difficulty": 0.5981811340629521,
+   "subcategories": []
   },
   {
    "book_id": 4149,
@@ -212,7 +244,10 @@
     "text": "인기 2684위"
    },
    "book_format": "전자책",
-   "difficulty": 0.24685315462368645
+   "difficulty": 0.24685315462368645,
+   "subcategories": [
+    "인문학"
+   ]
   },
   {
    "book_id": 933,
@@ -231,7 +266,10 @@
     "text": "인기 2341위"
    },
    "book_format": "전자책",
-   "difficulty": 0.866028583734719
+   "difficulty": 0.866028583734719,
+   "subcategories": [
+    "말하기/협상"
+   ]
   },
   {
    "book_id": 2293,
@@ -250,7 +288,12 @@
     "text": "인기 1013위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.43383771008019756
+   "difficulty": 0.43383771008019756,
+   "subcategories": [
+    "성우가 읽어주는 완독 오디오북",
+    "인문",
+    "인문학"
+   ]
   },
   {
    "book_id": 2295,
@@ -269,7 +312,10 @@
     "text": "인기 3534위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6074065090898167
+   "difficulty": 0.6074065090898167,
+   "subcategories": [
+    "심리학"
+   ]
   },
   {
    "book_id": 4530,
@@ -288,7 +334,14 @@
     "text": "인기 603위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.67210924997864
+   "difficulty": 0.67210924997864,
+   "subcategories": [
+    "관계",
+    "서양",
+    "성공",
+    "처세술",
+    "현대지성 클래식"
+   ]
   },
   {
    "book_id": 5728,
@@ -307,7 +360,8 @@
     "text": "인기 4570위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6271923532127393
+   "difficulty": 0.6271923532127393,
+   "subcategories": []
   },
   {
    "book_id": 1144,
@@ -326,7 +380,10 @@
     "text": "인기 13위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.67210924997864
+   "difficulty": 0.67210924997864,
+   "subcategories": [
+    "처세술"
+   ]
   },
   {
    "book_id": 1004,
@@ -345,7 +402,10 @@
     "text": "인기 1위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.42206005018777937
+   "difficulty": 0.42206005018777937,
+   "subcategories": [
+    "한국 소설"
+   ]
   },
   {
    "book_id": 2081,
@@ -364,7 +424,11 @@
     "text": "인기 2위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.5681311237051055
+   "difficulty": 0.5681311237051055,
+   "subcategories": [
+    "판타지",
+    "한국 소설"
+   ]
   },
   {
    "book_id": 2843,
@@ -383,7 +447,10 @@
     "text": "인기 3위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.6476647943791002
+   "difficulty": 0.6476647943791002,
+   "subcategories": [
+    "성공"
+   ]
   },
   {
    "book_id": 1060,
@@ -402,7 +469,10 @@
     "text": "인기 4위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.2845122929771409
+   "difficulty": 0.2845122929771409,
+   "subcategories": [
+    "부자"
+   ]
   },
   {
    "book_id": 4320,
@@ -421,7 +491,10 @@
     "text": "인기 5위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.2499162206515874
+   "difficulty": 0.2499162206515874,
+   "subcategories": [
+    "추리/스릴러"
+   ]
   },
   {
    "book_id": 2204,
@@ -440,7 +513,11 @@
     "text": "인기 6위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.3007115287173277
+   "difficulty": 0.3007115287173277,
+   "subcategories": [
+    "사랑",
+    "한국 소설"
+   ]
   },
   {
    "book_id": 108,
@@ -459,7 +536,10 @@
     "text": "인기 7위"
    },
    "book_format": "전자책",
-   "difficulty": 0.8836882774038002
+   "difficulty": 0.8836882774038002,
+   "subcategories": [
+    "생명과학"
+   ]
   },
   {
    "book_id": 621,
@@ -478,7 +558,10 @@
     "text": "인기 8위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6950969096172004
+   "difficulty": 0.6950969096172004,
+   "subcategories": [
+    "인간/인류"
+   ]
   },
   {
    "book_id": 1355,
@@ -497,7 +580,10 @@
     "text": "인기 9위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6011406085594383
+   "difficulty": 0.6011406085594383,
+   "subcategories": [
+    "인문학"
+   ]
   },
   {
    "book_id": 1467,
@@ -516,7 +602,10 @@
     "text": "인기 10위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.3230064679942956
+   "difficulty": 0.3230064679942956,
+   "subcategories": [
+    "생명과학"
+   ]
   },
   {
    "book_id": 5585,
@@ -535,7 +624,10 @@
     "text": "인기 11위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.4732563467977996
+   "difficulty": 0.4732563467977996,
+   "subcategories": [
+    "인문학"
+   ]
   },
   {
    "book_id": 386,
@@ -554,7 +646,11 @@
     "text": "인기 12위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.4713259368504131
+   "difficulty": 0.4713259368504131,
+   "subcategories": [
+    "민음사 세계문학전집",
+    "일본/중국"
+   ]
   },
   {
    "book_id": 6454,
@@ -573,7 +669,8 @@
     "text": "인기 48위"
    },
    "book_format": "전자책",
-   "difficulty": null
+   "difficulty": null,
+   "subcategories": []
   },
   {
    "book_id": 753,
@@ -592,7 +689,10 @@
     "text": "인기 14위"
    },
    "book_format": "전자책",
-   "difficulty": 0.4011662061871708
+   "difficulty": 0.4011662061871708,
+   "subcategories": [
+    "경제학"
+   ]
   },
   {
    "book_id": 945,
@@ -611,7 +711,12 @@
     "text": "인기 52위"
    },
    "book_format": "전자책",
-   "difficulty": 0.5769736618360011
+   "difficulty": 0.5769736618360011,
+   "subcategories": [
+    "그리스 로마 신화 시리즈",
+    "어린이/청소년",
+    "학습 만화"
+   ]
   },
   {
    "book_id": 1198,
@@ -630,7 +735,10 @@
     "text": "인기 252위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.8491839983732586
+   "difficulty": 0.8491839983732586,
+   "subcategories": [
+    "음식"
+   ]
   },
   {
    "book_id": 3860,
@@ -649,7 +757,8 @@
     "text": "인기 98위"
    },
    "book_format": "챗북",
-   "difficulty": null
+   "difficulty": null,
+   "subcategories": []
   },
   {
    "book_id": 1087,
@@ -668,7 +777,10 @@
     "text": "인기 74위"
    },
    "book_format": "전자책",
-   "difficulty": 0.6775288528978359
+   "difficulty": 0.6775288528978359,
+   "subcategories": [
+    "세계사"
+   ]
   },
   {
    "book_id": 2590,
@@ -687,7 +799,10 @@
     "text": "인기 95위"
    },
    "book_format": "챗북",
-   "difficulty": 0.44826112249603345
+   "difficulty": 0.44826112249603345,
+   "subcategories": [
+    "서양"
+   ]
   },
   {
    "book_id": 1264,
@@ -706,7 +821,10 @@
     "text": "인기 344위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.1970199533570085
+   "difficulty": 0.1970199533570085,
+   "subcategories": [
+    "청소년 문학"
+   ]
   },
   {
    "book_id": 4045,
@@ -725,7 +843,10 @@
     "text": "인기 254위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.3711981540982907
+   "difficulty": 0.3711981540982907,
+   "subcategories": [
+    "물리학/공학"
+   ]
   },
   {
    "book_id": 8539,
@@ -744,7 +865,8 @@
     "text": "인기 203위"
    },
    "book_format": "전자책",
-   "difficulty": null
+   "difficulty": null,
+   "subcategories": []
   },
   {
    "book_id": 1928,
@@ -763,7 +885,11 @@
     "text": "인기 29위"
    },
    "book_format": "오디오북",
-   "difficulty": 0.4735526108881144
+   "difficulty": 0.4735526108881144,
+   "subcategories": [
+    "소설",
+    "한국 소설"
+   ]
   }
  ],
  "rows": [
@@ -797,7 +923,13 @@
       "text": "인기 686위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.6599875150307469
+     "difficulty": 0.6599875150307469,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "성우가 읽어주는 완독 오디오북",
+      "소설",
+      "유럽 소설"
+     ]
     },
     {
      "book_id": 2755,
@@ -816,7 +948,11 @@
       "text": "인기 1481위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6154818410653264
+     "difficulty": 0.6154818410653264,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "유럽 소설"
+     ]
     },
     {
      "book_id": 2756,
@@ -835,7 +971,8 @@
       "text": "인기 2598위"
      },
      "book_format": "전자책",
-     "difficulty": 0.4380874624108258
+     "difficulty": 0.4380874624108258,
+     "subcategories": []
     },
     {
      "book_id": 2757,
@@ -854,7 +991,11 @@
       "text": "인기 1104위"
      },
      "book_format": "전자책",
-     "difficulty": 0.5663814933998935
+     "difficulty": 0.5663814933998935,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "영미 소설"
+     ]
     },
     {
      "book_id": 2758,
@@ -873,7 +1014,11 @@
       "text": "인기 960위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.9234748170748752
+     "difficulty": 0.9234748170748752,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "유럽 소설"
+     ]
     },
     {
      "book_id": 966,
@@ -892,7 +1037,11 @@
       "text": "인기 140위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.1654878208943647
+     "difficulty": 0.1654878208943647,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "영미"
+     ]
     },
     {
      "book_id": 2759,
@@ -911,7 +1060,11 @@
       "text": "인기 1482위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.6928388591595335
+     "difficulty": 0.6928388591595335,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "영미 소설"
+     ]
     },
     {
      "book_id": 1007,
@@ -930,7 +1083,11 @@
       "text": "인기 2499위"
      },
      "book_format": "전자책",
-     "difficulty": 0.5284775582997908
+     "difficulty": 0.5284775582997908,
+     "subcategories": [
+      "소설",
+      "한국 소설"
+     ]
     }
    ],
    "subtitle": "결이 비슷한 책",
@@ -960,7 +1117,8 @@
       "text": "인기 9035위"
      },
      "book_format": "전자책",
-     "difficulty": 0.5981811340629521
+     "difficulty": 0.5981811340629521,
+     "subcategories": []
     },
     {
      "book_id": 4149,
@@ -979,7 +1137,10 @@
       "text": "인기 2684위"
      },
      "book_format": "전자책",
-     "difficulty": 0.24685315462368645
+     "difficulty": 0.24685315462368645,
+     "subcategories": [
+      "인문학"
+     ]
     },
     {
      "book_id": 933,
@@ -998,7 +1159,10 @@
       "text": "인기 2341위"
      },
      "book_format": "전자책",
-     "difficulty": 0.866028583734719
+     "difficulty": 0.866028583734719,
+     "subcategories": [
+      "말하기/협상"
+     ]
     },
     {
      "book_id": 2293,
@@ -1017,7 +1181,12 @@
       "text": "인기 1013위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.43383771008019756
+     "difficulty": 0.43383771008019756,
+     "subcategories": [
+      "성우가 읽어주는 완독 오디오북",
+      "인문",
+      "인문학"
+     ]
     },
     {
      "book_id": 2295,
@@ -1036,7 +1205,10 @@
       "text": "인기 3534위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6074065090898167
+     "difficulty": 0.6074065090898167,
+     "subcategories": [
+      "심리학"
+     ]
     },
     {
      "book_id": 4530,
@@ -1055,7 +1227,14 @@
       "text": "인기 603위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.67210924997864
+     "difficulty": 0.67210924997864,
+     "subcategories": [
+      "관계",
+      "서양",
+      "성공",
+      "처세술",
+      "현대지성 클래식"
+     ]
     },
     {
      "book_id": 5728,
@@ -1074,7 +1253,8 @@
       "text": "인기 4570위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6271923532127393
+     "difficulty": 0.6271923532127393,
+     "subcategories": []
     },
     {
      "book_id": 1144,
@@ -1093,7 +1273,10 @@
       "text": "인기 13위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.67210924997864
+     "difficulty": 0.67210924997864,
+     "subcategories": [
+      "처세술"
+     ]
     }
    ],
    "subtitle": null,
@@ -1123,7 +1306,10 @@
       "text": "인기 1위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.42206005018777937
+     "difficulty": 0.42206005018777937,
+     "subcategories": [
+      "한국 소설"
+     ]
     },
     {
      "book_id": 2081,
@@ -1142,7 +1328,11 @@
       "text": "인기 2위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.5681311237051055
+     "difficulty": 0.5681311237051055,
+     "subcategories": [
+      "판타지",
+      "한국 소설"
+     ]
     },
     {
      "book_id": 2843,
@@ -1161,7 +1351,10 @@
       "text": "인기 3위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.6476647943791002
+     "difficulty": 0.6476647943791002,
+     "subcategories": [
+      "성공"
+     ]
     },
     {
      "book_id": 1060,
@@ -1180,7 +1373,10 @@
       "text": "인기 4위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.2845122929771409
+     "difficulty": 0.2845122929771409,
+     "subcategories": [
+      "부자"
+     ]
     },
     {
      "book_id": 4320,
@@ -1199,7 +1395,10 @@
       "text": "인기 5위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.2499162206515874
+     "difficulty": 0.2499162206515874,
+     "subcategories": [
+      "추리/스릴러"
+     ]
     },
     {
      "book_id": 2204,
@@ -1218,7 +1417,11 @@
       "text": "인기 6위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.3007115287173277
+     "difficulty": 0.3007115287173277,
+     "subcategories": [
+      "사랑",
+      "한국 소설"
+     ]
     },
     {
      "book_id": 108,
@@ -1237,7 +1440,10 @@
       "text": "인기 7위"
      },
      "book_format": "전자책",
-     "difficulty": 0.8836882774038002
+     "difficulty": 0.8836882774038002,
+     "subcategories": [
+      "생명과학"
+     ]
     },
     {
      "book_id": 621,
@@ -1256,7 +1462,10 @@
       "text": "인기 8위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6950969096172004
+     "difficulty": 0.6950969096172004,
+     "subcategories": [
+      "인간/인류"
+     ]
     },
     {
      "book_id": 1355,
@@ -1275,7 +1484,10 @@
       "text": "인기 9위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6011406085594383
+     "difficulty": 0.6011406085594383,
+     "subcategories": [
+      "인문학"
+     ]
     },
     {
      "book_id": 1467,
@@ -1294,7 +1506,10 @@
       "text": "인기 10위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.3230064679942956
+     "difficulty": 0.3230064679942956,
+     "subcategories": [
+      "생명과학"
+     ]
     },
     {
      "book_id": 5585,
@@ -1313,7 +1528,10 @@
       "text": "인기 11위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.4732563467977996
+     "difficulty": 0.4732563467977996,
+     "subcategories": [
+      "인문학"
+     ]
     },
     {
      "book_id": 386,
@@ -1332,7 +1550,11 @@
       "text": "인기 12위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.4713259368504131
+     "difficulty": 0.4713259368504131,
+     "subcategories": [
+      "민음사 세계문학전집",
+      "일본/중국"
+     ]
     }
    ],
    "subtitle": null,
@@ -1362,7 +1584,8 @@
       "text": "인기 48위"
      },
      "book_format": "전자책",
-     "difficulty": null
+     "difficulty": null,
+     "subcategories": []
     },
     {
      "book_id": 753,
@@ -1381,7 +1604,10 @@
       "text": "인기 14위"
      },
      "book_format": "전자책",
-     "difficulty": 0.4011662061871708
+     "difficulty": 0.4011662061871708,
+     "subcategories": [
+      "경제학"
+     ]
     },
     {
      "book_id": 945,
@@ -1400,7 +1626,12 @@
       "text": "인기 52위"
      },
      "book_format": "전자책",
-     "difficulty": 0.5769736618360011
+     "difficulty": 0.5769736618360011,
+     "subcategories": [
+      "그리스 로마 신화 시리즈",
+      "어린이/청소년",
+      "학습 만화"
+     ]
     },
     {
      "book_id": 1198,
@@ -1419,7 +1650,10 @@
       "text": "인기 252위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.8491839983732586
+     "difficulty": 0.8491839983732586,
+     "subcategories": [
+      "음식"
+     ]
     },
     {
      "book_id": 3860,
@@ -1438,7 +1672,8 @@
       "text": "인기 98위"
      },
      "book_format": "챗북",
-     "difficulty": null
+     "difficulty": null,
+     "subcategories": []
     },
     {
      "book_id": 1087,
@@ -1457,7 +1692,10 @@
       "text": "인기 74위"
      },
      "book_format": "전자책",
-     "difficulty": 0.6775288528978359
+     "difficulty": 0.6775288528978359,
+     "subcategories": [
+      "세계사"
+     ]
     },
     {
      "book_id": 2590,
@@ -1476,7 +1714,10 @@
       "text": "인기 95위"
      },
      "book_format": "챗북",
-     "difficulty": 0.44826112249603345
+     "difficulty": 0.44826112249603345,
+     "subcategories": [
+      "서양"
+     ]
     },
     {
      "book_id": 1264,
@@ -1495,7 +1736,10 @@
       "text": "인기 344위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.1970199533570085
+     "difficulty": 0.1970199533570085,
+     "subcategories": [
+      "청소년 문학"
+     ]
     },
     {
      "book_id": 4045,
@@ -1514,7 +1758,10 @@
       "text": "인기 254위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.3711981540982907
+     "difficulty": 0.3711981540982907,
+     "subcategories": [
+      "물리학/공학"
+     ]
     },
     {
      "book_id": 8539,
@@ -1533,7 +1780,8 @@
       "text": "인기 203위"
      },
      "book_format": "전자책",
-     "difficulty": null
+     "difficulty": null,
+     "subcategories": []
     },
     {
      "book_id": 1928,
@@ -1552,7 +1800,11 @@
       "text": "인기 29위"
      },
      "book_format": "오디오북",
-     "difficulty": 0.4735526108881144
+     "difficulty": 0.4735526108881144,
+     "subcategories": [
+      "소설",
+      "한국 소설"
+     ]
     }
    ],
    "subtitle": null,

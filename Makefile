@@ -1,5 +1,5 @@
 # 자주 쓰는 명령만. 새 타깃 추가는 Advisor 승인.
-.PHONY: setup data eval demo serve smoke bench test lint pdf mock export-serving demo-serve docker-up docker-down millie-collect millie-build millie-edges millie-popularity millie-export millie
+.PHONY: setup data eval demo serve smoke bench test lint pdf mock export-serving demo-serve docker-up docker-down millie-collect millie-reviews millie-subcats millie-build millie-edges millie-popularity millie-export millie
 
 setup:        ## 의존성 설치
 	uv sync
@@ -9,6 +9,12 @@ data:         ## Track A(Goodbooks) 다운로드 + parquet 캐시 + split(holdou
 
 millie-collect: ## Track B 밀리 공개 도서 페이지 수집. playwright 는 dev 전용·런타임 미포함(임시 설치). 멱등·체크포인트·2.5s·식별 UA
 	uv run --with playwright python scripts/collect_millie.py
+
+millie-reviews: ## 리뷰 JSONL → review_*.parquet + results/review_tuples_report.json + artifacts/serving/review_agg_kr.json. books_kr 파이프라인(freeze D72)과 독립
+	uv run python scripts/build_millie_reviews.py && uv run pytest tests/data/test_millie_reviews_build.py --no-header && uv run python scripts/export_millie_reviews.py
+
+millie-subcats: ## 3depth JSONL → subcategories_kr.parquet + results/subcat_meta.json·subcat_coverage.csv, books_kr.parquet·books_kr.json 의 subcategories 키만 패치(다른 키 바이트 동일)
+	uv run pytest tests/data/test_millie_subcats.py --no-header && uv run python scripts/build_millie_subcats.py
 
 millie-build: ## JSONL → books_kr.parquet + id_map.csv(append-only) + 커버리지 게이트(이웃 게이트는 millie-edges 뒤)
 	uv run python scripts/build_millie_catalog.py && uv run pytest tests/data/test_millie_catalog.py --no-header
@@ -45,8 +51,8 @@ smoke:        ## 로컬 기동 스모크 — 모든 브리프의 완료 기준(.
 bench:        ## p50/p95/p99 → results/latency.json (serve 가 떠 있어야 함)
 	uv run python -m millie_rec.serving.bench
 
-mock:         ## serving/schemas.py → demo/mock/*.json (mock 은 손으로 쓰지 않는다)
-	uv run python -m millie_rec.app.cli mock
+mock:         ## artifacts/serving/* → demo/mock/*.json (mock 은 손으로 쓰지 않는다). cli mock 서브커맨드는 없다
+	uv run python demo/scripts/make_mock.py
 
 export-serving: ## 서빙용 축소 아티팩트 → artifacts/serving/ (파일당 <50MB, GitHub 한도. Dockerfile COPY 대상)
 	uv run python -m millie_rec.app.cli export-serving

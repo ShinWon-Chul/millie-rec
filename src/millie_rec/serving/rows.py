@@ -19,7 +19,7 @@ ANCHOR_NEIGHBORS = 20  # D-03 Neighbors.neighbors(seed₁, 20)
 FRESH_POOL_N = 30  # D-02 fresh_picks 카테고리별 인기 풀
 SOURCE_CONTENT = "content"  # data.md 표기 — 데모 카탈로그의 이웃은 콘텐츠 유사도다
 CH_CONTENT, CH_POP = (SOURCE_CONTENT,), (SOURCE_POPULARITY,)  # ScoredItem.source_channels
-META_KEYS = ("title", "authors", "image_url", "book_format")  # + difficulty = 조인 5필드
+META_KEYS = ("title", "authors", "image_url", "book_format")  # + difficulty·subcategories = 6필드
 TITLE_CONTINUE, TITLE_FRESH = "이어 읽기", "새로운 발견"
 TITLE_PERSONA, TITLE_PERSONA_DEFAULT = "{name}의 서가", "회원님의 서가"
 SUBTITLE_ANCHOR = "결이 비슷한 책"
@@ -27,7 +27,7 @@ REASON_ANCHOR = "『{title}』을 좋아하셨다면"  # 조사 '을' 통일(D-0
 
 
 def with_meta(items: Items, catalog: Catalog | None) -> tuple[ScoredItem, ...]:
-    """catalog.meta 5필드 조인. catalog None 이면 원본(스켈레톤 기동 보장)."""
+    """catalog.meta 6필드 조인. catalog None 이면 원본(스켈레톤 기동 보장)."""
     if catalog is None:
         return tuple(items)
     meta = {int(m["book_id"]): m for m in catalog.meta([i.book_id for i in items])}
@@ -35,6 +35,7 @@ def with_meta(items: Items, catalog: Catalog | None) -> tuple[ScoredItem, ...]:
         replace(
             i,
             difficulty=i.difficulty if i.difficulty is not None else m.get("difficulty"),
+            subcategories=tuple(m.get("subcategories") or ()),  # 리스트라 META_KEYS 에 못 넣는다
             **{key: m.get(key) for key in META_KEYS},
         )
         for i in items

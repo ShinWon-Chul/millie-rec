@@ -35,6 +35,7 @@ CARD_KEYS = [
     "authors",
     "image_url",
     "categories",
+    "subcategories",
     "publisher",
     "book_format",
     "pop_rank",

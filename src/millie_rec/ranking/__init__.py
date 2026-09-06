@@ -21,6 +21,7 @@ from millie_rec.ranking.hybrid import (
     W_GAP_POS,
     W_NCOMP_GAP,
     W_POP,
+    W_SUBCAT,
     HybridRanker,
     blend_channels,
 )
@@ -43,6 +44,7 @@ __all__ = [
     "W_GAP_POS",
     "W_NCOMP_GAP",
     "W_POP",
+    "W_SUBCAT",
     "HybridRanker",
     "blend_channels",
     "state_weights",
