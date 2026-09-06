@@ -12,15 +12,6 @@
 .insp-sec__title::before { content: "▸"; color: var(--accent); }
 .insp-sec__hint { margin: 0 0 10px; font-size: 12px; line-height: 1.5; color: var(--text-3); }
 
-/* 프리셋 버튼 */
-.presets { display: flex; flex-wrap: wrap; gap: 8px; }
-.preset {
-  padding: 8px 14px; border-radius: var(--r-pill);
-  border: 1px solid var(--line); background: #202124;
-  font-size: 12.5px; color: var(--text);
-}
-.preset:hover { border-color: var(--accent); color: var(--accent); }
-
 /* 키·값 표 */
 .kv { display: grid; grid-template-columns: 148px 1fr; gap: 6px 12px; font-size: 12.5px; }
 .kv dt { color: var(--text-3); }
@@ -32,7 +23,7 @@
 .log {
   max-height: 208px; overflow-y: auto;
   font-family: var(--mono); font-size: 11.5px; line-height: 1.75; color: var(--text-2);
-  background: #101113; border: 1px solid var(--panel-line); border-radius: 8px; padding: 8px 10px;
+  background: var(--bg); border: 1px solid var(--panel-line); border-radius: 8px; padding: 8px 10px;
 }
 .log__row { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .log__t { color: var(--text-3); }
@@ -42,7 +33,7 @@
 /* 파이프라인 · latency 바 */
 .lat { display: grid; grid-template-columns: 76px 1fr 52px; gap: 5px 10px; align-items: center; font-size: 12px; }
 .lat__name { color: var(--text-3); }
-.lat__track { height: 9px; background: #232427; border-radius: 3px; overflow: hidden; }
+.lat__track { height: 9px; background: var(--panel-line); border-radius: 3px; overflow: hidden; }
 /* 트랙은 그리드 아이템이라 블록화되지만 fill은 아니다 — display:block이 없으면 높이가 죽는다 */
 .lat__fill { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
 .lat__val { font-family: var(--mono); font-size: 11.5px; text-align: right; color: var(--text-2); }
@@ -59,7 +50,7 @@
 .weights { display: flex; gap: 8px; }
 .weight {
   flex: 1 1 0; padding: 9px 10px; border-radius: 8px;
-  background: #1D1E21; border: 1px solid var(--panel-line);
+  background: var(--kpi-bg); border: 1px solid var(--panel-line);
 }
 .weight__k { font-size: 11px; color: var(--text-3); }
 .weight__v { margin-top: 3px; font-family: var(--mono); font-size: 15px; color: var(--accent); }
@@ -71,3 +62,14 @@
 .models input { accent-color: var(--accent); margin: 0; }
 .chan { font-family: var(--mono); font-size: 11.5px; color: var(--text-2); }
 .chan b { color: var(--text); font-weight: 500; }
+
+/* D4 뷰어 타임라인(reader_open → qualified_read → completion → rating) */
+.timeline-mini { display: flex; gap: 10px; margin: 6px 0; font-family: var(--mono); font-size: 12px; }
+.timeline-mini .is-on { color: var(--accent); }
+
+/* forced · client 같은 예외 표시 */
+.insp-flag {
+  display: inline-block; margin-left: 6px; padding: 0 6px;
+  border-radius: var(--r-pill); border: 1px solid var(--warn);
+  font-size: 10px; color: var(--warn);
+}
