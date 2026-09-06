@@ -1,0 +1,69 @@
+/* D5 내 서재 — 탭·그리드 · 스냅샷 타임라인 · U_t 막대 · 열람/재설정/철회 버튼.
+   색은 tokens.css 토큰만 쓴다(리터럴 0). --kpi-bad · --banner-bg · --banner-text 은 06-05 가 넣는다. */
+
+/* ── 3버킷 탭 ── */
+.lib__tabs { display: flex; gap: 6px; margin: 8px 0 12px; }
+.lib__tab {
+  flex: 1; height: 36px; border-radius: var(--r-pill);
+  border: 1px solid var(--line); font-size: 13px; color: var(--text-2);
+}
+.lib__tab.is-on { border-color: var(--accent); color: var(--accent); }
+.lib__tab small { margin-left: 4px; font-family: var(--mono); opacity: 0.7; }
+
+.lib__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 12px;
+  min-height: 120px;
+}
+.lib__grid .tile { width: auto; }
+.lib__empty {
+  grid-column: 1 / -1; margin: 0;
+  padding: 24px 0; text-align: center; font-size: 13px; line-height: 1.5; color: var(--text-3);
+}
+
+/* ── 섹션 공통 ── */
+.lib__sec { margin-top: 22px; }
+.lib__sec h2 { margin: 0 0 10px; font-size: 18px; font-weight: 700; letter-spacing: -0.4px; }
+.lib__hint { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-3); }
+.lib__banner {
+  margin: 8px 0; padding: 8px 12px; border-radius: 8px;
+  background: var(--banner-bg, var(--accent-dim)); color: var(--banner-text, var(--accent));
+  font-size: 13px; line-height: 1.4;
+}
+
+/* ── 스냅샷 타임라인(세로) ── */
+.timeline { margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--line); list-style: none; }
+.timeline__item {
+  position: relative; padding: 7px 0 7px 12px;
+  font-size: 13px; line-height: 1.5; color: var(--text-2);
+}
+.timeline__item::before {
+  content: ""; position: absolute; left: -19px; top: 12px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--line);
+}
+.timeline__item.is-on { color: var(--text); }
+.timeline__item.is-on::before { background: var(--accent); }
+.timeline__id { margin-right: 8px; font-family: var(--mono); }
+.timeline__t { margin-right: 8px; font-family: var(--mono); color: var(--text-3); }
+.timeline__cats { word-break: keep-all; }
+
+/* ── U_t 가중치 막대(α/β/γ) ── */
+.ut__row {
+  display: grid; grid-template-columns: 20px 1fr 44px 1fr; gap: 8px;
+  align-items: center; margin: 8px 0; font-size: 12px;
+}
+.ut__k { font-weight: 700; }
+.ut__track { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.ut__fill { display: block; height: 100%; background: var(--accent); }
+.ut__v { font-family: var(--mono); text-align: right; }
+.ut__n { color: var(--text-3); }
+
+/* ── 열람·재설정·철회 ── */
+.lib__actions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.lib__actions .sheet__ghost { flex: 0 0 auto; width: 100%; }
+.lib__danger {
+  height: var(--cta-h); border-radius: var(--r-pill);
+  border: 1px solid var(--kpi-bad, var(--warn)); color: var(--kpi-bad);
+  font-size: var(--fs-body); font-weight: 600;
+}
+.lib__danger:disabled { opacity: 0.4; cursor: default; }
+.lib__tail { height: 16px; }

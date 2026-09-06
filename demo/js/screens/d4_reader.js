@@ -9,7 +9,8 @@ const IDLE = { progressPct: 0, virtualMinutes: 0, qualified: false, completed: f
 /** 읽는 책의 카드 정보. 같은 제목 다른 책이 있으므로 book_id 로만 찾는다(06-CONTEXT D-07b ③). */
 function book(state) {
   const id = state.reading?.bookId;
-  if (state.detail?.item?.book_id === id) return state.detail.item;
+  const opened = state.detail?.item;   // D3 를 거쳐 왔으면 카드 정보가 이미 있다
+  if (opened && opened.book_id === id) return opened;
   const items = (state.recommend?.rows ?? []).flatMap((r) => r.items ?? []);
   return items.find((i) => i.book_id === id)
     ?? { book_id: id, title: null, authors: null, image_url: null };
