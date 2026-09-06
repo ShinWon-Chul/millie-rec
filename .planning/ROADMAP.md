@@ -265,7 +265,14 @@ Plans:
   4. 제출 전 `uv run pytest -q`와 `make smoke`가 PASS 상태이고, `FREEZE_BOOK_STATS=1`이 설정되어 화면·PDF 숫자가 어긋나지 않는다
 
 **Should 꼬리**: 없음 (전 항목 Must). PDF는 버리는 순서의 **불변 항목**이다 — Track A 4행 실측·본인 5권 케이스·Must API·쇼케이스 비교표와 함께 어떤 경우에도 버리지 않는다(방법론 01 §6).
-**Plans**: TBD
+**Plans**: 5 plans (wave 1→5 순차 — 같은 `report/draft.md`를 편집하므로 병렬 없음 · 08-04·08-05는 autonomous: false)
+
+Plans:
+- [ ] 08-01-PLAN.md — 1~4장 압축·정리: 개발 과정 표기 삭제 · 필수 문장 본문 승격 · 4장 해석 5문장 + 고정 상수 각주 · 비교 막대(그림 5) 자리 표시 · H2 축 태그 · 1장 URL·4축 표
+- [ ] 08-02-PLAN.md — 5장 그림 장 재구성: URL·QR·상태 페이지 박스 → 시나리오 3문장 + 완독 후 추천 클릭 경로 → 캡처 3×2 → ★ callout 3 + 난이도 4층 표 → 본인 5권 표 → 로드맵·기억할 5가지 (난이도 분야 평균 숫자 정정 · demo_guide §6)
+- [ ] 08-03-PLAN.md — 계측·마감: 장별 자수 → 감축 → 숫자 전수 대조 → `report/notion_guide.md` → 백업 → `/humanize-korean` → `/pdf-check` → 복원 → `make pdf`
+- [ ] 08-04-PLAN.md — 제출 전 점검(자동 10행) + 사용자 체크포인트(Notion 장 수 · FREEZE_BOOK_STATS · UptimeRobot 키워드 · Sentry) + 초과분 삭제 루프·Sentry probe
+- [ ] 08-05-PLAN.md — 기록 4곳(07-04-SUMMARY 운영 인계 · PROGRESS · 개발일지 · STATE/ROADMAP) + 사용자 승인 후 명시 경로 커밋
 
 ## Progress
 
