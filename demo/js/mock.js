@@ -235,7 +235,8 @@ export function postRating(body) {
 export async function getUserState(userKey) {
   const uk = userKey || "";
   const user = store.getUser(uk), snaps = store.snapshotsOf(uk), lib = store.library(uk);
-  const card = (b) => ({ book_id: b, title: byId(b)?.title ?? null, image_url: byId(b)?.image_url ?? null });
+  const card = (b) => ({ book_id: b, title: byId(b)?.title ?? null,
+    authors: byId(b)?.authors ?? null, image_url: byId(b)?.image_url ?? null });
   return { user_key: uk, consent: user?.consent ?? false, cell: user?.cell ?? await store.cellFor(uk),
     is_new: snaps.length <= 1, nearline_lag_s: NEARLINE_LAG_S,
     library: { added: lib.added.map(card), reading: lib.reading.map(card), completed: lib.completed.map(card) },

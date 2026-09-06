@@ -48,10 +48,10 @@ function metricsTable(s) {
 function personalCase(s) {
   const pc = s.personal_case;
   if (!pc) return `<section><h2>본인 5권 정성 케이스</h2><div class="case__wait">5권 선정 대기</div></section>`;
-  // 카탈로그에 같은 제목 다른 book_id 가 있다(D-07b) — 제목 옆에 book_id 를 병기해 구분한다.
+  // 카탈로그에 같은 제목 다른 book_id 가 있다(D-07b ③) — 저자로 구분하고, 없을 때만 book_id 를 쓴다.
   const book = (b) => `<div class="case__book">${cover(b)}
     <div>${esc(b.title ?? "(제목 없음)")}</div>
-    <div class="case__author">book_id ${esc(b.book_id)}</div>
+    <div class="case__author">${b.authors ? esc(b.authors) : `book_id ${esc(b.book_id)}`}</div>
     ${b.reason ? `<div class="case__reason">${esc(b.reason)}</div>` : ""}${badge(b.badge)}</div>`;
   const seeds = pc.seeds ?? [];
   const recs = pc.recommendations ?? [];

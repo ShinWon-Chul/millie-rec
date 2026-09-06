@@ -22,10 +22,11 @@ const CRITERION_LABEL = {
   review: "리뷰·별점",
 };
 
-/** LibraryBook 에는 저자가 없다 — 추천 응답에 같은 book_id 가 있으면 붙인다(동명 도서 구분, D-07b ③). */
-function authorOf(state, bookId) {
+/** 저자 정본은 응답의 LibraryBook.authors — 없을 때만 추천 응답에서 같은 book_id 를 찾는다(D-07b ③). */
+function authorOf(state, book) {
+  if (book.authors) return book.authors;
   const items = (state.recommend?.rows ?? []).flatMap((r) => r.items ?? []);
-  return items.find((i) => i.book_id === bookId)?.authors ?? "";
+  return items.find((i) => i.book_id === book.book_id)?.authors ?? "";
 }
 
 /** 서재 타일. 라우팅·중복 제거는 book_id 로만 한다(제목이 같은 다른 책이 카탈로그에 있다). */
@@ -34,7 +35,7 @@ function tile(b, state) {
     data-row="library" data-pos="0">
     ${cover(b)}
     <div class="tile__title">${esc(b.title ?? "(제목 없음)")}</div>
-    <div class="tile__author">${esc(authorOf(state, b.book_id) || "저자 미상")}</div>
+    <div class="tile__author">${esc(authorOf(state, b) || "저자 미상")}</div>
   </button>`;
 }
 
