@@ -43,7 +43,12 @@ class _Cat:
 
     def meta(self, book_ids: Sequence[int]) -> list[dict]:
         return [
-            {"book_id": b, "title": f"책{b}", "image_url": f"https://img.millie.co.kr/{b}.jpg"}
+            {
+                "book_id": b,
+                "title": f"책{b}",
+                "authors": f"저자{b}",
+                "image_url": f"https://img.millie.co.kr/{b}.jpg",
+            }
             for b in book_ids
         ]
 
@@ -225,6 +230,23 @@ def test_state_parses_and_library_three_buckets_with_meta(tmp_path: Path) -> Non
     assert added.title == f"책{added.book_id}"
     assert added.image_url == f"https://img.millie.co.kr/{added.book_id}.jpg"
     assert out.nearline_lag_s is None
+
+
+def test_state_library_books_carry_authors_and_none_without_catalog(tmp_path: Path) -> None:
+    """LibraryBook.authors — 카탈로그 저자를 그대로 싣고, 카탈로그가 없으면 None (06-UAT Gap 1)."""
+    db, client = _client(tmp_path, catalog=_Cat())
+    _seed_user(db, "u-1")
+    payload = client.get("/api/users/u-1/state").json()
+    added = payload["library"]["added"]
+    assert added, "added 버킷이 비어 있으면 저자 단정이 무의미하다"
+    assert [b.get("authors") for b in added] == [f"저자{b['book_id']}" for b in added]
+    out = UserStateOut.model_validate(payload)  # _Strict — 여분 키가 있으면 여기서 걸린다
+    assert [b.authors for b in out.library["added"]] == [f"저자{b.book_id}" for b in added]
+
+    db2, client2 = _client(tmp_path, name="no_catalog.db")  # 카탈로그 미주입 → 조인 없음
+    _seed_user(db2, "u-1")
+    bare = UserStateOut.model_validate(client2.get("/api/users/u-1/state").json())
+    assert all(b.authors is None for b in bare.library["added"])
 
 
 def test_state_snapshots_desc_with_active_latest_and_weights_from_latest_seeds_history(
