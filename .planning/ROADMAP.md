@@ -239,7 +239,7 @@ Plans:
 **폐기**: **DEPLOY-04**(Sentry·Grafana Cloud scrape) 중 **Grafana scrape 부분은 폐기** — 결정 'Grafana 폐기'(.planning/phases/07-deploy/07-CONTEXT.md D-05)·결정 'Phase 7 배포 범위 확정'(개발일지 2026-09-06 파일 항목 D80). Sentry 는 07-01 에서 유지. 폐기 기록은 07-04 문서 태스크.
 
 Plans:
-- [ ] 07-01-PLAN.md — 코드 준비: `sentry-sdk[fastapi]` + `app/server.py` Sentry 초기화(DSN 없으면 비활성) · Dockerfile 3조건·repo 위생·로컬 게이트 3종 · Codex 1회차 → 커밋(push 0) (DEPLOY-02·03)
+- [x] 07-01-PLAN.md — 코드 준비: `sentry-sdk[fastapi]` + `app/server.py` Sentry 초기화(DSN 없으면 비활성) · Dockerfile 3조건·repo 위생·로컬 게이트 3종 · Codex 1회차 → 커밋(push 0) (DEPLOY-02·03)
 - [ ] 07-02-PLAN.md — 스켈레톤 배포: push 승인 → 사용자 Railway 프로젝트·볼륨·도메인 → §3-2 검증·볼륨 영구성·다운타임 실측·UptimeRobot·Sentry DSN 보관 (DEPLOY-01·03)
 - [ ] 07-03-PLAN.md — 본배포: Phase 6 완료 게이트 + `?source=api` 완주(= Phase 6 완료 판정 겸함) → `SENTRY_DSN` 변수 → push → 배포 URL 완주·4 variant 전환 확인 (DEPLOY-02·01)
 - [ ] 07-04-PLAN.md — Advisor 게이트·문서: 저작권·가동 게이트 · Codex 2회차 · 캡처 6장 + QR(repo 밖) + draft `[Phase 7]` 해소 · PROGRESS·개발일지 D81·STATE·설계서 §2-1 기록 · 운영 인계 (DEPLOY-01·02·03)

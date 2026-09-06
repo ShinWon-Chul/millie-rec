@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
 status: executing
-stopped_at: Phase 5 '서빙 Must 완성' 완료·검증 passed · Phase 3 '밀리 카탈로그 빌드' 검증 passed 6/6 · 아키텍처 01 §9-3 실측 갱신 · Phase 1~5 커밋·push(20d5fa3) · Phase 7 '배포' 계획 4건 완비 — 다음 /gsd-execute-phase 7 (07-01 부터)
-last_updated: "2026-09-06T00:41:12.834Z"
+stopped_at: Phase 6 '데모 재구성' 완료(다른 세션, 06-08 Gap 1 종결 `1ec59df`) · Phase 7 '배포' wave 1(07-01 코드 준비) 완료·커밋 `68cef80`·`ec1a007` — 다음 /gsd-execute-phase 7 --wave 2 (07-02 스켈레톤 배포, 사용자 Railway 결제·프로젝트 생성 35분 선행)
+last_updated: "2026-09-06T11:55:00.000Z"
 last_activity: 2026-09-06
 progress:
   total_phases: 8
   completed_phases: 5
   total_plans: 41
-  completed_plans: 34
+  completed_plans: 35
   percent: 83
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-09-05)
 
 **Core value:** 설계서의 주장(취향 설정은 갱신되는 explicit prior · 4단계 파이프라인 · 3지표 1:1 대응 · 앵커/난이도/시간 가변 가중치)이 로컬에서 실행되는 코드와 실측 숫자로 증명되어 PDF 5페이지 안에 들어간다. 데모·서버가 죽어도 PDF는 완결된다.
-**Current focus:** Phase 05 — 서빙 Must 완성
+**Current focus:** Phase 7 '배포' — wave 1 완료, wave 2(스켈레톤 배포) 대기
 
 ## Current Position
 
-Phase: 5 '서빙 Must 완성' ✅ 완료 · 3 '밀리 카탈로그 빌드' ✅ 검증 passed · 7 '배포' PLANNED(4 plans·4 waves) · 6 '데모 재구성' 다른 세션 진행 중
-Plan: 07-01~07-04 실행 대기 — 07-01(코드 준비)부터. 사용자 몫: Railway 결제·프로젝트 생성(35분)
-Status: Ready to execute Phase 7 '배포'
+Phase: 5 '서빙 Must 완성' ✅ · 3 '밀리 카탈로그 빌드' ✅ · 6 '데모 재구성' ✅ 완료(다른 세션 — UAT 3/3, Gap 1 `authors` optional 종결) · 7 '배포' 실행 중(4 plans·4 waves 중 wave 1 완료)
+Plan: 07-01 ✅(sentry-sdk + `init_sentry()` fail-open · 게이트 20/20 · 전역 535 passed · docker 스모크 PASS · Codex 3분류 F1 반영) · 07-02~04 대기. **push 0** — 07-02 Task 1 에서 승인 시 커밋 16개(대부분 Phase 6)가 함께 올라간다. 사용자 몫: Railway 결제·프로젝트 생성(35분)
+Status: Ready to execute 07-02 '스켈레톤 배포'(Phase 7 '배포' wave 2)
 Last activity: 2026-09-06
 
 Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 통과 · Phase 3 검증(/gsd-verify-work 3)만 남음)
