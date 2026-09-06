@@ -109,7 +109,13 @@
 .persona__who { font-size: var(--fs-body); font-weight: 700; opacity: 0.78; }
 .persona__name { margin: 10px 0 4px; font-size: 34px; font-weight: 800; letter-spacing: -1px; }
 .persona__work { font-size: var(--fs-body); opacity: 0.7; }
-.persona__art { margin: 22px 0 24px; font-size: 84px; line-height: 1; }
+/* 이름 첫 글자 모노그램 — 장서표처럼 읽히는 원형 플레이트(개발일지 D83) */
+.persona__art {
+  display: flex; align-items: center; justify-content: center;
+  width: 108px; height: 108px; margin: 22px auto 24px;
+  border-radius: 50%; background: var(--on-accent); color: var(--text);
+  font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -2px;
+}
 .persona__quote { margin: 0 0 18px; font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
 .persona__desc { margin: 0 0 26px; font-size: var(--fs-body); line-height: 1.75; opacity: 0.86; }
 .persona__cta {
