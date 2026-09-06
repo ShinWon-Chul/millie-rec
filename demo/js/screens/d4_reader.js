@@ -28,6 +28,7 @@ function ratingModal() {
   ).join("");
   return modal(`<h3 class="rating__title">어떠셨나요?</h3>
     <div class="rating__stars">${stars}</div>
+    <div class="rating__scale"><span>별로예요</span><span>최고예요</span></div>
     <button class="rating__later" data-act="rateLater">나중에</button>
     <p class="rating__note">1탭 즉시 전송 · 라벨은 별점 원본, 리워드는 UX 제안만</p>`);
 }

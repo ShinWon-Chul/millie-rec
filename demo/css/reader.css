@@ -40,7 +40,17 @@
 .rating__title { margin: 0 0 16px; font-size: 20px; font-weight: 700; text-align: center; }
 .rating__stars { display: flex; justify-content: center; gap: 8px; color: var(--text-3); }
 .rating__star { width:44px; height: 44px; font-size: 34px; line-height: 44px; color: var(--star-off); }
-.rating__star:hover, .rating__star:focus { color: var(--star); }
+/* 누적 채움 — 별 하나만 켜면 왼쪽이 높은지 오른쪽이 높은지 읽히지 않는다.
+   컨테이너에 마우스가 들어오면 전부 켜고, 가리킨 별의 오른쪽 형제만 되끈다. */
+.rating__stars:hover .rating__star,
+.rating__stars:focus-within .rating__star { color: var(--star); }
+.rating__star:hover ~ .rating__star,
+.rating__star:focus ~ .rating__star { color: var(--star-off); }
+/* 쉬는 상태에서도 방향이 보이게 양 끝에 라벨. 별 5×44 + 간격 4×8 = 252px 에 맞춘다 */
+.rating__scale {
+  display: flex; justify-content: space-between; gap: 8px;
+  max-width: 252px; margin: 8px auto 0; font-size: 11px; color: var(--text-3);
+}
 .rating__later { display: block; margin: 16px auto 0; font-size: 14px; color: var(--text-2); }
 .rating__note {
   margin: 12px 0 0; font-size: 11px; line-height: 1.5; color: var(--text-3); text-align: center;
