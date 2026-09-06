@@ -86,7 +86,7 @@ flowchart TD
 | ③ 재순위화 | 다양성·중복·노출 자격·가드 | 정확도만 좇으면 같은 장르가 반복된다. 규칙은 모델보다 안전하게 신규 사용자를 보호 | ILD@K |
 | ④ 페이지 구성 | 행 선택·순서·행 간 중복 제거 | 메인은 Top-K 리스트가 아니라 **페이지**다(Netflix 홈 원칙). 재개와 탐색은 다른 목적. 데모의 탐색은 ①의 통로가 아니라 이 단계의 "새로운 발견" 행이다 | 행 단위 QRS |
 
-YouTube 추천 논문의 표준 구조를 따라 **후보 생성과 순위화를 분리**했고 Netflix 홈페이지 설계 원칙에 맞춰 **페이지 구성을 별도 단계로** 두었다. 규모는 밀리(수십만 권)에 맞춰 Item-KNN(Item-based k-Nearest Neighbors: 함께 읽힌 책 기반 유사도) + 콘텐츠 유사도로 충분하다고 판단했다.
+YouTube 추천 논문의 표준 구조를 따라 **후보 생성과 순위화를 분리**했고 Netflix 홈페이지 설계 원칙에 맞춰 **페이지 구성을 별도 단계로** 두었다. 규모는 실측한 밀리 공개 카탈로그(약 9천 권)에 맞춰 Item-KNN(Item-based k-Nearest Neighbors: 함께 읽힌 책 기반 유사도) + 콘텐츠 유사도로 충분하다고 판단했다.
 
 ## 2-2. 사용자 상태 — 시간에 따라 변하는 가중치 [②③]
 
@@ -146,7 +146,7 @@ flowchart LR
 
 | 목적 | MVP (구현) | 실서비스 확장 | 이 선택의 이유 |
 |---|---|---|---|
-| 협업 필터링 | **Item-KNN** (scipy sparse cosine) | Two-Tower(투 타워: 사용자·아이템 임베딩 분리 학습) + ANN(Approximate Nearest Neighbor: 근사 최근접 탐색) 인덱스 | 수십만 권 규모엔 KNN으로 충분. **같은 이웃 행렬이 "『○○』을 좋아하셨다면" 행의 근거** |
+| 협업 필터링 | **Item-KNN** (scipy sparse cosine) | Two-Tower(투 타워: 사용자·아이템 임베딩 분리 학습) + ANN(Approximate Nearest Neighbor: 근사 최근접 탐색) 인덱스 | 실측 약 9천 권(공개 도서 페이지 9,447권, `results/millie_coverage.csv`) 규모엔 KNN으로 충분. **같은 이웃 행렬이 "『○○』을 좋아하셨다면" 행의 근거** |
 | 콘텐츠 유사 | TF-IDF(Term Frequency–Inverse Document Frequency: 단어 빈도 기반 텍스트 벡터) + cosine | 텍스트 임베딩 모델 | 신규 도서·신규 사용자 cold-start(콜드 스타트: 데이터 없는 초기 상태) 통로 |
 | 순위화 | 가중합(α β γ) | 다중 목표 학습형 랭커(유효 독서·서재 담기·완독 동시 예측) | 첫 모델은 단순하게 — 파이프라인·지표·인프라를 먼저 검증한다(Google ML 설계 원칙) |
 | 재순위화 | MMR(Maximal Marginal Relevance: 관련성과 다양성 균형) + 규칙 가드 | 학습형 re-ranker | 모델보다 규칙이 안전 |
