@@ -93,8 +93,59 @@ ul { margin: 0; padding: 0; list-style: none; }
 .navbar__action { font-size: var(--fs-body); color: var(--text-2); }
 .navbar__label { font-size: var(--fs-body); font-weight: 600; }
 
+/* ── 하단 탭바(D2·D3·D5) — 홈·서재 2개만 ── */
+.tabbar {
+  display: flex; flex: 0 0 auto;
+  height: 56px;
+  border-top: 1px solid var(--line); background: var(--bg);
+}
+.tabbar__tab { flex: 1; font-size: 13px; color: var(--text-2); }
+.tabbar__tab.is-on { color: var(--accent); font-weight: 600; }
+
+/* ── 데모 전용 고지 띠(D4·D7·D8) ── */
+.demo-label {
+  flex: 0 0 auto; height: 24px; line-height: 24px;
+  text-align: center; font-size: 11px;
+  color: var(--text); background: var(--demo-label); opacity: 0.9;
+}
+
+/* ── 배너(비개인화·폴백 고지) ── */
+.banner {
+  margin: 8px var(--pad); padding: 0 12px;
+  height: 32px; line-height: 32px; border-radius: 8px;
+  background: var(--banner-bg); color: var(--banner-text); font-size: 13px;
+}
+
+/* ── 토스트(3초) ── */
+.toast {
+  position: fixed; left: 50%; bottom: 48px; transform: translateX(-50%);
+  padding: 10px 16px; border-radius: var(--r-pill);
+  background: var(--surface); color: var(--text); font-size: 14px; z-index: 50;
+}
+.toast[hidden] { display: none; }
+
+/* ── 모달(별점·내 데이터·철회) — 폰 프레임 안에 뜬다 ── */
+.modal-wrap { position: absolute; inset: 0; z-index: 20; }
+.modal-wrap__dim { position: absolute; inset: 0; background: var(--dim); }
+.modal {
+  position: absolute; left: 20px; right: 20px; top: 50%; transform: translateY(-50%);
+  background: var(--surface); border-radius: 20px; padding: 20px;
+  max-height: 70%; overflow: auto;
+}
+.modal pre { font-family: var(--mono); font-size: 11px; white-space: pre-wrap; }
+
+/* ── 전폭 페이지(D7 관제 대시보드 · D8 쇼케이스) — 폰 프레임 없음 ── */
+.page { display: none; padding: 32px 40px 60px; max-width: 1360px; margin: 0 auto; }
+body.is-page .layout { display: none; }
+body.is-page .page { display: block; }
+.page h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px; }
+
 /* ── 캡처 모드: 인스펙터·상단바 숨김, 배경 단색 ── */
 body.is-capture { background: #1A1B1E; }
 body.is-capture .topbar,
 body.is-capture .inspector { display: none; }
 body.is-capture .layout { padding: 36px 24px; }
+
+/* capture=2 는 상단바만 숨기고 인스펙터를 남긴다(신호 해석까지 담는 캡처) */
+body.is-capture-2 { background: var(--page-bg); }
+body.is-capture-2 .topbar { display: none; }

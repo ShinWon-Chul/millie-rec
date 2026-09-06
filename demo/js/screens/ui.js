@@ -70,3 +70,20 @@ export function navbar({ back = true, action = "", label = "" } = {}) {
 export function cta(text, on, act) {
   return `<button class="cta${on ? " is-on" : ""}" data-act="${esc(act)}"${on ? "" : " disabled"}>${esc(text)}</button>`;
 }
+
+/** 하단 탭바 — 홈·서재 2개만(화면 구성 02 §3 공통 컴포넌트 표). D4 뷰어는 전체화면이라 쓰지 않는다. */
+export function tabbar(active) {
+  const tab = (id, to, label) =>
+    `<button class="tabbar__tab${active === id ? " is-on" : ""}" data-act="nav" data-to="${to}">${label}</button>`;
+  return `<nav class="tabbar">${tab("home", "#/home", "홈")}${tab("library", "#/library", "서재")}</nav>`;
+}
+
+/** 밀리 앱에 없는 화면(D4·D7·D8)에 붙이는 24px 고지 띠. */
+export const demoLabel = (text = "데모 전용 · 실제 밀리 화면 아님") =>
+  `<div class="demo-label">${esc(text)}</div>`;
+
+export const banner = (text) => (text ? `<div class="banner">${esc(text)}</div>` : "");
+
+/** inner 는 호출자가 이미 esc() 한 마크업만 넘긴다(원문 문자열 금지 — XSS). */
+export const modal = (inner) =>
+  `<div class="modal-wrap"><div class="modal-wrap__dim" data-act="closeModal"></div><div class="modal">${inner}</div></div>`;
