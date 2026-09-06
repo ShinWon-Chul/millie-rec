@@ -1,0 +1,131 @@
+{
+  "n_books": 9447,
+  "n_difficulty": 7796,
+  "coverage": 0.8252,
+  "by_source": {
+    "millie_index": 7796,
+    "category_prior": 1651
+  },
+  "difficulty": {
+    "min": 0.0242,
+    "p10": 0.225,
+    "p50": 0.5035,
+    "p90": 0.775,
+    "max": 0.9873,
+    "mean": 0.5001,
+    "std": 0.2058
+  },
+  "resid_z": {
+    "min": -4.3544,
+    "p10": -1.1237,
+    "p50": 0.0,
+    "p90": 1.1352,
+    "max": 3.697,
+    "mean": 0.0,
+    "std": 0.9067
+  },
+  "completion_prob": {
+    "min": 7.0,
+    "p10": 34.0,
+    "p50": 54.0,
+    "p90": 83.0,
+    "max": 100.0,
+    "mean": 56.4666,
+    "std": 17.8471
+  },
+  "by_category": [
+    {
+      "category": "에세이/시",
+      "n": 714,
+      "difficulty_mean": 0.5047,
+      "completion_prob_mean": 54.6478
+    },
+    {
+      "category": "오디오북",
+      "n": 1709,
+      "difficulty_mean": 0.5043,
+      "completion_prob_mean": 40.2965
+    },
+    {
+      "category": "경제경영",
+      "n": 511,
+      "difficulty_mean": 0.5038,
+      "completion_prob_mean": 54.7752
+    },
+    {
+      "category": "라이프스타일",
+      "n": 383,
+      "difficulty_mean": 0.5024,
+      "completion_prob_mean": 54.2273
+    },
+    {
+      "category": "인문",
+      "n": 632,
+      "difficulty_mean": 0.5003,
+      "completion_prob_mean": 50.5517
+    },
+    {
+      "category": "자기계발",
+      "n": 587,
+      "difficulty_mean": 0.4992,
+      "completion_prob_mean": 51.2395
+    },
+    {
+      "category": "소설",
+      "n": 1719,
+      "difficulty_mean": 0.4951,
+      "completion_prob_mean": 68.4486
+    },
+    {
+      "category": "어린이",
+      "n": 472,
+      "difficulty_mean": 0.4881,
+      "completion_prob_mean": 79.0113
+    }
+  ],
+  "hardest_easiest": {
+    "hardest": [
+      {
+        "book_id": 8663,
+        "title": "꿈의 해석을 읽다",
+        "category": "오디오북",
+        "difficulty": 0.9873
+      },
+      {
+        "book_id": 5124,
+        "title": "전공 Basic 일본어",
+        "category": "자기계발",
+        "difficulty": 0.9845
+      },
+      {
+        "book_id": 8881,
+        "title": "어린이를 위한 논어 쓰기노트",
+        "category": "어린이",
+        "difficulty": 0.9766
+      }
+    ],
+    "easiest": [
+      {
+        "book_id": 7646,
+        "title": "B의 일기 3",
+        "category": "사회",
+        "difficulty": 0.0242
+      },
+      {
+        "book_id": 3127,
+        "title": "마음의 소리 드라마 영상만화 2",
+        "category": "에세이/시",
+        "difficulty": 0.0258
+      },
+      {
+        "book_id": 5724,
+        "title": "탈코일기 2",
+        "category": "사회",
+        "difficulty": 0.0266
+      }
+    ]
+  },
+  "created_at": "2026-09-06T01:03:13Z",
+  "source": "artifacts/serving/books_kr.json",
+  "git_sha": "a35fe58"
+}

@@ -6,6 +6,8 @@ id_map.csv 를 통해 append-only 로만 늘어난다 — 기존 행은 절대 �
 
 import argparse
 import json
+import re
+import sys
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
@@ -14,12 +16,18 @@ import pandas as pd
 
 from millie_rec.contracts import DIR_PROCESSED, DIR_RAW, FILE_ID_MAP
 
+SCRIPTS_DIR = str(Path(__file__).resolve().parent)  # scripts/ 는 패키지가 아니다(테스트 importlib)
+if SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, SCRIPTS_DIR)
+import millie_difficulty  # noqa: E402
+
 COLUMNS = tuple(
     "book_id millie_id title subtitle authors publisher pub_date original_publication_year "
     "categories subcategories book_format formats image_url average_rating rating_observed "
     "ratings_count review_count shelf_count pop_rank tags description curator_note "
     "completion_prob category_avg_prob expected_min category_avg_min millie_label "
-    "difficulty_source seg_dist top_segment isbn13 pages_diag collected_at source".split()
+    "resid_z len_z difficulty difficulty_source seg_dist top_segment "
+    "isbn13 pages_diag collected_at source".split()
 )
 INT_COLS = tuple(
     "original_publication_year ratings_count review_count shelf_count pop_rank "
@@ -30,6 +38,12 @@ INT_COLS = tuple(
 FORMAT_PRIORITY = ("오디오북", "챗북", "전자책")
 DESC_MAX, NOTE_MAX = 400, 100
 MIN_BOOKS_PER_CATEGORY = 20
+MAX_TITLELESS_RATIO = 0.005  # D-06: 파서 미스 비율 상한 — 단언은 tests/data 게이트가 한다
+# 03-UAT Test 9 배지 title 오염(실측 7종): 걸러내지 않고 카운터로만 드러낸다 — 복구는 재수집
+BADGE_TITLES = frozenset(
+    "읽던 지점 그대로 이어듣기|도슨트북|무료|오브제북|웹소설|웹툰|오디오웹소설".split("|")
+)
+BADGE_TITLE_RE = re.compile(r"^종료 D-\d+$")  # 카운트다운 배지(실측 9건, 09-05)
 
 # 커버리지 게이트(계획 §7) 필드명 → 원본 JSONL 키. categories 만 단일값 category 에서 만든다
 COVERAGE_FIELDS = {"categories": "category"} | {
@@ -40,6 +54,10 @@ COVERAGE_FIELDS = {"categories": "category"} | {
         "expected_min category_avg_min millie_label curator_note description best_category"
     ).split()
 }
+
+
+def is_badge_title(title: object) -> bool:  # 게이트·재수집 목록이 공유하는 배지 판정
+    return isinstance(title, str) and (title in BADGE_TITLES or bool(BADGE_TITLE_RE.match(title)))
 
 
 def _present(value: object) -> bool:
@@ -86,9 +104,16 @@ def _is_collected(rec: dict) -> bool:
 def read_records(jsonl: Path) -> tuple[list[dict], dict]:
     """수집 성공 레코드만, millie_id 기준 마지막 줄(최신 수집)을 남긴다.
 
-    title 이 비어도 성공 페이지는 남긴다 — 그래야 커버리지 게이트가 파서 결함을 잡는다.
+    유효 = status 2xx ∧ title 있음(D-05). title 없는 성공 페이지는 카운터로만 남긴다.
     """
-    lines = [json.loads(ln) for ln in jsonl.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    lines, bad = [], 0
+    for ln in jsonl.read_text(encoding="utf-8").splitlines():
+        if not ln.strip():
+            continue
+        try:
+            lines.append(json.loads(ln))
+        except json.JSONDecodeError:
+            bad += 1  # 배치가 append 중인 미완성 마지막 줄 — 크래시 없이 센다
     kept: dict[str, dict] = {}
     skipped = 0
     for rec in lines:
@@ -96,7 +121,15 @@ def read_records(jsonl: Path) -> tuple[list[dict], dict]:
             skipped += 1
             continue
         kept[rec["millie_id"]] = rec
-    return list(kept.values()), {"n_lines": len(lines), "n_skipped_status": skipped}
+    valid = [r for r in kept.values() if _present(r.get("title"))]
+    blank = [r for r in kept.values() if not _present(r.get("title"))]
+    # 껍데기(title·category·shelf_count 전무) vs 파서 미스(shelf_count 있음) — D-05
+    shell = [r for r in blank if not _present(r.get("category")) and r.get("shelf_count") is None]
+    n_empty, n_titleless = len(shell), len(blank) - len(shell)
+    meta = {"n_lines": len(lines) + bad, "n_skipped_status": skipped, "n_skipped_badline": bad}
+    meta |= {"n_success": len(kept), "n_skipped_empty": n_empty, "n_skipped_titleless": n_titleless}
+    meta["titleless_ratio"] = n_titleless / len(kept) if kept else 0.0
+    return valid, meta
 
 
 def _read_id_list(path: Path) -> list[str]:
@@ -126,9 +159,10 @@ def assign_ids(path: Path, raw_dir: Path, jsonl_ids: list[str]) -> dict[str, int
                     "first_seen_at": r["first_seen_at"],
                 }
             )
+    valid = set(jsonl_ids)  # D-17: 신규 id 는 유효 레코드에만(append-only)
     order = (
         sorted(_read_id_list(raw_dir / "catalog_urls.txt"))
-        + _read_id_list(raw_dir / "discovered_urls.txt")
+        + [m for m in _read_id_list(raw_dir / "discovered_urls.txt") if m in valid]
         + sorted(jsonl_ids)
     )
     now = datetime.now(UTC).isoformat(timespec="seconds")
@@ -146,8 +180,23 @@ def assign_ids(path: Path, raw_dir: Path, jsonl_ids: list[str]) -> dict[str, int
     return known
 
 
+def normalize_category(raw: object) -> str | None:
+    """밀리 카테고리 자리의 표기 정규화(09-05 실측 반영).
+    웹소설 페이지는 이 자리에 '# 먼치킨' 같은 해시태그나 '완결'·'수 연재' 같은 연재 상태가 온다
+    → 온보딩 20 카테고리의 '웹툰/웹소설'로 묶는다. 나머지(오디오북·챗북·밀리 오리지널 등
+    콘텐츠 타입 표기)는 밀리 표기 그대로 — 주제 카테고리 매핑은 서빙 레인 결정(계획 §3)."""
+    if raw is None:
+        return None
+    s = str(raw).strip()
+    if not s:
+        return None
+    if s.startswith("#") or s.endswith("연재") or s == "완결":
+        return "웹툰/웹소설"
+    return s
+
+
 def _row(rec: dict, book_id: int) -> dict:
-    category = rec.get("category")
+    category = normalize_category(rec.get("category"))
     formats = list(rec.get("formats") or [])
     prob, avg_prob = rec.get("completion_prob"), rec.get("category_avg_prob")
     filled = prob is None  # 계획 §4: 결측이면 분야 평균으로 대체 + 출처 표시
@@ -205,7 +254,7 @@ def build_frame(records: list[dict], ids: dict[str, int]) -> pd.DataFrame:
     df["book_id"] = df["book_id"].astype("int64")
     df["average_rating"] = pd.to_numeric(df["average_rating"], errors="coerce").astype("Float64")
     df["rating_observed"] = df["rating_observed"].astype("bool")
-    return df
+    return millie_difficulty.add_difficulty(df)
 
 
 def coverage(records: list[dict], meta: dict) -> dict:
@@ -214,8 +263,7 @@ def coverage(records: list[dict], meta: dict) -> dict:
     return {
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "n_records": n,
-        "n_lines": meta["n_lines"],
-        "n_skipped_status": meta["n_skipped_status"],
+        **meta,
         "fields": {
             name: (sum(_present(r.get(key)) for r in records) / n if n else 0.0)
             for name, key in COVERAGE_FIELDS.items()
@@ -224,6 +272,9 @@ def coverage(records: list[dict], meta: dict) -> dict:
         "category_distinct": len(cats),
         "categories_ge_min": sum(1 for c in cats.values() if c >= MIN_BOOKS_PER_CATEGORY),
         "min_books_per_category": MIN_BOOKS_PER_CATEGORY,
+        "max_titleless_ratio": MAX_TITLELESS_RATIO,
+        "n_badge_title": sum(1 for r in records if is_badge_title(r.get("title"))),
+        "badge_titles": sorted(BADGE_TITLES),
     }
 
 
@@ -253,7 +304,9 @@ def main() -> None:
     ap.add_argument("--id-map", type=Path, default=FILE_ID_MAP, help="append-only, 커밋 대상")
     args = ap.parse_args()
     df = build(args.jsonl, args.out, args.raw_dir, args.id_map)
-    print(f"books={len(df)} → {args.out / 'books_kr.parquet'} · id_map → {args.id_map}")
+    rep = json.loads((args.out / "millie_raw_coverage.json").read_text("utf-8"))
+    skip = f"empty={rep['n_skipped_empty']} titleless={rep['n_skipped_titleless']}"
+    print(f"books={len(df)} → {args.out / 'books_kr.parquet'} · id_map → {args.id_map} {skip}")
 
 
 if __name__ == "__main__":

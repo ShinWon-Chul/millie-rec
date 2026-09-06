@@ -10,21 +10,21 @@
 
 ### 로컬 서빙 스켈레톤 (SKEL)
 
-- [ ] **SKEL-01** 개발자가 `make serve`를 실행하면 아티팩트·DB·네트워크 없이 서버가 뜨고 `GET /health`가 200과 `HealthOut`(model_version null 허용)을 반환한다 [Must]
-- [ ] **SKEL-02** 브라우저에서 `http://localhost:8000/`을 열면 `demo/` 정적 데모가 같은 origin에서 서빙된다(FastAPI StaticFiles) [Must]
-- [ ] **SKEL-03** 파이프라인이 주입되지 않은 상태에서 `GET /api/recommend?seeds=1,2,3`이 `fallback_level=3` 200 응답(`RecommendOut` 스키마)을 준다 — "추천 API 장애 ≠ 메인 장애" [Must]
-- [ ] **SKEL-04** SQLite가 `contracts.DIR_DATA_LOCAL/millie.db`에 자동 생성되고 `schema.sql`의 Must 4테이블(users·preference_snapshots·events·recommendations)이 만들어진다 [Must]
-- [ ] **SKEL-05** `make smoke`가 서버를 띄워 `/health`·`/`·`/api/recommend` 3개를 확인하고 PASS를 출력한다 — 이후 모든 요구사항의 완료 기준 [Must]
+- [x] **SKEL-01** 개발자가 `make serve`를 실행하면 아티팩트·DB·네트워크 없이 서버가 뜨고 `GET /health`가 200과 `HealthOut`(model_version null 허용)을 반환한다 [Must]
+- [x] **SKEL-02** 브라우저에서 `http://localhost:8000/`을 열면 `demo/` 정적 데모가 같은 origin에서 서빙된다(FastAPI StaticFiles) [Must]
+- [x] **SKEL-03** 파이프라인이 주입되지 않은 상태에서 `GET /api/recommend?seeds=1,2,3`이 `fallback_level=3` 200 응답(`RecommendOut` 스키마)을 준다 — "추천 API 장애 ≠ 메인 장애" [Must]
+- [x] **SKEL-04** SQLite가 `contracts.DIR_DATA_LOCAL/millie.db`에 자동 생성되고 `schema.sql`의 Must 4테이블(users·preference_snapshots·events·recommendations)이 만들어진다 [Must]
+- [x] **SKEL-05** `make smoke`가 서버를 띄워 `/health`·`/`·`/api/recommend` 3개를 확인하고 PASS를 출력한다 — 이후 모든 요구사항의 완료 기준 [Must]
 
 ### Track A 정량 평가 (EVAL)
 
-- [ ] **EVAL-01** 개발자가 `make data`로 Goodbooks-10k를 멱등 다운로드하고 `data/processed/interactions.parquet`·`books.parquet`를 얻는다 [Must]
-- [ ] **EVAL-02** `split.py`가 `ts` 컬럼이 없으면 유저별 random holdout(seed 고정)으로 나누고 결과에 `split_mode=holdout`을 기록한다; `ts`가 있으면 전역 시점 temporal [Must]
-- [ ] **EVAL-03** 온보딩 시뮬레이션이 테스트 유저의 첫 5권만 `explicit_seeds`로 노출하고 미선택 책을 부정 신호로 학습하지 않는다(PRD 수용 기준 '미선택 책 ≠ 부정 신호') [Must]
-- [ ] **EVAL-04** Recall@20·NDCG@10·ILD@10이 순수 함수로 구현되고 손계산 케이스 테스트가 통과한다; 학습에 본 아이템은 추천에서 제외된다 [Must]
-- [ ] **EVAL-05** `make eval`이 `pop`·`cf`·`hybrid`·`hybrid_div` 4행을 `results/latest.csv`·`results/eval_<ts>.json`(split_mode·n_users·seed·sha)에 기록한다(PRD 수용 기준 '평가 4행 + split_mode 출력') [Must]
-- [ ] **EVAL-06** n=0(온보딩 5권만)과 n≥k(행동 축적) 상태의 지표가 별도 표로 출력된다 — ★시간 가변 가중치의 증거(PRD 수용 기준 'n=0 vs n≥k 지표 분리') [Must]
-- [ ] **EVAL-07** 비교 막대그래프 `report/figures/eval_bar.png`가 `results/latest.csv`에서 생성된다 [Should]
+- [x] **EVAL-01** 개발자가 `make data`로 Goodbooks-10k를 멱등 다운로드하고 `data/processed/interactions.parquet`·`books.parquet`를 얻는다 [Must]
+- [x] **EVAL-02** `split.py`가 `ts` 컬럼이 없으면 유저별 random holdout(seed 고정)으로 나누고 결과에 `split_mode=holdout`을 기록한다; `ts`가 있으면 전역 시점 temporal [Must]
+- [x] **EVAL-03** 온보딩 시뮬레이션이 테스트 유저의 첫 5권만 `explicit_seeds`로 노출하고 미선택 책을 부정 신호로 학습하지 않는다(PRD 수용 기준 '미선택 책 ≠ 부정 신호') [Must]
+- [x] **EVAL-04** Recall@20·NDCG@10·ILD@10이 순수 함수로 구현되고 손계산 케이스 테스트가 통과한다; 학습에 본 아이템은 추천에서 제외된다 [Must]
+- [x] **EVAL-05** `make eval`이 `pop`·`cf`·`hybrid`·`hybrid_div` 4행을 `results/latest.csv`·`results/eval_<ts>.json`(split_mode·n_users·seed·sha)에 기록한다(PRD 수용 기준 '평가 4행 + split_mode 출력') [Must]
+- [x] **EVAL-06** n=0(온보딩 5권만)과 n≥k(행동 축적) 상태의 지표가 별도 표로 출력된다 — ★시간 가변 가중치의 증거(PRD 수용 기준 'n=0 vs n≥k 지표 분리') [Must]
+- [x] **EVAL-07** 비교 막대그래프 `report/figures/eval_bar.png`가 `results/latest.csv`에서 생성된다 [Should]
 
 ### Track B 밀리 카탈로그 (DATA)
 
@@ -39,14 +39,14 @@
 
 ### 추천 파이프라인 (REC)
 
-- [ ] **REC-01** `PopularityRetriever`·`ItemKNNRetriever`(scipy.sparse cosine, train만)·`ContentRetriever`(TF-IDF, `ItemVectors` 제공)가 `CandidateGenerator` 계약을 만족한다 [Must]
-- [ ] **REC-02** `app/pipeline.py`가 `contracts.VARIANTS` 4종을 dict로 조립하고 `hybrid`는 cf ∪ content ∪ pop 가중합이다 [Must]
-- [ ] **REC-03** `ranking/blend.py`가 α/β/γ를 초기값에서 재정규화하고(신규 유저 β=0) 이벤트에 따라 갱신한다 — ★시간 가변 가중치 [Must]
-- [ ] **REC-04** `ranking/hybrid.py`가 난이도 부호 gap(`difficulty − user_level`)·`gap⁺`·`n_completed×gap`을 피처로 쓰고 결측(None)은 가중 0이다 [Should]
-- [ ] **REC-05** `reranking/mmr.py`가 `ItemVectors`로 다양성 재순위화를 하여 `hybrid_div`의 ILD@10이 `hybrid`보다 높다 [Must]
-- [ ] **REC-06** `reranking/guard.py`가 완독 <3 신규 사용자에게 `source=millie_index ∧ resid_z<−1` 책을 상단 N에서 제외한다(PRD 수용 기준 '난이도 가드(Should)') [Should]
-- [ ] **REC-07** `app/cli.py demo --seeds`가 밀리 카탈로그 내 본인 5권으로 앵커 추천 1장을 출력한다(이웃 = 콘텐츠 유사도 병기) [Must]
-- [ ] **REC-08** Day 3 종료에 모델 freeze가 STATE.md·개발일지에 선언되고 이후 새 모델·후보 통로가 추가되지 않는다 [Must]
+- [x] **REC-01** `PopularityRetriever`·`ItemKNNRetriever`(scipy.sparse cosine, train만)·`ContentRetriever`(TF-IDF, `ItemVectors` 제공)가 `CandidateGenerator` 계약을 만족한다 [Must]
+- [x] **REC-02** `app/pipeline.py`가 `contracts.VARIANTS` 4종을 dict로 조립하고 `hybrid`는 cf ∪ content ∪ pop 가중합이다 [Must]
+- [x] **REC-03** `ranking/blend.py`가 α/β/γ를 초기값에서 재정규화하고(신규 유저 β=0) 이벤트에 따라 갱신한다 — ★시간 가변 가중치 [Must]
+- [x] **REC-04** `ranking/hybrid.py`가 난이도 부호 gap(`difficulty − user_level`)·`gap⁺`·`n_completed×gap`을 피처로 쓰고 결측(None)은 가중 0이다 [Should]
+- [x] **REC-05** `reranking/mmr.py`가 `ItemVectors`로 다양성 재순위화를 하여 `hybrid_div`의 ILD@10이 `hybrid`보다 높다 [Must]
+- [x] **REC-06** `reranking/guard.py`가 완독 <3 신규 사용자에게 `source=millie_index ∧ resid_z<−1` 책을 상단 N에서 제외한다(PRD 수용 기준 '난이도 가드(Should)') [Should]
+- [x] **REC-07** `app/cli.py demo --seeds`가 밀리 카탈로그 내 본인 5권으로 앵커 추천 1장을 출력한다(이웃 = 콘텐츠 유사도 병기) [Must]
+- [x] **REC-08** Day 3 종료에 모델 freeze가 STATE.md·개발일지에 선언되고 이후 새 모델·후보 통로가 추가되지 않는다 [Must]
 
 ### 서빙 Must API (SERV)
 
@@ -122,18 +122,18 @@ Deferred beyond the 5-day submission (main 설계서 §8 "설계만" — PDF 로
 
 | Requirement | 제목 | 티어 | Phase | Status |
 |-------------|------|------|-------|--------|
-| **SKEL-01** | `make serve` 기동·`/health` 200 | Must | Phase 1 '로컬 서빙 스켈레톤' | Pending |
-| **SKEL-02** | 정적 데모 같은 origin 서빙 | Must | Phase 1 '로컬 서빙 스켈레톤' | Pending |
-| **SKEL-03** | 파이프라인 없을 때 fallback 200 | Must | Phase 1 '로컬 서빙 스켈레톤' | Pending |
-| **SKEL-04** | SQLite 자동 생성·Must 4테이블 | Must | Phase 1 '로컬 서빙 스켈레톤' | Pending |
-| **SKEL-05** | `make smoke` 3점 확인 | Must | Phase 1 '로컬 서빙 스켈레톤' | Pending |
-| **EVAL-01** | Goodbooks-10k 멱등 다운로드 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-02** | `ts` 없으면 random holdout·`split_mode` 기록 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-03** | 온보딩 5권 마스킹·미선택 ≠ 부정 신호 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-04** | 3지표 순수 함수·손계산 테스트·누수 방지 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-05** | `make eval` 4행 + `split_mode` 기록 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-06** | n=0 vs n≥k 지표 분리 출력 | Must | Phase 2 'Track A 정량 평가 기반' | Pending |
-| **EVAL-07** | 비교 막대그래프 `eval_bar.png` | Should | Phase 2 'Track A 정량 평가 기반' | Pending |
+| **SKEL-01** | `make serve` 기동·`/health` 200 | Must | Phase 1 '로컬 서빙 스켈레톤' | Complete |
+| **SKEL-02** | 정적 데모 같은 origin 서빙 | Must | Phase 1 '로컬 서빙 스켈레톤' | Complete |
+| **SKEL-03** | 파이프라인 없을 때 fallback 200 | Must | Phase 1 '로컬 서빙 스켈레톤' | Complete |
+| **SKEL-04** | SQLite 자동 생성·Must 4테이블 | Must | Phase 1 '로컬 서빙 스켈레톤' | Complete |
+| **SKEL-05** | `make smoke` 3점 확인 | Must | Phase 1 '로컬 서빙 스켈레톤' | Complete |
+| **EVAL-01** | Goodbooks-10k 멱등 다운로드 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-02** | `ts` 없으면 random holdout·`split_mode` 기록 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-03** | 온보딩 5권 마스킹·미선택 ≠ 부정 신호 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-04** | 3지표 순수 함수·손계산 테스트·누수 방지 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-05** | `make eval` 4행 + `split_mode` 기록 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-06** | n=0 vs n≥k 지표 분리 출력 | Must | Phase 2 'Track A 정량 평가 기반' | Complete |
+| **EVAL-07** | 비교 막대그래프 `eval_bar.png` | Should | Phase 2 'Track A 정량 평가 기반' | Complete |
 | **DATA-01** | `books_kr.parquet` + 사전순 surrogate `book_id` | Must | Phase 3 '밀리 카탈로그 빌드' | Pending |
 | **DATA-02** | 계약 컬럼 9개 문자 일치·`book_format` 3종 | Must | Phase 3 '밀리 카탈로그 빌드' | Pending |
 | **DATA-03** | 커버리지 게이트 통과 → `millie_coverage.csv` | Must | Phase 3 '밀리 카탈로그 빌드' | Pending |
@@ -142,14 +142,14 @@ Deferred beyond the 5-day submission (main 설계서 §8 "설계만" — PDF 로
 | **DATA-06** | `catalog_kr.py` 어댑터·밀리 텍스트 미노출 | Must | Phase 3 '밀리 카탈로그 빌드' | Pending |
 | **DATA-07** | `make millie-export` 서빙 아티팩트 4+1 | Must | Phase 3 '밀리 카탈로그 빌드' | Pending |
 | **DATA-08** | `popularity_kr` 세그먼트 인기 → fallback level 2 | Should | Phase 3 '밀리 카탈로그 빌드' | Pending |
-| **REC-01** | 후보 3통로(popularity·itemknn·content) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-02** | `VARIANTS` 4종 dict 조립·hybrid 가중합 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-03** | α/β/γ 재정규화·이벤트 갱신(신규 β=0) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-04** | 난이도 부호 gap·`gap⁺`·`n_completed×gap` 피처 | Should | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-05** | MMR 다양성 재순위화(`hybrid_div` ILD 상승) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-06** | 난이도 가드(완독 <3 · `resid_z<−1` 상단 제외) | Should | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-07** | `cli demo --seeds` 본인 5권 앵커 1장 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
-| **REC-08** | Day 3 모델 freeze 선언 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Pending |
+| **REC-01** | 후보 3통로(popularity·itemknn·content) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-02** | `VARIANTS` 4종 dict 조립·hybrid 가중합 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-03** | α/β/γ 재정규화·이벤트 갱신(신규 β=0) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-04** | 난이도 부호 gap·`gap⁺`·`n_completed×gap` 피처 | Should | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-05** | MMR 다양성 재순위화(`hybrid_div` ILD 상승) | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-06** | 난이도 가드(완독 <3 · `resid_z<−1` 상단 제외) | Should | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-07** | `cli demo --seeds` 본인 5권 앵커 1장 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
+| **REC-08** | Day 3 모델 freeze 선언 | Must | Phase 4 '추천 파이프라인과 모델 freeze' | Complete |
 | **SERV-01** | Page Composition Must 5행·행 간 dedup | Must | Phase 5 '서빙 Must 완성' | Pending |
 | **SERV-02** | 앵커 행 content 채널·『시드』 reason | Must | Phase 5 '서빙 Must 완성' | Pending |
 | **SERV-03** | fallback cascade level 1→2→3·항상 200 | Must | Phase 5 '서빙 Must 완성' | Pending |
@@ -190,7 +190,7 @@ Deferred beyond the 5-day submission (main 설계서 §8 "설계만" — PDF 로
 
 | Phase | Day | 요구사항 | Must | Should |
 |-------|-----|----------|------|--------|
-| Phase 1 '로컬 서빙 스켈레톤' | 1 | SKEL-01, SKEL-02, SKEL-03, SKEL-04, SKEL-05 | 5 | 0 |
+| Phase 1 '로컬 서빙 스켈레톤' | 1 | SKEL-01, SKEL-02, SKEL-03, SKEL-04, SKEL-05 | 5 | 5 |
 | Phase 2 'Track A 정량 평가 기반' | 1 | EVAL-01, EVAL-02, EVAL-03, EVAL-04, EVAL-05, EVAL-06, EVAL-07 | 6 | 1 |
 | Phase 3 '밀리 카탈로그 빌드' | 1~2 | DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07, DATA-08 | 7 | 1 |
 | Phase 4 '추천 파이프라인과 모델 freeze' | 2~3 | REC-01, REC-02, REC-03, REC-04, REC-05, REC-06, REC-07, REC-08 | 6 | 2 |

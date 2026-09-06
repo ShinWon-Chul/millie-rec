@@ -18,7 +18,9 @@ notebooks/.ipynb_checkpoints/
 
 # 절대 포함 금지 (상위 폴더 자료)
 *.pdf
-!report/figures/*.png
+report/figures/
+# ↑ 그림·캡처는 repo 에 넣지 않는다(2026-09-06 결정) — Day 4 데모 캡처에 밀리 표지가 들어가고
+#   repo 는 public 이다(.claude/rules/data.md 표지 이미지 금지). PDF 조판에만 쓰고 로컬에 둔다.
 !demo/**/*.png
 .DS_Store
 
@@ -32,3 +34,6 @@ data/local/
 *.db
 .env
 .env.*
+
+# make smoke 임시 pid 파일(중단 시 잔존)
+.uvicorn.pid

@@ -28,7 +28,7 @@ packages = ["src/millie_rec"]
 line-length = 100
 target-version = "py311"
 src = ["src", "tests"]
-extend-exclude = ["demo"]  # demo 레인은 별도 규칙(.claude/rules/demo.md), Python 패키지 아님
+extend-exclude = ["demo", ".planning"]  # demo 레인은 별도 규칙(.claude/rules/demo.md), Python 패키지 아님. .planning 은 GSD 문서(ruff 0.16 이 md 코드 블록을 포맷하므로 제외)
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]

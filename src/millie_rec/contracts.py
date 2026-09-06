@@ -60,6 +60,7 @@ N_ONBOARD_SEEDS = 5
 # variant 이름의 유일한 정본: 평가표 행 · /recommend?model= · 인스펙터 라디오 · demo mock 파일명
 VARIANTS = ("pop", "cf", "hybrid", "hybrid_div")
 MODEL_VERSION_SUFFIX = "_v1"  # model_version = f"{variant}{MODEL_VERSION_SUFFIX}"
+MODEL_VERSION_FALLBACK = "fallback_v1"  # level 3 응답. VARIANTS 이름을 빌리지 않는다(숫자 불혼합)
 
 # Page Composition 행 (백엔드 문서 §3). purpose: resume | discover | fallback | explore
 ROW_IDS = (

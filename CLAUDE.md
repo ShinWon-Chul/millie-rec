@@ -28,7 +28,7 @@ kt 밀리의서재 AI 엔지니어 사전과제 ①("도서 서비스의 메인 
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
 ## Conventions
 
-정본은 `../.claude/rules/*.md`(항상 로드: architecture·simplicity·references·local-run·python-tdd·codex-review / 경로별: python·data·evaluation·serving·demo·report). 핵심: 파일 ≤150줄(`schemas.py` 예외) · TDD(`uv run pytest`만) · 약호 단독 참조 금지(이름 + 경로) · 모든 브리프 완료 기준 = `uv run pytest -q` + `make smoke` · 숫자는 `results/`만 · 이름은 `contracts.py`만.
+정본은 `../.claude/rules/*.md`(항상 로드: architecture·simplicity·references·local-run·python-tdd·codex-review / 경로별: python·data·evaluation·serving·demo·report). 핵심: 파일 ≤150줄(`schemas.py` 예외) · TDD(`uv run pytest`만) · 약호 단독 참조 금지(이름 + 경로) · 모든 브리프 완료 기준 = `uv run pytest --no-header` + `make smoke` · 숫자는 `results/`만 · 이름은 `contracts.py`만.
 <!-- GSD:conventions-end -->
 
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->

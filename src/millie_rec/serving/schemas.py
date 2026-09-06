@@ -267,6 +267,9 @@ class UserDataOut(_Strict):
     events: list[dict[str, Any]] = []
     ratings: list[dict[str, Any]] = []
     recommendations: list[dict[str, Any]] = []
+    candidate_sets: list[
+        dict[str, Any]
+    ] = []  # Codex T3(2026-09-06) — optional 추가, freeze 예외(PROGRESS)
     exported_at: str
     note: str = "가명 user_key 외 개인정보 없음"
 

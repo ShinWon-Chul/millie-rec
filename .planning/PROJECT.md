@@ -17,15 +17,17 @@ kt 밀리의서재 AI 엔지니어 사전과제 ①("도서 서비스의 메인 
 - ✓ Python 계약 `src/millie_rec/contracts.py`(DTO·Protocol·VARIANTS·ROW_IDS·BADGE_TYPES·BookStats 밀리 필드) — Day 1 freeze, 아키텍처 테스트 통과
 - ✓ HTTP 계약 `serving/schemas.py`(Must §1~§10) · `schemas_should.py`(§11·§13) — 백엔드 서빙 01 JSON 그대로, 라운드트립 테스트 통과
 - ✓ 밀리 도서 페이지 파서 `scripts/millie_parse.py` + 픽스처 8건 + 테스트(라벨 기반, 리뷰·필명 미저장)
+- ✓ **REC-01~08 (Validated in Phase 4 '추천 파이프라인과 모델 freeze', 2026-09-06):** 후보 3통로(`retrieval/{popularity,itemknn,content,neighbors}.py`) · 4 variant dict(`app/pipeline.py`·`pipeline_kr.py`) · ★α/β/γ 재정규화·감쇠(`ranking/blend.py`, 서버 β=0 실측) · gap 3항(`ranking/hybrid.py`) · MMR(`reranking/mmr.py`, ILD 0.606→0.684) · 난이도 가드(`reranking/guard.py`) · `cli demo --seeds` 5권 앵커(`report/demo_5books.md`) · 🧊 freeze 선언(STATE·개발일지 D72). `results/latest.csv` 4행(holdout n=2,000): pop 0.063/0.054/0.764 · cf 0.117/0.107/0.643 · hybrid 0.118/0.110/0.606 · hybrid_div 0.116/0.107/0.684
 - ✓ 수집기·빌드·이웃·export 스크립트 4개(데이터 세션 작성, 적재 계획 기준) · `data/id_map.csv` 1,066행 · 야간 배치 진행 중(`data/raw/millie_pages.jsonl` 700행+)
 - ✓ 배포 단위 `Dockerfile`·`railway.json`·`.dockerignore`(Railway 단일 컨테이너, v2.1)
 - ✓ 빌드 도구 `Makefile`(serve·smoke·data·eval·millie-*)·`pyproject.toml`(런타임 8·dev 3)·아키텍처 경계 테스트·Track A 합성 fixture
+- ✓ 로컬 서빙 스켈레톤 — `make serve`로 `/health`·정적 데모(`/`)·fallback 추천(level 3)이 아티팩트·DB·네트워크 없이 뜨고 `make smoke` 3점 PASS, SQLite 7테이블 자동 생성. Validated in Phase 1 '로컬 서빙 스켈레톤'(2026-09-05, `uv run pytest --no-header` 104 passed / 2 skipped; 작업 트리 미커밋 — 사용자 승인 대기)
+- ✓ Track A 정량 평가 기반 — `make data && make eval`이 Goodbooks-10k(유저별 random holdout 20%, `split_mode=holdout`, 테스트 유저 2,000명 seed 42, 온보딩 5권 마스킹)에서 `results/latest.csv` `pop` 1행(Recall@20 0.063 · NDCG@10 0.054 · ILD@10 0.764)과 `latest_states.csv` n0/n20 2행을 만들고, 3지표 손계산·누수(`seen ∩ R_u`) 테스트가 고정됐다. pop 아티팩트 주입 시 `/api/recommend`가 `fallback_level=0`. EVAL-01~07 전부(Should EVAL-07 `eval_bar.png` 포함). Validated in Phase 2 'Track A 정량 평가 기반'(2026-09-05, `uv run pytest --no-header` 171 passed / 2 skipped, 02-VERIFICATION passed 5/5; 작업 트리 미커밋 — 사용자 승인 대기)
 
 ### Active
 
 <!-- 이번 마일스톤(5일 데모)에서 만들 것. 상세는 REQUIREMENTS.md -->
 
-- [ ] 로컬 서빙 스켈레톤: `make serve`로 `/health`·정적 데모·fallback 추천이 아티팩트 없이 뜬다 (Day 1 최우선)
 - [ ] Track A 평가: Goodbooks-10k holdout에서 `pop`·`cf`·`hybrid`·`hybrid_div` 4행 Recall@20·NDCG@10·ILD@10 실측 + `split_mode` 기록
 - [ ] Track B 카탈로그: 밀리 공개 도서 전량 → `books_kr`·content_sim 이웃·완독지수 난이도·`popularity_kr` + 커버리지·이웃 게이트 통과 → `artifacts/serving/*_kr.*`
 - [ ] 추천 파이프라인: 후보(pop·cf·content) → 가중합 랭킹(α/β/γ 재정규화, 난이도 부호 gap) → MMR·난이도 가드 → Page Composition Must 5행
@@ -76,6 +78,8 @@ kt 밀리의서재 AI 엔지니어 사전과제 ①("도서 서비스의 메인 
 | 데이터 2트랙(Goodbooks 평가 / 밀리 데모), 데모 이웃 = 콘텐츠 유사도 | 유저 로그는 Goodbooks에만, 한국 책·완독지수는 밀리에만(개발일지 09-04 결정 '데모 카탈로그 주력 = 밀리 공개 도서 페이지'·'데모 이웃은 콘텐츠 유사도') | — Pending |
 | 난이도 = 밀리 완독지수 파생 `σ(−resid_z)`, `pages`·`speed_z` 폐기 | 공개 페이지에 쪽수 없음, 길이 교란 회피(개발일지 09-04 결정 '적재 범위·스키마·난이도·이웃 결정') | — Pending |
 | Should 버리는 순서 = 아키 §8 표 아래부터, 완독 직후 행·별점은 가장 늦게 | PDF 가치 최고, 비용은 조건문(개발일지 09-04 결정 '버리는 순서') | — Pending |
+| α/β/γ = 사용자 상태 성분 가중치(2단), 초기값 0.6/0.3/0.1 + 감쇠 τ=20 + 빈 성분 재정규화 · 채널 가중 W 0.5/0.3/0.2 min-max 가중합 · MMR λ=0.7 → 난이도 가드 | 설계서 두 문구 결합(아키 §3-3 + main §5-2), Track A 실측이 D-07 게이트·기대 관계를 초기 상수로 통과해 튜닝 0회(개발일지 09-05 D68·09-06 D70) | ✓ Good — Phase 4 실측 4행 통과 |
+| 🧊 Day 3 freeze 4종: 슬라이스 상단 상수 · `VARIANTS` 4종 · `artifacts/serving/*` 최종 스냅샷 9,447권 · `schemas*.py` 응답 형태 | PDF 숫자·5권 앵커 재현성(개발일지 09-06 D72) | ✓ Good — 이후 페이즈 조립·화면만 |
 
 ## Evolution
 
@@ -95,4 +99,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-09-05 after initialization*
+*Last updated: 2026-09-06 after Phase 4 '추천 파이프라인과 모델 freeze' completion (verification passed 5/5 · REC-01~08 Complete · 🧊 freeze declared, uncommitted — Phase 3 verification pending)*

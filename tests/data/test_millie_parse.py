@@ -86,9 +86,43 @@ EXPECTED = {
     ),
     "no_completion": ("부활 1", "소설", "2014.01.28", None, None, None, None, 1, 4801, 8),
     "no_rating": ("아리랑 10", "소설", "2020.12.30", None, 94, 394, "밀리 픽", 1, 4307, 5),
+    "badge_docent": (
+        "12가지 인생의 법칙 (40만 부 기념 스페셜 에디션)",
+        "인문",
+        "2023.02.10",
+        4.1,
+        33,
+        384,
+        "마니아",
+        3,
+        110000,
+        189,
+    ),
+    "badge_free_chatbook": (
+        "따박따박 경제상식 [ETF 첫걸음]",
+        "챗북",
+        "2025.04.14",
+        4.8,
+        64,
+        21,
+        "홀릭",
+        1,
+        22000,
+        23,
+    ),
 }
 NAMES = sorted(EXPECTED)
 LEAKS = ("팔로우", "좋아요", "님의 추천", "추천사입니다", "별점을 남겨주세요", "저자 소개")
+# 밀리 기능 배지 라벨 실측 7종(03-UAT Test 9 Gaps) — 추측 확장 금지
+BADGE_LABELS = (
+    "읽던 지점 그대로 이어듣기",
+    "도슨트북",
+    "무료",
+    "오브제북",
+    "웹소설",
+    "웹툰",
+    "오디오웹소설",
+)
 
 
 def _parse(name: str) -> dict:
@@ -252,3 +286,31 @@ def test_description_ignores_toc_entry_named_book_intro() -> None:
     assert d["description"] is not None
     assert d["description"].startswith("하루 10분")
     assert "단어풀이" not in d["description"]
+
+
+@pytest.mark.parametrize(
+    "name,title,subtitle",
+    [
+        ("badge_docent", "12가지 인생의 법칙 (40만 부 기념 스페셜 에디션)", "혼돈의 해독제"),
+        (
+            "badge_free_chatbook",
+            "따박따박 경제상식 [ETF 첫걸음]",
+            "3화. 재테크 초보도 할 수 있는 ETF 투자 첫걸음",
+        ),
+    ],
+)
+def test_badge_header_lines_are_not_title(name: str, title: str, subtitle: str) -> None:
+    """헤더 첫 줄이 기능 배지(도슨트북·무료 …)인 페이지 — 배지는 title·subtitle 이 아니다."""
+    d = _parse(name)
+    assert d["title"] == title
+    assert d["subtitle"] == subtitle
+    assert d["title"] not in BADGE_LABELS and d["subtitle"] not in BADGE_LABELS
+
+
+def test_countdown_badge_line_is_not_title() -> None:
+    """'종료 D-N' 카운트다운 배지(실측 9건) — 정규식 스킵. 픽스처 텍스트에 한 줄을 끼워 합성."""
+    text = (FIXTURES / "badge_docent.txt").read_text(encoding="utf-8")
+    text = text.replace("로그인\n", "로그인\n종료 D-4\n", 1)
+    d = parse_book_text(text, "https://www.millie.co.kr/v4/book/35d1ad08e9c94e13")
+    assert d["title"] == "12가지 인생의 법칙 (40만 부 기념 스페셜 에디션)"
+    assert d["subtitle"] == "혼돈의 해독제"

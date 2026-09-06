@@ -8,6 +8,7 @@ HTML 은 저장하지 않는다. 파서 dict + 메타만 `data/raw/millie_pages.
     uv run --with playwright playwright install chromium        # 최초 1회
     uv run --with playwright python scripts/collect_millie.py --limit 20 --no-expand
     uv run --with playwright python scripts/collect_millie.py   # 전량(≈70분)
+    uv run --with playwright python scripts/collect_millie.py --recollect <ids.txt> --shard 0/2
 
 예절: 단일 스레드 · 요청 간 2.5초 · UA 고정 · HTTP 4xx 3연속 시 즉시 중단.
 멱등: 기존 JSONL 의 millie_id 는 건너뛴다 → 중단 후 같은 명령으로 재시작.
@@ -143,21 +144,45 @@ def render(page, url: str) -> tuple[str, list[str], int | None, str | None]:
     )
 
 
-def collect(limit: int | None, expand: bool) -> None:
+def _read_recollect(path: Path) -> dict[str, str]:
+    """--recollect 파일(`millie_id[\\tsource]` 한 줄씩) → {millie_id: source}. 빈 줄·# 주석 무시."""
+    out: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        parts = line.strip().split("\t")
+        if parts[0] and not parts[0].startswith("#"):
+            out[parts[0]] = parts[1] if len(parts) > 1 and parts[1] else "recollect"
+    return out
+
+
+def collect(
+    limit: int | None,
+    expand: bool,
+    shard: tuple[int, int] | None = None,
+    only: dict[str, str] | None = None,
+) -> None:
+    """shard=(k, n): id 해시가 k 인 것만 이 프로세스가 수집한다 (병렬 실행용, 09-05 사용자 결정).
+    각 프로세스는 요청 간 DELAY_S 를 그대로 지키므로 총 요청률만 n 배가 된다.
+    only={millie_id: source}: 그 id 만 다시 렌더한다 — sitemap 미조회·멱등 skip 우회(재수집)."""
     from playwright.sync_api import sync_playwright
 
     log = Log(LOG)
     started = time.time()
-    sitemap_ids = discover_from_sitemap(log)
-    done = load_done()
-    log(f"체크포인트: 기존 {len(done)}건 수집됨 → skip")
+    if shard:
+        log(f"shard {shard[0]}/{shard[1]} 모드")
+    expand = expand and not only  # only 모드는 확장 금지(함수 자체가 보장)
+    sitemap_ids = [] if only else discover_from_sitemap(log)
+    done = set() if only else load_done()  # only: 재수집이 목적 — 기존 줄을 skip 하지 않는다
+    if only:
+        log(f"recollect 모드: {len(only)}건 대상(멱등 skip 우회·확장 없음)")
+    else:
+        log(f"체크포인트: 기존 {len(done)}건 수집됨 → skip")
 
-    seen = set(sitemap_ids)
-    source = dict.fromkeys(sitemap_ids, "sitemap")
-    frontier: deque[str] = deque(i for i in sitemap_ids if i not in done)
+    seen = set(sitemap_ids) | set(only or ())
+    source = dict.fromkeys(sitemap_ids, "sitemap") | dict(only or {})
+    frontier: deque[str] = deque(i for i in (only or sitemap_ids) if i not in done)
     # 재시작 시 이전 실행에서 발견했지만 아직 수집하지 않은 id 를 프론티어에 되살린다.
     # (수집된 페이지는 다시 렌더하지 않으므로, 복원하지 않으면 그 링크들이 영구 유실된다)
-    if DISCOVERED.exists():
+    if DISCOVERED.exists() and not only:
         restored = 0
         for line in DISCOVERED.read_text(encoding="utf-8").splitlines():
             parts = line.split("\t")
@@ -201,6 +226,8 @@ def collect(limit: int | None, expand: bool) -> None:
             mid = frontier.popleft()
             if mid in done:
                 continue
+            if shard and int(mid, 16) % shard[1] != shard[0]:
+                continue  # 다른 shard 프로세스 담당 (발견·기록은 이미 됨)
             url = book_url(mid)
             t0 = time.time()
             text = hrefs = status = cover = None
@@ -275,8 +302,15 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="밀리 공개 도서 페이지 수집")
     ap.add_argument("--limit", type=int, default=None, help="이번 실행에서 수집할 최대 권수")
     ap.add_argument("--no-expand", action="store_true", help="어워즈·분야 BEST 확장 생략")
+    ap.add_argument("--shard", default=None, help="K/N — 병렬 실행 시 담당 조각 (예: 0/2)")
+    ap.add_argument("--recollect", type=Path, default=None, help="재수집 대상 id 목록 파일")
     args = ap.parse_args()
-    collect(limit=args.limit, expand=not args.no_expand)
+    shard = None
+    if args.shard:
+        k, n = (int(x) for x in args.shard.split("/"))
+        shard = (k, n)
+    only = _read_recollect(args.recollect) if args.recollect else None
+    collect(limit=args.limit, expand=not args.no_expand and only is None, shard=shard, only=only)
 
 
 if __name__ == "__main__":

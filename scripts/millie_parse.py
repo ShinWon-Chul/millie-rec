@@ -19,8 +19,11 @@ def _set(spec: str) -> frozenset[str]:
     return frozenset(spec.split("|"))
 
 
-# 제목 앞 네비·배지 잡음 (챗북·전자책은 카테고리 자리에도 오므로 '제목 앞' 구간에서만 버린다)
-_NAV_NOISE = _set("전자책|오디오북|챗북|종이책|종이책에서 읽던 지점 바로 이어읽기|미서비스|pdf")
+# 제목 앞 네비 잡음 + 기능 배지 7종(실측 09-05, 03-UAT Test 9) — '제목 앞' 구간에서만 버린다
+_NAV_NOISE = _set(
+    "전자책|오디오북|챗북|종이책|종이책에서 읽던 지점 바로 이어읽기|미서비스|pdf"
+) | _set("읽던 지점 그대로 이어듣기|도슨트북|무료|오브제북|웹소설|웹툰|오디오웹소설")
+_NAV_NOISE_RE = re.compile(r"^종료 D-\d+$")  # 한정 이벤트 카운트다운 배지(실측 9건, 09-05)
 # 헤더 블록의 끝 앵커 — 하나도 없으면 도서 페이지가 아니다 (로그인 월·404)
 _HEADER_END = (
     "이 책이 담긴 서재",
@@ -69,7 +72,9 @@ def _header(lines: list[str]) -> dict:
     """제목~출간일 헤더 블록. 읽는 순서: 제목 [부제] 저자 [별점] 출판사 카테고리 [출간일]."""
     start = _find(lines, eq="로그인")
     i = start + 1 if start >= 0 else 0
-    while i < len(lines) and (not lines[i] or lines[i] in _NAV_NOISE):
+    while i < len(lines) and (
+        not lines[i] or lines[i] in _NAV_NOISE or _NAV_NOISE_RE.match(lines[i])
+    ):
         i += 1
     end = -1
     for j in range(i, len(lines)):

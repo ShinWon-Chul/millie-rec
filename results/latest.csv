@@ -1,0 +1,5 @@
+variant,recall@20,ndcg@10,ild@10,n_users,split_mode,model_version
+pop,0.063,0.054,0.764,2000,holdout,pop_v1
+cf,0.117,0.107,0.643,2000,holdout,cf_v1
+hybrid,0.118,0.110,0.606,2000,holdout,hybrid_v1
+hybrid_div,0.116,0.107,0.684,2000,holdout,hybrid_div_v1

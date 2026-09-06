@@ -21,10 +21,10 @@
 - Decimal phases (2.1, 2.2): 계획 후 삽입된 긴급 작업 (INSERTED 표기)
 
 - [ ] **Phase 1: 로컬 서빙 스켈레톤** - 아티팩트·DB·네트워크 없이 `make serve`로 서버·정적 데모·fallback 추천이 뜬다 (Day 1)
-- [ ] **Phase 2: Track A 정량 평가 기반** - Goodbooks-10k holdout에서 3지표와 `pop` 실측 1행이 `results/`에 남는다 (Day 1, Phase 3과 병렬)
+- [x] **Phase 2: Track A 정량 평가 기반** - Goodbooks-10k holdout에서 3지표와 `pop` 실측 1행이 `results/`에 남는다 (Day 1, Phase 3과 병렬) (completed 2026-09-05)
 - [ ] **Phase 3: 밀리 카탈로그 빌드** - 밀리 공개 도서 전량 → `books_kr`·content_sim 이웃·완독지수 난이도가 게이트를 통과해 서빙 아티팩트가 된다 (Day 1 밤~Day 2, Phase 2와 병렬)
-- [ ] **Phase 4: 추천 파이프라인과 모델 freeze** - 후보 3통로 → 가중합 랭킹 → MMR·가드로 비교표 4행과 본인 5권 케이스가 나오고 Day 3에 모델이 얼어붙는다 (Day 2~3)
-- [ ] **Phase 5: 서빙 Must 완성** - Must 엔드포인트 9개·SQLite 4테이블·Nearline·fallback cascade·p95 < 200ms가 떠 있는 서버 위에 붙는다 (Day 2 골격 → Day 3~4, Phase 6과 병렬)
+- [x] **Phase 4: 추천 파이프라인과 모델 freeze** - 후보 3통로 → 가중합 랭킹 → MMR·가드로 비교표 4행과 본인 5권 케이스가 나오고 Day 3에 모델이 얼어붙는다 (Day 2~3) (completed 2026-09-06 — 🧊 freeze 선언, verification passed 5/5)
+- [x] **Phase 5: 서빙 Must 완성** - Must 엔드포인트 9개·SQLite 4테이블·Nearline·fallback cascade·p95 < 200ms가 떠 있는 서버 위에 붙는다 (Day 2 골격 → Day 3~4, Phase 6과 병렬) (completed 2026-09-06 — 12 plans · bench p95 79.5ms · verification passed 6/6, Codex 필수 fix 7 + 토론 3 반영(결정 D79))
 - [ ] **Phase 6: 데모 재구성** - v1 데모 27파일을 8페이지 해시 라우팅·새 스키마·밀리 카탈로그로 재구성해 로컬 API에 붙인다 (Day 2~4, Phase 5와 병렬)
 - [ ] **Phase 7: 배포** - Day 2 Railway 스켈레톤으로 배포 리스크를 먼저 노출하고 Day 4에 본배포한다 (Day 2 · Day 4)
 - [ ] **Phase 8: PDF 제출물** - `results/`의 숫자만으로 P1~P5를 채우고 5페이지 이내로 조판·제출한다 (Day 4 문장 → Day 5 조판)
@@ -55,7 +55,11 @@
   4. `uv run pytest -q`와 `make smoke` PASS — **SKEL-05** `make smoke` 3점 확인, 이후 모든 페이즈의 공통 완료 기준(`../.claude/rules/local-run.md`)
 
 **Should 꼬리**: 없음 (전 항목 Must).
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [x] 01-01-PLAN.md — [TDD·wave 1·Serving 레인] `serving/schema.sql`·`db.py`·`fallback.py`·`api.py` + `contracts.MODEL_VERSION_FALLBACK` + `tests/serving/test_smoke.py`(10건): `/health`·level 3 `/api/recommend`·SQLite 7테이블 (SKEL-01·03·04)
+- [x] 01-02-PLAN.md — [execute·wave 2·Advisor 조립] `app/server.py`(create_app + demo StaticFiles 마지막 마운트) + server 테스트 1건 + `make smoke` PASS·전체 스위트·사이드이펙트 감사 (SKEL-01·02·05)
 
 ### Phase 2: Track A 정량 평가 기반
 **Goal**: PDF 비교표의 유일한 숫자 출처인 `results/`가 생기고, 3지표·온보딩 시뮬레이션·누수 방지가 테스트로 고정되어 이후 variant가 추가될 때마다 행만 늘면 된다.
@@ -78,7 +82,15 @@
   5. `uv run pytest -q`와 `make smoke` PASS — `pop` 파이프라인 주입 후 `/api/recommend`가 `fallback_level=0`으로 응답한다
 
 **Should 꼬리**: **EVAL-07** 비교 막대그래프 `report/figures/eval_bar.png` 생성. 시간 부족 시 아키텍처 01 §8 티어 표 아래부터 버린다(완독 직후 행·별점은 가장 늦게 — 결정 '버리는 순서'(개발일지 2026-09-04 파일 항목 D40)). 그림이 없으면 PDF는 표만 싣는다.
-**Plans**: TBD
+**Plans:** 6/6 plans complete
+
+Plans:
+- [x] 02-01-PLAN.md — [TDD·wave 1·Model 레인 data] `data/goodbooks.py`(멱등 HTTPS 다운로드·parquet)·`load.py`(필터 유저≥5·아이템≥5)·`split.py`(holdout|temporal, `split_mode`)·`onboarding.py`(seeds 5권·n0/n20 두 상태·2,000명 표본)·`labels.py`(rating≥4) + `tests/data/` Track A 19건 (EVAL-01·02·03)
+- [x] 02-02-PLAN.md — [TDD·wave 1·Model 레인 retrieval] `retrieval/popularity.py`(`PopularityRetriever` train만 fit·seen 제외·`artifacts/popularity.json` save/load)·`content.py`(`ContentVectors` tags TF-IDF, 벡터 부분만) + `tests/retrieval/` 11건 (EVAL-04)
+- [x] 02-03-PLAN.md — [TDD·wave 1·Model 레인 evaluation] `evaluation/metrics.py`(3지표 손계산)·`harness.py`(Pipeline 평가·`seen ∩ R_u == ∅` 단언)·`report.py`(`latest.csv`·`latest_states.csv`·`eval_<ts>.json`·`git_sha`) + `tests/evaluation/` 18건 (EVAL-04·05·06)
+- [x] 02-04-PLAN.md — [TDD·wave 2·Serving 레인] `serving/compose.py`(`build_response` 신설) + `serving/api.py` level 0 분기(D-11 기본 variant·D-12 trending 1행+items·D-13 익명 level 3·예외→level 3) + `tests/serving/test_recommend_level0.py` 7건 (Success Criterion 5)
+- [x] 02-05-PLAN.md — [execute·wave 2·조립] `app/pipeline.py`(`PopPipeline`·`fit_pipelines`·`build_pipelines`)·`app/cli.py`(`data`·`eval --variant`)·`app/server.py`(`pipelines=build_pipelines()`) + `tests/app/` 7건(합성 parquet e2e) + smoke 서버 단정 아티팩트 조건부 (EVAL-01·05·06)
+- [x] 02-06-PLAN.md — [execute·wave 3·실측] `make data`(유일한 네트워크) → `make eval` → `results/` 3파일·`artifacts/serving/eval_table.json`·`artifacts/popularity.json` → `make smoke` level 0 실측 → `report/draft.md` P4 1줄 → (Should) `evaluation/figures.py` → `report/figures/eval_bar.png` (EVAL-01·02·05·06·07)
 
 ### Phase 3: 밀리 카탈로그 빌드
 **Goal**: 밀리 공개 도서 전량이 커버리지·이웃 게이트를 통과한 서빙 아티팩트가 되어, 데모·앵커·배지·난이도·본인 5권이 전부 한국 책 위에서 동작한다.
@@ -101,7 +113,14 @@
   5. `uv run pytest -q`와 `make smoke` PASS · `/contract-sync` 카탈로그 항목 통과
 
 **Should 꼬리**: **DATA-08** `popularity_kr` 세그먼트(연령×성별) 인기 → fallback level 2 응답이 전역 인기와 다름. 시간 부족 시 아키텍처 01 §8 티어 표 아래부터 버린다(완독 직후 행·별점은 가장 늦게). 데이터 레인 자체의 버리는 순서는 적재 계획 02 §8(쪽수 진단 → coLoan → overlap@20 → BEST 확장 → `similar_readers` 소스 분리 → `popularity_kr`).
-**Plans**: TBD
+**Plans**: 7 plans · 4 waves (2026-09-05 planned)
+- [x] 03-01-PLAN.md — 난이도 파생(`scripts/millie_difficulty.py`) + 카탈로그 빌더 유효 레코드·카운터·3컬럼 + 첫 실빌드·커버리지 게이트 (wave 1, Data-B, tdd) — DATA-01·02·03·04
+- [x] 03-02-PLAN.md — `data/catalog_kr.py`·`data/vectors_kr.py` 어댑터 + conftest 20권 서빙 fixture (wave 1, Model, tdd) — DATA-04·06
+- [x] 03-03-PLAN.md — content_sim 이웃 실측·게이트 3 → `results/millie_edges_gate.json` (wave 2, Data-B, execute) — DATA-05
+- [x] 03-04-PLAN.md — `build_millie_popularity.py`(all) + export json 3파일·BOOK_FIELDS 28 (wave 2, Data-B, tdd) — DATA-07
+- [x] 03-05-PLAN.md — `export_millie_vectors.py`(SVD 128 npz) + `export_millie_fallback.py`(RecommendOut popular.json) (wave 2, Data-B, tdd) — DATA-07
+- [x] 03-06-PLAN.md — Advisor 조립: `app/` 카탈로그 주입·Track B pop, Makefile 게이트 순서, `make millie` 실측·전역 게이트·contract-sync·draft P3·트래킹·개발일지, 최종 스냅샷 재빌드 체크포인트 (wave 3, 조립, execute) — DATA-01~07
+- [x] 03-07-PLAN.md — `popularity_kr` 연령×성별 12세그먼트 (wave 4, Data-B, tdd, Should — 시간 부족 시 이 플랜만 버림) — DATA-08
 
 ### Phase 4: 추천 파이프라인과 모델 freeze
 **Goal**: 설계서의 4단계 파이프라인이 실제 코드로 존재하고, 그 결과가 비교표 4행과 본인 5권 앵커 1장이라는 PDF 증거가 된 뒤 모델이 얼어붙는다.
@@ -147,7 +166,21 @@
   5. `uv run pytest -q`(계약·fallback·dedup·append·DELETE)와 `make smoke` PASS · `/docs` 캡처 확보
 
 **Should 꼬리**: **SERV-11** 완독 직후 `after_completion` 행 → 수용 기준 '완독 → 완독하셨네요 row(Should)'(PRD §9 수용 기준 표) · **SERV-12** `POST /api/ratings`(모델 라벨 미사용) · **SERV-14** `GET /metrics` Bearer·24h `book_stats` 집계. 시간 부족 시 아키텍처 01 §8 티어 표 아래부터 버린다 — Grafana scrape가 가장 먼저, **완독 직후 행과 1탭 별점은 가장 늦게** 버린다(결정 '버리는 순서'(개발일지 2026-09-04 파일 항목 D40)).
-**Plans**: TBD
+**Plans**: 12 plans (wave 1: 5 병렬 · wave 2: 3 · wave 3: 1 Advisor 실측 · wave 4: 3 Should 병렬)
+
+Plans:
+- [x] 05-01-PLAN.md — state.py·nearline.py·book_stats.py + `__init__` 공개 표면(D-05~D-08 user_key 상태, rowid 커서·24h 리플레이, user_level 어댑터) [SERV-09·04]
+- [x] 05-02-PLAN.md — compose.py Must 5행·dedup(book_id+제목)·배지 6종·메타 조인·비개인화 2행(D-01~D-04) [SERV-01·02·08]
+- [x] 05-03-PLAN.md — fallback.py Level1Cache·over_budget·segment_popular + db.py DML 헬퍼·close·backup + schema.sql 인덱스 2개(D-10) [SERV-03]
+- [x] 05-04-PLAN.md — persona.py·onboarding_meta.json·demo_api.py(meta·candidates·preferences·events, D-14~D-16·품질 게이트) [SERV-04·05·06]
+- [x] 05-05-PLAN.md — privacy_api.py(state·data·DELETE personalization, Codex 필수) [SERV-07]
+- [x] 05-06-PLAN.md — api.py 통합 + cascade.py 신설(user_key 해석·셀·0→1→2→3·breakdown·추천 로그·lifespan) + wave 1 게이트 [SERV-01·02·03·06·07·08·09]
+- [x] 05-07-PLAN.md — dashboard_api.py GET /api/showcase(비교표 Must) + bench.py(D-11) [SERV-13·10]
+- [x] 05-08-PLAN.md — Advisor: app/server.py 주입·StagedPipeline.last_breakdown·n_completed context 분기 1줄×2(D-07·D-09) [SERV-04·09·03]
+- [x] 05-09-PLAN.md — Advisor 실측: wave 2 게이트 → make bench p95 < 200 → draft P4·/docs 캡처·Codex 필수 리뷰·PROGRESS·개발일지 D77 [SERV-10·14(설계만)]
+- [x] 05-10-PLAN.md — (Should) after_completion 행: Nearline 사전 계산 → 최상단 행 [SERV-11]
+- [x] 05-11-PLAN.md — (Should) POST /api/ratings + rating 이벤트 [SERV-12]
+- [x] 05-12-PLAN.md — (Should) GET /api/dashboard 최소형(kpi 6·latency·quality·ab_table) [SERV-13]
 
 ### Phase 6: 데모 재구성
 **Goal**: 심사자가 쇼케이스에서 시작해 취향 설정 → 메인 → 상세 → 뷰어 → 서재 → 재설정 → 대시보드까지 눌러보며 설계 주장을 직접 확인할 수 있고, 그 화면이 로컬 API의 실제 응답으로 그려진다.
@@ -170,7 +203,16 @@
   5. `?source=mock`과 `?source=api`(로컬 서버) 모두 쇼케이스 화면 → 관제 대시보드 화면 완주에 콘솔 에러 0이고 `?capture=1|2` 스크린샷 모드가 동작한다. `uv run pytest -q`와 `make smoke` PASS — **DEMO-09** 두 모드 완주·캡처
 
 **Should 꼬리**: **DEMO-07** 뷰어 시뮬레이션 화면(`#/reader/:id`)의 "10분 읽기"·"완독" → `reader_open`·`qualified_read`(15분)·`completion` 이벤트 + 1탭 별점 모달 → `POST /api/ratings` · **DEMO-08** 관제 대시보드 화면(`#/dashboard`)이 `GET /api/dashboard` 표시. 시간 부족 시 아키텍처 01 §8 티어 표 아래부터 버린다 — 관제 대시보드가 별점 모달보다 먼저 빠지고, **완독 직후 행·1탭 별점은 가장 늦게** 버린다(결정 '버리는 순서'(개발일지 2026-09-04 파일 항목 D40)).
-**Plans**: TBD
+**Plans**: 7 plans (wave 1 → 4 · 같은 wave 는 files_modified 서로소 · 전부 no_commit)
+
+Plans:
+- [ ] 06-01-PLAN.md — `make_mock.py` 재작성(tdd) — 밀리 아티팩트 → `demo/mock/` 13파일, `tests/demo/test_make_mock.py`, popular.json 은 검증만 (DEMO-02)
+- [ ] 06-02-PLAN.md — 라우터·앱 셸 — `router.js`·`app.js`·`actions.js`·`presets.js`·`ui.js` 공용 4·`index.html`·`base.css`·`onboarding.json` 진행바·README (DEMO-03·04·09)
+- [ ] 06-03-PLAN.md — 데이터 계층 — `api.js`(`API_BASE=""`·`/api`·`ts`·4초 fallback·13 함수)·`mock.js`(5행 compose·배지·페르소나·cell)·`mock_store.js`(세션 DB·DashboardOut 집계) (DEMO-01·02)
+- [ ] 06-04-PLAN.md — 뷰어 시뮬레이션·내 서재 — `d4_reader.js`·`d5_library.js` + `reader.css`·`library.css` (DEMO-07·03)
+- [ ] 06-05-PLAN.md — 관제 대시보드·쇼케이스 — `d7_dashboard.js`·`d8_showcase.js` + `dashboard.css`·`tokens.css` §6 (DEMO-06·08)
+- [ ] 06-06-PLAN.md — 메인·상세·인스펙터 통합 — `d2_home.js`(← s7)·`d3_detail.js`(← s8)·`inspector.js`·`home.css`·`inspector.css` + mock 완주 수동 체크리스트 (DEMO-05·03)
+- [ ] 06-07-PLAN.md — Advisor 게이트·인계(autonomous: false) — 구 형태 grep 0·/contract-sync·pytest·smoke·Playwright 완주·캡처 6장·PROGRESS 미결 2줄 (DEMO-09 + 전 ID 재확인)
 **UI hint**: yes
 
 ### Phase 7: 배포
@@ -225,12 +267,12 @@ Phase 1 → (Phase 2 ‖ Phase 3) → Phase 4 → (Phase 5 ‖ Phase 6) → Phas
 
 | Phase | Day | Plans Complete | Status | Completed |
 |-------|-----|----------------|--------|-----------|
-| 1. 로컬 서빙 스켈레톤 | 1 | 0/TBD | Not started | - |
-| 2. Track A 정량 평가 기반 | 1 | 0/TBD | Not started | - |
-| 3. 밀리 카탈로그 빌드 | 1~2 | 0/TBD | Not started | - |
-| 4. 추천 파이프라인과 모델 freeze | 2~3 | 0/TBD | Not started | - |
-| 5. 서빙 Must 완성 | 2~4 | 0/TBD | Not started | - |
-| 6. 데모 재구성 | 2~4 | 0/TBD | Not started | - |
+| 1. 로컬 서빙 스켈레톤 | 1 | 2/2 | Complete | 2026-09-05 |
+| 2. Track A 정량 평가 기반 | 1 | 6/6 | Complete    | 2026-09-05 |
+| 3. 밀리 카탈로그 빌드 | 1~2 | 8/8 | Complete (verify 미실행) | 2026-09-06 |
+| 4. 추천 파이프라인과 모델 freeze | 2~3 | 6/6 | Complete | 2026-09-06 |
+| 5. 서빙 Must 완성 | 2~4 | 12/12 | Complete | 2026-09-06 |
+| 6. 데모 재구성 | 2~4 | 0/7 | Planned | - |
 | 7. 배포 | 2 · 4 | 0/TBD | Not started | - |
 | 8. PDF 제출물 | 4~5 | 0/TBD | Not started | - |
 

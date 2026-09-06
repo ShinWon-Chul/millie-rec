@@ -49,6 +49,9 @@ EXPECTED_COLUMNS = [
     "expected_min",
     "category_avg_min",
     "millie_label",
+    "resid_z",
+    "len_z",
+    "difficulty",
     "difficulty_source",
     "seg_dist",
     "top_segment",
@@ -70,6 +73,16 @@ THRESHOLDS = {
 MIN_CATEGORY_DISTINCT = 8
 MIN_BOOKS_PER_CATEGORY = 20
 MIN_CATEGORIES_WITH_ENOUGH_BOOKS = 6
+# 스크립트 상수를 손으로 복사(게이트 독립) — 실측 7종, 03-UAT Test 9
+BADGE_TITLES = (
+    "읽던 지점 그대로 이어듣기",
+    "도슨트북",
+    "무료",
+    "오브제북",
+    "웹소설",
+    "웹툰",
+    "오디오웹소설",
+)
 
 FIRST_BOOK = "0f1e2d3c4b5a6001"  # shelf_count 최대 · 긴 description·curator_note
 NO_PROB_BOOK = "6f708192a3b40007"  # completion_prob 결측 → category_avg_prob 대체
@@ -277,6 +290,153 @@ def test_raw_coverage_json_is_written(built):
     assert report["fields"]["title"] == 1.0
     assert report["fields"]["completion_prob"] == pytest.approx(11 / 12)  # 채우기 전 원본 비율
     assert report["category_distinct"] == 10
+    assert report.get("n_success") == 12
+    assert report.get("n_skipped_empty") == 0
+    assert report.get("n_skipped_titleless") == 0
+
+
+def test_derived_difficulty_columns_in_built_frame(built):
+    """난이도 3컬럼이 parquet 에 들어간다 (DATA-04, main 설계서 §5-6 ★난이도)."""
+    df, _ = built
+    assert {"resid_z", "len_z", "difficulty"} <= set(df.columns)
+    missing = _row(df, NO_PROB_BOOK)
+    assert missing["difficulty_source"] == "category_prior"
+    assert missing["resid_z"] == 0.0
+    assert pd.isna(missing["difficulty"])
+    present = _row(df, FIRST_BOOK)
+    assert pd.notna(present["resid_z"]) and pd.notna(present["len_z"])
+    assert 0.0 < present["difficulty"] < 1.0
+    assert df["difficulty"].dropna().between(0, 1).all()
+
+
+# 성인 표지 플레이스홀더 껍데기 · 파서 미스(title 없음 ∧ shelf_count 있음) — 결정 D-05
+EMPTY_ID = "ffffffff00000001"
+TITLELESS_ID = "ffffffff00000002"
+CDN = "https://d1miajbjsyro89.cloudfront.net/adult-cover-a.webp"
+
+
+def _extra_lines() -> list[str]:
+    shell = {
+        "millie_id": EMPTY_ID,
+        "status": 200,
+        "image_url": CDN,
+        "collected_at": "2026-09-05T02:00:00+00:00",
+        "source": "discovered",
+        "url": f"https://www.millie.co.kr/v3/bookDetail/{EMPTY_ID}",
+    }
+    titleless = {
+        "millie_id": TITLELESS_ID,
+        "status": 200,
+        "category": "외국어",
+        "shelf_count": 2038,
+        "image_url": "https://img.millie.co.kr/x.jpg",
+        "collected_at": "2026-09-05T02:00:00+00:00",
+        "source": "discovered",
+        "url": f"https://www.millie.co.kr/v3/bookDetail/{TITLELESS_ID}",
+    }
+    return [json.dumps(r, ensure_ascii=False) for r in (shell, titleless)]
+
+
+def test_valid_record_filter_counts_empty_and_titleless(tmp_path, catalog):
+    """유효 레코드 = status 2xx ∧ title 있음. 나머지 성공 페이지는 카운터로만 남는다 (D-05)."""
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    jsonl = raw / "millie_pages.jsonl"
+    jsonl.write_text(
+        FIXTURE.read_text("utf-8").rstrip("\n") + "\n" + "\n".join(_extra_lines()) + "\n",
+        encoding="utf-8",
+    )
+    (raw / "discovered_urls.txt").write_text(f"{EMPTY_ID}\n{TITLELESS_ID}\n", encoding="utf-8")
+    out = tmp_path / "processed"
+    df = catalog.build(jsonl, out, raw_dir=raw)
+
+    assert len(df) == 12
+    report = json.loads((out / "millie_raw_coverage.json").read_text("utf-8"))
+    assert report["n_records"] == 12
+    assert report.get("n_success") == 14
+    assert report.get("n_skipped_empty") == 1
+    assert report.get("n_skipped_titleless") == 1
+    assert report.get("titleless_ratio") == pytest.approx(1 / 14)
+    assert report["n_lines"] == 16
+
+    id_map = pd.read_csv(out / "id_map.csv", dtype={"millie_id": "str"})
+    assert EMPTY_ID not in set(id_map["millie_id"])  # D-17: id 는 유효 레코드에만
+    assert TITLELESS_ID not in set(id_map["millie_id"])
+
+
+BADGE_ID = "ffffffff00000003"
+COUNTDOWN_ID = "ffffffff00000004"  # 카운트다운 배지("종료 D-N") — 실측 9건, 09-05
+
+
+def _badge_lines() -> tuple[dict, dict]:
+    badge = {
+        "millie_id": BADGE_ID,
+        "status": 200,
+        "title": "도슨트북",
+        "subtitle": "종이책에서 읽던 지점 바로 이어읽기",
+        "category": "인문",
+        "shelf_count": 110000,
+        "image_url": "https://img.millie.co.kr/x.jpg",
+        "collected_at": "2026-09-05T02:00:00+00:00",
+        "source": "best:0f1e2d3c4b5a6001",
+        "url": f"https://www.millie.co.kr/v4/book/{BADGE_ID}",
+    }
+    countdown = {
+        **badge,
+        "millie_id": COUNTDOWN_ID,
+        "title": "종료 D-4",
+        "subtitle": "야간비행",
+        "category": "소설",
+        "shelf_count": 3000,
+        "url": f"https://www.millie.co.kr/v4/book/{COUNTDOWN_ID}",
+    }
+    return badge, countdown
+
+
+def test_raw_coverage_counts_badge_titles_but_keeps_rows(tmp_path, catalog):
+    """title 이 배지 라벨인 유효 레코드는 카운터로 드러내되 행은 남긴다(복구는 재수집)."""
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    badge, countdown = _badge_lines()
+    jsonl = raw / "millie_pages.jsonl"
+    jsonl.write_text(
+        FIXTURE.read_text("utf-8").rstrip("\n")
+        + "\n"
+        + json.dumps(badge, ensure_ascii=False)
+        + "\n"
+        + json.dumps(countdown, ensure_ascii=False)
+        + "\n",
+        encoding="utf-8",
+    )
+    (raw / "discovered_urls.txt").write_text(f"{BADGE_ID}\n{COUNTDOWN_ID}\n", encoding="utf-8")
+    out = tmp_path / "processed"
+    df = catalog.build(jsonl, out, raw_dir=raw)
+    report = json.loads((out / "millie_raw_coverage.json").read_text("utf-8"))
+    assert report.get("n_badge_title") == 2  # "도슨트북" 1(집합) + "종료 D-4" 1(정규식)
+    assert sorted(report.get("badge_titles", [])) == sorted(BADGE_TITLES)
+    assert {BADGE_ID, COUNTDOWN_ID} <= set(df["millie_id"])
+    assert report["n_records"] == 14
+
+
+def test_badge_title_constants_do_not_drift(catalog):
+    """빌더 상수 == 테스트 상수, 파서 _NAV_NOISE ⊇ 그 집합 — 중복 정의 drift 방지."""
+    assert set(catalog.BADGE_TITLES) == set(BADGE_TITLES)
+    assert _load("millie_parse")._NAV_NOISE >= set(BADGE_TITLES)
+
+
+def test_discovered_id_without_valid_record_gets_no_id(tmp_path, catalog):
+    """discovered 목록에 있어도 유효 레코드가 없으면 book_id 를 받지 않는다 (D-17)."""
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "discovered_urls.txt").write_text(
+        f"{CHATBOOK}\tbest\nffffffff00000003\tbest\n", encoding="utf-8"
+    )
+    out = tmp_path / "processed"
+    catalog.build(FIXTURE, out, raw_dir=raw)
+    id_map = pd.read_csv(out / "id_map.csv", dtype={"millie_id": "str"})
+    ids = set(id_map["millie_id"])
+    assert CHATBOOK in ids
+    assert "ffffffff00000003" not in ids
 
 
 # ── 게이트 (실제 수집 산출물) ────────────────────────────────────────────────
@@ -301,6 +461,10 @@ def test_coverage_gate():
         writer.writerow(["_n_records", report["n_records"]])
         writer.writerow(["_category_distinct", report["category_distinct"]])
         writer.writerow(["_categories_ge_20", len(enough)])
+        writer.writerow(["_n_skipped_empty", report.get("n_skipped_empty", 0)])
+        writer.writerow(["_n_skipped_titleless", report.get("n_skipped_titleless", 0)])
+        writer.writerow(["_n_success", report.get("n_success", report["n_records"])])
+        writer.writerow(["_n_badge_title", report.get("n_badge_title", -1)])
 
     print(f"\naverage_rating 보유율 {fields['average_rating']:.3f} (임계값 없음, PDF 각주용)")
     print(f"카테고리 {report['category_distinct']}종 · 20권 이상 {len(enough)}종")
@@ -309,4 +473,17 @@ def test_coverage_gate():
     assert report["category_distinct"] >= MIN_CATEGORY_DISTINCT
     assert len(enough) >= MIN_CATEGORIES_WITH_ENOUGH_BOOKS, (
         f"20권 이상 분야가 {len(enough)}종뿐 — BEST 보충 또는 온보딩 카테고리 축소 필요"
+    )
+    titleless = report.get("n_skipped_titleless", 0) / max(report.get("n_success", 1), 1)
+    assert titleless <= 0.005, (
+        f"파서 미스 비율 {titleless:.4f} 초과 — 파서 수정·해당 URL 재수집 "
+        "(결정 D-06 'titleless ≤0.5% 단언'(.planning/phases/03-millie-catalog/03-CONTEXT.md))"
+    )
+    n_badge = report.get(
+        "n_badge_title", -1
+    )  # -1 = 카운터 없는 구 report → 재빌드 필요 (03-08 Task 3-b0)
+    assert n_badge == 0, (
+        f"배지 title {n_badge}건 — 파서 수정 후 해당 URL 재수집·make millie 재빌드 "
+        "(결정 D-06 '파서 미스 비율 ≤0.5% · 초과 시 파서 수정·해당 URL 재수집'"
+        "(.planning/phases/03-millie-catalog/03-CONTEXT.md) · 03-UAT Test 9)"
     )

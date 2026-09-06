@@ -2,10 +2,13 @@
 
 게이트: ① self-edge 0 ② 전 도서 이웃 ≥5 ③ top-20 동일 카테고리 비율 ≤70%.
 ③ 미달이면 TF-IDF 에서 tags 를 빼고 description 가중을 올린다.
+실측 수치는 results/millie_edges_gate.json 에 남긴다(숫자 정본).
 """
 
 import importlib.util
+import json
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -15,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "millie" / "sample_records.jsonl"
 REAL_BOOKS = ROOT / "data" / "processed" / "books_kr.parquet"
 REAL_EDGES = ROOT / "data" / "processed" / "item_edges_kr.parquet"
+GATE_JSON = ROOT / "results" / "millie_edges_gate.json"
 
 MIN_NEIGHBOURS = 5
 TOP_N = 20
@@ -156,11 +160,34 @@ def test_neighbour_quality_gate():
     degree = _degree(real_edges)
     share = _same_category_share(real_edges, real_books)
     print(f"\ntop-20 동일 카테고리 비율 평균 {share:.3f} (기준 ≤{MAX_SAME_CATEGORY_SHARE})")
+    orphans = sorted(known - set(degree.index.astype(int)))
+
+    # 단언보다 먼저 기록한다 — 게이트 미달이어도 수치가 남아야 D-10 보고가 가능하다
+    GATE_JSON.parent.mkdir(parents=True, exist_ok=True)
+    GATE_JSON.write_text(
+        json.dumps(
+            {
+                "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+                "n_books": len(known),
+                "n_edges": int(len(real_edges)),
+                "sources": {
+                    k: int(v) for k, v in real_edges["source"].value_counts().to_dict().items()
+                },
+                "self_edges": int((real_edges["src_book_id"] == real_edges["dst_book_id"]).sum()),
+                "min_degree": int(degree.min()) if len(degree) else 0,
+                "n_orphans": len(orphans),
+                "same_category_share": round(float(share), 4),
+                "max_same_category_share": MAX_SAME_CATEGORY_SHARE,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
 
     assert (real_edges["src_book_id"] == real_edges["dst_book_id"]).sum() == 0
     assert set(real_edges["dst_book_id"].astype(int)) <= known
     assert set(real_edges["src_book_id"].astype(int)) <= known
-    orphans = sorted(known - set(degree.index.astype(int)))
     assert not orphans, f"이웃 0인 도서 {len(orphans)}권: {orphans[:10]}"
     thin = degree[degree < MIN_NEIGHBOURS]
     assert thin.empty, f"이웃 {MIN_NEIGHBOURS} 미만 {len(thin)}권: {thin.head(10).to_dict()}"

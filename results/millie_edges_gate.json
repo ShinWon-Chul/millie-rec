@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-09-06T01:44:29+00:00",
+  "n_books": 9447,
+  "n_edges": 350080,
+  "sources": {
+    "category_best": 177329,
+    "content_sim": 172751
+  },
+  "self_edges": 0,
+  "min_degree": 21,
+  "n_orphans": 0,
+  "same_category_share": 0.3564,
+  "max_same_category_share": 0.7
+}
