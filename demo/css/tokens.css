@@ -40,4 +40,13 @@
   --fs-body: 15px;
   --fs-book: 16px;
   --fs-author: 14px;
+
+  /* 화면 02 §6 추가분 — 난이도·별점·배너·KPI·데모 라벨 + 모달 딤 */
+  --difficulty-on: var(--accent);  --difficulty-off: var(--line);
+  --star: #F5E06E;  --star-off: #3A3A3C;
+  --banner-bg: var(--accent-dim);  --banner-text: #FFF3B0;
+  --kpi-bg: #1C1D20;  --kpi-good: #7ED37E;  --kpi-warn: #F5C46E;  --kpi-bad: #F57E7E;
+  --light-badge: #9AD8FF;
+  --demo-label: #6E6E73;
+  --dim: rgba(0,0,0,.6);   /* 모달·시트 딤 — base.css .modal-wrap__dim 이 참조(06-02). 색 리터럴은 이 파일에만 */
 }
