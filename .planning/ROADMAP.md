@@ -144,7 +144,7 @@ Plans:
   5. Day 3 종료에 모델·API 응답 형태 freeze가 `.planning/STATE.md`와 개발일지에 선언되고, `uv run pytest -q`와 `make smoke` PASS — **REC-08** Day 3 freeze 선언
 
 **Should 꼬리**: **REC-04** 난이도 부호 gap·`gap⁺`·`n_completed×gap` 피처(결측은 가중 0) → 수용 기준 '난이도 4층 피처·ablation'(PRD §9 수용 기준 표) · **REC-06** 난이도 가드(완독 <3 유저에게 `source=millie_index ∧ resid_z<−1` 책 상단 제외) → 수용 기준 '난이도 가드(Should)'(PRD §9 수용 기준 표). 시간 부족 시 아키텍처 01 §8 티어 표 아래부터 버린다 — 난이도 계통은 Grafana scrape 바로 위라 **일찍 버리는 축**이고, 완독 직후 행·별점은 가장 늦게 버린다(결정 '버리는 순서'(개발일지 2026-09-04 파일 항목 D40)). 버릴 경우 PDF에 "설계만" 표기로 대체한다.
-**Plans**: TBD
+**Plans**: 6 plans (04-01 ~ 04-06, Complete 2026-09-06)
 
 ### Phase 5: 서빙 Must 완성
 **Goal**: 심사자가 배포 URL에서 눌러볼 수 있는 API 표면 전체가 동작하고, "추천 API 장애가 메인 장애가 되지 않는다"·"p95 200ms 예산이 계층 배치를 결정했다"는 실서비스 주장이 코드와 실측으로 증명된다.
