@@ -200,6 +200,16 @@ def test_showcase_eval_table_floats_and_personal_case(built):
         assert rec["reason"].endswith("』을 좋아하셨다면")
 
 
+def test_personal_case_and_library_cards_carry_authors(built):
+    """저자는 쇼케이스 본인 5권·서재 카드에도 실린다(06-UAT Gap 1 · 동명 도서 구분 D-07b ③)."""
+    case = _read(built, "showcase.json")["personal_case"]
+    for book in case["seeds"] + case["recommendations"]:
+        assert book.get("authors"), book["book_id"]
+    for bucket in _read(built, "state.json")["library"].values():
+        for book in bucket:
+            assert book.get("authors"), book["book_id"]
+
+
 def test_manifest_records_seed_and_input_digests(built):
     manifest = _read(built, "_manifest.json")
     assert manifest["seed"] == 42
