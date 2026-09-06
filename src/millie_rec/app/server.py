@@ -1,5 +1,8 @@
 """uvicorn 진입점: create_app 주입 + demo/ StaticFiles(마지막). CORS 없음(아키텍처 01 §9-3)."""
 
+import logging
+import os
+
 from fastapi.staticfiles import StaticFiles
 
 from millie_rec.app.pipeline import build_pipelines, load_catalog
@@ -13,6 +16,26 @@ from millie_rec.serving import (
     create_app,
     resolve_db_path,
 )
+
+
+def init_sentry() -> bool:
+    """SENTRY_DSN 있을 때만 Sentry 초기화 — 없으면 SDK import 도 안 한다(07-CONTEXT D-04)."""
+    dsn = os.environ.get("SENTRY_DSN")
+    if not dsn:
+        return False
+    import sentry_sdk  # 지연 import — 로컬·테스트 기동 경로는 SDK 를 건드리지 않는다(네트워크 0)
+
+    # traces 0 = 예외만(성능 추적 없음) · PII off = 가명 user_key 외 미전송(백엔드 §3-8)
+    env = os.environ.get("RAILWAY_ENVIRONMENT_NAME", "local")
+    try:  # fail-open(Codex F1) — 관측 기능이 기동을 막지 않는다. DSN 은 로그에 안 남긴다
+        sentry_sdk.init(dsn=dsn, traces_sample_rate=0, send_default_pii=False, environment=env)
+    except Exception:
+        logging.getLogger(__name__).warning("SENTRY_DSN 이 잘못돼 Sentry 를 끕니다")
+        return False
+    return True
+
+
+init_sentry()
 
 # Phase 3 D-13: artifacts/serving/books_kr.json 있으면 CatalogKR 하나를
 # catalog·neighbors·fallback 에 주입(세 Protocol 을 한 객체가 만족),
