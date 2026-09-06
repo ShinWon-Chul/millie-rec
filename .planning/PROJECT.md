@@ -23,6 +23,7 @@ kt 밀리의서재 AI 엔지니어 사전과제 ①("도서 서비스의 메인 
 - ✓ 빌드 도구 `Makefile`(serve·smoke·data·eval·millie-*)·`pyproject.toml`(런타임 8·dev 3)·아키텍처 경계 테스트·Track A 합성 fixture
 - ✓ 로컬 서빙 스켈레톤 — `make serve`로 `/health`·정적 데모(`/`)·fallback 추천(level 3)이 아티팩트·DB·네트워크 없이 뜨고 `make smoke` 3점 PASS, SQLite 7테이블 자동 생성. Validated in Phase 1 '로컬 서빙 스켈레톤'(2026-09-05, `uv run pytest --no-header` 104 passed / 2 skipped; 작업 트리 미커밋 — 사용자 승인 대기)
 - ✓ Track A 정량 평가 기반 — `make data && make eval`이 Goodbooks-10k(유저별 random holdout 20%, `split_mode=holdout`, 테스트 유저 2,000명 seed 42, 온보딩 5권 마스킹)에서 `results/latest.csv` `pop` 1행(Recall@20 0.063 · NDCG@10 0.054 · ILD@10 0.764)과 `latest_states.csv` n0/n20 2행을 만들고, 3지표 손계산·누수(`seen ∩ R_u`) 테스트가 고정됐다. pop 아티팩트 주입 시 `/api/recommend`가 `fallback_level=0`. EVAL-01~07 전부(Should EVAL-07 `eval_bar.png` 포함). Validated in Phase 2 'Track A 정량 평가 기반'(2026-09-05, `uv run pytest --no-header` 171 passed / 2 skipped, 02-VERIFICATION passed 5/5; 작업 트리 미커밋 — 사용자 승인 대기)
+- ✓ **PDF-01~03 (Validated in Phase 8 'PDF 제출물', 2026-09-06):** `report/draft.md` 5장(H1 5 · H2 16 축 태그 · mermaid 4 · ★ callout 3 · 비교표 8행 · 5권 표 · 캡처 3×2 자리 표시) — 1~4장 압축(3장 1,100 · 4장 1,141 한글자) · 5장 그림 장 재구성 · 숫자 양방향 대조 집합 밖 0 · humanize 변경률 1.0% · `/pdf-check` 제출 가능 · 사용자 Notion PDF 5장 이하 회신 · `report/notion_guide.md` · 커밋 `27d9281` push. 08-VERIFICATION passed 4/4(FREEZE_BOOK_STATS 미설정은 사용자 결정 override → PROGRESS 미결)
 
 ### Active
 
@@ -35,7 +36,6 @@ kt 밀리의서재 AI 엔지니어 사전과제 ①("도서 서비스의 메인 
 - [ ] 데모 재구성: v1 데모 27파일을 화면 구성 02의 8페이지(취향 설정→쇼케이스)로 재구성, mock은 밀리 카탈로그·새 스키마로 재생성, 로컬 API 연동
 - [ ] 배포: Day 2 Railway 스켈레톤 → Day 4 본배포(로컬 스모크·docker 스모크 통과 후), UptimeRobot
 - [ ] 본인 5권 정성 케이스(밀리 카탈로그 내 한국 책) 1장 + 모델 freeze(Day 3)
-- [ ] PDF 5p: main 설계서 §2 페이지 매핑, 숫자는 `results/`만, 데이터 2트랙 각주, ★3개 박스, 필수 문장 7개
 
 ### Out of Scope
 
@@ -99,4 +99,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-09-06 after Phase 4 '추천 파이프라인과 모델 freeze' completion (verification passed 5/5 · REC-01~08 Complete · 🧊 freeze declared, uncommitted — Phase 3 verification pending)*
+*Last updated: 2026-09-06 after Phase 8 'PDF 제출물' completion (verification passed 4/4 · PDF-01~03 Complete · 8/8 phases · Phase 3 `/gsd-verify-work 3` 미실행)*

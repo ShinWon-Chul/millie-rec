@@ -86,9 +86,9 @@
 
 ### PDF (PDF)
 
-- [ ] **PDF-01** `report/draft.md`가 main 설계서 §2 매핑대로 P1~P5를 채우고 숫자는 `results/latest.csv`·`results/latency.json`에서만 인용한다 [Must]
-- [ ] **PDF-02** ★3개(앵커·난이도·시간 가변 가중치) 박스, 필수 문장 7개, 데이터 2트랙 각주, 그림 4종(아키텍처·단계↔지표·비교 막대·데모 캡처)이 있다 [Must]
-- [ ] **PDF-03** `/pdf-check` 전 항목 통과, 5페이지 이내, `[재확인]` 마커 0, 제출 09-08 22:00 KST 전 [Must]
+- [x] **PDF-01** `report/draft.md`가 main 설계서 §2 매핑대로 P1~P5를 채우고 숫자는 `results/latest.csv`·`results/latency.json`에서만 인용한다 [Must]
+- [x] **PDF-02** ★3개(앵커·난이도·시간 가변 가중치) 박스, 필수 문장 7개, 데이터 2트랙 각주, 그림 4종(아키텍처·단계↔지표·비교 막대·데모 캡처)이 있다 [Must]
+- [x] **PDF-03** `/pdf-check` 전 항목 통과, 5페이지 이내, `[재확인]` 마커 0, 제출 09-08 22:00 KST 전 [Must]
 
 ## v2 Requirements
 
@@ -177,9 +177,9 @@ Deferred beyond the 5-day submission (main 설계서 §8 "설계만" — PDF 로
 | **DEPLOY-02** | Day 4 본배포·배포 URL 완주·variant 전환 | Must | Phase 7 '배포' | Complete(09-06, 07-03 12/12·4 variant) |
 | **DEPLOY-03** | 저작권 검사(`git ls-files`)·UptimeRobot 감시 | Must | Phase 7 '배포' | Complete(09-06, 07-04 게이트) |
 | **DEPLOY-04** | Sentry·Grafana Cloud scrape 연결 | Should | Phase 7 '배포' | Dropped(Grafana 폐기 D-05 · Sentry 유지) |
-| **PDF-01** | `draft.md` P1~P5·숫자는 `results/`만 | Must | Phase 8 'PDF 제출물' | Pending |
-| **PDF-02** | ★3개 박스·필수 문장 7개·그림 4종 | Must | Phase 8 'PDF 제출물' | Pending |
-| **PDF-03** | `/pdf-check` 통과·5페이지 이내·기한 내 제출 | Must | Phase 8 'PDF 제출물' | Pending |
+| **PDF-01** | `draft.md` P1~P5·숫자는 `results/`만 | Must | Phase 8 'PDF 제출물' | Complete (2026-09-06, 08-VERIFICATION passed) |
+| **PDF-02** | ★3개 박스·필수 문장 7개·그림 4종 | Must | Phase 8 'PDF 제출물' | Complete (2026-09-06, 08-VERIFICATION passed) |
+| **PDF-03** | `/pdf-check` 통과·5페이지 이내·기한 내 제출 | Must | Phase 8 'PDF 제출물' | Complete (2026-09-06, 08-VERIFICATION passed) |
 
 **Coverage:**
 - v1 requirements: 58 total (Must 48 · Should 10)

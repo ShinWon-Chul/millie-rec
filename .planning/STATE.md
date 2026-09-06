@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
-status: executing
-stopped_at: Phase 8 'PDF 제출물' 08-05 기록 완료 — 커밋은 사용자 승인 대기, 다음 /gsd-verify-work 8
-last_updated: "2026-09-06T11:45:00.000Z"
-last_activity: 2026-09-06 -- Phase 08 'PDF 제출물' 08-05 기록 4곳 완료
+status: verifying
+stopped_at: Phase 8 'PDF 제출물' planned(5 plans) — 다음 /gsd-execute-phase 8
+last_updated: "2026-09-06T12:04:17.644Z"
+last_activity: 2026-09-06
 progress:
   total_phases: 8
   completed_phases: 8
@@ -25,13 +25,13 @@ See: .planning/PROJECT.md (updated 2026-09-05)
 
 ## Current Position
 
-Phase: 08 (pdf) — 기록 완료, 커밋 승인 대기
-Plan: 5 of 5 (08-05 Task 1 기록 4곳)
+Phase: 08
+Plan: Not started
 Status: Phase 8 'PDF 제출물' 08-05 기록 완료 — 커밋은 사용자 승인 대기, 다음 `/gsd-verify-work 8`
 Deploy: BASE=https://millie-rec-production.up.railway.app (Railway project efficient-ambition · region Singapore/sin1 · Dockerfile 자동 감지 · volume /data 1GB **13:53 부착 확정** · DATA_DIR=/data · 스켈레톤 push 09-06 12:52 KST → /health 200 13:07 · SQLite 영구성 ✅ 13:55 재배포 후 users 1 유지 · **본배포 9fb53ab 2026-09-06 14:48**(push 14:34:53 → Active 14:48:19, Dockerfile 변경 빌드 13.5분) · SENTRY_DSN 투입 14:2x · 배포 완주 Playwright 12/12 콘솔 에러 0 · 4 variant distinct 4 · showcase p95 79.5 표시 · 신규 표식 `probe-main-20260906` level 0 · **07-04 push `8455408` 16:34 재배포 후 `/state` 200 — 이름 기준 영구성 확인 ✅**)
 Monitor: UptimeRobot **Keyword** 모니터(`"status":"ok"`, GET, 5분 — HEAD 는 FastAPI 404 라 HTTP 타입 불가) · 공개 상태 페이지 https://stats.uptimerobot.com/20M6QwPo7z · Sentry DSN **Railway 투입 완료**(07-03, 배포 로그 sentry 에러 0)
 Downtime(D-14, /health 5초 폴링): 코드 push 재배포 **약 5~15초**(실패 1표본 ×3회: 502·502·연결끊김) · 볼륨 최초 부착 재배포 **30~40초**(404 6표본). ⚠️ railway.json 은 Railway 정책(Config as Code 2026-08-28 옵트인 종료)으로 **무효** — healthcheckPath 는 대시보드 수동 입력, 07-04 문서 정정
-Last activity: 2026-09-06 -- Phase 8 'PDF 제출물' 08-05 기록 4곳(07-04-SUMMARY 운영 인계 · PROGRESS · 개발일지 D89 · STATE/ROADMAP)
+Last activity: 2026-09-06
 
 Progress: [██████████] 100% (8/8 phases · 51/51 plans — Phase 8 'PDF 제출물' 기록 완료, 검증 `/gsd-verify-work 8` 대기 · Phase 3 검증(`/gsd-verify-work 3`)도 미실행)
 
@@ -39,7 +39,7 @@ Progress: [██████████] 100% (8/8 phases · 51/51 plans — P
 
 **Velocity:**
 
-- Total plans completed: 30
+- Total plans completed: 35
 - Average duration: -
 - Total execution time: 0.0 hours
 
@@ -53,6 +53,7 @@ Progress: [██████████] 100% (8/8 phases · 51/51 plans — P
 | 04 | 6 | - | - |
 | 05 | 12 | - | - |
 | 07 | 4 | - | - |
+| 08 | 5 | - | - |
 
 **Recent Trend:**
 

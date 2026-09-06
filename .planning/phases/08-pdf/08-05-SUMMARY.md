@@ -162,11 +162,31 @@ Codex C1(익명 `candidate_sets`) 미결은 손대지 않았다(Phase 8 이후 �
 
 ## Task 2 · Task 3 (orchestrator 기록)
 
-<!-- orchestrator 가 채운다: 사용자 승인 회신 원문·시각 · 커밋 sha · 포함/제외 파일 목록 · push 여부 · 최종 Self-Check -->
+### Task 2 — 커밋 승인 체크포인트 (2026-09-06 20:55 KST)
+- Advisor가 명령 3개(커밋 대상 `git status --short -- report/... .planning` · 제외 목록 `grep -vE` · `git diff --stat HEAD -- report/draft.md`)를 먼저 실행해 출력을 첨부하고 한글로 승인을 요청했다. 승인 전 `git diff --cached --name-only` 빈 출력(스테이징 0).
+- 커밋 대상 12개: `report/draft.md` · `report/draft.pre-humanize.md` · `report/notion_guide.md` · `report/demo_guide.md` · `.planning/phases/08-pdf/08-01~05-SUMMARY.md` · `.planning/STATE.md` · `.planning/ROADMAP.md` · `.planning/phases/07-deploy/07-04-SUMMARY.md`.
+- 제외 목록(작업 트리 잔존): 다른 세션 demo 작업 7파일(`demo/README.md` `demo/css/dashboard.css` `demo/js/screens/d3_detail.js` `demo/js/screens/d8_showcase.js` `demo/mock/_manifest.json` `demo/mock/showcase.json` `demo/scripts/make_mock.py` — 20:50~20:53 수정, 별도 Claude 세션) · 리뷰 데이터 작업(`scripts/*millie_review*` 5 · `results/review_coverage.csv` · `results/review_tuples_report.json` · `results/millie_edges_gate.json` · `artifacts/serving/review_agg_kr.json` · `report/plan_surfaces_search_feed.md` · `tests/data/test_millie_review*` 2 · `tests/fixtures/millie_reviews/`).
+- **사용자 회신 원문: "커밋·push 승인"** (2026-09-06 20:56 KST).
 
-## Self-Check: PASSED (Task 1 범위)
+### Task 3 — 명시 경로 커밋 · push
+- `git add` 명시 경로 8개 인자(위 12파일) → 커밋 **`27d9281`** `docs(08): PDF 원고 확정 — 5장 재구성·1~4장 압축·Notion 가이드 (Phase 8 'PDF 제출물')`. `git show --name-only HEAD` 12파일 전부 화이트리스트 안, 밖 0. `git add -A`·`-a` 미사용. `report/draft.html`은 `.gitignore` 대상 확인.
+- 저작권 게이트(정정 패턴 `\.(pdf|png|jpe?g)$|(^|/)\.?assets(/|$)`, 예외 `demo/assets/brand/millie-mark.png`) 빈 출력.
+- **push 실행** `9488603..27d9281 main -> main` 20:56:24 KST → Railway 재배포. `/health` 5초 폴링 12회: 20:56:29~20:56:50 200 → **20:57:04 연결 끊김(000) 1회** → 20:57:09부터 200 복귀(다운 약 5~14초, STATE Downtime 기록과 일치). 복귀 후 본문 `ok True hybrid_div_v1`.
+- 다른 세션 미커밋 파일은 `git status --short`에 그대로 남아 있다(커밋에 안 섞임).
+- 이 SUMMARY의 Task 2·3 절은 커밋 `27d9281` 이후에 쓴 것이라 페이즈 완료 커밋(`docs(phase-08)`)에 포함된다.
 
-- 수정한 파일 5개 전부 디스크에 존재하고 변경이 반영됐다: `.planning/phases/07-deploy/07-04-SUMMARY.md` · `../PROGRESS.md` · `../.assets/개발일지/2026-09-06_Day2_Phase4_파이프라인과_freeze.md` · `.planning/STATE.md` · `.planning/ROADMAP.md`.
-- 신설 파일 `.planning/phases/08-pdf/08-05-SUMMARY.md` 존재.
-- acceptance grep 20개 중 19개 ✅, 1개(#8)는 이탈 1의 기준으로 통과 판정.
-- 커밋 0 — `git add`·`git commit` 미실행(Task 2·3 대기).
+## Self-Check: PASSED
+
+- 기록 4곳 grep(Task 1 acceptance) 전부 통과 · 개발일지 D89(새 중복 0, 기존 D3·D63 중복은 이전부터) · DSN 문자열 0
+- 커밋 `27d9281` 화이트리스트 12파일만 · push 완료 · `/health` 200 복귀 20:57:09 KST
+- 저작권 ls-files 게이트(정정 패턴) 빈 출력
+
+───────────────────────────────────────────────
+## ▶ Next Up
+**Phase 8 'PDF 제출물'(.planning/ROADMAP.md) 5/5 플랜 완료 · 커밋 `27d9281` push 완료 — 원고 확정, 제출은 사용자 Notion PDF**
+`/clear` 후:
+`/gsd-verify-work 8` — Phase 8 'PDF 제출물'(.planning/ROADMAP.md) 목표 달성을 대화형 UAT로 확인(PDF-01~03)
+**Also available:**
+- `/gsd-audit-milestone` — 마일스톤 v2.1 전체를 원래 의도(PROJECT.md)와 대조
+- `/day-end` — 오늘(Day 4·5 겸) 결과를 PROGRESS·report/draft.md에 마감
+───────────────────────────────────────────────
