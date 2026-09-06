@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.1
 milestone_name: milestone
 status: "07-04 '마감' ✅ — 게이트 12행 · 캡처 6장+QR(`report/figures/`, repo 밖) · draft §3-3·§5-3 · 기록 4곳(PROGRESS 3행 · 개발일지 D85 · 아키텍처 01 §2-1) · Codex 2회차 5건(C3·C4 반영, C1·C5 인계, C2 무시) · 사용자 지시 데모 버그(`startFresh`) 수정 · 커밋 3 push `ad8cd4a..8455408` 16:33:37 → Active 16:34:23(다운 1표본) · **표식 `probe-main-20260906` state 200(이름 기준 볼륨 확인)** · 배포본 fresh_check PASS · C3 실측 403. 운영 인계는 07-04-SUMMARY"
-stopped_at: Phase 6 '데모 재구성' context gathered (06-CONTEXT.md D-01~D-10) — 다른 세션 Phase 5와 병렬, demo/만 쓰기
-last_updated: "2026-09-06T07:42:49.209Z"
+stopped_at: Phase 8 'PDF 제출물' context gathered (08-CONTEXT.md D-01~D-18) — 다음 /gsd-plan-phase 8
+last_updated: "2026-09-06T09:15:33.751Z"
 last_activity: 2026-09-06
 progress:
   total_phases: 8
@@ -104,6 +104,6 @@ Progress: [█████░░░░░] 50% (4/8 phases — Phase 4 검증 �
 
 ## Session Continuity
 
-Last session: 2026-09-05T22:58:22.851Z
-Stopped at: Phase 6 '데모 재구성' context gathered (06-CONTEXT.md D-01~D-10) — 다른 세션 Phase 5와 병렬, demo/만 쓰기
-Resume file: .planning/phases/06-demo-rebuild/06-CONTEXT.md
+Last session: 2026-09-06T09:15:33.749Z
+Stopped at: Phase 8 'PDF 제출물' context gathered (08-CONTEXT.md D-01~D-18) — 다음 /gsd-plan-phase 8
+Resume file: .planning/phases/08-pdf/08-CONTEXT.md
