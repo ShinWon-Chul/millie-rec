@@ -79,10 +79,10 @@
 
 ### 배포 (DEPLOY)
 
-- [ ] **DEPLOY-01** Day 2 Railway 스켈레톤: `/health` 200·정적 데모·볼륨 영구 확인(재배포 후 SQLite 유지) [Must]
-- [ ] **DEPLOY-02** Day 4 본배포: 로컬 `make smoke`·docker 스모크 통과 후 push, 배포 URL에서 쇼케이스→대시보드 완주, 4 variant 전환 시 책이 바뀐다 [Must]
-- [ ] **DEPLOY-03** `git ls-files`에 과제 PDF·캡처·`.assets`가 없고 UptimeRobot이 `/health`를 감시한다 [Must]
-- [ ] **DEPLOY-04** Sentry·Grafana Cloud scrape 연결 [Should]
+- [x] **DEPLOY-01** Day 2 Railway 스켈레톤: `/health` 200·정적 데모·볼륨 영구 확인(재배포 후 SQLite 유지) [Must]
+- [x] **DEPLOY-02** Day 4 본배포: 로컬 `make smoke`·docker 스모크 통과 후 push, 배포 URL에서 쇼케이스→대시보드 완주, 4 variant 전환 시 책이 바뀐다 [Must]
+- [x] **DEPLOY-03** `git ls-files`에 과제 PDF·캡처·`.assets`가 없고 UptimeRobot이 `/health`를 감시한다 [Must]
+- [~] **DEPLOY-04** ~~Sentry·Grafana Cloud scrape 연결~~ [Should] — **폐기**(Grafana scrape 부분, 결정 'Grafana 폐기'(.planning/phases/07-deploy/07-CONTEXT.md D-05) · 07-04-SUMMARY). Sentry 는 07-01 에서 유지·배포본 DSN 투입
 
 ### PDF (PDF)
 
@@ -173,10 +173,10 @@ Deferred beyond the 5-day submission (main 설계서 §8 "설계만" — PDF 로
 | **DEMO-07** | 뷰어 시뮬레이션 이벤트 3종 + 1탭 별점 모달 | Should | Phase 6 '데모 재구성' | Pending |
 | **DEMO-08** | 관제 대시보드가 `GET /api/dashboard` 표시 | Should | Phase 6 '데모 재구성' | Pending |
 | **DEMO-09** | `?source=mock`·`?source=api` 완주 콘솔 에러 0·`?capture` | Must | Phase 6 '데모 재구성' | Pending |
-| **DEPLOY-01** | Day 2 Railway 스켈레톤·볼륨 영구 확인 | Must | Phase 7 '배포' | Pending |
-| **DEPLOY-02** | Day 4 본배포·배포 URL 완주·variant 전환 | Must | Phase 7 '배포' | Pending |
-| **DEPLOY-03** | 저작권 검사(`git ls-files`)·UptimeRobot 감시 | Must | Phase 7 '배포' | Pending |
-| **DEPLOY-04** | Sentry·Grafana Cloud scrape 연결 | Should | Phase 7 '배포' | Pending |
+| **DEPLOY-01** | Day 2 Railway 스켈레톤·볼륨 영구 확인 | Must | Phase 7 '배포' | Complete(09-06, 07-02·07-04 표식 이름 확인) |
+| **DEPLOY-02** | Day 4 본배포·배포 URL 완주·variant 전환 | Must | Phase 7 '배포' | Complete(09-06, 07-03 12/12·4 variant) |
+| **DEPLOY-03** | 저작권 검사(`git ls-files`)·UptimeRobot 감시 | Must | Phase 7 '배포' | Complete(09-06, 07-04 게이트) |
+| **DEPLOY-04** | Sentry·Grafana Cloud scrape 연결 | Should | Phase 7 '배포' | Dropped(Grafana 폐기 D-05 · Sentry 유지) |
 | **PDF-01** | `draft.md` P1~P5·숫자는 `results/`만 | Must | Phase 8 'PDF 제출물' | Pending |
 | **PDF-02** | ★3개 박스·필수 문장 7개·그림 4종 | Must | Phase 8 'PDF 제출물' | Pending |
 | **PDF-03** | `/pdf-check` 통과·5페이지 이내·기한 내 제출 | Must | Phase 8 'PDF 제출물' | Pending |
